@@ -1,0 +1,11 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "regulatory-test-intelligence"
+version = "0.1.0"
+description = "AI-assisted regulatory clause extraction and test coverage traceability graph"
+
+[tool.setuptools.packages.find]
+where = ["."]

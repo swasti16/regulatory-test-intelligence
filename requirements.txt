@@ -1,0 +1,16 @@
+# Graph Database
+neo4j==5.28.1
+
+# PDF Ingestion
+docling==2.15.1
+
+# LLM / Orchestration (added incrementally as we build)
+langgraph==0.2.60
+langsmith==0.1.147
+
+# Config & Utilities
+python-dotenv==1.2.2
+
+# Testing
+pytest==9.0.3
+pytest-cov==7.1.0
