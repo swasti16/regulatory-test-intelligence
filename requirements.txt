@@ -4,7 +4,7 @@ neo4j==5.28.1
 # PDF Ingestion
 docling==2.15.1
 
-# LLM / Orchestration (added incrementally as we build)
+# LLM / Orchestration
 langgraph==0.2.60
 langsmith==0.1.147
 

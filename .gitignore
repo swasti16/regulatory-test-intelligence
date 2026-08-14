@@ -1,0 +1,6 @@
+# Environment — NEVER commit real keys
+.env
+
+# Virtual environment
+venv/
+.venv/
