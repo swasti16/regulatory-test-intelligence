@@ -164,6 +164,7 @@ def _render_item(item: Any, document: Any) -> Optional[str]:
 
     # Normalize section headers and titles for deterministic regex matching
     if "section_header" in label_value or "title" in label_value:
+        print(text.strip())
         return f"## {text.strip()}"
 
     return text.strip()
@@ -183,26 +184,45 @@ def _reconstruct_with_page_markers(document: Any) -> Tuple[str, Optional[int]]:
             - The first detected page number in the document (usually 1).
     """
     lines: List[str] = []
-    current_page: Optional[int] = None
     first_detected_page: Optional[int] = None
+
+    # Buffer (item, top) per page; flush+sort when page changes.
+    page_buffer: List[Tuple[Any, float]] = []
+    buffer_page_no: Optional[int] = None
+
+    def flush_buffer():
+        """Sort buffered items by vertical position (top, descending) and render."""
+        nonlocal lines
+        page_buffer.sort(key=lambda pair: pair[1], reverse=True)
+        for buffered_item, _top in page_buffer:
+            rendered = _render_item(buffered_item, document)
+            if rendered:
+                lines.append(rendered)
 
     for item, _level in document.iterate_items():
         pages = _get_item_pages(item)
+        if not pages:
+            continue  # items without page provenance can't be spatially sorted — skip from buffer path
 
-        if pages:
-            page_no = pages[0]
-            if first_detected_page is None:
-                first_detected_page = page_no
+        page_no = pages[0]
+        if first_detected_page is None:
+            first_detected_page = page_no
 
-            # Inject marker only when crossing into a new page
-            if page_no != current_page:
-                lines.append(f"[p.{page_no}]")
-                current_page = page_no
+        if page_no != buffer_page_no:
+            if page_buffer:
+                flush_buffer()
+                page_buffer.clear()
+            lines.append(f"[p.{page_no}]")
+            buffer_page_no = page_no
 
-        rendered_text = _render_item(item, document)
-        if rendered_text:
-            lines.append(rendered_text)
+        prov = getattr(item, "prov", None)
+        top = prov[0].bbox.t if prov else 0.0
+        page_buffer.append((item, top))
 
+    if page_buffer:
+        flush_buffer()
+    with open("output.txt", "w", encoding="utf-8") as f:
+        f.write("\n\n".join(lines))
     return "\n\n".join(lines), first_detected_page
 
 
