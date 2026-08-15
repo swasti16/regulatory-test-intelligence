@@ -9,3 +9,8 @@ description = "AI-assisted regulatory clause extraction and test coverage tracea
 
 [tool.setuptools.packages.find]
 where = ["."]
+
+[tool.pytest.ini_options]
+markers = [
+    "slow: marks tests as slow (real Docling model load, real PDFs)",
+]
