@@ -25,6 +25,9 @@ class Settings:
     # ======== Logging ==================================
     LOG_LEVEL: str = os.getenv("LOG_LEVEL", "INFO").upper()
 
+    SAMPLE_PDF_DIR = "data/sample_regulations"
+    RBI_PDF_DIR: str = "data/RBI_regulations"
+
     def validate(self) -> None:
         """Validate required settings are present before pipeline runs."""
         missing = []

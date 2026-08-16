@@ -8,6 +8,7 @@ Slow tests (@pytest.mark.slow): run real Docling against sample PDFs,
 """
 from types import SimpleNamespace
 import pytest
+from config.settings import Settings
 
 
 from src.ingestion.docling_loader import (
@@ -204,8 +205,7 @@ class TestBboxSortOrdering:
 
 # ======== Slow Integration Tests — Real Docling + Real PDFs ==================
 
-SAMPLE_PDF_DIR = "data/sample_regulations"
-REAL_RBI_PDF = "data/sample_regulations/155MD.pdf"  # adjust path if stored elsewhere
+REAL_RBI_PDF = f"{Settings.RBI_PDF_DIR}/RBI_Credit_Debit_Card.pdf"
 
 
 @pytest.mark.slow

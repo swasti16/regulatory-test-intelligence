@@ -10,3 +10,7 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
+
+# pip install -e . creates these
+*.egg-info/
+ai_testing_portfolio.egg-info/

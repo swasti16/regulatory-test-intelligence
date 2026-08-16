@@ -164,7 +164,6 @@ def _render_item(item: Any, document: Any) -> Optional[str]:
 
     # Normalize section headers and titles for deterministic regex matching
     if "section_header" in label_value or "title" in label_value:
-        print(text.strip())
         return f"## {text.strip()}"
 
     return text.strip()
