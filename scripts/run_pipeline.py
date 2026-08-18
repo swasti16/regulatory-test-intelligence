@@ -20,50 +20,58 @@ from src.extraction.clause_extractor import extract_clauses
 from src.graph.neo4j_client import Neo4jClient
 from src.graph.graph_writer import write_regulation, write_clause, link_clause_to_regulation
 from config.settings import Settings
-
+from config.logging_config import setup_logging
 import glob
 import os
 
 os.environ.setdefault("TORCHDYNAMO_DISABLE", "1")
 os.environ.setdefault("TORCH_COMPILE_DISABLE", "1")
 
-logging.basicConfig(level=logging.INFO)
+setup_logging("run_pipeline")
 logger = logging.getLogger(__name__)
+
 
 def run() -> None:
     pdf_paths = sorted(glob.glob(os.path.join(Settings.RBI_PDF_DIR, "*.pdf")))
-    logger.info("Found %d PDFs to process: %s", len(pdf_paths), pdf_paths)
+    logger.info(f"Found {len(pdf_paths)} PDFs to process: {pdf_paths}")
 
     with Neo4jClient() as client:
         for pdf_path in pdf_paths:
-            chapters = load_pdf(pdf_path)
-            doc_id = chapters[0]["doc_id"]
-            logger.info("Processing %s -> doc_id=%s (%d chapters)", pdf_path, doc_id, len(chapters))
+            try:
+                chapters = load_pdf(pdf_path)
+                doc_id = chapters[0]["doc_id"]
+                logger.info(f"Processing {pdf_path} -> doc_id={doc_id} ({len(chapters)} chapters)")
 
-            write_regulation(client, doc_id=doc_id, title=doc_id)  # filename as title placeholder
-            logger.info("Wrote Regulation node: %s", doc_id)
+                write_regulation(client, doc_id=doc_id, title=doc_id)
+                logger.info(f"Wrote Regulation node: {doc_id}")
 
-            total_clauses = 0
-            for chapter in chapters:
-                logger.info("Extracting clauses from: %s", chapter["chapter_title"])
-                clauses = extract_clauses(chapter["chapter_text"])
-                logger.info("  -> extracted %d clauses", len(clauses))
+                total_clauses = 0
+                for chapter in chapters:
+                    logger.info(f"Extracting clauses from: {chapter['chapter_title']}")
+                    try:
+                        clauses = extract_clauses(chapter["chapter_text"])
+                    except Exception as e:
+                        logger.error(
+                            f"Skipping chapter '{chapter['chapter_title']}' in {doc_id} — extraction failed: {e}")
+                        continue
+                    logger.info(f"  -> extracted {len(clauses)} clauses")
 
-                for clause in clauses:
-                    cid = write_clause(
-                        client,
-                        doc_id=doc_id,
-                        chapter_title=chapter["chapter_title"],
-                        clause_num=clause["clause_num"],
-                        text=clause["text"],
-                        risk_level=clause["risk_level"],
-                        page_start=chapter["page_start"],
-                        page_end=chapter["page_end"],
-                    )
-                    link_clause_to_regulation(client, doc_id=doc_id, clause_id=cid)
-                    total_clauses += 1
+                    for clause in clauses:
+                        cid = write_clause(
+                            client, doc_id=doc_id, chapter_title=chapter["chapter_title"],
+                            clause_num=clause["clause_num"], text=clause["text"],
+                            risk_level=clause["risk_level"],
+                            page_start=chapter["page_start"], page_end=chapter["page_end"],
+                        )
+                        link_clause_to_regulation(client, doc_id=doc_id, clause_id=cid)
+                        total_clauses += 1
 
-            logger.info("Finished %s. Total clauses written: %d", doc_id, total_clauses)
+                logger.info(f"Finished {doc_id}. Total clauses written: {total_clauses}")
+
+            except Exception as e:
+                logger.error(f"Skipping PDF {pdf_path} entirely — unrecoverable error: {e}")
+                continue
+
 
 if __name__ == "__main__":
     run()

@@ -1,0 +1,1004 @@
+[
+  {
+    "model": "llama3.2:3b",
+    "chapter": "long (Chapter II)",
+    "elapsed_seconds": 242.9,
+    "status": "OK",
+    "clause_count": 8,
+    "clauses": [
+      {
+        "clause_num": "31",
+        "text": "Notwithstanding the cut-off, if a cardholder makes a request to the card-issuer for reversal of the credit amount outstanding in the card account into his / her bank account, the card-issuer shall do it within three working days from the receipt of such request.",
+        "risk_level": "high",
+        "reason": "contains 'shall'"
+      },
+      {
+        "clause_num": "31",
+        "text": "As bill is yet to be generated in the given case, the refund amount received on October 19, 2023, shall be adjusted with other debits, prior to calculation of the Total Amount Due.",
+        "risk_level": "high",
+        "reason": "contains 'shall'"
+      },
+      {
+        "clause_num": "31",
+        "text": "The bill is generated on October 30, 2023, however, the payment towards the dues has not been made till the date of refund. Therefore, the refund amount received on November 04, 2023, shall be adjusted towards the Total Amount Due (TAD) and accordingly the cardholder will be required to pay only the remaining outstanding (Remaining outstanding = TAD - Refund amount).",
+        "risk_level": "high",
+        "reason": "contains 'shall'"
+      },
+      {
+        "clause_num": "31",
+        "text": "As the cardholder has already cleared the dues, card-issuers shall seek explicit consent of the cardholder to adjust the refund amount in line with the provision stipulated at paragraph 31 of the MD.",
+        "risk_level": "high",
+        "reason": "contains 'shall'"
+      },
+      {
+        "clause_num": "31",
+        "text": "If the cardholder gives explicit consent, then refund amount shall be adjusted. If the cardholder does not provide the consent or no response is received for adjustment of the refund, then the refund amount will be credited to the bank account of the cardholder in line with paragraph 31.",
+        "risk_level": "high",
+        "reason": "contains 'shall'"
+      },
+      {
+        "clause_num": "31",
+        "text": "Further, if the cardholder makes a request for crediting the refund (transaction for which payment has already been made), the same shall be credited back to the bank account of the cardholder irrespective of the cut off defined under paragraph 31.",
+        "risk_level": "high",
+        "reason": "contains 'shall'"
+      },
+      {
+        "clause_num": "31",
+        "text": "Card-issuers shall ensure that they, as also their agents, adhere to the extant instructions on Fair Practices Code for lenders.",
+        "risk_level": "high",
+        "reason": "contains 'shall'"
+      },
+      {
+        "clause_num": "31",
+        "text": "Card-issuers shall ensure that their employees / agents do not indulge in mis-selling of credit cards by providing incomplete or incorrect information to the customers, prior to the issuance of a credit card.",
+        "risk_level": "high",
+        "reason": "contains 'shall'"
+      }
+    ]
+  },
+  {
+    "model": "llama3.2:3b",
+    "chapter": "short (Chapter III)",
+    "elapsed_seconds": 165.2,
+    "status": "OK",
+    "clause_count": 11,
+    "clauses": [
+      {
+        "clause_num": "1",
+        "text": "Banks shall formulate a comprehensive debit cards issuance policy with the approval of their Boards and issue debit cards to their customers in accordance with this policy.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "2",
+        "text": "Debit cards shall only be issued to customers having Savings Bank / Current Accounts.",
+        "risk_level": "high",
+        "reason": "Contains 'shall only be issued' \u2014 this is a hard eligibility restriction, not a definition."
+      },
+      {
+        "clause_num": "3",
+        "text": "The bank shall not issue debit cards to cash credit / loan accounts.",
+        "risk_level": "high",
+        "reason": "'Shall not' is a prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "4",
+        "text": "Banks shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "5",
+        "text": "The banks shall undertake review of their operations / issue of debit cards on half-yearly basis.",
+        "risk_level": "medium",
+        "reason": "Contains 'shall' \u2014 process or procedure with a customer-facing obligation, but no hard penalty or deadline attached."
+      },
+      {
+        "clause_num": "6",
+        "text": "A bank shall formulate comprehensive policy / policies and procedures with the approval of its Board covering, inter alia, the following aspects:",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "7",
+        "text": "Debit card issuance.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "8",
+        "text": "Co-branding arrangement (as applicable).",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "9",
+        "text": "Standard operating procedure for discretionary blocking / deactivating / suspending a debit card.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "10",
+        "text": "Time period for completion of formalities after blocking a lost card.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "11",
+        "text": "Redressal of grievances and compensation framework.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory requirement, no exceptions stated."
+      }
+    ]
+  },
+  {
+    "model": "llama3.2:1b",
+    "chapter": "long (Chapter II)",
+    "elapsed_seconds": 260.6,
+    "status": "OK",
+    "clause_count": 19,
+    "clauses": [
+      {
+        "clause_num": "H. Issue of unsolicited facilities",
+        "text": "Unsolicited loans or other credit facilities shall not be offered to the credit cardholders without seeking explicit consent. In case an unsolicited credit facility is extended without the written / explicit consent of the cardholder and the latter objects to the same, the cardissuer shall not only withdraw the facility, but also be liable to pay such penalty as may be considered appropriate by the RBI Ombudsman, if approached.",
+        "risk_level": "high",
+        "reason": "Risk of misuse or unauthorized use of credit facilities"
+      },
+      {
+        "clause_num": "I. Reporting to Credit Information Companies",
+        "text": "For providing information relating to credit history / repayment record of the cardholder to a Credit Information Company (that has obtained Certificate of Registration from RBI), the card-issuer shall explicitly bring to the notice of the customer that such information is being provided in terms of the Credit Information Companies (Regulation) Act, 2005.",
+        "risk_level": "high",
+        "reason": "Risk of non-compliance with regulations"
+      },
+      {
+        "clause_num": "J. Customer Conduct",
+        "text": "In the matter of recovery of dues, card-issuers shall ensure that they, as also their agents, adhere to the extant instructions on Fair Practices Code for lenders.",
+        "risk_level": "high",
+        "reason": "Risk of non-compliance with fair practices guidelines"
+      },
+      {
+        "clause_num": "K. OF",
+        "text": "H. Issue of unsolicited facilities",
+        "risk_level": "high",
+        "reason": "Risk of misuse or unauthorized use of credit facilities"
+      },
+      {
+        "clause_num": "L. I. Reporting to Credit Information Companies",
+        "text": "For providing information relating to credit history / repayment record of the cardholder to a Credit Information Company (that has obtained Certificate of Registration from RBI), the card-issuer shall explicitly bring to the notice of the customer that such information is being provided in terms of the Credit Information Companies (Regulation) Act, 2005.",
+        "risk_level": "high",
+        "reason": "Risk of non-compliance with regulations"
+      },
+      {
+        "clause_num": "M. OF",
+        "text": "J. Customer Conduct",
+        "risk_level": "high",
+        "reason": "Risk of non-compliance with fair practices guidelines"
+      },
+      {
+        "clause_num": "N. I. Reporting to Credit Information Companies",
+        "text": "For providing information relating to credit history / repayment record of the cardholder to a Credit Information Company (that has obtained Certificate of Registration from RBI), the card-issuer shall explicitly bring to the notice of the customer that such information is being provided in terms of the Credit Information Companies (Regulation) Act, 2005.",
+        "risk_level": "high",
+        "reason": "Risk of non-compliance with regulations"
+      },
+      {
+        "clause_num": "O. OF",
+        "text": "H. Issue of unsolicited facilities",
+        "risk_level": "high",
+        "reason": "Risk of misuse or unauthorized use of credit facilities"
+      },
+      {
+        "clause_num": "P. 19",
+        "text": "J. Customer Conduct",
+        "risk_level": "high",
+        "reason": "Risk of non-compliance with fair practices guidelines"
+      },
+      {
+        "clause_num": "Q. I. Reporting to Credit Information Companies",
+        "text": "For providing information relating to credit history / repayment record of the cardholder to a Credit Information Company (that has obtained Certificate of Registration from RBI), the card-issuer shall explicitly bring to the notice of the customer that such information is being provided in terms of the Credit Information Companies (Regulation) Act, 2005.",
+        "risk_level": "high",
+        "reason": "Risk of non-compliance with regulations"
+      },
+      {
+        "clause_num": "R. OF",
+        "text": "J. Customer Conduct",
+        "risk_level": "high",
+        "reason": "Risk of non-compliance with fair practices guidelines"
+      },
+      {
+        "clause_num": "S. I. Reporting to Credit Information Companies",
+        "text": "For providing information relating to credit history / repayment record of the cardholder to a Credit Information Company (that has obtained Certificate of Registration from RBI), the card-issuer shall explicitly bring to the notice of the customer that such information is being provided in terms of the Credit Information Companies (Regulation) Act, 2005.",
+        "risk_level": "high",
+        "reason": "Risk of non-compliance with regulations"
+      },
+      {
+        "clause_num": "T. OF",
+        "text": "J. Customer Conduct",
+        "risk_level": "high",
+        "reason": "Risk of non-compliance with fair practices guidelines"
+      },
+      {
+        "clause_num": "U. I. Reporting to Credit Information Companies",
+        "text": "For providing information relating to credit history / repayment record of the cardholder to a Credit Information Company (that has obtained Certificate of Registration from RBI), the card-issuer shall explicitly bring to the notice of the customer that such information is being provided in terms of the Credit Information Companies (Regulation) Act, 2005.",
+        "risk_level": "high",
+        "reason": "Risk of non-compliance with regulations"
+      },
+      {
+        "clause_num": "V. OF",
+        "text": "J. Customer Conduct",
+        "risk_level": "high",
+        "reason": "Risk of non-compliance with fair practices guidelines"
+      },
+      {
+        "clause_num": "W. I. Reporting to Credit Information Companies",
+        "text": "For providing information relating to credit history / repayment record of the cardholder to a Credit Information Company (that has obtained Certificate of Registration from RBI), the card-issuer shall explicitly bring to the notice of the customer that such information is being provided in terms of the Credit Information Companies (Regulation) Act, 2005.",
+        "risk_level": "high",
+        "reason": "Risk of non-compliance with regulations"
+      },
+      {
+        "clause_num": "X. OF",
+        "text": "J. Customer Conduct",
+        "risk_level": "high",
+        "reason": "Risk of non-compliance with fair practices guidelines"
+      },
+      {
+        "clause_num": "Y. I. Reporting to Credit Information Companies",
+        "text": "For providing information relating to credit history / repayment record of the cardholder to a Credit Information Company (that has obtained Certificate of Registration from RBI), the card-issuer shall explicitly bring to the notice of the customer that such information is being provided in terms of the Credit Information Companies (Regulation) Act, 2005.",
+        "risk_level": "high",
+        "reason": "Risk of non-compliance with regulations"
+      },
+      {
+        "clause_num": "Z. OF",
+        "text": "J. Customer Conduct",
+        "risk_level": "high",
+        "reason": "Risk of non-compliance with fair practices guidelines"
+      }
+    ]
+  },
+  {
+    "model": "llama3.2:1b",
+    "chapter": "short (Chapter III)",
+    "elapsed_seconds": 938.0,
+    "status": "OK",
+    "clause_count": 100,
+    "clauses": [
+      {
+        "clause_num": "3.1",
+        "text": "Banks shall formulate a comprehensive debit cards issuance policy with the approval of their Boards.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "3.2",
+        "text": "Debit cards shall only be issued to customers having Savings Bank / Current Accounts.",
+        "risk_level": "high",
+        "reason": "Contains 'shall only be issued' \u2014 this is a hard eligibility restriction, not a definition."
+      },
+      {
+        "clause_num": "3.3",
+        "text": "The bank shall not issue debit cards to cash credit / loan accounts.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "3.4",
+        "text": "Cardholder is a person to whom a card is issued or one who is authorized to use an issued card.",
+        "risk_level": "low",
+        "reason": "Pure definition \u2014 no 'shall'/ 'must', no action required, explanatory only."
+      },
+      {
+        "clause_num": "3.5",
+        "text": "Banks shall undertake review of their operations / issue of debit cards on half-yearly basis.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "3.6",
+        "text": "The bank shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "3.7",
+        "text": "The specific aspects to be addressed in these policies / procedures are detailed in the relevant paragraphs of these Directions.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "3.8",
+        "text": "REMINDER before you respond: any clause containing 'shall', 'shall not', or 'must' is risk_level 'high' \u2014 regardless of how short or plainly-worded the sentence.",
+        "risk_level": "high",
+        "reason": "Contains 'shall', 'shall not', or 'must'."
+      },
+      {
+        "clause_num": "3.9",
+        "text": "Banks shall not preclude the banks from linking the overdraft facility provided along with Pradhan Mantri Jan Dhan Yojana accounts or Kisan Credit Card accounts with a debit card.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "3.10",
+        "text": "The bank shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "3.11",
+        "text": "The bank shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "3.12",
+        "text": "The bank shall undertake review of their operations / issue of debit cards on half-yearly basis.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "3.13",
+        "text": "The review shall include, inter-alia, card usage analysis including cards not used for long durations and the inherent risks therein.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "3.14",
+        "text": "The bank shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "3.15",
+        "text": "The bank shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "3.16",
+        "text": "The bank shall undertake review of their operations / issue of debit cards on half-yearly basis.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "3.17",
+        "text": "The review shall include, inter-alia, card usage analysis including cards not used for long durations and the inherent risks therein.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "3.18",
+        "text": "The bank shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "3.19",
+        "text": "The bank shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "3.20",
+        "text": "The bank shall undertake review of their operations / issue of debit cards on half-yearly basis.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "3.21",
+        "text": "The review shall include, inter-alia, card usage analysis including cards not used for long durations and the inherent risks therein.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "3.22",
+        "text": "The bank shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "3.23",
+        "text": "The bank shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "3.24",
+        "text": "The bank shall undertake review of their operations / issue of debit cards on half-yearly basis.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "3.25",
+        "text": "The review shall include, inter-alia, card usage analysis including cards not used for long durations and the inherent risks therein.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "3.26",
+        "text": "The bank shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "3.27",
+        "text": "The bank shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "3.28",
+        "text": "The bank shall undertake review of their operations / issue of debit cards on half-yearly basis.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "3.29",
+        "text": "The review shall include, inter-alia, card usage analysis including cards not used for long durations and the inherent risks therein.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "3.30",
+        "text": "The bank shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "3.31",
+        "text": "The bank shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "3.32",
+        "text": "The bank shall undertake review of their operations / issue of debit cards on half-yearly basis.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "3.33",
+        "text": "The review shall include, inter-alia, card usage analysis including cards not used for long durations and the inherent risks therein.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "3.34",
+        "text": "The bank shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "3.35",
+        "text": "The bank shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "3.36",
+        "text": "The bank shall undertake review of their operations / issue of debit cards on half-yearly basis.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "3.37",
+        "text": "The review shall include, inter-alia, card usage analysis including cards not used for long durations and the inherent risks therein.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "3.38",
+        "text": "The bank shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "3.39",
+        "text": "The bank shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "3.40",
+        "text": "The bank shall undertake review of their operations / issue of debit cards on half-yearly basis.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "3.41",
+        "text": "The review shall include, inter-alia, card usage analysis including cards not used for long durations and the inherent risks therein.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "3.42",
+        "text": "The bank shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "3.43",
+        "text": "The bank shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "3.44",
+        "text": "The bank shall undertake review of their operations / issue of debit cards on half-yearly basis.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "3.45",
+        "text": "The review shall include, inter-alia, card usage analysis including cards not used for long durations and the inherent risks therein.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "3.46",
+        "text": "The bank shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "3.47",
+        "text": "The bank shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "3.48",
+        "text": "The bank shall undertake review of their operations / issue of debit cards on half-yearly basis.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "3.49",
+        "text": "The review shall include, inter-alia, card usage analysis including cards not used for long durations and the inherent risks therein.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "3.50",
+        "text": "The bank shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "3.51",
+        "text": "The bank shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "3.52",
+        "text": "The bank shall undertake review of their operations / issue of debit cards on half-yearly basis.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "3.53",
+        "text": "The review shall include, inter-alia, card usage analysis including cards not used for long durations and the inherent risks therein.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "3.54",
+        "text": "The bank shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "3.55",
+        "text": "The bank shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "3.56",
+        "text": "The bank shall undertake review of their operations / issue of debit cards on half-yearly basis.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "3.57",
+        "text": "The review shall include, inter-alia, card usage analysis including cards not used for long durations and the inherent risks therein.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "3.58",
+        "text": "The bank shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "3.59",
+        "text": "The bank shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "3.60",
+        "text": "The bank shall undertake review of their operations / issue of debit cards on half-yearly basis.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "3.61",
+        "text": "The review shall include, inter-alia, card usage analysis including cards not used for long durations and the inherent risks therein.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "3.62",
+        "text": "The bank shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "3.63",
+        "text": "The bank shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "3.64",
+        "text": "The bank shall undertake review of their operations / issue of debit cards on half-yearly basis.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "3.65",
+        "text": "The review shall include, inter-alia, card usage analysis including cards not used for long durations and the inherent risks therein.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "3.66",
+        "text": "The bank shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "3.67",
+        "text": "The bank shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "3.68",
+        "text": "The bank shall undertake review of their operations / issue of debit cards on half-yearly basis.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "3.69",
+        "text": "The review shall include, inter-alia, card usage analysis including cards not used for long durations and the inherent risks therein.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "3.70",
+        "text": "The bank shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "3.71",
+        "text": "The bank shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "3.72",
+        "text": "The bank shall undertake review of their operations / issue of debit cards on half-yearly basis.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "3.73",
+        "text": "The review shall include, inter-alia, card usage analysis including cards not used for long durations and the inherent risks therein.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "3.74",
+        "text": "The bank shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "3.75",
+        "text": "The bank shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "3.76",
+        "text": "The bank shall undertake review of their operations / issue of debit cards on half-yearly basis.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "3.77",
+        "text": "The review shall include, inter-alia, card usage analysis including cards not used for long durations and the inherent risks therein.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "3.78",
+        "text": "The bank shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "3.79",
+        "text": "The bank shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "3.80",
+        "text": "The bank shall undertake review of their operations / issue of debit cards on half-yearly basis.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "3.81",
+        "text": "The review shall include, inter-alia, card usage analysis including cards not used for long durations and the inherent risks therein.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "3.82",
+        "text": "The bank shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "3.83",
+        "text": "The bank shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "3.84",
+        "text": "The bank shall undertake review of their operations / issue of debit cards on half-yearly basis.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "3.85",
+        "text": "The review shall include, inter-alia, card usage analysis including cards not used for long durations and the inherent risks therein.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "3.86",
+        "text": "The bank shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "3.87",
+        "text": "The bank shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "3.88",
+        "text": "The bank shall undertake review of their operations / issue of debit cards on half-yearly basis.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "3.89",
+        "text": "The review shall include, inter-alia, card usage analysis including cards not used for long durations and the inherent risks therein.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "3.90",
+        "text": "The bank shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "3.91",
+        "text": "The bank shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "3.92",
+        "text": "The bank shall undertake review of their operations / issue of debit cards on half-yearly basis.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "3.93",
+        "text": "The review shall include, inter-alia, card usage analysis including cards not used for long durations and the inherent risks therein.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "3.94",
+        "text": "The bank shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "3.95",
+        "text": "The bank shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "3.96",
+        "text": "The bank shall undertake review of their operations / issue of debit cards on half-yearly basis.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "3.97",
+        "text": "The review shall include, inter-alia, card usage analysis including cards not used for long durations and the inherent risks therein.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "3.98",
+        "text": "The bank shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "3.99",
+        "text": "The bank shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Prohibition \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "4.0",
+        "text": "The bank shall undertake review of their operations / issue of debit cards on half-yearly basis.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      }
+    ]
+  },
+  {
+    "model": "qwen2.5:1.5b",
+    "chapter": "long (Chapter II)",
+    "elapsed_seconds": 229.3,
+    "status": "OK",
+    "clause_count": 12,
+    "clauses": [
+      {
+        "clause_num": "1",
+        "text": "For a typical credit card with billing cycle from October 1, 2023 to October 30, 2023, it is assumed that the bill is generated on October 30, 2023 and the due date of payment is November 19, 2023. The different scenarios for adjustment of credit are detailed below:",
+        "risk_level": "high",
+        "reason": "The text contains mandatory language that requires the card issuer to follow specific procedures for adjusting credit, which is a high-risk area due to potential financial implications for the cardholder."
+      },
+      {
+        "clause_num": "2",
+        "text": "o Purchase transaction date - October 15, 2023 o Refund on October 19, 2023 - For cancellation of purchase dated October 15, 2023",
+        "risk_level": "high",
+        "reason": "The text contains mandatory language that requires the card issuer to follow specific procedures for adjusting credit, which is a high-risk area due to potential financial implications for the cardholder."
+      },
+      {
+        "clause_num": "3",
+        "text": "Scenario 2 - Credit of refund / failed / reversed transaction post generation of bill but before making payment of the dues",
+        "risk_level": "high",
+        "reason": "The text contains mandatory language that requires the card issuer to follow specific procedures for adjusting credit, which is a high-risk area due to potential financial implications for the cardholder."
+      },
+      {
+        "clause_num": "4",
+        "text": "o Purchase transaction date - October 29, 2023 o Refund on November 04, 2023 - For cancellation of purchase dated October 29, 2023",
+        "risk_level": "high",
+        "reason": "The text contains mandatory language that requires the card issuer to follow specific procedures for adjusting credit, which is a high-risk area due to potential financial implications for the cardholder."
+      },
+      {
+        "clause_num": "5",
+        "text": "Scenario 3 - Credit of refund / failed / reversed transaction for which payment has already been made",
+        "risk_level": "high",
+        "reason": "The text contains mandatory language that requires the card issuer to follow specific procedures for adjusting credit, which is a high-risk area due to potential financial implications for the cardholder."
+      },
+      {
+        "clause_num": "6",
+        "text": "Unsolicited loans or other credit facilities shall not be offered to the credit cardholders without seeking explicit consent. In case an unsolicited credit facility is extended without the written / explicit consent of the cardholder and the latter objects to the same, the cardissuer shall not only withdraw the facility, but also be liable to pay such penalty as may be considered appropriate by the RBI Ombudsman, if approached.",
+        "risk_level": "high",
+        "reason": "The text contains mandatory language that requires the card issuer to follow specific procedures for withdrawing a credit facility, which is a high-risk area due to potential financial implications for the cardholder."
+      },
+      {
+        "clause_num": "7",
+        "text": "Card-issuers shall not unilaterally upgrade credit cards and enhance credit limits. Explicit consent of the cardholder shall invariably be taken whenever there is / are any change/s in terms and conditions. In case of reduction in the credit limit, the card-issuer shall intimate the same to the cardholder.",
+        "risk_level": "high",
+        "reason": "The text contains mandatory language that requires the card issuer to follow specific procedures for changing credit terms and conditions, which is a high-risk area due to potential financial implications for the cardholder."
+      },
+      {
+        "clause_num": "8",
+        "text": "For providing information relating to credit history / repayment record of the cardholder to a Credit Information Company (that has obtained Certificate of Registration from RBI), the card-issuer shall explicitly bring to the notice of the customer that such information is being provided in terms of the Credit Information Companies (Regulation) Act, 2005.",
+        "risk_level": "high",
+        "reason": "The text contains mandatory language that requires the card issuer to follow specific procedures for providing information to a Credit Information Company, which is a high-risk area due to potential financial implications for the cardholder."
+      },
+      {
+        "clause_num": "9",
+        "text": "Before reporting default status of a credit cardholder to a Credit Information Company (CIC), the card-issuers shall ensure that they adhere to the procedure, approved by their Board, and intimate the cardholder prior to reporting of the status. In the event the cardholder settles his / her dues after having been reported as defaulter, the card-issuer shall update the status with CIC within 30 days from the date of settlement. Card-issuers shall be particularly careful in the case of cards where there are pending disputes. The disclosure / release of information, particularly about the default, shall be made only after the dispute is settled. In all cases, a well laid down procedure shall be transparently followed and be made a part of MITC.",
+        "risk_level": "high",
+        "reason": "The text contains mandatory language that requires the card issuer to follow specific procedures for reporting a default status to a Credit Information Company, which is a high-risk area due to potential financial implications for the cardholder."
+      },
+      {
+        "clause_num": "10",
+        "text": "When card-issuers outsource various credit card related operations, they shall be extremely careful that the appointment of such service providers do not compromise the quality of the customer service and the card-issuers' ability to manage credit, liquidity and operational risks. In the choice of the service provider, the card-issuers shall be guided by the need to ensure confidentiality of the customer's records, respect customer privacy and adhere to fair practices in debt collection.",
+        "risk_level": "high",
+        "reason": "The text contains mandatory language that requires the card issuer to follow specific procedures for outsourcing credit card related operations, which is a high-risk area due to potential financial implications for the cardholder."
+      },
+      {
+        "clause_num": "11",
+        "text": "Card-issuers shall have a system of random checks and mystery shopping to ensure that their agents have been properly briefed and trained as to how to handle customers and are also aware of their responsibilities, particularly with regard to soliciting customers, hours for calling, privacy of customer information, conveying the correct terms and conditions of the product on offer, and the correct terms and conditions of the product on offer.",
+        "risk_level": "high",
+        "reason": "The text contains mandatory language that requires the card issuer to follow specific procedures for conducting random checks and mystery shopping, which is a high-risk area due to potential financial implications for the cardholder."
+      },
+      {
+        "clause_num": "12",
+        "text": "Card-issuers shall ensure that their employees / agents do not indulge in mis-selling of credit cards by providing incomplete or incorrect information to the customers, prior to the issuance of a credit card. The card-issuers shall also be liable for the acts of their agents. Repetitive complaints received in this regard against any employee / agent shall be taken on record by the card-issuer and appropriate action shall be initiated against them including blacklisting of such agents. A dedicated helpline and email-id shall be available for the cardholders to raise complaints against any act of mis-selling or harassment by the representative of the card-issuer.",
+        "risk_level": "high",
+        "reason": "The text contains mandatory language that requires the card issuer to follow specific procedures for ensuring that their employees and agents do not mis-sell credit cards, which is a high-risk area due to potential financial implications for the cardholder."
+      }
+    ]
+  },
+  {
+    "model": "qwen2.5:1.5b",
+    "chapter": "short (Chapter III)",
+    "elapsed_seconds": 77.0,
+    "status": "OK",
+    "clause_count": 8,
+    "clauses": [
+      {
+        "clause_num": "1",
+        "text": "Banks shall formulate a comprehensive debit cards issuance policy with the approval of their Boards and issue debit cards to their customers in accordance with this policy. Prior approval of the Reserve Bank is not necessary for banks desirous of issuing debit cards to their customers.",
+        "risk_level": "high",
+        "reason": "Contains 'shall' \u2014 mandatory Board-approved requirement, no exceptions stated."
+      },
+      {
+        "clause_num": "2",
+        "text": "Debit cards shall only be issued to customers having Savings Bank / Current Accounts.",
+        "risk_level": "high",
+        "reason": "Contains 'shall only be issued' \u2014 this is a hard eligibility restriction, not a definition. Even though it reads like a simple fact, 'shall' makes it a compliance requirement."
+      },
+      {
+        "clause_num": "3",
+        "text": "The bank shall not issue debit cards to cash credit / loan accounts. However, it will not preclude the banks from linking the overdraft facility provided along with Pradhan Mantri Jan Dhan Yojana accounts or Kisan Credit Card accounts with a debit card.",
+        "risk_level": "high",
+        "reason": "Contains 'shall not' \u2014 an explicit compliance requirement, always high regardless of how short or simple the sentence looks."
+      },
+      {
+        "clause_num": "4",
+        "text": "Banks shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
+        "risk_level": "high",
+        "reason": "Pure definition \u2014 no 'shall'/ 'must', no action required, explanatory only."
+      },
+      {
+        "clause_num": "5",
+        "text": "## B. Review of operations",
+        "risk_level": "low",
+        "reason": "Pure definition \u2014 no 'shall'/ 'must', no action required, explanatory only."
+      },
+      {
+        "clause_num": "6",
+        "text": "## C. Board Approved Policy and Procedures",
+        "risk_level": "low",
+        "reason": "Pure definition \u2014 no 'shall'/ 'must', no action required, explanatory only."
+      },
+      {
+        "clause_num": "7",
+        "text": "A bank shall formulate comprehensive policy / policies and procedures with the approval of its Board covering, inter alia, the following aspects: Debit card issuance. Co-branding arrangement (as applicable). Standard operating procedure for discretionary blocking / deactivating / suspending a debit card. Time period for completion of formalities after blocking a lost card. Redressal of grievances and compensation framework.",
+        "risk_level": "low",
+        "reason": "Pure definition \u2014 no 'shall'/ 'must', no action required, explanatory only."
+      },
+      {
+        "clause_num": "8",
+        "text": "REMINDER before you respond: any clause containing 'shall', 'shall not', or 'must' is risk_level 'high' \u2014 regardless of how short or plainly-worded the sentence is. Re-check every clause against this rule before finalizing your answer.",
+        "risk_level": "low",
+        "reason": "Pure definition \u2014 no 'shall'/ 'must', no action required, explanatory only."
+      }
+    ]
+  }
+]
