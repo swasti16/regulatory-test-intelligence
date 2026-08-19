@@ -13,6 +13,60 @@ scale as regulations change. This project automates clause extraction and
 coverage traceability, while keeping the actual gap-detection logic
 deterministic and auditable — critical for a regulated domain like banking.
 
+## Why This Matters — The Cost of the Gap
+
+Banks face continuous regulatory change. Each RBI amendment triggers regression
+and compliance testing across core banking, payments, and reporting modules —
+today, done by manually re-reading the regulation and manually checking which
+test cases (if any) cover it. There is no automated link between a regulatory
+clause and the test evidence that proves it's enforced.
+
+**What happens when that manual link breaks:**
+
+| Failure Mode | Consequence |
+|---|---|
+| Clause never mapped to any test | Gap stays invisible — no one is even looking for it |
+| Clause mapped incorrectly ("looks covered") | **Worse than a visible gap** — false confidence, the breach surfaces first in production, not in QA |
+| Regulation updates, mapping isn't refreshed | Stale coverage — tests pass against an old rule that no longer matches the current directive |
+| Detection happens late (weeks, per manual cycle) | Non-compliant code ships in the release window before the gap is caught |
+
+**What that costs, concretely** — drawn directly from the sample regulation this
+project processes (RBI Commercial Banks Credit/Debit Card Directions, 2025):
+
+- **Direct financial penalty**: failure to close a card account within 7 working
+  days of a valid request carries a **₹500/day penalty**, payable to the customer,
+  for every day of delay (Ch. II-E). An untested code path here compounds daily.
+- **Punitive multiplier**: an unsolicited card issued and billed without consent
+  requires the bank to reverse the charge **and** pay a penalty of **twice the
+  reversed amount**, on top of Ombudsman-determined compensation for the
+  customer's time, harassment, and mental anguish (Ch. II-C).
+- **Regulatory escalation**: every unresolved failure category has an explicit
+  RBI Ombudsman path (Ch. VI-D) — meaning gaps don't just risk a fine, they risk
+  a formal regulatory finding against the bank, with reputational and (in
+  repeat/severe cases) licensing consequences.
+- **Time cost**: this single 35-page directions document has ~8 chapters and
+  100+ individually testable obligations. Manually diffing that against a test
+  suite, per amendment, is a multi-day task for a compliance/QA analyst — RBI
+  issues Master Directions and amendments multiple times a year (this document
+  itself explicitly repeals and replaces a prior 2025 circular).
+
+**How this project addresses each failure mode:**
+
+| Gap | This Project's Answer |
+|---|---|
+| Invisible coverage gaps | Deterministic Cypher rules surface every clause with zero linked test cases — visible before release, not after a breach |
+| False "covered" confidence | Grounding check (`_is_grounded_in_source()`) — every extracted clause must be a verbatim substring of the source regulation, so extraction can't silently drift or hallucinate coverage that isn't real |
+| Stale mappings after amendments | Idempotent, MERGE-based graph writes — re-running extraction on an updated PDF safely refreshes clauses without duplicating or losing existing test-case links |
+| Slow manual detection | Extraction + gap-surfacing runs in minutes per document vs. days of manual cross-referencing; analyst time shifts from *searching* for gaps to *validating* flagged ones |
+| Trusting AI blindly on a compliance-critical decision | The LLM only extracts and classifies — it never decides what counts as a "gap." That decision is a fixed, auditable Cypher rule, not an LLM judgment call |
+
+**What's explicitly NOT automated yet (by design, not oversight):**
+Clause-to-test-case linking in this MVP is human-authored seed data — a
+compliance/QA lead still decides which test case satisfies which clause.
+The system's job is to make gaps *visible and current*, not to remove the
+human decision of "is this test actually sufficient." A review queue for
+human sign-off on high-risk clause links is a Post-MVP roadmap item (see below).
+
 ## Architecture
 
 ```
@@ -100,15 +154,27 @@ cp .env.example .env
 
 ## Roadmap
 
+**Built & tested:**
 - [x] Neo4j schema design + manual rule validation (Neo4j Browser)
-- [ ] Neo4j Python driver connection
-- [ ] Docling PDF ingestion
-- [ ] LLM clause extraction pipeline
-- [ ] Graph write pipeline (extracted clauses -> Neo4j)
-- [ ] Deterministic rule engine (Python wrapper over Cypher queries)
-- [ ] LangGraph orchestration
-- [ ] LangSmith tracing
-- [ ] MCP server over Neo4j (Phase 2 — not in hackathon MVP scope)
+- [x] Neo4j Python driver connection (`Neo4jClient` — mocked unit tests + real Aura idempotency tests)
+- [x] Docling PDF ingestion (chapter-level chunking, page-provenance `[p.N]` markers, bbox-sort reading-order fix)
+- [x] LLM clause extraction pipeline (Ollama, rubric + few-shot prompting, JSON-constrained output, tested against `llama3.2:3b/1b`, `qwen2.5:1.5b`)
+- [x] Graph write pipeline (`graph_writer.py` — idempotent MERGE for Regulation/Clause/TestCase nodes and relationships)
+- [x] Model benchmarking harness (`benchmark_model.py`, `analyse_benchmark.py`) — speed + rubric-adherence comparison across candidate models
+- [x] Manual end-to-end pipeline runner (`run_pipeline.py`) — real PDFs, real Neo4j writes
+
+**In progress:**
+- [ ] Grounding check (`_is_grounded_in_source()`) — verify every extracted clause is a verbatim substring of source `chapter_text`, defense-in-depth beyond prompt tuning
+- [ ] Deterministic rule engine (`src/rules/`) — Cypher queries for missing coverage, low coverage % threshold, high-risk clause prioritization (module scaffolded, logic not yet written)
+
+**Not started:**
+- [ ] Full pipeline run across all 5 RBI regulation PDFs
+- [ ] LangGraph orchestration (`src/orchestration/`) — replace linear script with explicit state graph, conditional retry/branching
+- [ ] LangSmith tracing — per-node observability
+- [ ] Human-in-the-loop review queue for clause-to-test-case linking, prioritized by `risk_level`
+- [ ] Auto-suggested test case generation from extracted clauses (Post-MVP — a recommendation surface only; QA lead always approves before anything enters the real test suite)
+- [ ] Real-time compliance coverage dashboard for QA leads
+- [ ] MCP server over Neo4j (Phase 2)
 
 ## Author
 
