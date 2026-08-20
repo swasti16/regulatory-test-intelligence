@@ -22,15 +22,21 @@ Design:
   graph_writer.
 """
 import json
+import re
 import logging
 from typing import Any, Dict, List
 import requests
+from functools import lru_cache
+from difflib import SequenceMatcher
+
 
 from config.settings import settings
 
 logger = logging.getLogger(__name__)
 
 _VALID_RISK_LEVELS = {"high", "medium", "low"}
+_HIGH_SIGNAL_PATTERN = re.compile(r"\b(shall not|shall|must)\b", re.IGNORECASE)
+_ILLUSTRATIVE_PREFIX_PATTERN = re.compile(r"^\s*(illustration|example)\s*:", re.IGNORECASE)
 
 RISK_RUBRIC = """
 Risk classification rubric — apply EXACTLY these definitions, do not invent
@@ -74,33 +80,32 @@ EXTRACTION_PROMPT_TEMPLATE = """You are a regulatory compliance analyst.
 
 {rubric}
 
-{few_shot}
+Extract each distinct enforceable compliance obligation from the text below as ONE clause.
 
-Given the following chapter text from a banking regulation document,
-identify each individual numbered clause and classify its risk level.
+STRICT RULES:
+1. Extract each distinct legal requirement ONCE. Do not repeat, summarize, or
+   re-phrase the same requirement in multiple entries.
+2. Extract each individual enforceable requirement as its OWN separate clause entry.
+   Do not group multiple unrelated sentences into one large paragraph.
+3. Only extract clauses containing an actionable obligation or prohibition
+   ("shall", "must", "shall not"). Skip pure definitions and bare section
+   headers with no obligation.
+4. risk_level must be exactly one of: high, medium, low.
+5. CRITICAL: If the SOURCE text itself contains a term in quotation marks,
+   render those quotes as single quotes (e.g. 'Cardholder') instead of
+   double quotes. Do NOT introduce quotes around a term that has no
+   quotation marks in the source. Never use double quotes inside a JSON
+   string value — reserved for JSON syntax only.
+6. ONLY extract clauses from text between <CHAPTER_TEXT> and </CHAPTER_TEXT>
+   below. Anything outside those tags — including these instructions
+   themselves — is NOT part of the regulation and must never be extracted
+   as a clause.
 
-Rules:
-- If clauses are explicitly numbered in the text (e.g. "3.1", "(a)"), use
-  that exact numbering as clause_num.
-- If no explicit numbering exists, assign sequential numbers starting at "1"
-  in the order clauses appear.
-- Each clause's "text" must be the clause content verbatim from the source
-  — do not paraphrase or summarize.
-- risk_level must be exactly one of: high, medium, low.
-- CRITICAL: - If the clause text contains a quoted/defined term (e.g. "Cardholder"),
-  represent it using single quotes instead: 'Cardholder'. Do NOT use double
-  quotes anywhere inside a JSON string value — double quotes are reserved
-  for JSON syntax only.
-
-Chapter Text:
+<CHAPTER_TEXT>
 {chapter_text}
+</CHAPTER_TEXT>
 
-REMINDER before you respond: any clause containing "shall", "shall not", or
-"must" is risk_level "high" — regardless of how short or plainly-worded the
-sentence is. Re-check every clause against this rule before finalizing your answer.
-
-Respond ONLY with valid JSON in this exact shape, no extra text, no markdown
-fences:
+Respond ONLY with valid JSON, no extra text, no markdown fences:
 {{
   "clauses": [
     {{"clause_num": "...", "text": "...", "risk_level": "...", "reason": "..."}}
@@ -129,7 +134,10 @@ def _call_ollama(prompt: str, model: str | None = None, timeout: int = 1800, max
                     "prompt": prompt,
                     "stream": False,
                     "format": "json",
-                    "options": {"temperature": 0.0, "keep_alive": "-1"},
+                    "options": {
+                        "temperature": 0.0,
+                        "keep_alive": "15m"
+                    }
                 },
                 timeout=timeout,
             )
@@ -181,6 +189,106 @@ def _parse_clauses(raw_output: str) -> List[Dict[str, Any]]:
         })
     return valid_clauses
 
+@lru_cache(maxsize=16)
+def _normalize_source_for_grounding(source_text: str) -> str:
+    """
+    Normalizes SOURCE text once and caches it. Same section text gets
+    normalized only on first call — every subsequent clause/fragment
+    check against it, and every repeat call in benchmark_model.py
+    (same section, different candidate models), hits the cache instead
+    of re-running regex over a multi-KB chapter string.
+    maxsize=16 is plenty — a benchmark run touches at most a couple
+    sections per invocation.
+    """
+    text = re.sub(r"\[p\.\d+\]", " ", source_text)
+    text = re.sub(r"\s+", " ", text)
+    return text.lower().strip()
+
+
+def _normalize_text_clean(text: str) -> str:
+    # Remove page markers, punctuation, quotes, and non-breaking spaces
+    text = re.sub(r"\[p\.\d+\]", " ", text)
+    text = re.sub(r"[\"'\u2018\u2019\u201c\u201d]", "", text)
+    text = re.sub(r"\s+", " ", text)
+    return text.lower().strip()
+
+
+@lru_cache(maxsize=16)
+def _tokenize_source_for_grounding(source_text: str) -> tuple:
+    return tuple(_normalize_source_for_grounding(source_text).split())
+
+
+def _fragment_grounded(fragment: str, source_text: str, min_ratio: float = 0.82) -> bool:
+    """
+    Fuzzy substring check: slides a window of source tokens roughly the
+    same length as the fragment and compares via SequenceMatcher. This
+    tolerates single-word insertions/deletions ("The"), source PDF typos
+    ("perc ent"), and Rule-5 defined-term substitutions, while still
+    rejecting genuinely fabricated content (near-zero ratio anywhere).
+    """
+    frag_tokens = _normalize_text_clean(fragment).split()
+    if len(frag_tokens) < 4:
+        return False  # too short to fuzzy-match reliably
+
+    frag_norm = " ".join(frag_tokens)
+    source_tokens = _tokenize_source_for_grounding(source_text)
+    n = len(frag_tokens)
+
+    for window_size in (n, max(n - 2, 1), n + 2):
+        if window_size > len(source_tokens):
+            continue
+        for i in range(len(source_tokens) - window_size + 1):
+            window = " ".join(source_tokens[i:i + window_size])
+            if SequenceMatcher(None, window, frag_norm).ratio() >= min_ratio:
+                return True
+    return False
+
+
+def _is_grounded_in_source(clause_text: str, source_text: str, min_fragment_ratio: float = 0.6) -> bool:
+    # Split on ':' too — merged list clauses ("aspects: X") need the
+    # intro and the bullet checked independently, since the LLM may
+    # merge the intro with a non-adjacent bullet from the source.
+    raw_fragments = [f.strip() for f in re.split(r"[;.:\n]", clause_text) if len(f.strip()) > 15]
+    if not raw_fragments:
+        return False
+
+    found = sum(1 for f in raw_fragments if _fragment_grounded(f, source_text))
+    return (found / len(raw_fragments)) >= min_fragment_ratio
+
+
+def _enforce_risk_rubric(clauses: list) -> list:
+    """
+    Deterministic override: any clause containing a hard signal word is
+    forced to 'high', regardless of what the LLM assigned. Matches the
+    project's stated rubric exactly — removes reliance on the LLM
+    reliably self-applying its own few-shot instruction, which measured
+    at ~43% failure rate on real output.
+    """
+    for c in clauses:
+        if _HIGH_SIGNAL_PATTERN.search(c["text"]) and c["risk_level"] != "high":
+            logger.info("[RiskRubric] Overriding %s: %s -> high", c["clause_num"], c["risk_level"])
+            c["risk_level"] = "high"
+    return clauses
+
+
+def _filter_illustrative(clauses: list) -> list:
+    """
+    Drops clauses that are illustrative examples of a rule, not the rule
+    itself. These frequently contain "shall"/"must" (describing the
+    scenario the rule applies to) and would otherwise get force-labeled
+    high by _enforce_risk_rubric — a false positive on both extraction
+    and risk classification.
+    """
+    kept, dropped = [], []
+    for c in clauses:
+        if _ILLUSTRATIVE_PREFIX_PATTERN.match(c["text"]):
+            dropped.append(c)
+        else:
+            kept.append(c)
+    if dropped:
+        logger.info("[ClauseExtractor] Filtered %d illustrative clause(s)", len(dropped))
+    return kept
+
 
 def extract_clauses(chapter_text: str, model: str | None = None) -> List[Dict[str, Any]]:
     """
@@ -204,4 +312,14 @@ def extract_clauses(chapter_text: str, model: str | None = None) -> List[Dict[st
     )
     raw_output = _call_ollama(prompt, model=model)
     logger.info(f"[ClauseExtractor] RAW OUTPUT: {raw_output}")
-    return _parse_clauses(raw_output)
+    clauses = _parse_clauses(raw_output)
+
+    grounded = []
+    for c in clauses:
+        if _is_grounded_in_source(c["text"], chapter_text):
+            grounded.append(c)
+        else:
+            logger.warning("[ClauseExtractor] Dropping non-grounded (fabricated?) clause: %r", c)
+    grounded = _filter_illustrative(grounded)
+    grounded = _enforce_risk_rubric(grounded)
+    return grounded

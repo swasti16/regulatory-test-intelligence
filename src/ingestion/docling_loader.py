@@ -53,6 +53,7 @@ DESIGN PRINCIPLES & ARCHITECTURAL DECISIONS
 import logging
 import os
 import re
+import gc
 from typing import Any, Dict, List, Optional, Tuple
 from docling.document_converter import DocumentConverter
 
@@ -67,6 +68,8 @@ _CHAPTER_HEADING_MD_RE = re.compile(
 
 # Regex pattern used to extract injected inline page markers, e.g., "[p.3]"
 _PAGE_MARKER_RE = re.compile(r"\[p\.(\d+)\]")
+
+_SECTION_HEADING_MD_RE = re.compile(r"^##\s*(?!Chapter\s)(\S.*)$", re.MULTILINE | re.IGNORECASE)
 
 
 def load_pdf(pdf_path: str) -> List[Dict[str, Any]]:
@@ -106,6 +109,10 @@ def load_pdf(pdf_path: str) -> List[Dict[str, Any]]:
 
     # Reconstruct text with inline page markers
     full_text, doc_first_page = _reconstruct_with_page_markers(result.document)
+
+    del result
+    del converter
+    gc.collect()
 
     # Split text into chapter-level chunks with robust page attribution
     return _split_into_chapters(full_text, doc_id, default_page=doc_first_page)
@@ -287,6 +294,102 @@ def _split_into_chapters(
             running_page = chunk["page_end"]
 
     return chunks
+
+
+def split_chapter_into_sections(
+    chapter_text: str,
+    chapter_title: str,
+    doc_id: str,
+    fallback_page: Optional[int] = None,
+) -> List[Dict[str, Any]]:
+    """
+    Split a chapter-level chunk into finer sub-chapter sections for LLM
+    extraction.
+
+    Why this exists: long chapters (e.g. RBI Chapter II, ~15 pages) caused
+    extraction to silently degrade — the LLM returned a fraction of actual
+    clauses, all misattributed to one stuck clause_num, once chapter text
+    length exceeded the model's effective attention span ("lost in the
+    middle"). Splitting on the document's own sub-headers gives the LLM a
+    small, complete unit per call instead of tracking state across 15 pages.
+
+    Always splits, regardless of chapter length — one uniform code path
+    every chapter goes through, rather than a length-based branch that
+    behaves differently per chapter and is harder to debug.
+
+    Composite chapter_title format: "{chapter_title} :: {section_title}".
+    This becomes the chapter_title passed to graph_writer.write_clause(),
+    which is part of the clause_id composite key
+    ({doc_id}_{chapter_title}_{clause_num}). Without this, two different
+    sections' clause_num "1" (the LLM restarts numbering per extraction
+    call) would collide and silently overwrite each other via MERGE —
+    exactly the kind of silent data loss the original whole-chapter bug
+    already demonstrated is easy to miss.
+
+    Args:
+        chapter_text: chapter_text field from a chapter chunk (may start
+                       with the chapter's own "## Chapter N - Title" line).
+        chapter_title: chapter_title field from that same chunk.
+        doc_id: doc_id field from that same chunk.
+        fallback_page: page_start of the parent chapter — used when a
+                       section has no internal [p.N] marker of its own.
+
+    Returns:
+        List of dicts: [{"doc_id", "chapter_title" (composite), "section_text",
+        "page_start", "page_end"}, ...]. If no sub-headers are found, returns
+        a single section covering the whole chapter, titled
+        "{chapter_title} :: (full chapter)" — so callers always iterate this
+        function's output the same way, no separate no-sections branch needed.
+    """
+    matches = list(_SECTION_HEADING_MD_RE.finditer(chapter_text))
+
+    if not matches:
+        return [{
+            "doc_id": doc_id,
+            "chapter_title": f"{chapter_title} :: (full chapter)",
+            "section_text": chapter_text,
+            "page_start": fallback_page,
+            "page_end": fallback_page,
+        }]
+
+    sections: List[Dict[str, Any]] = []
+    running_page = fallback_page
+
+    for i, match in enumerate(matches):
+        section_title = match.group(1).strip()
+        start_idx = match.start()
+        end_idx = matches[i + 1].start() if i + 1 < len(matches) else len(chapter_text)
+
+        # Preamble before the first sub-header (chapter's own heading line,
+        # any intro text) attaches to the first section — same
+        # "don't drop preceding context" principle as _split_into_chapters.
+        if i == 0 and start_idx > 0:
+            raw_section = chapter_text[:end_idx].strip()
+        else:
+            raw_section = chapter_text[start_idx:end_idx].strip()
+
+        preceding_markers = [
+            int(n) for n in _PAGE_MARKER_RE.findall(chapter_text[:start_idx])
+        ]
+        if preceding_markers:
+            running_page = preceding_markers[-1]
+
+        section_markers = [int(n) for n in _PAGE_MARKER_RE.findall(raw_section)]
+        page_start = min(section_markers) if section_markers else running_page
+        page_end = max(section_markers) if section_markers else running_page
+
+        sections.append({
+            "doc_id": doc_id,
+            "chapter_title": f"{chapter_title} :: {section_title}",
+            "section_text": raw_section,
+            "page_start": page_start,
+            "page_end": page_end,
+        })
+
+        if page_end is not None:
+            running_page = page_end
+
+    return sections
 
 
 def _build_chunk(

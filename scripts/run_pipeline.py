@@ -15,7 +15,7 @@ IS your real demo graph data.
 """
 import logging
 
-from src.ingestion.docling_loader import load_pdf
+from src.ingestion.docling_loader import load_pdf, split_chapter_into_sections
 from src.extraction.clause_extractor import extract_clauses
 from src.graph.neo4j_client import Neo4jClient
 from src.graph.graph_writer import write_regulation, write_clause, link_clause_to_regulation
@@ -47,25 +47,35 @@ def run() -> None:
 
                 total_clauses = 0
                 for chapter in chapters:
-                    logger.info(f"Extracting clauses from: {chapter['chapter_title']}")
-                    try:
-                        clauses = extract_clauses(chapter["chapter_text"])
-                    except Exception as e:
-                        logger.error(
-                            f"Skipping chapter '{chapter['chapter_title']}' in {doc_id} — extraction failed: {e}")
-                        continue
-                    logger.info(f"  -> extracted {len(clauses)} clauses")
+                    sections = split_chapter_into_sections(
+                        chapter_text=chapter["chapter_text"],
+                        chapter_title=chapter["chapter_title"],
+                        doc_id=doc_id,
+                        fallback_page=chapter["page_start"],
+                    )
+                    logger.info(
+                        f"{chapter['chapter_title']}: split into {len(sections)} section(s) for extraction"
+                    )
 
-                    for clause in clauses:
-                        cid = write_clause(
-                            client, doc_id=doc_id, chapter_title=chapter["chapter_title"],
-                            clause_num=clause["clause_num"], text=clause["text"],
-                            risk_level=clause["risk_level"],
-                            page_start=chapter["page_start"], page_end=chapter["page_end"],
-                        )
-                        link_clause_to_regulation(client, doc_id=doc_id, clause_id=cid)
-                        total_clauses += 1
+                    for section in sections:
+                        logger.info(f"Extracting clauses from: {section['chapter_title']}")
+                        try:
+                            clauses = extract_clauses(section["section_text"])
+                        except Exception as e:
+                            logger.error(
+                                f"Skipping section '{section['chapter_title']}' — extraction failed: {e}")
+                            continue
+                        logger.info(f"  -> extracted {len(clauses)} clauses")
 
+                        for clause in clauses:
+                            cid = write_clause(
+                                client, doc_id=doc_id, chapter_title=section["chapter_title"],
+                                clause_num=clause["clause_num"], text=clause["text"],
+                                risk_level=clause["risk_level"],
+                                page_start=section["page_start"], page_end=section["page_end"],
+                            )
+                            link_clause_to_regulation(client, doc_id=doc_id, clause_id=cid)
+                            total_clauses += 1
                 logger.info(f"Finished {doc_id}. Total clauses written: {total_clauses}")
 
             except Exception as e:
