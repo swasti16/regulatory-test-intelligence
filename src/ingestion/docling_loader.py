@@ -392,6 +392,25 @@ def split_chapter_into_sections(
     return sections
 
 
+def split_definitions_section(section_text: str, chapter_title: str, doc_id: str,
+                               fallback_page: Optional[int] = None) -> List[Dict[str, Any]]:
+    """
+    Splits a Definitions section into paragraph-level chunks. Each defined
+    term is a self-contained paragraph with no cross-references to other
+    terms, unlike numbered obligation clauses — safe to extract
+    independently, and keeps each LLM call small regardless of how many
+    terms the chapter defines.
+    """
+    paragraphs = [p.strip() for p in section_text.split("\n\n") if len(p.strip()) > 20]
+    return [{
+        "doc_id": doc_id,
+        "chapter_title": f"{chapter_title} :: term_{i}",
+        "section_text": p,
+        "page_start": fallback_page,
+        "page_end": fallback_page,
+    } for i, p in enumerate(paragraphs)]
+
+
 def _build_chunk(
     doc_id: str, 
     chapter_title: str, 

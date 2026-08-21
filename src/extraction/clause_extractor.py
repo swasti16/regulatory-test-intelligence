@@ -37,6 +37,8 @@ logger = logging.getLogger(__name__)
 _VALID_RISK_LEVELS = {"high", "medium", "low"}
 _HIGH_SIGNAL_PATTERN = re.compile(r"\b(shall not|shall|must)\b", re.IGNORECASE)
 _ILLUSTRATIVE_PREFIX_PATTERN = re.compile(r"^\s*(illustration|example)\s*:", re.IGNORECASE)
+_last_call_metadata: Dict[str, Any] = {}
+
 
 RISK_RUBRIC = """
 Risk classification rubric — apply EXACTLY these definitions, do not invent
@@ -114,13 +116,16 @@ Respond ONLY with valid JSON, no extra text, no markdown fences:
 """
 
 
-def _call_ollama(prompt: str, model: str | None = None, timeout: int = 1800, max_retries: int = 1) -> str:
+def _call_ollama(prompt: str, model: str | None = None, timeout: int = 600, max_retries: int = 1) -> str:
     """
     Sends a generate request to Ollama's REST API. Retries ONCE on
     ReadTimeout (transient — machine sleep/wake, cold model load, slow
     chapter) with the same timeout. Does NOT retry on ConnectionError —
     that means Ollama is down, not slow, and retrying won't help; let it
     propagate immediately.
+    Returns raw response text. Also logs (and the caller can inspect via
+    _last_call_metadata) whether Ollama's context window was exceeded —
+    see done_reason handling below.
     """
     model = model or settings.OLLAMA_MODEL
 
@@ -136,13 +141,35 @@ def _call_ollama(prompt: str, model: str | None = None, timeout: int = 1800, max
                     "format": "json",
                     "options": {
                         "temperature": 0.0,
+                        "repeat_penalty": 1.3,
+                        "repeat_last_n": 256,
+                        "num_ctx": 6144,
+                        "num_predict": 2048,
                         "keep_alive": "15m"
                     }
                 },
                 timeout=timeout,
             )
             response.raise_for_status()
-            return response.json()["response"]
+            data = response.json()
+
+            done_reason = data.get("done_reason")
+            prompt_tokens = data.get("prompt_eval_count")
+            output_tokens = data.get("eval_count")
+            logger.info(
+                f"[ClauseExtractor] Ollama call done_reason={done_reason} "
+                f"prompt_tokens={prompt_tokens} output_tokens={output_tokens} model={model}"
+            )
+            if done_reason == "length":
+                logger.warning(
+                    f"[ClauseExtractor] TRUNCATED — output cut off before natural stop "
+                    f"(prompt_tokens={prompt_tokens}, output_tokens={output_tokens})."
+                )
+            _last_call_metadata["done_reason"] = done_reason
+            _last_call_metadata["prompt_tokens"] = prompt_tokens
+            _last_call_metadata["output_tokens"] = output_tokens
+
+            return data["response"]
         except requests.exceptions.ReadTimeout as e:
             last_exc = e
             logger.warning(
@@ -201,17 +228,13 @@ def _normalize_source_for_grounding(source_text: str) -> str:
     sections per invocation.
     """
     text = re.sub(r"\[p\.\d+\]", " ", source_text)
-    text = re.sub(r"\s+", " ", text)
-    return text.lower().strip()
-
+    return re.sub(r"\s+", " ", text).lower().strip()
 
 def _normalize_text_clean(text: str) -> str:
     # Remove page markers, punctuation, quotes, and non-breaking spaces
     text = re.sub(r"\[p\.\d+\]", " ", text)
     text = re.sub(r"[\"'\u2018\u2019\u201c\u201d]", "", text)
-    text = re.sub(r"\s+", " ", text)
-    return text.lower().strip()
-
+    return re.sub(r"\s+", " ", text).lower().strip()
 
 @lru_cache(maxsize=16)
 def _tokenize_source_for_grounding(source_text: str) -> tuple:
@@ -279,15 +302,15 @@ def _filter_illustrative(clauses: list) -> list:
     high by _enforce_risk_rubric — a false positive on both extraction
     and risk classification.
     """
-    kept, dropped = [], []
+    dropped = 0
+
     for c in clauses:
         if _ILLUSTRATIVE_PREFIX_PATTERN.match(c["text"]):
-            dropped.append(c)
-        else:
-            kept.append(c)
-    if dropped:
-        logger.info("[ClauseExtractor] Filtered %d illustrative clause(s)", len(dropped))
-    return kept
+            c["status"] = "dropped_illustrative"
+            dropped += 1
+    if dropped > 0:
+        logger.info("[ClauseExtractor] Filtered %d illustrative clause(s)", dropped)
+    return clauses
 
 
 def extract_clauses(chapter_text: str, model: str | None = None) -> List[Dict[str, Any]]:
@@ -313,13 +336,12 @@ def extract_clauses(chapter_text: str, model: str | None = None) -> List[Dict[st
     raw_output = _call_ollama(prompt, model=model)
     logger.info(f"[ClauseExtractor] RAW OUTPUT: {raw_output}")
     clauses = _parse_clauses(raw_output)
-
-    grounded = []
     for c in clauses:
         if _is_grounded_in_source(c["text"], chapter_text):
-            grounded.append(c)
+            c["status"] = "included"
         else:
             logger.warning("[ClauseExtractor] Dropping non-grounded (fabricated?) clause: %r", c)
-    grounded = _filter_illustrative(grounded)
-    grounded = _enforce_risk_rubric(grounded)
-    return grounded
+            c["status"] = "dropped_ungrounded"
+    clauses = _filter_illustrative(clauses)
+    clauses = _enforce_risk_rubric(clauses)
+    return clauses

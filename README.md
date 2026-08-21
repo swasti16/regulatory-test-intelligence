@@ -72,11 +72,16 @@ human sign-off on high-risk clause links is a Post-MVP roadmap item (see below).
 ```
 PDF (regulation doc)
       ↓
-Docling — text/structure extraction
+Docling — text/structure extraction, per-section split
       ↓
 LLM (Ollama, local) — clause identification + risk classification
       ↓
-Neo4j — traceability graph
+Deterministic post-processing — grounding check, illustrative-example
+filter, risk-rubric override (see "Why deterministic rules" below)
+      ↓
+data/extracted_clauses/{doc_id}.json — human review checkpoint
+      ↓
+Neo4j — traceability graph (upload only status=="included" clauses)
       ↓
 Deterministic Cypher rules — coverage gap detection
 ```
@@ -87,6 +92,25 @@ Deterministic Cypher rules — coverage gap detection
 (Regulation) -[:HAS_CLAUSE]-> (Clause {risk_level}) -[:COVERED_BY]-> (TestCase)
 ```
 
+### Human Review Checkpoint
+
+Extraction and graph-write are deliberately split into two scripts, not
+one pipeline:
+
+- **`scripts/extract_to_json.py`** — runs LLM extraction + all
+  deterministic post-processing, writes results to
+  `data/extracted_clauses/{doc_id}.json`. No Neo4j writes. Every clause
+  (including dropped ones) is retained in the JSON with a `status` field:
+  `included`, `dropped_ungrounded`, or `dropped_illustrative`.
+- **`scripts/upload_to_neo4j.py`** — reads the reviewed JSON, uploads
+  only `status == "included"` clauses.
+
+This means a human can inspect exactly what was extracted and what was
+filtered out — and why — before anything touches the graph. It also
+decouples the slow/non-deterministic step (LLM inference, ~15-80 min per
+chapter on CPU) from the fast/deterministic step (Neo4j write), so a
+graph-write failure never forces re-running extraction.
+
 ### Why deterministic rules, not LLM-guessed gaps
 
 Compliance gap detection needs to be auditable and reproducible. An LLM
@@ -95,14 +119,24 @@ domain where false negatives (missed gaps) have real regulatory
 consequences. Rules here are plain Cypher queries — traceable, testable,
 version-controlled.
 
+Two more deterministic layers sit between LLM extraction and the graph:
+- **Grounding check** (`_is_grounded_in_source()`) — every extracted
+  clause must fuzzy-match a fragment of the actual source text, rejecting
+  fabricated/hallucinated clauses before they're even written to JSON.
+- **Risk-rubric override** (`_enforce_risk_rubric()`) — any clause
+  containing a hard signal word ("shall", "shall not", "must") is
+  force-labeled `high`, regardless of what the LLM assigned. Measured
+  ~43% LLM self-application failure rate on the rubric's own few-shot
+  instruction before this override was added.
+- **Illustrative-example filter** (`_filter_illustrative()`) — drops
+  "Illustration:"/"Example:" clauses, which often contain signal words
+  describing a scenario (not a rule) and would otherwise be
+  false-positively force-labeled high.
+
 **MVP Rules (Phase 1):**
 1. **Missing Coverage** — clauses with zero linked test cases
 2. **Low Coverage Threshold** — regulations below 80% clause coverage
 3. **High-Risk Prioritization** — missing-coverage clauses filtered by `risk_level: high`
-
-> Framing note: this MVP applies fixed, hand-written rules — not
-> auto-generated test scenarios or continuous recommendation. Roadmap
-> items (see below) are explicitly future work, not current capability.
 
 ## Tech Stack
 
@@ -120,18 +154,28 @@ version-controlled.
 ```
 regulatory-test-intelligence/
 ├── config/
-│   └── settings.py            # Central config — Neo4j, Ollama, thresholds
+│   └── settings.py              # Central config — Neo4j, Ollama, thresholds
 ├── src/
-│   ├── ingestion/              # Docling PDF -> structured text
-│   ├── extraction/             # LLM clause extraction
-│   ├── graph/                  # Neo4j driver + graph writes
-│   ├── rules/                  # Deterministic Cypher coverage rules
-│   └── orchestration/          # LangGraph pipeline wiring
+│   ├── ingestion/                # Docling PDF -> chapter/section chunks
+│   ├── extraction/                # LLM clause extraction + deterministic filters
+│   ├── graph/                    # Neo4j driver + graph writes
+│   ├── rules/                    # Deterministic Cypher coverage rules
+│   └── orchestration/            # LangGraph pipeline wiring (not started)
+├── scripts/
+│   ├── extract_to_json.py        # PDF -> data/extracted_clauses/{doc_id}.json
+│   ├── upload_to_neo4j.py        # Reviewed JSON -> Neo4j (status=="included" only)
+│   ├── clear_neo4j.py            # Wipes all nodes/relationships (dev reset)
+│   ├── benchmark_model.py        # Speed + rubric-adherence model comparison
+│   └── analyse_benchmark.py      # Post-hoc scoring over benchmark_results.json
 ├── tests/
 │   ├── graph/
 │   ├── ingestion/
+│   ├── extraction/
 │   └── integration/
-├── data/sample_regulations/    # Sample PDFs for dev/testing
+├── data/
+│   ├── sample_regulations/       # Sample PDFs for dev/testing
+│   ├── RBI_regulations/          # Real RBI PDFs (gitignored)
+│   └── extracted_clauses/        # Extraction output — human review checkpoint (gitignored)
 └── docs/
 ```
 
@@ -158,17 +202,22 @@ cp .env.example .env
 - [x] Neo4j schema design + manual rule validation (Neo4j Browser)
 - [x] Neo4j Python driver connection (`Neo4jClient` — mocked unit tests + real Aura idempotency tests)
 - [x] Docling PDF ingestion (chapter-level chunking, page-provenance `[p.N]` markers, bbox-sort reading-order fix)
-- [x] LLM clause extraction pipeline (Ollama, rubric + few-shot prompting, JSON-constrained output, tested against `llama3.2:3b/1b`, `qwen2.5:1.5b`)
+- [x] Sub-chapter section splitting (`split_chapter_into_sections()`) — fixes "lost in the middle" attention failures on long chapters
+- [x] LLM clause extraction pipeline (Ollama, rubric + few-shot prompting, JSON-constrained output, `<CHAPTER_TEXT>` boundary tags to prevent prompt-injection-as-clause bugs)
+- [x] Grounding check (`_is_grounded_in_source()`) — fuzzy fragment-matching against source text, rejects fabricated clauses
+- [x] Deterministic risk-rubric override (`_enforce_risk_rubric()`) — signal-word force-labeling, 0% violation rate on latest run (down from 42.7%)
+- [x] Illustrative-example filter (`_filter_illustrative()`) — drops "Illustration:"/"Example:" clauses from enforceable output
+- [x] Extraction/upload pipeline split — `extract_to_json.py` (LLM + filters, no DB writes) and `upload_to_neo4j.py` (reviewed JSON -> graph), enabling a human review checkpoint between the two
 - [x] Graph write pipeline (`graph_writer.py` — idempotent MERGE for Regulation/Clause/TestCase nodes and relationships)
-- [x] Model benchmarking harness (`benchmark_model.py`, `analyse_benchmark.py`) — speed + rubric-adherence comparison across candidate models
-- [x] Manual end-to-end pipeline runner (`run_pipeline.py`) — real PDFs, real Neo4j writes
+- [x] Model benchmarking harness (`benchmark_model.py`, `analyse_benchmark.py`) — speed + rubric-adherence comparison across candidate models; `llama3.2:3b` confirmed as production model
 
 **In progress:**
-- [ ] Grounding check (`_is_grounded_in_source()`) — verify every extracted clause is a verbatim substring of source `chapter_text`, defense-in-depth beyond prompt tuning
-- [ ] Deterministic rule engine (`src/rules/`) — Cypher queries for missing coverage, low coverage % threshold, high-risk clause prioritization (module scaffolded, logic not yet written)
+- [ ] Deterministic rule engine (`src/rules/coverage_rules.py`) — module has the 3 MVP Cypher rules written, needs test coverage + a demo run against uploaded data
+- [ ] Duplicate clause fix (Section J duplication bug — same requirement extracted twice with overlapping text spans)
 
 **Not started:**
-- [ ] Full pipeline run across all 5 RBI regulation PDFs
+- [ ] Full pipeline run across all 5 RBI regulation PDFs (only Chapter II/III of 1 PDF processed so far)
+- [ ] TestCase seed data (`data/sample_testcases.json`) — blocked until extraction output is stable across a full document
 - [ ] LangGraph orchestration (`src/orchestration/`) — replace linear script with explicit state graph, conditional retry/branching
 - [ ] LangSmith tracing — per-node observability
 - [ ] Human-in-the-loop review queue for clause-to-test-case linking, prioritized by `risk_level`
