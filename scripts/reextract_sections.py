@@ -26,7 +26,7 @@ import glob
 from datetime import datetime
 
 from src.ingestion.docling_loader import load_pdf, split_chapter_into_sections
-from src.extraction.clause_extractor import extract_clauses
+from src.extraction.clause_extractor import extract_clauses, attach_section_metadata
 from config.settings import Settings
 from config.logging_config import setup_logging
 
@@ -114,11 +114,8 @@ def reextract(doc_id: str, target_titles: list) -> None:
         if clauses and included_count == 0:
             logger.error(f"  ZERO clauses survived for '{title}' — still broken, needs further investigation.")
 
-        for c in clauses:
-            c["chapter_title"] = title
-            c["page_start"] = section["page_start"]
-            c["page_end"] = section["page_end"]
-            new_clauses.append(c)
+        clauses = attach_section_metadata(clauses, title, section["page_start"], section["page_end"])
+        new_clauses.extend(clauses)
 
     # Merge back
     merged_clauses = kept_clauses + new_clauses

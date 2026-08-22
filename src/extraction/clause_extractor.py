@@ -53,30 +53,6 @@ your own criteria:
   compliance action required.
 """
 
-FEW_SHOT_EXAMPLES = """
-Examples of correct classification (study the pattern before classifying):
-
-Clause: "Banks shall formulate a comprehensive debit cards issuance policy with the approval of their Boards."
-risk_level: high
-reason: Contains "shall" — mandatory Board-approved requirement, no exceptions stated.
-
-Clause: "Debit cards shall only be issued to customers having Savings Bank / Current Accounts."
-risk_level: high
-reason: Contains "shall only be issued" — this is a hard eligibility restriction, not a definition. Even though it reads like a simple fact, "shall" makes it a compliance requirement.
-
-Clause: "The bank shall not issue debit cards to cash credit / loan accounts."
-risk_level: high
-reason: "Shall not" is a prohibition — an explicit compliance requirement, always high regardless of how short or simple the sentence looks.
-
-Clause: "Cardholder is a person to whom a card is issued or one who is authorized to use an issued card."
-risk_level: low
-reason: Pure definition — no "shall"/"must", no action required, explanatory only.
-
-Common mistake to avoid: Do NOT downgrade a clause to "low" or "medium" just because
-the sentence is short or reads like a plain statement of fact. If the sentence contains
-"shall", "shall not", or "must", it is a compliance requirement and must be classified
-"high" — sentence length and tone are irrelevant to the rubric.
-"""
 
 EXTRACTION_PROMPT_TEMPLATE = """You are a regulatory compliance analyst.
 
@@ -102,6 +78,10 @@ STRICT RULES:
    below. Anything outside those tags — including these instructions
    themselves — is NOT part of the regulation and must never be extracted
    as a clause.
+7. If <CHAPTER_TEXT> contains no actionable obligation or prohibition (e.g.
+   it is a letterhead, notification header, or table of contents), respond
+   with exactly {{"clauses": []}}. An empty result is correct and expected
+   — do not invent clauses to avoid returning an empty array.
 
 <CHAPTER_TEXT>
 {chapter_text}
@@ -141,10 +121,10 @@ def _call_ollama(prompt: str, model: str | None = None, timeout: int = 600, max_
                     "format": "json",
                     "options": {
                         "temperature": 0.0,
-                        "repeat_penalty": 1.3,
+                        "repeat_penalty": 1.1,
                         "repeat_last_n": 256,
                         "num_ctx": 6144,
-                        "num_predict": 2048,
+                        "num_predict": 3500,
                         "keep_alive": "15m"
                     }
                 },
@@ -177,6 +157,25 @@ def _call_ollama(prompt: str, model: str | None = None, timeout: int = 600, max_
     raise last_exc
 
 
+def _salvage_truncated_json(cleaned: str) -> dict | None:
+    """
+    Recovers complete clause objects from a truncated 'clauses' array by
+    trimming back to the last complete '}' before the cut point, then
+    closing the array/object. Returns None if no complete objects exist.
+    """
+    start = cleaned.find('"clauses"')
+    if start == -1:
+        return None
+    last_complete = cleaned.rfind('}')
+    if last_complete == -1:
+        return None
+    salvaged = cleaned[:last_complete + 1] + "]}"
+    try:
+        return json.loads(salvaged)
+    except json.JSONDecodeError:
+        return None
+
+
 def _parse_clauses(raw_output: str) -> List[Dict[str, Any]]:
     """
     Parses and validates the LLM's JSON output.
@@ -194,22 +193,33 @@ def _parse_clauses(raw_output: str) -> List[Dict[str, Any]]:
     try:
         parsed = json.loads(cleaned)
     except json.JSONDecodeError:
-        logger.warning("[ClauseExtractor] JSON parse failed. Raw output: %r", raw_output)
-        return []
+        parsed = _salvage_truncated_json(cleaned)
+        if parsed is None:
+            logger.warning("[ClauseExtractor] JSON parse failed, salvage also failed. Raw output: %r", raw_output)
+            return []
+        logger.warning("[ClauseExtractor] JSON truncated — salvaged %d clause(s) from partial output.", len(parsed.get("clauses", [])))
     logger.info(f"[ClauseExtractor] PARSED JSON: {parsed}")
     valid_clauses = []
-    for c in parsed.get("clauses", []):
+    for idx, c in enumerate(parsed.get("clauses", [])):
         if not isinstance(c, dict):
             continue
         risk = str(c.get("risk_level", "")).strip().lower()
         if risk not in _VALID_RISK_LEVELS:
             logger.warning("[ClauseExtractor] Dropping clause — invalid risk_level: %r", c)
             continue
-        if not c.get("clause_num") or not c.get("text"):
-            logger.warning("[ClauseExtractor] Dropping clause — missing required field: %r", c)
+        if not c.get("text"):
+            logger.warning("[ClauseExtractor] Dropping clause — missing text: %r", c)
             continue
+        clause_num = str(c.get("clause_num", "")).strip()
+        if not clause_num:
+            # Model correctly extracted a real sub-clause but omitted its
+            # number (common for un-lettered continuation items under a
+            # numbered list intro). Synthesize a positional placeholder
+            # instead of discarding real, grounded content.
+            clause_num = f"unnumbered_{idx}"
+            logger.info("[ClauseExtractor] Empty clause_num — assigned placeholder %r for: %r", clause_num, c["text"][:60])
         valid_clauses.append({
-            "clause_num": str(c["clause_num"]).strip(),
+            "clause_num": clause_num,
             "text": str(c["text"]).strip(),
             "risk_level": risk,
             "reason": str(c.get("reason", "")).strip(),
@@ -313,6 +323,29 @@ def _filter_illustrative(clauses: list) -> list:
     return clauses
 
 
+def attach_section_metadata(
+    clauses: List[Dict[str, Any]],
+    chapter_title: str,
+    page_start: int | None = None,
+    page_end: int | None = None,
+) -> List[Dict[str, Any]]:
+    """
+    Stamps each clause with its source section's chapter_title, page
+    range, and the 'truncated' flag from the most recent extract_clauses()
+    call (_last_call_metadata). Single source of truth for this step —
+    extract_to_json.py and reextract_sections.py both call this instead
+    of re-implementing the loop, so a patched section's clause schema
+    can never silently diverge from a fresh full-run's schema.
+    """
+    truncated = _last_call_metadata.get("done_reason") == "length"
+    for c in clauses:
+        c["chapter_title"] = chapter_title
+        c["page_start"] = page_start
+        c["page_end"] = page_end
+        c["truncated"] = truncated
+    return clauses
+
+
 def extract_clauses(chapter_text: str, model: str | None = None) -> List[Dict[str, Any]]:
     """
     Extract and risk-classify clauses from a chapter of regulatory text.
@@ -330,8 +363,11 @@ def extract_clauses(chapter_text: str, model: str | None = None) -> List[Dict[st
         on parse failure. DOES raise requests.RequestException if Ollama
         itself is unreachable — that failure must not be masked.
     """
+    if len(chapter_text.strip()) < 150:
+        logger.info("[ClauseExtractor] Section too short (%d chars) — skipping LLM call.", len(chapter_text.strip()))
+        return []
     prompt = EXTRACTION_PROMPT_TEMPLATE.format(
-        rubric=RISK_RUBRIC, few_shot=FEW_SHOT_EXAMPLES, chapter_text=chapter_text
+        rubric=RISK_RUBRIC, chapter_text=chapter_text
     )
     raw_output = _call_ollama(prompt, model=model)
     logger.info(f"[ClauseExtractor] RAW OUTPUT: {raw_output}")

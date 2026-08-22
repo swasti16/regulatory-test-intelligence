@@ -20,7 +20,7 @@ import glob
 from datetime import datetime
 from collections import Counter
 from src.ingestion.docling_loader import load_pdf, split_chapter_into_sections, split_definitions_section
-from src.extraction.clause_extractor import extract_clauses, _last_call_metadata
+from src.extraction.clause_extractor import extract_clauses, _last_call_metadata, attach_section_metadata
 from config.settings import Settings
 from config.logging_config import setup_logging
 
@@ -73,12 +73,10 @@ def extract_pdf(pdf_path: str) -> dict:
             if call_meta.get("done_reason") == "length":
                 logger.error(f"TRUNCATED OUTPUT for '{section['chapter_title']}' — results may be incomplete")
 
-            for c in clauses:
-                c["chapter_title"] = section["chapter_title"]
-                c["page_start"] = section["page_start"]
-                c["page_end"] = section["page_end"]
-                c["truncated"] = call_meta.get("done_reason") == "length"  # <-- per-clause flag
-                all_clauses.append(c)
+            clauses = attach_section_metadata(
+                clauses, section["chapter_title"], section["page_start"], section["page_end"]
+            )
+            all_clauses.extend(clauses)
 
     # Disambiguate clause_num collisions within the same chapter_title —
     # happens when one LLM call's source text spans multiple numbered
