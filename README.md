@@ -210,13 +210,14 @@ cp .env.example .env
 - [x] Extraction/upload pipeline split — `extract_to_json.py` (LLM + filters, no DB writes) and `upload_to_neo4j.py` (reviewed JSON -> graph), enabling a human review checkpoint between the two
 - [x] Graph write pipeline (`graph_writer.py` — idempotent MERGE for Regulation/Clause/TestCase nodes and relationships)
 - [x] Model benchmarking harness (`benchmark_model.py`, `analyse_benchmark.py`) — speed + rubric-adherence comparison across candidate models; `llama3.2:3b` confirmed as production model
+- [x] Full pipeline run across all 5 RBI regulation PDFs — extracted, uploaded to Neo4j Aura
+- [x] Grounding normalization fix (`_normalize_text_clean`) — PDF source renders "his / her" as 3 tokens vs LLM output "his/her" as 1 token, breaking the sliding-window fuzzy match on otherwise-correctly-extracted clauses; fixed by collapsing slash-spacing symmetrically in both fragment and source normalization
+- [x] Deterministic rule engine (`src/rules/coverage_rules.py`) — 3 MVP Cypher rules verified against real uploaded Neo4j data (previously only mocked in tests/)
 
 **In progress:**
-- [ ] Deterministic rule engine (`src/rules/coverage_rules.py`) — module has the 3 MVP Cypher rules written, needs test coverage + a demo run against uploaded data
 - [ ] Duplicate clause fix (Section J duplication bug — same requirement extracted twice with overlapping text spans)
 
 **Not started:**
-- [ ] Full pipeline run across all 5 RBI regulation PDFs (only Chapter II/III of 1 PDF processed so far)
 - [ ] TestCase seed data (`data/sample_testcases.json`) — blocked until extraction output is stable across a full document
 - [ ] LangGraph orchestration (`src/orchestration/`) — replace linear script with explicit state graph, conditional retry/branching
 - [ ] LangSmith tracing — per-node observability

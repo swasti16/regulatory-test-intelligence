@@ -226,6 +226,15 @@ def _parse_clauses(raw_output: str) -> List[Dict[str, Any]]:
         })
     return valid_clauses
 
+
+def _normalize_text_clean(text: str) -> str:
+    # Remove page markers, punctuation, quotes, and non-breaking spaces
+    text = re.sub(r"\[p\.\d+\]", " ", text)
+    text = re.sub(r"[\"'\u2018\u2019\u201c\u201d]", "", text)
+    text = re.sub(r"\s*/\s*", "/", text)  # "his / her" -> "his/her" — PDF slash-spacing artifact
+    return re.sub(r"\s+", " ", text).lower().strip()
+
+
 @lru_cache(maxsize=16)
 def _normalize_source_for_grounding(source_text: str) -> str:
     """
@@ -238,13 +247,7 @@ def _normalize_source_for_grounding(source_text: str) -> str:
     sections per invocation.
     """
     text = re.sub(r"\[p\.\d+\]", " ", source_text)
-    return re.sub(r"\s+", " ", text).lower().strip()
-
-def _normalize_text_clean(text: str) -> str:
-    # Remove page markers, punctuation, quotes, and non-breaking spaces
-    text = re.sub(r"\[p\.\d+\]", " ", text)
-    text = re.sub(r"[\"'\u2018\u2019\u201c\u201d]", "", text)
-    return re.sub(r"\s+", " ", text).lower().strip()
+    return _normalize_text_clean(text)
 
 @lru_cache(maxsize=16)
 def _tokenize_source_for_grounding(source_text: str) -> tuple:
