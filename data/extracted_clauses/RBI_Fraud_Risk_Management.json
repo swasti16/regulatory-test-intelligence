@@ -5,8 +5,8 @@
   "model": "llama3.2:3b",
   "summary": {
     "total_extracted": 111,
-    "included": 106,
-    "dropped_ungrounded": 5,
+    "included": 107,
+    "dropped_ungrounded": 4,
     "dropped_illustrative": 0,
     "failed_sections": [
       "Chapter I - Preliminary :: Table of Contents (0 survived — needs retry)",
@@ -1174,11 +1174,12 @@
       "text": "With  the  issue  of  these  Directions,  the  existing  directions,  instructions,  and guidelines relating to Fraud Risk Management as applicable to Commercial Banks stand repealed, as communicated vide circular no. DoS.CO.PPG.66/11.01.005/2026-27 dated July 31, 2026.",
       "risk_level": "high",
       "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
-      "status": "dropped_ungrounded",
+      "status": "included",
       "chapter_title": "Chapter X - Repeal and Other Provisions :: A. Repeal and Saving",
       "page_start": 25,
       "page_end": 25,
-      "truncated": false
+      "truncated": false,
+      "status_note": "flipped dropped_ungrounded->included via length-weighted grounding fix (analyse_drops.py verified)"
     },
     {
       "clause_num": "2",

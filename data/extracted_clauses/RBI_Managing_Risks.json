@@ -5,8 +5,8 @@
   "model": "llama3.2:3b",
   "summary": {
     "total_extracted": 308,
-    "included": 287,
-    "dropped_ungrounded": 21,
+    "included": 288,
+    "dropped_ungrounded": 20,
     "dropped_illustrative": 0,
     "failed_sections": [
       "Chapter I - Preliminary :: Table of Contents (0 survived — needs retry)",
@@ -349,11 +349,12 @@
       "text": "Provided that for the purpose of these Directions, the following indicative (but not exhaustive) list of entities shall be considered as REs - other Commercial Banks; Local Area Banks; Small Finance Banks; Payments Banks; Regional Rural Banks; Non-Banking Financial Companies in Base Layer (NBFC - BL), Middle Layer (NBFC - ML), and Upper Layer (NBFC - UL); All India Financial Institutions; Credit Information Companies; Urban Co-operative Banks; Rural Co-operative Banks; and, Payment System Operators;",
       "risk_level": "high",
       "reason": "",
-      "status": "dropped_ungrounded",
+      "status": "included",
       "chapter_title": "Chapter I - Preliminary :: B. Applicability and Scope",
       "page_start": 5,
       "page_end": 8,
-      "truncated": false
+      "truncated": false,
+      "status_note": "flipped dropped_ungrounded->included via length-weighted grounding fix (analyse_drops.py verified)"
     },
     {
       "clause_num": "26",

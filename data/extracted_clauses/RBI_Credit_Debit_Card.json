@@ -5,8 +5,8 @@
   "model": "llama3.2:3b",
   "summary": {
     "total_extracted": 258,
-    "included": 245,
-    "dropped_ungrounded": 12,
+    "included": 246,
+    "dropped_ungrounded": 11,
     "dropped_illustrative": 1,
     "failed_sections": [
       "Chapter I - Preliminary :: Table of Contents (0 survived — needs retry)",
@@ -646,11 +646,12 @@
       "text": "Underwriting Standards: Card-issuers shall ensure prudence while issuing credit cards and independently assess the credit risk while issuing cards to persons, taking into account independent financial means of applicants.",
       "risk_level": "high",
       "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
-      "status": "dropped_ungrounded",
+      "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: 11.  Customer Acquisition:",
       "page_start": 8,
       "page_end": 10,
-      "truncated": false
+      "truncated": false,
+      "status_note": "flipped dropped_ungrounded->included via length-weighted grounding fix (analyse_drops.py verified)"
     },
     {
       "clause_num": "11.14",

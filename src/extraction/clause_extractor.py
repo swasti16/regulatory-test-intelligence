@@ -276,17 +276,34 @@ def _fragment_grounded(fragment: str, source_text: str, min_ratio: float = 0.82)
                 return True
     return False
 
-
 def _is_grounded_in_source(clause_text: str, source_text: str, min_fragment_ratio: float = 0.6) -> bool:
-    # Split on ':' too — merged list clauses ("aspects: X") need the
-    # intro and the bullet checked independently, since the LLM may
-    # merge the intro with a non-adjacent bullet from the source.
+    """
+    Split on ':' too — merged list clauses ("aspects: X") need the
+    intro and the bullet checked independently, since the LLM may
+    merge the intro with a non-adjacent bullet from the source.
+
+    Fragments are weighted by token length, not count. A short heading
+    fragment ("Underwriting Standards") failing fuzzy match must not
+    outvote a long, fully-grounded substantive sentence sitting right
+    next to it — equal-weight-per-fragment was dropping legitimate
+    clauses whose only "ungrounded" fragment was a markdown section
+    heading swallowed into the clause text by the ':' split.
+
+    Verified via scripts/analyse_drops.py across all 5 RBI docs:
+    4/80 dropped_ungrounded clauses flip to included under this
+    weighting, zero regressions (prompt-leak noise fragments like
+    "penalty of" stay at ratio 0.00 under both formulas).
+    """
     raw_fragments = [f.strip() for f in re.split(r"[;.:\n]", clause_text) if len(f.strip()) > 15]
     if not raw_fragments:
         return False
 
-    found = sum(1 for f in raw_fragments if _fragment_grounded(f, source_text))
-    return (found / len(raw_fragments)) >= min_fragment_ratio
+    weights = [len(f.split()) for f in raw_fragments]
+    grounded_weight = sum(
+        w for f, w in zip(raw_fragments, weights) if _fragment_grounded(f, source_text)
+    )
+    total_weight = sum(weights)
+    return (grounded_weight / total_weight) >= min_fragment_ratio if total_weight else False
 
 
 def _enforce_risk_rubric(clauses: list) -> list:
