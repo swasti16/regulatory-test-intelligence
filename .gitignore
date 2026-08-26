@@ -17,3 +17,5 @@ ai_testing_portfolio.egg-info/
 
 # Pipeline run logs
 logs/
+
+*.bak

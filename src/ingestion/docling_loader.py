@@ -227,8 +227,6 @@ def _reconstruct_with_page_markers(document: Any) -> Tuple[str, Optional[int]]:
 
     if page_buffer:
         flush_buffer()
-    with open("output.txt", "w", encoding="utf-8") as f:
-        f.write("\n\n".join(lines))
     return "\n\n".join(lines), first_detected_page
 
 

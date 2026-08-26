@@ -1,46 +1,23 @@
 {
   "doc_id": "RBI_Credit_Debit_Card",
-  "source_pdf": "data/RBI_regulations/RBI_Credit_Debit_Card.pdf",
-  "extracted_at": "2026-08-22T21:17:27.975247",
-  "model": "llama3.2:3b",
+  "source_pdf": "data/RBI_regulations\\RBI_Credit_Debit_Card.pdf",
+  "extracted_at": "2026-08-25T17:50:02.954068",
+  "model": "llama3.2:latest",
   "summary": {
-    "total_extracted": 258,
-    "included": 246,
-    "dropped_ungrounded": 11,
-    "dropped_illustrative": 1,
+    "total_extracted": 285,
+    "included": 271,
+    "dropped_ungrounded": 12,
+    "dropped_illustrative": 2,
     "failed_sections": [
-      "Chapter I - Preliminary :: Table of Contents (0 survived — needs retry)",
-      "Chapter VII - Miscellaneous :: B. Disclosure of the MITC (0 survived — needs retry)"
+      "Chapter I - Preliminary :: Table of Contents (0 survived — needs retry)"
     ]
   },
   "clauses": [
     {
-      "clause_num": "1",
-      "text": "penalty of",
-      "risk_level": "high",
-      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
-      "status": "dropped_ungrounded",
-      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
-      "page_start": 2,
-      "page_end": 2,
-      "truncated": false
-    },
-    {
-      "clause_num": "2",
-      "text": "within X days",
-      "risk_level": "high",
-      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
-      "status": "dropped_ungrounded",
-      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
-      "page_start": 2,
-      "page_end": 2,
-      "truncated": false
-    },
-    {
-      "clause_num": "1",
+      "clause_num": "A.1",
       "text": "These Directions shall be called the Reserve Bank of India (Commercial Banks - Credit Cards and Debit Cards: Issuance and Conduct) Directions, 2025.",
       "risk_level": "high",
-      "reason": "Definitional clause",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter I - Preliminary :: A. Short Title and Commencement",
       "page_start": 2,
@@ -48,10 +25,10 @@
       "truncated": false
     },
     {
-      "clause_num": "2",
+      "clause_num": "A.2",
       "text": "These Directions shall come into force with immediate effect.",
       "risk_level": "high",
-      "reason": "Hard deadline",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter I - Preliminary :: A. Short Title and Commencement",
       "page_start": 2,
@@ -59,10 +36,10 @@
       "truncated": false
     },
     {
-      "clause_num": "1",
+      "clause_num": "B.1",
       "text": "These Directions shall be applicable to Commercial Banks (hereinafter collectively referred to as 'banks' and individually as a 'bank').",
       "risk_level": "high",
-      "reason": "Applicability clause",
+      "reason": "shall",
       "status": "included",
       "chapter_title": "Chapter I - Preliminary :: B. Applicability",
       "page_start": 2,
@@ -70,10 +47,10 @@
       "truncated": false
     },
     {
-      "clause_num": "2",
+      "clause_num": "unnumbered_1",
       "text": "For the purpose of these Directions, 'Commercial Banks' mean banking companies (other than Small Finance Banks, Payment Banks, and Local Area Banks), corresponding new banks, and the State Bank of India, as defined respectively under clauses (c), (da), and (nc) of Section 5 of the Banking Regulation Act, 1949.",
-      "risk_level": "medium",
-      "reason": "Definition of Commercial Banks",
+      "risk_level": "low",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter I - Preliminary :: B. Applicability",
       "page_start": 2,
@@ -81,10 +58,10 @@
       "truncated": false
     },
     {
-      "clause_num": "3",
+      "clause_num": "B.2",
       "text": "These Directions cover the general and conduct regulations relating to credit, debit and co-branded cards which shall be read along with prudential, payment and technology & cyber security related Directions applicable to credit, debit and co-branded cards, as issued by the RBI.",
       "risk_level": "high",
-      "reason": "Scope of Regulations",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter I - Preliminary :: B. Applicability",
       "page_start": 2,
@@ -92,7 +69,7 @@
       "truncated": false
     },
     {
-      "clause_num": "1.1",
+      "clause_num": "C.1",
       "text": "Add-on Credit Card means a supplementary credit card to the principal or primary credit card, issued to person/s with predefined relationship with the primary cardholder, within the credit limits and liability of the latter, subject to such terms and conditions as stipulated by the card-issuer.",
       "risk_level": "low",
       "reason": "",
@@ -103,7 +80,7 @@
       "truncated": false
     },
     {
-      "clause_num": "2.1",
+      "clause_num": "C.2",
       "text": "Annual Percentage Rate is the annual cost of credit to the cardholder which includes interest rate and all other charges associated with the credit card under different scenarios based on card features.",
       "risk_level": "low",
       "reason": "",
@@ -114,7 +91,7 @@
       "truncated": false
     },
     {
-      "clause_num": "3.1",
+      "clause_num": "C.3",
       "text": "Billing Cycle / Billing Period is the regular length of time between closing dates of two consecutive bills raised by the card-issuer.",
       "risk_level": "medium",
       "reason": "",
@@ -125,7 +102,7 @@
       "truncated": false
     },
     {
-      "clause_num": "4.1",
+      "clause_num": "C.4",
       "text": "Business Credit Cards are issued to business entities/individuals for the purpose of business expenses with specified terms and conditions and not for personal use.",
       "risk_level": "low",
       "reason": "",
@@ -136,7 +113,7 @@
       "truncated": false
     },
     {
-      "clause_num": "5.1",
+      "clause_num": "C.5",
       "text": "Cardholder is a person to whom a card is issued or one who is authorized to use an issued card.",
       "risk_level": "low",
       "reason": "",
@@ -147,7 +124,7 @@
       "truncated": false
     },
     {
-      "clause_num": "6.1",
+      "clause_num": "C.6",
       "text": "Card-issuer is a bank which issues debit or credit cards.",
       "risk_level": "low",
       "reason": "",
@@ -158,7 +135,7 @@
       "truncated": false
     },
     {
-      "clause_num": "7.1",
+      "clause_num": "C.7",
       "text": "Card Loyalty/Reward Programme/s are those schemes linked to a credit card or debit card whereby the card-issuer or associated merchant establishments, upon use of the card/s, offer digital coupons, points, discounts, cash backs or other benefits having monetary value that can be used/redeemed for the same transactions or other future transactions after accumulation.",
       "risk_level": "medium",
       "reason": "",
@@ -169,7 +146,7 @@
       "truncated": false
     },
     {
-      "clause_num": "8.1",
+      "clause_num": "C.8",
       "text": "Charge Card is a type of credit card where the user has to pay the billed amount in full on due date after the billing cycle, and no rolling over of credit to the next billing cycle is permitted.",
       "risk_level": "high",
       "reason": "",
@@ -180,7 +157,7 @@
       "truncated": false
     },
     {
-      "clause_num": "9.1",
+      "clause_num": "C.9",
       "text": "Co-branded Card is a card that is issued jointly by a card-issuer and a co-branding entity bearing the names of both the partnering entities.",
       "risk_level": "low",
       "reason": "",
@@ -191,19 +168,8 @@
       "truncated": false
     },
     {
-      "clause_num": "10.1",
+      "clause_num": "C.10",
       "text": "Convenience Fee is a fixed or pro-rata charge on use of credit/debit cards as one of the alternative forms of payment which is not ordinarily accepted vis-à-vis other forms of payment.",
-      "risk_level": "low",
-      "reason": "",
-      "status": "included",
-      "chapter_title": "Chapter I - Preliminary :: C. Definitions",
-      "page_start": 3,
-      "page_end": 6,
-      "truncated": false
-    },
-    {
-      "clause_num": "11.1",
-      "text": "Corporate Credit Card is a credit card that is issued to specific employee/s of a corporate employer wherein the liability could rest with the corporate entity or the employee or jointly on both, as per the product design features.",
       "risk_level": "medium",
       "reason": "",
       "status": "included",
@@ -213,7 +179,18 @@
       "truncated": false
     },
     {
-      "clause_num": "12.1",
+      "clause_num": "C.11",
+      "text": "Corporate Credit Card is a credit card that is issued to specific employee/s of a corporate employer wherein the liability could rest with the corporate entity or the employee or jointly on both, as per the product design features.",
+      "risk_level": "low",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter I - Preliminary :: C. Definitions",
+      "page_start": 3,
+      "page_end": 6,
+      "truncated": false
+    },
+    {
+      "clause_num": "C.12",
       "text": "Credit Card is a physical or virtual payment instrument containing a means of identification, issued with a pre-approved revolving credit limit, that can be used to purchase goods and services or draw cash advances, subject to prescribed terms and conditions.",
       "risk_level": "high",
       "reason": "",
@@ -224,7 +201,7 @@
       "truncated": false
     },
     {
-      "clause_num": "13.1",
+      "clause_num": "C.13",
       "text": "Credit Limit is the maximum amount of revolving credit determined and notified to the cardholder to transact in the credit card account.",
       "risk_level": "low",
       "reason": "",
@@ -235,8 +212,19 @@
       "truncated": false
     },
     {
-      "clause_num": "14.1",
+      "clause_num": "C.14",
       "text": "Debit Card is a physical or virtual payment instrument containing a means of identification, linked to a Savings Bank/Current Account which can be used to withdraw cash, make online payments, do PoS terminal/Quick Response (QR) code transactions, fund transfer, etc., subject to prescribed terms and conditions.",
+      "risk_level": "medium",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter I - Preliminary :: C. Definitions",
+      "page_start": 3,
+      "page_end": 6,
+      "truncated": false
+    },
+    {
+      "clause_num": "C.15",
+      "text": "Form Factor is the physical or virtual instrument that can be used in place of a card to undertake a payment/banking transaction.",
       "risk_level": "low",
       "reason": "",
       "status": "included",
@@ -246,30 +234,8 @@
       "truncated": false
     },
     {
-      "clause_num": "15.1",
-      "text": "Form Factor is the physical or virtual instrument that can be used in place of a card to undertake a payment/banking transaction.",
-      "risk_level": "medium",
-      "reason": "",
-      "status": "included",
-      "chapter_title": "Chapter I - Preliminary :: C. Definitions",
-      "page_start": 3,
-      "page_end": 6,
-      "truncated": false
-    },
-    {
-      "clause_num": "16.1",
+      "clause_num": "C.16",
       "text": "Interest-Free Credit Period is the time period from the date of transaction to the due date of payment, wherein interest-free payment can be made, subject to the payment of entire outstanding on or before the payment due date by the cardholder.",
-      "risk_level": "high",
-      "reason": "",
-      "status": "included",
-      "chapter_title": "Chapter I - Preliminary :: C. Definitions",
-      "page_start": 3,
-      "page_end": 6,
-      "truncated": false
-    },
-    {
-      "clause_num": "17.1",
-      "text": "Minimum Amount Due is the minimum amount of money, as a part of the total bill amount, that a cardholder has to pay to not be treated as an overdue bill.",
       "risk_level": "medium",
       "reason": "",
       "status": "included",
@@ -279,7 +245,18 @@
       "truncated": false
     },
     {
-      "clause_num": "18.1",
+      "clause_num": "C.17",
+      "text": "Minimum Amount Due is the minimum amount of money, as a part of the total bill amount, that a cardholder has to pay to not be treated as an overdue bill.",
+      "risk_level": "low",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter I - Preliminary :: C. Definitions",
+      "page_start": 3,
+      "page_end": 6,
+      "truncated": false
+    },
+    {
+      "clause_num": "C.18",
       "text": "Most Important Terms and Conditions (MITC) are the standard set of conditions for the issuance and usage of credit cards, thereby defining the responsibilities and liabilities of the card-issuer and the cardholder.",
       "risk_level": "low",
       "reason": "",
@@ -290,7 +267,7 @@
       "truncated": false
     },
     {
-      "clause_num": "19.1",
+      "clause_num": "C.19",
       "text": "Prepaid Card is a Prepaid Payment Instrument as defined in the Master Direction on Prepaid Payment Instruments dated August 27, 2021.",
       "risk_level": "low",
       "reason": "",
@@ -301,19 +278,8 @@
       "truncated": false
     },
     {
-      "clause_num": "20.1",
+      "clause_num": "C.20",
       "text": "Principal Cardholder means the customer who has been issued credit card by a card-issuer and on whose name the card account has been opened.",
-      "risk_level": "low",
-      "reason": "",
-      "status": "included",
-      "chapter_title": "Chapter I - Preliminary :: C. Definitions",
-      "page_start": 3,
-      "page_end": 6,
-      "truncated": false
-    },
-    {
-      "clause_num": "21.1",
-      "text": "Total Amount Due is the total amount (net of credit received during the billing cycle, if any) payable by the cardholder as per the credit card statement generated at the end of a billing cycle.",
       "risk_level": "medium",
       "reason": "",
       "status": "included",
@@ -323,7 +289,18 @@
       "truncated": false
     },
     {
-      "clause_num": "22.1",
+      "clause_num": "C.21",
+      "text": "Total Amount Due is the total amount (net of credit received during the billing cycle, if any) payable by the cardholder as per the credit card statement generated at the end of a billing cycle.",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter I - Preliminary :: C. Definitions",
+      "page_start": 3,
+      "page_end": 6,
+      "truncated": false
+    },
+    {
+      "clause_num": "C.22",
       "text": "Unsolicited Credit Card is a credit card issued without a specific written/digital request or an application therefor.",
       "risk_level": "high",
       "reason": "",
@@ -334,18 +311,7 @@
       "truncated": false
     },
     {
-      "clause_num": "23.1",
-      "text": "Provided that the issuance of a credit card for renewal or replacement shall not be treated as an unsolicited card.",
-      "risk_level": "high",
-      "reason": "",
-      "status": "included",
-      "chapter_title": "Chapter I - Preliminary :: C. Definitions",
-      "page_start": 3,
-      "page_end": 6,
-      "truncated": false
-    },
-    {
-      "clause_num": "24.1",
+      "clause_num": "C.23",
       "text": "Renewal contemplates the issuance of a new card on account of expiry of an existing card and replacement includes issuance of a new card in lieu of the change in the underlying account relationship, upgradation due to new technology/systems or re-issuance of cards that have been lost, blocked or suspended temporarily, but does not include the opening of a new account after a previous account was closed.",
       "risk_level": "low",
       "reason": "",
@@ -356,7 +322,7 @@
       "truncated": false
     },
     {
-      "clause_num": "25.1",
+      "clause_num": "C.24",
       "text": "Upgradation of Credit Card means enhancement in the benefits and features of credit cards issued, for example, an increase in the credit or cash limit of the card.",
       "risk_level": "medium",
       "reason": "",
@@ -367,10 +333,10 @@
       "truncated": false
     },
     {
-      "clause_num": "1",
+      "clause_num": "A(1)",
       "text": "Banks with net worth of ₹100 crore and above are permitted to undertake credit card business either independently or in tie-up arrangement with other card issuing banks / NBFCs  with  the  approval  of  their  Boards.",
       "risk_level": "low",
-      "reason": "Definitional clause",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: A. Eligibility",
       "page_start": 6,
@@ -378,10 +344,10 @@
       "truncated": false
     },
     {
-      "clause_num": "2",
+      "clause_num": "A(2)",
       "text": "Banks desirous of setting up separate subsidiaries for undertaking credit card business shall require prior approval of the Reserve Bank.",
       "risk_level": "high",
-      "reason": "Actionable obligation",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: A. Eligibility",
       "page_start": 6,
@@ -389,10 +355,10 @@
       "truncated": false
     },
     {
-      "clause_num": "B.1.1",
+      "clause_num": "B.1",
       "text": "Each card-issuer shall have a well-documented Board approved policy for the issuance and conduct of credit cards.",
       "risk_level": "high",
-      "reason": "clause imposes a hard requirement",
+      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: B.1 Board Approved Policy and Procedures",
       "page_start": 6,
@@ -400,9 +366,9 @@
       "truncated": false
     },
     {
-      "clause_num": "B.1.2",
-      "text": "The Board approved policy shall be in consonance with various instructions on the subject issued by the Reserve Bank from time to time, as well as these Directions.",
-      "risk_level": "high",
+      "clause_num": "unnumbered_1",
+      "text": "The policy should, inter alia, cover the following aspects:",
+      "risk_level": "medium",
       "reason": "clause describes a process or procedure with a customer-facing obligation",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: B.1 Board Approved Policy and Procedures",
@@ -411,18 +377,7 @@
       "truncated": false
     },
     {
-      "clause_num": "B.1.3",
-      "text": "The policy should, inter alia , cover the following aspects:",
-      "risk_level": "low",
-      "reason": "definitional clause",
-      "status": "included",
-      "chapter_title": "Chapter II - Conduct of Credit Card Business :: B.1 Board Approved Policy and Procedures",
-      "page_start": 6,
-      "page_end": 6,
-      "truncated": false
-    },
-    {
-      "clause_num": "B.1.4",
+      "clause_num": "11(1)",
       "text": "Interest rate ceiling and other charges.",
       "risk_level": "medium",
       "reason": "clause describes a process or procedure with a customer-facing obligation",
@@ -433,7 +388,7 @@
       "truncated": false
     },
     {
-      "clause_num": "B.1.5",
+      "clause_num": "11(2)",
       "text": "Procedure for reporting default status to a Credit Information Company (CIC).",
       "risk_level": "medium",
       "reason": "clause describes a process or procedure with a customer-facing obligation",
@@ -444,7 +399,7 @@
       "truncated": false
     },
     {
-      "clause_num": "B.1.6",
+      "clause_num": "11(3)",
       "text": "Co-branding arrangement (as applicable).",
       "risk_level": "medium",
       "reason": "clause describes a process or procedure with a customer-facing obligation",
@@ -455,7 +410,7 @@
       "truncated": false
     },
     {
-      "clause_num": "B.1.7",
+      "clause_num": "11(4)",
       "text": "Standard operating procedure for discretionary blocking / deactivating / suspending a credit card.",
       "risk_level": "medium",
       "reason": "clause describes a process or procedure with a customer-facing obligation",
@@ -466,7 +421,7 @@
       "truncated": false
     },
     {
-      "clause_num": "B.1.8",
+      "clause_num": "11(5)",
       "text": "Time period for completion of formalities after blocking a lost card.",
       "risk_level": "medium",
       "reason": "clause describes a process or procedure with a customer-facing obligation",
@@ -477,7 +432,7 @@
       "truncated": false
     },
     {
-      "clause_num": "B.1.9",
+      "clause_num": "11(6)",
       "text": "Redressal of grievances and compensation framework.",
       "risk_level": "medium",
       "reason": "clause describes a process or procedure with a customer-facing obligation",
@@ -510,10 +465,10 @@
       "truncated": false
     },
     {
-      "clause_num": "11.1",
+      "clause_num": "11(1)",
       "text": "Card-issuers shall provide a one-page Key Fact Statement along with the credit card application containing the important aspects of the card such as rate of interest, quantum of charges, among others.",
       "risk_level": "high",
-      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: 11.  Customer Acquisition:",
       "page_start": 8,
@@ -521,10 +476,10 @@
       "truncated": false
     },
     {
-      "clause_num": "11.2",
+      "clause_num": "11(2)",
       "text": "In case of rejection of a credit card application, the card-issuer shall convey in writing the specific reason/s which led to the rejection of the application.",
       "risk_level": "high",
-      "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: 11.  Customer Acquisition:",
       "page_start": 8,
@@ -532,10 +487,10 @@
       "truncated": false
     },
     {
-      "clause_num": "11.3",
+      "clause_num": "11(3)",
       "text": "The MITC as given in Chapter VII of these Directions, shall be highlighted and published / sent separately to the customers, at the acceptance stage (welcome kit) and in important subsequent communications.",
       "risk_level": "high",
-      "reason": "definitional, background, or explanatory clause with no direct compliance action required.",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: 11.  Customer Acquisition:",
       "page_start": 8,
@@ -543,10 +498,21 @@
       "truncated": false
     },
     {
-      "clause_num": "11.4",
+      "clause_num": "11(4)",
+      "text": "The MITC shall be provided to the customer (preferably in English, Hindi and the local language) at the time of onboarding and each time, a condition is modified with notice to the customer.",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter II - Conduct of Credit Card Business :: 11.  Customer Acquisition:",
+      "page_start": 8,
+      "page_end": 10,
+      "truncated": false
+    },
+    {
+      "clause_num": "11(5)",
       "text": "Card-issuers may consider introducing, at the option of the customers, an insurance cover to take care of the liabilities arising out of lost cards, card frauds, etc.",
-      "risk_level": "medium",
-      "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
+      "risk_level": "low",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: 11.  Customer Acquisition:",
       "page_start": 8,
@@ -554,10 +520,10 @@
       "truncated": false
     },
     {
-      "clause_num": "11.5",
+      "clause_num": "11(6)",
       "text": "In cases where the card-issuers are offering any insurance cover to their cardholders, in tie-up with insurance companies, the card-issuers shall obtain explicit consent in writing or in digital mode from the cardholders along with the details of nominee/s.",
       "risk_level": "high",
-      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: 11.  Customer Acquisition:",
       "page_start": 8,
@@ -565,10 +531,10 @@
       "truncated": false
     },
     {
-      "clause_num": "11.6",
+      "clause_num": "11(7)",
       "text": "The issue of unsolicited cards / upgradation is strictly prohibited.",
       "risk_level": "high",
-      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: 11.  Customer Acquisition:",
       "page_start": 8,
@@ -576,10 +542,10 @@
       "truncated": false
     },
     {
-      "clause_num": "11.7",
+      "clause_num": "11(8)",
       "text": "In case, an unsolicited card is issued / existing card upgraded and activated without the explicit consent of the recipient and the latter is billed for the same, the card-issuer shall not only reverse the charges forthwith, but also pay a penalty without demur to the recipient amounting to twice the value of the charges reversed.",
       "risk_level": "high",
-      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: 11.  Customer Acquisition:",
       "page_start": 8,
@@ -587,10 +553,10 @@
       "truncated": false
     },
     {
-      "clause_num": "11.8",
-      "text": "Card-issuers shall seek One Time Password (OTP) based consent from the cardholder for activating a credit card, if the same has not been activated by the customer for more than 30 days from the date of issuance.",
-      "risk_level": "high",
-      "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
+      "clause_num": "11(9)",
+      "text": "Provided that , for blocking of business or retail credit cards, either the actual cardholder or the principal cardholder can initiate the request.",
+      "risk_level": "medium",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: 11.  Customer Acquisition:",
       "page_start": 8,
@@ -598,10 +564,10 @@
       "truncated": false
     },
     {
-      "clause_num": "11.9",
+      "clause_num": "11(10)",
       "text": "A card-issuer shall not report any credit information relating to a new credit card account to Credit Information Companies prior to activation of the card.",
       "risk_level": "high",
-      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: 11.  Customer Acquisition:",
       "page_start": 8,
@@ -609,10 +575,10 @@
       "truncated": false
     },
     {
-      "clause_num": "11.10",
-      "text": "The consent for the cards issued or the other products / services offered along with the card shall be explicit and shall not be implied.",
+      "clause_num": "11(11)",
+      "text": "The consent for the cards issued or the other products/services offered along with the card shall be explicit and shall not be implied.",
       "risk_level": "high",
-      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: 11.  Customer Acquisition:",
       "page_start": 8,
@@ -620,10 +586,10 @@
       "truncated": false
     },
     {
-      "clause_num": "11.11",
-      "text": "Card-issuers shall ensure that the telemarketers they engage, comply with Directions / regulations on the subject issued by the Telecom Regulatory Authority of India (TRAI) from time to time while adhering to guidelines issued on 'Unsolicited Commercial Communications - National Customer Preference Register (NCPR)'.",
+      "clause_num": "11(12)",
+      "text": "Card-issuers shall ensure that the telemarketers they engage, comply with Directions/regulations on the subject issued by the Telecom Regulatory Authority of India (TRAI) from time to time while adhering to guidelines issued on 'Unsolicited Commercial Communications - National Customer Preference Register (NCPR)'.",
       "risk_level": "high",
-      "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: 11.  Customer Acquisition:",
       "page_start": 8,
@@ -631,10 +597,10 @@
       "truncated": false
     },
     {
-      "clause_num": "11.12",
-      "text": "The decision-making power for issue of credit card to a customer shall remain only with the card-issuer and the role of the Direct Sales Agent (DSA) / Direct Marketing Agent (DMA) / other agents shall remain limited to soliciting / servicing the customer / account.",
+      "clause_num": "11(13)",
+      "text": "The decision-making power for issue of credit card to a customer shall remain only with the card-issuer and the role of the Direct Sales Agent (DSA)/Direct Marketing Agent (DMA)/other agents shall remain limited to soliciting/servicing the customer/account.",
       "risk_level": "high",
-      "reason": "definitional, background, or explanatory clause with no direct compliance action required.",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: 11.  Customer Acquisition:",
       "page_start": 8,
@@ -642,22 +608,32 @@
       "truncated": false
     },
     {
-      "clause_num": "11.13",
-      "text": "Underwriting Standards: Card-issuers shall ensure prudence while issuing credit cards and independently assess the credit risk while issuing cards to persons, taking into account independent financial means of applicants.",
+      "clause_num": "Underwriting Standards 1",
+      "text": "Card-issuers shall ensure prudence while issuing credit cards and independently assess the credit risk while issuing cards to persons, taking into account independent financial means of applicants.",
       "risk_level": "high",
-      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: 11.  Customer Acquisition:",
       "page_start": 8,
       "page_end": 10,
-      "truncated": false,
-      "status_note": "flipped dropped_ungrounded->included via length-weighted grounding fix (analyse_drops.py verified)"
+      "truncated": false
     },
     {
-      "clause_num": "11.14",
+      "clause_num": "Underwriting Standards 2",
+      "text": "As holding several credit cards enhances the total credit available to any consumer, card-issuers shall assess the credit limit for a credit card customer taking into consideration all the limits enjoyed by the cardholder from other entities on the basis of self-declaration/credit information obtained from a Credit Information Company, as appropriate.",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter II - Conduct of Credit Card Business :: 11.  Customer Acquisition:",
+      "page_start": 8,
+      "page_end": 10,
+      "truncated": false
+    },
+    {
+      "clause_num": "Underwriting Standards 3",
       "text": "Card-issuers shall ensure complete transparency in the conversion of credit card transactions to Equated Monthly Instalments (EMIs) by clearly indicating the principal, interest and upfront discount provided by the merchant/card-issuer (to make it no cost), prior to the conversion.",
       "risk_level": "high",
-      "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: 11.  Customer Acquisition:",
       "page_start": 8,
@@ -665,10 +641,21 @@
       "truncated": false
     },
     {
-      "clause_num": "11.15",
+      "clause_num": "Underwriting Standards 4",
+      "text": "The same shall also be separately indicated in the credit card bill/statement. EMI conversion with interest component shall not be camouflaged as zero-interest/no-cost EMI.",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter II - Conduct of Credit Card Business :: 11.  Customer Acquisition:",
+      "page_start": 8,
+      "page_end": 10,
+      "truncated": false
+    },
+    {
+      "clause_num": "Underwriting Standards 5",
       "text": "Card-issuers shall ensure that loans offered through credit cards are in compliance with the instructions on loans and advances issued by the Reserve Bank from time to time.",
       "risk_level": "high",
-      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: 11.  Customer Acquisition:",
       "page_start": 8,
@@ -676,10 +663,10 @@
       "truncated": false
     },
     {
-      "clause_num": "11.16",
+      "clause_num": "Underwriting Standards 6",
       "text": "Card-issuers shall ensure that the credit limit as sanctioned and advised to the cardholder is not breached at any point in time without seeking explicit consent from the cardholder.",
       "risk_level": "high",
-      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: 11.  Customer Acquisition:",
       "page_start": 8,
@@ -687,7 +674,7 @@
       "truncated": false
     },
     {
-      "clause_num": "1",
+      "clause_num": "D.1",
       "text": "Card-issuers may issue credit cards / charge cards to individuals for personal use together with add-on cards wherever required.",
       "risk_level": "low",
       "reason": "",
@@ -698,8 +685,30 @@
       "truncated": false
     },
     {
-      "clause_num": "2",
+      "clause_num": "D.2",
       "text": "Card-issuers may also issue cards linked to overdraft accounts that are in the nature of personal loans without any end-use restrictions subject to the conditions as stipulated in the overdraft account.",
+      "risk_level": "low",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter II - Conduct of Credit Card Business :: D. Types of credit cards",
+      "page_start": 11,
+      "page_end": 11,
+      "truncated": false
+    },
+    {
+      "clause_num": "D.3",
+      "text": "Example: A customer availing an overdraft facility from a bank can be issued a type of credit card to access the funds available under the facility. The terms of usage of this credit card (interest charged, repayment schedule, penalty, cash withdrawal limit etc.,) shall correspond to the terms and conditions applicable to the overdraft facility.",
+      "risk_level": "high",
+      "reason": "",
+      "status": "dropped_illustrative",
+      "chapter_title": "Chapter II - Conduct of Credit Card Business :: D. Types of credit cards",
+      "page_start": 11,
+      "page_end": 11,
+      "truncated": false
+    },
+    {
+      "clause_num": "D.4",
+      "text": "Card-issuers  may  issue  business  credit  cards  to  business  entities  /  individuals  for business expenses. The business credit cards may also be issued as charge cards, corporate credit cards or by linking a credit facility such as overdraft / cash credit provided for business purpose as per the terms and conditions stipulated for the facility concerned.",
       "risk_level": "medium",
       "reason": "",
       "status": "included",
@@ -709,8 +718,8 @@
       "truncated": false
     },
     {
-      "clause_num": "3",
-      "text": "The terms of usage of this credit card (interest charged, repayment schedule, penalty, cash withdrawal limit etc.,) shall correspond to the terms and conditions applicable to the overdraft facility.",
+      "clause_num": "D.5",
+      "text": "The card-issuers shall put in place effective mechanism to monitor end use of funds. Business credit cards can be issued together with add-on cards wherever required.",
       "risk_level": "high",
       "reason": "",
       "status": "included",
@@ -720,21 +729,10 @@
       "truncated": false
     },
     {
-      "clause_num": "4",
-      "text": "Business credit cards can be issued together with add-on cards wherever required.",
-      "risk_level": "medium",
-      "reason": "",
-      "status": "included",
-      "chapter_title": "Chapter II - Conduct of Credit Card Business :: D. Types of credit cards",
-      "page_start": 11,
-      "page_end": 11,
-      "truncated": false
-    },
-    {
-      "clause_num": "5",
+      "clause_num": "D.6",
       "text": "The liability of the corporate / business entity on account of business cards shall form part of their total assessed credits for compliance to instructions issued by the Reserve Bank on Exposure Norms as well as Prudential norms on Income Recognition, Asset Classification and Provisioning pertaining to Advances.",
       "risk_level": "high",
-      "reason": "",
+      "reason": "penalty of, mandatory disclosure obligation",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: D. Types of credit cards",
       "page_start": 11,
@@ -742,8 +740,8 @@
       "truncated": false
     },
     {
-      "clause_num": "6",
-      "text": "Add-on cards shall be issued only to the persons specifically identified by the principal cardholder under both personal and business credit card categories.",
+      "clause_num": "D.7",
+      "text": "The add-on cards shall be issued only to the persons specifically identified by the principal cardholder under both personal and business credit card categories. Add-on cards shall be issued with the clear understanding that the liability will be that of the principal cardholder.",
       "risk_level": "high",
       "reason": "",
       "status": "included",
@@ -753,10 +751,10 @@
       "truncated": false
     },
     {
-      "clause_num": "7",
-      "text": "Similarly, while issuing corporate credit cards, the responsibilities and liabilities of the corporate and its employees shall be clearly specified.",
+      "clause_num": "D.8",
+      "text": "Similarly, while issuing corporate credit cards, the responsibilities and liabilities of the corporate and its employees shall be clearly specified. The liability of the corporate / business entity shall form part of its assessed credits.",
       "risk_level": "high",
-      "reason": "",
+      "reason": "mandatory disclosure obligation",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: D. Types of credit cards",
       "page_start": 11,
@@ -764,18 +762,7 @@
       "truncated": false
     },
     {
-      "clause_num": "8",
-      "text": "The liability of the corporate / business entity shall form part of its assessed credits.",
-      "risk_level": "high",
-      "reason": "",
-      "status": "included",
-      "chapter_title": "Chapter II - Conduct of Credit Card Business :: D. Types of credit cards",
-      "page_start": 11,
-      "page_end": 11,
-      "truncated": false
-    },
-    {
-      "clause_num": "9",
+      "clause_num": "D.9",
       "text": "Explanation :  The liability for dues shall rest solely with the principal cardholder and not with the add-on cardholders. However, settlement of dues towards international credit card shall also be governed as per FEMA regulations.",
       "risk_level": "high",
       "reason": "",
@@ -786,10 +773,10 @@
       "truncated": false
     },
     {
-      "clause_num": "E.1",
+      "clause_num": "E(1)",
       "text": "Any request for closure of a credit card shall be honoured within seven working days by the credit card-issuer, subject to payment of all dues by the cardholder.",
       "risk_level": "high",
-      "reason": "clause imposes a hard deadline",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: E. Closure of Credit Card",
       "page_start": 12,
@@ -797,10 +784,10 @@
       "truncated": false
     },
     {
-      "clause_num": "E.2",
-      "text": "The card-issuer shall provide option to submit request for closure of credit card account through multiple channels such as helpline, dedicated email-id, Interactive Voice Response (IVR), prominently visible link on the website, internet banking, mobile-app or any other mode.",
+      "clause_num": "E(2)",
+      "text": "Subsequent to the closure of credit card, the cardholder shall be immediately notified about the closure through email, SMS, etc.",
       "risk_level": "high",
-      "reason": "customer-facing obligation",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: E. Closure of Credit Card",
       "page_start": 12,
@@ -808,10 +795,10 @@
       "truncated": false
     },
     {
-      "clause_num": "E.3",
+      "clause_num": "E(3)",
       "text": "Cardholders shall be provided option to submit request for closure of credit card account through multiple channels such as helpline, dedicated email-id, Interactive Voice Response (IVR), prominently visible link on the website, internet banking, mobile-app or any other mode.",
       "risk_level": "high",
-      "reason": "customer-facing obligation",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: E. Closure of Credit Card",
       "page_start": 12,
@@ -819,10 +806,10 @@
       "truncated": false
     },
     {
-      "clause_num": "E.4",
+      "clause_num": "E(4)",
       "text": "The card-issuer shall not insist on sending a closure request through post or any other means which may result in the delay of receipt of the request.",
       "risk_level": "high",
-      "reason": "prohibition on delayed receipt",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: E. Closure of Credit Card",
       "page_start": 12,
@@ -830,10 +817,10 @@
       "truncated": false
     },
     {
-      "clause_num": "E.5",
+      "clause_num": "E(5)",
       "text": "Failure on the part of the card-issuers to complete the process of closure within seven working days shall result in a penalty of ₹500 per calendar day of delay payable to the cardholder, till the closure of the account provided there is no outstanding in the account.",
       "risk_level": "high",
-      "reason": "hard deadline and monetary penalty",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: E. Closure of Credit Card",
       "page_start": 12,
@@ -841,10 +828,10 @@
       "truncated": false
     },
     {
-      "clause_num": "E.6",
+      "clause_num": "E(6)",
       "text": "In case payment towards dues is outstanding, the card-issuer shall provide details regarding such outstanding dues to the cardholder upon receipt of the closure request without waiting for completion of the billing cycle and accordingly advise him/her to make payment in order to complete the closure process.",
       "risk_level": "high",
-      "reason": "customer-facing obligation",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: E. Closure of Credit Card",
       "page_start": 12,
@@ -852,10 +839,10 @@
       "truncated": false
     },
     {
-      "clause_num": "E.7",
-      "text": "The prescribed timeline of seven working days shall be calculated after excluding the number of days taken by the cardholder to clear the outstanding dues.",
+      "clause_num": "E(7)",
+      "text": "In such cases, the prescribed timeline of seven working days shall be calculated after excluding the number of days taken by the cardholder to clear the outstanding dues.",
       "risk_level": "high",
-      "reason": "clarification on timeline calculation",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: E. Closure of Credit Card",
       "page_start": 12,
@@ -863,10 +850,10 @@
       "truncated": false
     },
     {
-      "clause_num": "E.8",
+      "clause_num": "E(8)",
       "text": "The card-issuer shall also report to CICs suitably about the closure of the card account.",
       "risk_level": "high",
-      "reason": "prohibition on delayed reporting",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: E. Closure of Credit Card",
       "page_start": 12,
@@ -874,10 +861,10 @@
       "truncated": false
     },
     {
-      "clause_num": "E.9",
+      "clause_num": "E(9)",
       "text": "If a credit card has not been used for a period of more than one year, the process to close the card shall be initiated after intimating the cardholder.",
       "risk_level": "high",
-      "reason": "hard deadline",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: E. Closure of Credit Card",
       "page_start": 12,
@@ -885,10 +872,10 @@
       "truncated": false
     },
     {
-      "clause_num": "E.10",
+      "clause_num": "E(10)",
       "text": "If no reply is received from the cardholder within a period of 30 days, the card account shall be closed by the card-issuer, subject to payment of all dues by the cardholder.",
       "risk_level": "high",
-      "reason": "hard deadline",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: E. Closure of Credit Card",
       "page_start": 12,
@@ -896,10 +883,32 @@
       "truncated": false
     },
     {
-      "clause_num": "E.11",
+      "clause_num": "E(11)",
+      "text": "The information regarding the closure of card account shall also accordingly be updated with the Credit Information Company/ies within a period of 30 days.",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter II - Conduct of Credit Card Business :: E. Closure of Credit Card",
+      "page_start": 12,
+      "page_end": 12,
+      "truncated": false
+    },
+    {
+      "clause_num": "E(12)",
+      "text": "Explanation: In addition to financial transactions, any process initiated by the cardholder such as generation of statement, change of PIN, change in transaction controls, etc., shall be considered for treating a card as 'used'. However, any calls made to the customer care centre, for reasons other than those cited above, shall not be considered towards usage of a card.",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter II - Conduct of Credit Card Business :: E. Closure of Credit Card",
+      "page_start": 12,
+      "page_end": 12,
+      "truncated": false
+    },
+    {
+      "clause_num": "E(13)",
       "text": "Subsequent to closure of credit card account, any credit balance available in credit card accounts shall be transferred to the cardholder's bank account.",
       "risk_level": "high",
-      "reason": "clarification on transfer of balance",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: E. Closure of Credit Card",
       "page_start": 12,
@@ -907,10 +916,10 @@
       "truncated": false
     },
     {
-      "clause_num": "E.12",
+      "clause_num": "E(14)",
       "text": "Card-issuers shall obtain the details of the cardholder's bank account, if the same is not available with them.",
       "risk_level": "high",
-      "reason": "prohibition on delayed reporting",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: E. Closure of Credit Card",
       "page_start": 12,
@@ -918,7 +927,7 @@
       "truncated": false
     },
     {
-      "clause_num": "F.1",
+      "clause_num": "F(1)",
       "text": "Card-issuers shall be guided by the Reserve Bank of India (Commercial Banks - Interest Rates on Advances) Directions, 2025 as amended from time to time, while determining the interest rate on credit card dues.",
       "risk_level": "high",
       "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
@@ -929,10 +938,10 @@
       "truncated": false
     },
     {
-      "clause_num": "F.2",
+      "clause_num": "F(2)",
       "text": "Interest charged on credit cards shall be justifiable having regard to the cost incurred and the extent of return that could be reasonably expected by the card-issuer.",
       "risk_level": "high",
-      "reason": "definitional, background, or explanatory clause with no direct compliance action required.",
+      "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: F. Interest rates and other charges",
       "page_start": 13,
@@ -940,10 +949,10 @@
       "truncated": false
     },
     {
-      "clause_num": "F.3",
+      "clause_num": "F(3)",
       "text": "Card-issuers shall also prescribe an interest rate ceiling in line with other unsecured loans, including processing and other charges, in respect of credit cards as part of their Board approved policy.",
       "risk_level": "high",
-      "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
+      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: F. Interest rates and other charges",
       "page_start": 13,
@@ -951,10 +960,10 @@
       "truncated": false
     },
     {
-      "clause_num": "F.4",
+      "clause_num": "F(4)",
       "text": "In case card-issuers charge interest rates which vary based on the payment / default history of the cardholder, there shall be transparency in levying such differential interest rates.",
       "risk_level": "high",
-      "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
+      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: F. Interest rates and other charges",
       "page_start": 13,
@@ -962,7 +971,7 @@
       "truncated": false
     },
     {
-      "clause_num": "F.5",
+      "clause_num": "F(5)",
       "text": "The interest rates as prescribed in the board approved policy and the rationale for the same shall be auditable.",
       "risk_level": "high",
       "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
@@ -973,7 +982,7 @@
       "truncated": false
     },
     {
-      "clause_num": "F.6",
+      "clause_num": "F(6)",
       "text": "Card-issuers shall publicise through their website and other means, the interest rates charged to various categories of customers.",
       "risk_level": "high",
       "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
@@ -984,7 +993,7 @@
       "truncated": false
     },
     {
-      "clause_num": "F.7",
+      "clause_num": "F(7)",
       "text": "Card-issuers shall indicate upfront to the credit cardholder, the methodology of calculation of finance charges with illustrative examples, particularly in situations where only a part of the amount outstanding is paid by the customer.",
       "risk_level": "high",
       "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
@@ -995,7 +1004,7 @@
       "truncated": false
     },
     {
-      "clause_num": "F.8",
+      "clause_num": "F(8)",
       "text": "Card-issuers shall quote Annualized Percentage Rates (APR) on credit cards for different situations such as retail purchases, balance transfer, cash advances, nonpayment of minimum amount due, late payment etc., if different.",
       "risk_level": "high",
       "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
@@ -1006,19 +1015,8 @@
       "truncated": false
     },
     {
-      "clause_num": "F.9",
+      "clause_num": "F(9)",
       "text": "The method of calculation of APR shall be given with clear examples for better comprehension.",
-      "risk_level": "high",
-      "reason": "definitional, background, or explanatory clause with no direct compliance action required.",
-      "status": "included",
-      "chapter_title": "Chapter II - Conduct of Credit Card Business :: F. Interest rates and other charges",
-      "page_start": 13,
-      "page_end": 15,
-      "truncated": false
-    },
-    {
-      "clause_num": "F.10",
-      "text": "The APR charged, and the annual fee shall be shown with equal prominence.",
       "risk_level": "high",
       "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
       "status": "included",
@@ -1028,8 +1026,8 @@
       "truncated": false
     },
     {
-      "clause_num": "F.11",
-      "text": "The late payment charges, including the method of calculation of such charges and the number of days, shall be prominently indicated.",
+      "clause_num": "F(10)",
+      "text": "The APR charged, and the annual fee shall be shown with equal prominence.",
       "risk_level": "high",
       "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
       "status": "included",
@@ -1039,7 +1037,18 @@
       "truncated": false
     },
     {
-      "clause_num": "F.12",
+      "clause_num": "F(11)",
+      "text": "Late payment charges, including the method of calculation of such charges and the number of days, shall be prominently indicated.",
+      "risk_level": "high",
+      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
+      "status": "included",
+      "chapter_title": "Chapter II - Conduct of Credit Card Business :: F. Interest rates and other charges",
+      "page_start": 13,
+      "page_end": 15,
+      "truncated": false
+    },
+    {
+      "clause_num": "F(12)",
       "text": "The manner in which the outstanding unpaid amount has been arrived at for calculation of interest shall also be specifically shown with prominence in all the billing statements.",
       "risk_level": "high",
       "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
@@ -1050,10 +1059,10 @@
       "truncated": false
     },
     {
-      "clause_num": "F.13",
+      "clause_num": "F(13)",
       "text": "Cardissuers shall not capitalize i.e., levy interest or any other charges, on the unpaid taxes/levies/charges.",
       "risk_level": "high",
-      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
+      "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: F. Interest rates and other charges",
       "page_start": 13,
@@ -1061,7 +1070,7 @@
       "truncated": false
     },
     {
-      "clause_num": "F.14",
+      "clause_num": "F(14)",
       "text": "Illustration: The outstanding amount of a credit card account at the end of month A is ₹10,000. Interest is calculated at a rate of 2% per month.",
       "risk_level": "low",
       "reason": "definitional, background, or explanatory clause with no direct compliance action required.",
@@ -1072,10 +1081,10 @@
       "truncated": false
     },
     {
-      "clause_num": "F.15",
+      "clause_num": "F(15)",
       "text": "Card-issuers shall inform the cardholders of the implications of paying only 'the minimum amount due'.",
       "risk_level": "high",
-      "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
+      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: F. Interest rates and other charges",
       "page_start": 13,
@@ -1083,7 +1092,7 @@
       "truncated": false
     },
     {
-      "clause_num": "F.16",
+      "clause_num": "F(16)",
       "text": "A legend / warning to the effect that 'Making only the minimum payment every month would result in the repayment stretching over months / years with consequential compounded interest payment on your outstanding balance' shall be prominently displayed in all the billing statements.",
       "risk_level": "high",
       "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
@@ -1094,7 +1103,7 @@
       "truncated": false
     },
     {
-      "clause_num": "F.17",
+      "clause_num": "F(17)",
       "text": "For this purpose, card-issuers shall work out illustrative examples and include the same in the Welcome Kit sent to the cardholders and also place it on their website.",
       "risk_level": "high",
       "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
@@ -1105,7 +1114,7 @@
       "truncated": false
     },
     {
-      "clause_num": "F.18",
+      "clause_num": "F(18)",
       "text": "Card-issuers shall report a credit card account as 'past due' to credit information companies (CICs) or levy penal charges, viz. late payment charges and other related charges, if any, only when a credit card account remains 'past due' for more than three days.",
       "risk_level": "high",
       "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
@@ -1116,7 +1125,7 @@
       "truncated": false
     },
     {
-      "clause_num": "F.19",
+      "clause_num": "F(19)",
       "text": "Late payment charges and other related charges shall be levied, only on the outstanding amount after the due date, and not on the total amount due.",
       "risk_level": "high",
       "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
@@ -1127,7 +1136,7 @@
       "truncated": false
     },
     {
-      "clause_num": "F.20",
+      "clause_num": "F(20)",
       "text": "Interest shall be levied only on the outstanding amount, adjusted for payments / refunds / reversed transactions.",
       "risk_level": "high",
       "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
@@ -1138,10 +1147,10 @@
       "truncated": false
     },
     {
-      "clause_num": "F.21",
+      "clause_num": "F(21)",
       "text": "Changes in charges shall be made only with prospective effect giving prior notice of at least one month.",
       "risk_level": "high",
-      "reason": "definitional, background, or explanatory clause with no direct compliance action required.",
+      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: F. Interest rates and other charges",
       "page_start": 13,
@@ -1149,18 +1158,18 @@
       "truncated": false
     },
     {
-      "clause_num": "F.22",
-      "text": "If a cardholder desires to surrender his/her card on account of any change in charges to his/her disadvantage, he/she shall be permitted to do so without levying any extra charge for such closure, subject to payment of all dues by the cardholder.",
+      "clause_num": "F(22)",
+      "text": "If a cardholder desires to surrender his / her card on account of any change in charges to his / her disadvantage, he / she shall be permitted to do so without levying any extra charge for such closure, subject to payment of all dues by the cardholder.",
       "risk_level": "high",
       "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
-      "status": "dropped_ungrounded",
+      "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: F. Interest rates and other charges",
       "page_start": 13,
       "page_end": 15,
       "truncated": false
     },
     {
-      "clause_num": "F.23",
+      "clause_num": "F(23)",
       "text": "There shall not be any hidden charges while issuing credit cards free of charge.",
       "risk_level": "high",
       "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
@@ -1337,29 +1346,7 @@
     },
     {
       "clause_num": "G.16",
-      "text": "The  consent  shall  be  obtained through e-mail or SMS within seven days of the credit transaction.",
-      "risk_level": "high",
-      "reason": "Customer-facing obligation without hard penalty or deadline",
-      "status": "included",
-      "chapter_title": "Chapter II - Conduct of Credit Card Business :: G. Billing",
-      "page_start": 16,
-      "page_end": 18,
-      "truncated": false
-    },
-    {
-      "clause_num": "G.17",
-      "text": "The  card-issuer  shall  reverse  the  credit  transaction  to  the  cardholder's  bank  account, if no consent / response is  received  from  the  cardholder.",
-      "risk_level": "high",
-      "reason": "Clause imposes a hard requirement",
-      "status": "included",
-      "chapter_title": "Chapter II - Conduct of Credit Card Business :: G. Billing",
-      "page_start": 16,
-      "page_end": 18,
-      "truncated": false
-    },
-    {
-      "clause_num": "G.18",
-      "text": "Notwithstanding  the  cut-off,  if  a  cardholder  makes  a  request  to  the  card-issuer  for reversal of the credit amount outstanding in the card account into his / her bank account, the card-issuer shall do it within three working days from the receipt of such request.",
+      "text": "The card-issuers shall reverse the credit transaction to the cardholder's bank account, if no consent / response is  received  from  the  cardholder.",
       "risk_level": "high",
       "reason": "Clause imposes a hard deadline",
       "status": "included",
@@ -1369,7 +1356,18 @@
       "truncated": false
     },
     {
-      "clause_num": "H.1",
+      "clause_num": "G.17",
+      "text": "Notwithstanding  the  cut-off,  if  a  cardholder  makes  a request to the card-issuer for reversal of the credit amount outstanding in the card account into his / her bank account, the card-issuer shall do it within three working days from the receipt of such request.",
+      "risk_level": "high",
+      "reason": "Clause imposes a hard deadline",
+      "status": "included",
+      "chapter_title": "Chapter II - Conduct of Credit Card Business :: G. Billing",
+      "page_start": 16,
+      "page_end": 18,
+      "truncated": false
+    },
+    {
+      "clause_num": "H(1)",
       "text": "Unsolicited loans or other credit facilities shall not be offered to the credit cardholders without seeking explicit consent.",
       "risk_level": "high",
       "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
@@ -1380,7 +1378,7 @@
       "truncated": false
     },
     {
-      "clause_num": "H.2",
+      "clause_num": "H(2)",
       "text": "In case an unsolicited credit facility is extended without the written / explicit consent of the cardholder and the latter objects to the same, the cardissuer shall not only withdraw the facility, but also be liable to pay such penalty as may be considered appropriate by the RBI Ombudsman, if approached.",
       "risk_level": "high",
       "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
@@ -1391,7 +1389,7 @@
       "truncated": false
     },
     {
-      "clause_num": "H.3",
+      "clause_num": "H(3)",
       "text": "Card-issuers shall not unilaterally upgrade credit cards and enhance credit limits.",
       "risk_level": "high",
       "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
@@ -1402,7 +1400,7 @@
       "truncated": false
     },
     {
-      "clause_num": "H.4",
+      "clause_num": "H(4)",
       "text": "Explicit consent of the cardholder shall invariably be taken whenever there is / are any change/s in  terms  and  conditions.",
       "risk_level": "high",
       "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
@@ -1413,7 +1411,7 @@
       "truncated": false
     },
     {
-      "clause_num": "H.5",
+      "clause_num": "H(5)",
       "text": "In case of reduction in the credit limit, the card-issuer shall intimate the same to the cardholder.",
       "risk_level": "high",
       "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
@@ -1424,8 +1422,8 @@
       "truncated": false
     },
     {
-      "clause_num": "1",
-      "text": "For providing information relating to credit history / repayment record of the cardholder to a Credit Information Company (that has obtained Certificate of Registration from RBI), the card-issuer shall explicitly bring to the notice of the customer that such information is being provided in terms of the Credit Information Companies (Regulation) Act, 2005.",
+      "clause_num": "1(1)",
+      "text": "For providing information relating to credit history / repayment record of the cardholder to a Credit Information Company (that has obtained Certificate of Registration from RBI),",
       "risk_level": "high",
       "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
       "status": "included",
@@ -1435,9 +1433,9 @@
       "truncated": false
     },
     {
-      "clause_num": "2",
-      "text": "Before reporting default status of a credit cardholder to a Credit Information Company (CIC), the card-issuers shall ensure that they adhere to the procedure, approved by their Board,  and  intimate  the  cardholder  prior  to  reporting  of  the  status.",
-      "risk_level": "high",
+      "clause_num": "1(2)",
+      "text": "Before reporting default status of a credit cardholder to a Credit Information Company (CIC),",
+      "risk_level": "medium",
       "reason": "clause describes a process or procedure with a customer-facing obligation",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: I. Reporting to Credit Information Companies",
@@ -1446,10 +1444,10 @@
       "truncated": false
     },
     {
-      "clause_num": "3",
-      "text": "In the event the cardholder settles his / her dues after having been reported as defaulter, the card-issuer shall update the status with CIC within 30 days from the date of settlement.",
-      "risk_level": "high",
-      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
+      "clause_num": "1(3)",
+      "text": "In the event the cardholder settles his / her dues after having been reported as defaulter,",
+      "risk_level": "medium",
+      "reason": "clause describes a process or procedure with a customer-facing obligation",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: I. Reporting to Credit Information Companies",
       "page_start": 19,
@@ -1457,10 +1455,21 @@
       "truncated": false
     },
     {
-      "clause_num": "4",
+      "clause_num": "1(4)",
+      "text": "Card-issuers shall be particularly careful in the case of cards where there are pending disputes.",
+      "risk_level": "high",
+      "reason": "definitional clause",
+      "status": "included",
+      "chapter_title": "Chapter II - Conduct of Credit Card Business :: I. Reporting to Credit Information Companies",
+      "page_start": 19,
+      "page_end": 19,
+      "truncated": false
+    },
+    {
+      "clause_num": "1(5)",
       "text": "The disclosure / release of information, particularly about the default, shall be made only after the dispute is settled.",
       "risk_level": "high",
-      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
+      "reason": "definitional clause",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: I. Reporting to Credit Information Companies",
       "page_start": 19,
@@ -1468,10 +1477,21 @@
       "truncated": false
     },
     {
-      "clause_num": "1",
-      "text": "card-issuers shall ensure that they, as also their agents, adhere to the extant instructions on Fair Practices Code for lenders.",
+      "clause_num": "1(6)",
+      "text": "In all cases, a well laid down procedure shall be transparently followed and be made a part of MITC.",
       "risk_level": "high",
-      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
+      "reason": "definitional clause",
+      "status": "included",
+      "chapter_title": "Chapter II - Conduct of Credit Card Business :: I. Reporting to Credit Information Companies",
+      "page_start": 19,
+      "page_end": 19,
+      "truncated": false
+    },
+    {
+      "clause_num": "J(1)",
+      "text": "In the matter of recovery of dues, card-issuers shall ensure that they, as also their agents, adhere to the extant instructions on Fair Practices Code for lenders.",
+      "risk_level": "high",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: J. Customer Conduct",
       "page_start": 20,
@@ -1479,10 +1499,10 @@
       "truncated": false
     },
     {
-      "clause_num": "2",
-      "text": "the card-issuers shall ensure that their agents refrain from actions that could damage their integrity and reputation and observe strict customer confidentiality.",
+      "clause_num": "J(2)",
+      "text": "Card-issuers shall ensure that their agents refrain from actions that could damage their integrity and reputation and observe strict customer confidentiality.",
       "risk_level": "high",
-      "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: J. Customer Conduct",
       "page_start": 20,
@@ -1490,10 +1510,10 @@
       "truncated": false
     },
     {
-      "clause_num": "3",
+      "clause_num": "J(3)",
       "text": "All communications issued by recovery agents must contain the name, email-id, telephone number and address of the concerned senior officer of the card-issuer whom the customer can contact.",
       "risk_level": "high",
-      "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: J. Customer Conduct",
       "page_start": 20,
@@ -1501,10 +1521,10 @@
       "truncated": false
     },
     {
-      "clause_num": "4",
-      "text": "Card-issuers / their agents shall not resort to intimidation or harassment of any kind, either verbal or physical, against any person in their debt collection efforts.",
+      "clause_num": "J(4)",
+      "text": "Further, card-issuers shall provide the name and contact details of the recovery agent to the cardholder immediately upon assigning the agent to the cardholder.",
       "risk_level": "high",
-      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: J. Customer Conduct",
       "page_start": 20,
@@ -1512,10 +1532,54 @@
       "truncated": false
     },
     {
-      "clause_num": "5",
+      "clause_num": "J(5)",
+      "text": "Card-issuers / their agents shall not resort to intimidation or harassment of any kind, either verbal or physical, against any person in their debt collection efforts, including acts intended to humiliate publicly or intrude upon the privacy of the credit cardholders' family members, referees and friends, making threatening and anonymous calls or making false and misleading representations.",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter II - Conduct of Credit Card Business :: J. Customer Conduct",
+      "page_start": 20,
+      "page_end": 21,
+      "truncated": false
+    },
+    {
+      "clause_num": "J(6)",
+      "text": "Card-issuers shall ensure to comply with the extant guidelines in respect of engagement of recovery agents issued by the Reserve Bank, as amended from time to time.",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter II - Conduct of Credit Card Business :: J. Customer Conduct",
+      "page_start": 20,
+      "page_end": 21,
+      "truncated": false
+    },
+    {
+      "clause_num": "J(7)",
+      "text": "The disclosure of customers' information to the DSAs / DMAs / recovery agents shall also be limited to the extent that will enable them to discharge their duties.",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter II - Conduct of Credit Card Business :: J. Customer Conduct",
+      "page_start": 20,
+      "page_end": 21,
+      "truncated": false
+    },
+    {
+      "clause_num": "J(8)",
+      "text": "Personal information provided by the cardholder but not required for recovery purposes shall not be released by the card-issuer.",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter II - Conduct of Credit Card Business :: J. Customer Conduct",
+      "page_start": 20,
+      "page_end": 21,
+      "truncated": false
+    },
+    {
+      "clause_num": "J(9)",
       "text": "The card-issuer shall ensure that the DSAs / DMAs / recovery agents do not transfer or misuse any customer information during marketing of credit card products.",
       "risk_level": "high",
-      "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: J. Customer Conduct",
       "page_start": 20,
@@ -1523,10 +1587,10 @@
       "truncated": false
     },
     {
-      "clause_num": "6",
+      "clause_num": "J(10)",
       "text": "When card-issuers outsource various credit card related operations, they shall be extremely careful that the appointment of such service providers do not compromise the quality of the customer service and the card-issuers' ability to manage credit, liquidity and operational risks.",
       "risk_level": "high",
-      "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: J. Customer Conduct",
       "page_start": 20,
@@ -1534,10 +1598,10 @@
       "truncated": false
     },
     {
-      "clause_num": "7",
-      "text": "Card-issuers shall have a system of random checks and mystery shopping to ensure that their agents have been properly briefed and trained as to how to handle customers.",
+      "clause_num": "J(11)",
+      "text": "In the choice of the service provider, the card-issuers shall be guided by the need to ensure confidentiality of the customer's records, respect customer privacy and adhere to fair practices in debt collection.",
       "risk_level": "high",
-      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: J. Customer Conduct",
       "page_start": 20,
@@ -1545,10 +1609,10 @@
       "truncated": false
     },
     {
-      "clause_num": "8",
-      "text": "The card-issuers shall ensure that their employees / agents do not indulge in mis-selling of credit cards by providing incomplete or incorrect information to the customers, prior to the issuance of a credit card.",
+      "clause_num": "J(12)",
+      "text": "Card-issuers shall have a system of random checks and mystery shopping to ensure that their agents have been properly briefed and trained as to how to handle customers and are also aware of their responsibilities, particularly with regard to soliciting customers, hours for calling, privacy of customer information, conveying the correct terms and conditions of the product on offer.",
       "risk_level": "high",
-      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: J. Customer Conduct",
       "page_start": 20,
@@ -1556,10 +1620,32 @@
       "truncated": false
     },
     {
-      "clause_num": "9",
+      "clause_num": "J(13)",
+      "text": "Card-issuers shall ensure that their employees / agents do not indulge in mis-selling of credit cards by providing incomplete or incorrect information to the customers, prior to the issuance of a credit card.",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter II - Conduct of Credit Card Business :: J. Customer Conduct",
+      "page_start": 20,
+      "page_end": 21,
+      "truncated": false
+    },
+    {
+      "clause_num": "J(14)",
+      "text": "The card-issuers shall also be liable for the acts of their agents. Repetitive complaints received in this regard against any employee / agent shall be taken on record by the card-issuer and appropriate action shall be initiated against them including blacklisting of such agents.",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter II - Conduct of Credit Card Business :: J. Customer Conduct",
+      "page_start": 20,
+      "page_end": 21,
+      "truncated": false
+    },
+    {
+      "clause_num": "J(15)",
       "text": "A dedicated helpline and email-id shall be available for the cardholders to raise complaints against any act of mis-selling or harassment by the representative of the card-issuer.",
       "risk_level": "high",
-      "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: J. Customer Conduct",
       "page_start": 20,
@@ -1567,7 +1653,7 @@
       "truncated": false
     },
     {
-      "clause_num": "A.1",
+      "clause_num": "A(1)",
       "text": "Banks shall formulate a comprehensive debit cards issuance policy with the approval of their Boards and issue debit cards to their customers in accordance with this policy.",
       "risk_level": "high",
       "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
@@ -1578,10 +1664,10 @@
       "truncated": false
     },
     {
-      "clause_num": "A.2",
+      "clause_num": "A(2)",
       "text": "Prior approval of the Reserve Bank is not necessary for banks desirous of issuing debit cards to their customers.",
-      "risk_level": "low",
-      "reason": "definitional clause with no direct compliance action required",
+      "risk_level": "medium",
+      "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
       "status": "included",
       "chapter_title": "Chapter III - Issue of Debit Card by Banks :: A.  Issue of Debit Card",
       "page_start": 21,
@@ -1589,10 +1675,10 @@
       "truncated": false
     },
     {
-      "clause_num": "A.3",
+      "clause_num": "A(3)",
       "text": "Debit cards shall only be issued to customers having Savings Bank / Current Accounts.",
       "risk_level": "high",
-      "reason": "clause describes a process or procedure with a customer-facing obligation but has no hard penalty or deadline attached",
+      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
       "status": "included",
       "chapter_title": "Chapter III - Issue of Debit Card by Banks :: A.  Issue of Debit Card",
       "page_start": 21,
@@ -1600,7 +1686,7 @@
       "truncated": false
     },
     {
-      "clause_num": "A.4",
+      "clause_num": "A(4)",
       "text": "The bank shall not issue debit cards to cash credit / loan accounts.",
       "risk_level": "high",
       "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
@@ -1611,10 +1697,10 @@
       "truncated": false
     },
     {
-      "clause_num": "A.5",
+      "clause_num": "A(5)",
       "text": "However, it will not preclude the banks from linking the overdraft facility provided along with Pradhan Mantri Jan Dhan Yojana accounts or Kisan Credit Card accounts with a debit card.",
-      "risk_level": "low",
-      "reason": "definitional clause with no direct compliance action required",
+      "risk_level": "medium",
+      "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
       "status": "included",
       "chapter_title": "Chapter III - Issue of Debit Card by Banks :: A.  Issue of Debit Card",
       "page_start": 21,
@@ -1622,7 +1708,7 @@
       "truncated": false
     },
     {
-      "clause_num": "A.6",
+      "clause_num": "A(6)",
       "text": "Banks shall not force a customer to avail debit card facility and shall not link issuance of debit card to availment of any other facility from the bank.",
       "risk_level": "high",
       "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
@@ -1633,10 +1719,10 @@
       "truncated": false
     },
     {
-      "clause_num": "1",
+      "clause_num": "B.1",
       "text": "The banks shall undertake review of their operations / issue of debit cards on half-yearly basis.",
       "risk_level": "high",
-      "reason": "clause imposes a hard deadline",
+      "reason": "customer-facing obligation",
       "status": "included",
       "chapter_title": "Chapter III - Issue of Debit Card by Banks :: B. Review of operations",
       "page_start": 21,
@@ -1644,7 +1730,7 @@
       "truncated": false
     },
     {
-      "clause_num": "1",
+      "clause_num": "C.1",
       "text": "A bank shall formulate comprehensive policy / policies and procedures with the approval of its Board covering, inter alia, the following aspects:",
       "risk_level": "high",
       "reason": "clause imposes a hard requirement",
@@ -1655,10 +1741,10 @@
       "truncated": false
     },
     {
-      "clause_num": "2",
+      "clause_num": "unnumbered_1",
       "text": "Debit card issuance.",
       "risk_level": "medium",
-      "reason": "process or procedure with customer-facing obligation",
+      "reason": "process or procedure with a customer-facing obligation",
       "status": "dropped_ungrounded",
       "chapter_title": "Chapter III - Issue of Debit Card by Banks :: C. Board Approved Policy and Procedures",
       "page_start": 22,
@@ -1666,10 +1752,10 @@
       "truncated": false
     },
     {
-      "clause_num": "3",
+      "clause_num": "unnumbered_2",
       "text": "Co-branding arrangement (as applicable).",
       "risk_level": "medium",
-      "reason": "process or procedure with customer-facing obligation",
+      "reason": "process or procedure with a customer-facing obligation",
       "status": "included",
       "chapter_title": "Chapter III - Issue of Debit Card by Banks :: C. Board Approved Policy and Procedures",
       "page_start": 22,
@@ -1677,10 +1763,10 @@
       "truncated": false
     },
     {
-      "clause_num": "4",
+      "clause_num": "unnumbered_3",
       "text": "Standard operating procedure for discretionary blocking / deactivating / suspending a debit card.",
       "risk_level": "medium",
-      "reason": "process or procedure with customer-facing obligation",
+      "reason": "process or procedure with a customer-facing obligation",
       "status": "included",
       "chapter_title": "Chapter III - Issue of Debit Card by Banks :: C. Board Approved Policy and Procedures",
       "page_start": 22,
@@ -1688,10 +1774,10 @@
       "truncated": false
     },
     {
-      "clause_num": "5",
+      "clause_num": "unnumbered_4",
       "text": "Time period for completion of formalities after blocking a lost card.",
       "risk_level": "medium",
-      "reason": "process or procedure with customer-facing obligation",
+      "reason": "process or procedure with a customer-facing obligation",
       "status": "included",
       "chapter_title": "Chapter III - Issue of Debit Card by Banks :: C. Board Approved Policy and Procedures",
       "page_start": 22,
@@ -1699,10 +1785,10 @@
       "truncated": false
     },
     {
-      "clause_num": "6",
+      "clause_num": "unnumbered_5",
       "text": "Redressal of grievances and compensation framework.",
       "risk_level": "medium",
-      "reason": "process or procedure with customer-facing obligation",
+      "reason": "process or procedure with a customer-facing obligation",
       "status": "included",
       "chapter_title": "Chapter III - Issue of Debit Card by Banks :: C. Board Approved Policy and Procedures",
       "page_start": 22,
@@ -1710,10 +1796,10 @@
       "truncated": false
     },
     {
-      "clause_num": "A.1",
+      "clause_num": "A(1)",
       "text": "Card-issuers may issue other form factors in place of / in addition to a plastic debit / credit card such as wearables, after obtaining explicit consent from the customer.",
       "risk_level": "low",
-      "reason": "Definitional clause",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter IV - Form Factor :: A. Issue of Form Factor",
       "page_start": 22,
@@ -1721,10 +1807,10 @@
       "truncated": false
     },
     {
-      "clause_num": "A.2",
+      "clause_num": "A(2)",
       "text": "Form factors shall be subject to all the specific and general guidelines applicable to the respective cards.",
       "risk_level": "high",
-      "reason": "Compliance requirement: 'shall'",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter IV - Form Factor :: A. Issue of Form Factor",
       "page_start": 22,
@@ -1732,10 +1818,10 @@
       "truncated": false
     },
     {
-      "clause_num": "A.3",
+      "clause_num": "A(3)",
       "text": "Card-issuers shall provide options for disabling or blocking the form factor in line with the instructions issued by the Reserve Bank from time to time .",
       "risk_level": "high",
-      "reason": "Process/procedure with customer-facing obligation",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter IV - Form Factor :: A. Issue of Form Factor",
       "page_start": 22,
@@ -1743,10 +1829,10 @@
       "truncated": false
     },
     {
-      "clause_num": "1",
+      "clause_num": "V.A(1)",
       "text": "Prior approval of the Reserve Bank is not necessary for the issuance of co-branded debit cards,  co-branded  prepaid  cards  and  co-branded  credit  cards  subject  to  conditions stipulated under this chapter.",
       "risk_level": "low",
-      "reason": "Definition",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter V - Co-branding Arrangement :: A. Issue of Co-branded Cards",
       "page_start": 23,
@@ -1754,8 +1840,8 @@
       "truncated": false
     },
     {
-      "clause_num": "2",
-      "text": "The co-branded card shall explicitly indicate that the card has been issued under a co-branding arrangement.",
+      "clause_num": "V.A(2)",
+      "text": "In addition to the conditions listed herein, the co-branding arrangement for credit cards, debit cards and prepaid cards shall also be subject to the specific conditions applicable to such cards.",
       "risk_level": "high",
       "reason": "",
       "status": "included",
@@ -1765,8 +1851,8 @@
       "truncated": false
     },
     {
-      "clause_num": "3",
-      "text": "The co-branding partner shall not advertise / market the cobranded card as its own product.",
+      "clause_num": "V.A(3)",
+      "text": "The  co-branded  card  shall  explicitly  indicate  that  the  card  has  been  issued  under  a cobranding  arrangement.",
       "risk_level": "high",
       "reason": "",
       "status": "included",
@@ -1776,7 +1862,18 @@
       "truncated": false
     },
     {
-      "clause_num": "4",
+      "clause_num": "V.A(4)",
+      "text": "The  co-branding  partner  shall  not  advertise  /  market  the cobranded card as its own product.",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter V - Co-branding Arrangement :: A. Issue of Co-branded Cards",
+      "page_start": 23,
+      "page_end": 23,
+      "truncated": false
+    },
+    {
+      "clause_num": "V.A(5)",
       "text": "In all marketing / advertising material, the name of the card-issuer shall be clearly shown.",
       "risk_level": "high",
       "reason": "",
@@ -1787,7 +1884,7 @@
       "truncated": false
     },
     {
-      "clause_num": "5",
+      "clause_num": "V.A(6)",
       "text": "The co-branded card shall prominently bear the branding of the card-issuer.",
       "risk_level": "high",
       "reason": "",
@@ -1798,10 +1895,10 @@
       "truncated": false
     },
     {
-      "clause_num": "6",
+      "clause_num": "V.B(1)",
       "text": "A card-issuer can partner with more than one co-branding partner for a card.",
-      "risk_level": "low",
-      "reason": "Definition",
+      "risk_level": "medium",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter V - Co-branding Arrangement :: A. Issue of Co-branded Cards",
       "page_start": 23,
@@ -1809,10 +1906,21 @@
       "truncated": false
     },
     {
-      "clause_num": "1",
+      "clause_num": "B.1",
+      "text": "The co-branding arrangement shall be as per the Board approved policy of the cardissuer.",
+      "risk_level": "high",
+      "reason": "clause imposes a hard requirement",
+      "status": "included",
+      "chapter_title": "Chapter V - Co-branding Arrangement :: B. Board approved policy",
+      "page_start": 23,
+      "page_end": 23,
+      "truncated": false
+    },
+    {
+      "clause_num": "B.2",
       "text": "The policy shall specifically address issues pertaining to various risks, including reputation risk associated with such an arrangement and put in place suitable risk mitigation measures.",
       "risk_level": "high",
-      "reason": "shall",
+      "reason": "clause describes a process or procedure with a customer-facing obligation",
       "status": "included",
       "chapter_title": "Chapter V - Co-branding Arrangement :: B. Board approved policy",
       "page_start": 23,
@@ -1820,10 +1928,10 @@
       "truncated": false
     },
     {
-      "clause_num": "2",
+      "clause_num": "B.3",
       "text": "Further, the information relating to revenue sharing between the card-issuer and the cobranding partner entity shall be indicated to the cardholder and also displayed on the website of the card-issuer.",
       "risk_level": "high",
-      "reason": "shall",
+      "reason": "clause describes a process or procedure with a customer-facing obligation",
       "status": "included",
       "chapter_title": "Chapter V - Co-branding Arrangement :: B. Board approved policy",
       "page_start": 23,
@@ -1831,10 +1939,10 @@
       "truncated": false
     },
     {
-      "clause_num": "1",
+      "clause_num": "C.1",
       "text": "Card-issuers shall carry out due diligence in respect of the co-branding partner entity with which they intend to enter into tie-up for issue of such cards to protect themselves against the reputation risk they are exposed to in such an arrangement.",
       "risk_level": "high",
-      "reason": "shall",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter V - Co-branding Arrangement :: C. Due diligence",
       "page_start": 23,
@@ -1842,10 +1950,10 @@
       "truncated": false
     },
     {
-      "clause_num": "2",
+      "clause_num": "C.2",
       "text": "Card-issuers shall ensure that in cases where the proposed co-branding partner is a financial entity, it has obtained necessary approvals from its regulator for entering into the co-branding arrangement.",
       "risk_level": "high",
-      "reason": "shall",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter V - Co-branding Arrangement :: C. Due diligence",
       "page_start": 23,
@@ -1853,10 +1961,10 @@
       "truncated": false
     },
     {
-      "clause_num": "1",
+      "clause_num": "D(1)",
       "text": "Card-issuers shall also be liable for the acts of the co-branding partner.",
       "risk_level": "high",
-      "reason": "shall",
+      "reason": "Clause imposes a hard compliance requirement",
       "status": "included",
       "chapter_title": "Chapter V - Co-branding Arrangement :: D. Outsourcing of activities",
       "page_start": 24,
@@ -1864,10 +1972,10 @@
       "truncated": false
     },
     {
-      "clause_num": "2",
+      "clause_num": "D(2)",
       "text": "The card-issuer shall ensure adherence to Reserve Bank of India (Commercial Banks - Managing Risks in Outsourcing) Directions, 2025, as amended from time to time.",
       "risk_level": "high",
-      "reason": "shall",
+      "reason": "Clause describes a process or procedure with a customer-facing obligation",
       "status": "included",
       "chapter_title": "Chapter V - Co-branding Arrangement :: D. Outsourcing of activities",
       "page_start": 24,
@@ -1875,10 +1983,10 @@
       "truncated": false
     },
     {
-      "clause_num": "3",
+      "clause_num": "D(3)",
       "text": "Card-issuers shall ensure that cash backs, discounts and other offers advertised by a co-branding partner are delivered to the cardholder on time.",
       "risk_level": "high",
-      "reason": "shall",
+      "reason": "Clause imposes a hard compliance requirement",
       "status": "included",
       "chapter_title": "Chapter V - Co-branding Arrangement :: D. Outsourcing of activities",
       "page_start": 24,
@@ -1886,10 +1994,10 @@
       "truncated": false
     },
     {
-      "clause_num": "4",
+      "clause_num": "D(4)",
       "text": "Card-issuers shall be liable for any delay or nondelivery of the same to the cardholders.",
       "risk_level": "high",
-      "reason": "shall",
+      "reason": "Clause imposes a hard compliance requirement",
       "status": "included",
       "chapter_title": "Chapter V - Co-branding Arrangement :: D. Outsourcing of activities",
       "page_start": 24,
@@ -1897,10 +2005,10 @@
       "truncated": false
     },
     {
-      "clause_num": "E.1",
+      "clause_num": "E(1)",
       "text": "The role of the co-branding partner entity under the tie-up arrangement shall be limited to marketing / distribution of the cards and providing access to the cardholder for the goods / services that are offered.",
       "risk_level": "high",
-      "reason": "shall",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter V - Co-branding Arrangement :: E. Role of co-branding partner entity",
       "page_start": 24,
@@ -1908,10 +2016,10 @@
       "truncated": false
     },
     {
-      "clause_num": "E.2",
+      "clause_num": "E(2)",
       "text": "The co-branding partner (CBP) shall not have access to information relating to transactions undertaken through the co-branded card irrespective of any other service offered by them to the card-issuer.",
       "risk_level": "high",
-      "reason": "shall not",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter V - Co-branding Arrangement :: E. Role of co-branding partner entity",
       "page_start": 24,
@@ -1919,10 +2027,10 @@
       "truncated": false
     },
     {
-      "clause_num": "E.3",
+      "clause_num": "E(3)",
       "text": "Post issuance of the card, the CBP shall not be involved in any of the processes or the controls relating to the co-branded card except for being the initial point of contact in case of grievances.",
       "risk_level": "high",
-      "reason": "shall not",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter V - Co-branding Arrangement :: E. Role of co-branding partner entity",
       "page_start": 24,
@@ -1930,7 +2038,7 @@
       "truncated": false
     },
     {
-      "clause_num": "E.4",
+      "clause_num": "E(4)",
       "text": "However, for the purpose of cardholder's convenience, card transaction related data may be drawn directly from the card-issuer's system in an encrypted form and displayed in the CBP's platform with robust security.",
       "risk_level": "low",
       "reason": "",
@@ -1941,10 +2049,10 @@
       "truncated": false
     },
     {
-      "clause_num": "E.5",
+      "clause_num": "E(5)",
       "text": "The information displayed through the CBP's platform shall be visible only to the cardholder and shall neither be accessed nor be stored by the CBP.",
       "risk_level": "high",
-      "reason": "shall",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter V - Co-branding Arrangement :: E. Role of co-branding partner entity",
       "page_start": 24,
@@ -1952,10 +2060,10 @@
       "truncated": false
     },
     {
-      "clause_num": "F.1",
+      "clause_num": "F(1)",
       "text": "Prior approval shall not be required by the banks to become a co-branding partner of cardissuers.",
       "risk_level": "high",
-      "reason": "Definitional clause",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter V - Co-branding Arrangement :: F. Co-branding with card-issuers",
       "page_start": 25,
@@ -1963,10 +2071,10 @@
       "truncated": false
     },
     {
-      "clause_num": "F.2",
+      "clause_num": "F(2)",
       "text": "The role of the co-branding partner shall be as per the conditions stipulated under paragraphs 61 and 62.",
       "risk_level": "high",
-      "reason": "Process or procedure with customer-facing obligation",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter V - Co-branding Arrangement :: F. Co-branding with card-issuers",
       "page_start": 25,
@@ -1974,10 +2082,131 @@
       "truncated": false
     },
     {
-      "clause_num": "A.1",
+      "clause_num": "A(1)",
       "text": "Card-issuers shall keep internal records to enable operations to be traced and errors to be rectified (taking into account the law of limitation for the time barred cases) as prescribed under Reserve Bank of India (Commercial Banks - Know Your Customer) Directions, 2025, as amended from time to time.",
       "risk_level": "high",
-      "reason": "Clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: A. General Conditions",
+      "page_start": 25,
+      "page_end": 26,
+      "truncated": false
+    },
+    {
+      "clause_num": "A(2)",
+      "text": "The cardholder shall be provided with a record of the transactions after they have completed it, immediately in the form of receipt or another form such as the bank statement / email / SMS.",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: A. General Conditions",
+      "page_start": 25,
+      "page_end": 26,
+      "truncated": false
+    },
+    {
+      "clause_num": "A(3)",
+      "text": "With a view to reducing the instances of misuse of lost / stolen cards, it is recommended to the card-issuers that they may consider issuing card with advanced features that may evolve from time to time.",
+      "risk_level": "low",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: A. General Conditions",
+      "page_start": 25,
+      "page_end": 26,
+      "truncated": false
+    },
+    {
+      "clause_num": "A(4)",
+      "text": "In case card-issuers, at their discretion, decide to block / deactivate / suspend a debit or credit card, it shall be ensured that a standard operating procedure is followed as approved by their Board. Further, it shall also be ensured that blocking / deactivating / suspending a card or withdrawal of benefits available on any card is immediately intimated to the cardholder along with reasons thereof through electronic means (SMS, email, etc.) and other available modes.",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: A. General Conditions",
+      "page_start": 25,
+      "page_end": 26,
+      "truncated": false
+    },
+    {
+      "clause_num": "A(5)",
+      "text": "Explanation: De-activation / Blocking of a credit card temporarily curtails the ability of a cardholder to make any transaction in a credit card account while still maintaining the credit / account relationship with the card-issuer whereas closure of a credit card amounts to termination of the account-based relationship between the cardholder and the card-issuer.",
+      "risk_level": "medium",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: A. General Conditions",
+      "page_start": 25,
+      "page_end": 26,
+      "truncated": false
+    },
+    {
+      "clause_num": "A(6)",
+      "text": "Card-issuers shall block a lost card immediately on being informed by the cardholder and formalities, if any, can follow within a reasonable period clearly defined in the Board-approved policy.",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: A. General Conditions",
+      "page_start": 25,
+      "page_end": 26,
+      "truncated": false
+    },
+    {
+      "clause_num": "A(7)",
+      "text": "Card-issuers shall provide to the cardholder the detailed procedure to report the loss, theft or unauthorized use of card or PIN. They shall provide multiple channels such as a dedicated helpline, dedicated number for SMS, dedicated e-mail-id, Interactive Voice Response, clearly visible link on the website, internet banking and mobile-app or any other mode for reporting an unauthorized transaction on 24 x 7 basis and allow the customer to initiate the blocking of the card.",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: A. General Conditions",
+      "page_start": 25,
+      "page_end": 26,
+      "truncated": false
+    },
+    {
+      "clause_num": "A(8)",
+      "text": "The process for blocking the card, dedicated helpline as well as the SMS numbers, shall be adequately publicized and included in the billing statements.",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: A. General Conditions",
+      "page_start": 25,
+      "page_end": 26,
+      "truncated": false
+    },
+    {
+      "clause_num": "A(9)",
+      "text": "Card-issuers shall immediately send a confirmation to the cardholder subsequent to the blocking of a card.",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: A. General Conditions",
+      "page_start": 25,
+      "page_end": 26,
+      "truncated": false
+    },
+    {
+      "clause_num": "A(10)",
+      "text": "A card-issuer shall not dispatch a card to a customer unsolicited. In case of renewal of an existing card, the cardholder shall be provided an option to decline the same if he / she wants to do so before dispatching the renewed card. Further, in case a card is blocked at the request of the cardholder, replacement card in lieu of the blocked card shall be issued with the explicit consent of the cardholder.",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: A. General Conditions",
+      "page_start": 25,
+      "page_end": 26,
+      "truncated": false
+    },
+    {
+      "clause_num": "B(1)",
+      "text": "Any discounts, cashbacks, reward points, loyalty points or any other benefits offered by the card-issuer shall be provided in a transparent manner including source of such benefits. The accounting process for the same shall be verifiable in the books of the card-issuer. Detailed information regarding these benefits shall be displayed on the website of the card-issuer and a copy of the same shall also be provided to the cardholder.",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: A. General Conditions",
+      "page_start": 25,
+      "page_end": 26,
+      "truncated": false
+    },
+    {
+      "clause_num": "C(1)",
+      "text": "The Reserve Bank has not prescribed any requirement for insurance cover on credit and debit cards. However, in case a card-issuer or a card payment network provides an insurance cover, complimentary or chargeable (with the consent of the cardholder), the card-issuer shall ensure that the relevant nomination details are recorded by the Insurance Company and the availability of insurance is included, along with other information, in every statement.",
+      "risk_level": "high",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: A. General Conditions",
       "page_start": 25,
@@ -1986,218 +2215,163 @@
     },
     {
       "clause_num": "B.1",
-      "text": "The cardholder shall be provided with a record of the transactions after they have completed it, immediately in the form of receipt or another form such as the bank statement / email / SMS.",
+      "text": "The relationship between the card-issuer and the cardholder shall be contractual.",
       "risk_level": "high",
-      "reason": "Clause describes a process or procedure with a customer-facing obligation",
+      "reason": "Clause imposes a hard requirement.",
       "status": "included",
-      "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: A. General Conditions",
-      "page_start": 25,
-      "page_end": 26,
+      "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: B. Terms and conditions for issue of cards to customers",
+      "page_start": 27,
+      "page_end": 27,
+      "truncated": false
+    },
+    {
+      "clause_num": "B.2",
+      "text": "Cardissuers shall make available to the cardholders in writing, a set of contractual terms and conditions governing the issue and use of such cards.",
+      "risk_level": "high",
+      "reason": "Clause describes a process or procedure with a customer-facing obligation.",
+      "status": "included",
+      "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: B. Terms and conditions for issue of cards to customers",
+      "page_start": 27,
+      "page_end": 27,
+      "truncated": false
+    },
+    {
+      "clause_num": "B.3",
+      "text": "These terms shall be expressed clearly and also maintain a fair balance between the interests of the parties concerned.",
+      "risk_level": "high",
+      "reason": "Definitional clause",
+      "status": "included",
+      "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: B. Terms and conditions for issue of cards to customers",
+      "page_start": 27,
+      "page_end": 27,
+      "truncated": false
+    },
+    {
+      "clause_num": "B.4",
+      "text": "The terms and conditions for the issue and usage of a card shall be mentioned in clear and simple language (preferably in English, Hindi and the local language) comprehensible to the cardholder.",
+      "risk_level": "high",
+      "reason": "Clause describes a process or procedure with a customer-facing obligation.",
+      "status": "included",
+      "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: B. Terms and conditions for issue of cards to customers",
+      "page_start": 27,
+      "page_end": 27,
+      "truncated": false
+    },
+    {
+      "clause_num": "B.5",
+      "text": "Card-issuers shall not levy any charge that was not explicitly indicated to the cardholders at the time of issue of the card and without getting their explicit consent.",
+      "risk_level": "high",
+      "reason": "Clause imposes a hard requirement.",
+      "status": "included",
+      "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: B. Terms and conditions for issue of cards to customers",
+      "page_start": 27,
+      "page_end": 27,
+      "truncated": false
+    },
+    {
+      "clause_num": "B.6",
+      "text": "However, this shall not be applicable to charges like service taxes which may subsequently be levied by the Government or any other statutory authority.",
+      "risk_level": "high",
+      "reason": "Explanatory clause",
+      "status": "included",
+      "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: B. Terms and conditions for issue of cards to customers",
+      "page_start": 27,
+      "page_end": 27,
+      "truncated": false
+    },
+    {
+      "clause_num": "B.7",
+      "text": "The details of all the charges associated with cards shall be displayed on the card-issuer's website.",
+      "risk_level": "high",
+      "reason": "Clause describes a process or procedure with a customer-facing obligation.",
+      "status": "included",
+      "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: B. Terms and conditions for issue of cards to customers",
+      "page_start": 27,
+      "page_end": 27,
+      "truncated": false
+    },
+    {
+      "clause_num": "B.8",
+      "text": "The convenience fee, if any charged on specific transactions, shall be indicated to the cardholder in a transparent manner, prior to the transaction.",
+      "risk_level": "high",
+      "reason": "Clause imposes a hard requirement.",
+      "status": "included",
+      "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: B. Terms and conditions for issue of cards to customers",
+      "page_start": 27,
+      "page_end": 27,
+      "truncated": false
+    },
+    {
+      "clause_num": "B.9",
+      "text": "The terms  shall  clearly  specify  the  time-period  for  reversal  of  unsuccessful  /  failed transactions and the compensation payable for failure to meet the specified timeline.",
+      "risk_level": "high",
+      "reason": "Clause imposes a hard requirement.",
+      "status": "included",
+      "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: B. Terms and conditions for issue of cards to customers",
+      "page_start": 27,
+      "page_end": 27,
+      "truncated": false
+    },
+    {
+      "clause_num": "B.10",
+      "text": "The terms may be altered by the card-issuer, but 30 days' notice of the change shall be given to the cardholder to enable him / her to withdraw if he / she so chooses.",
+      "risk_level": "high",
+      "reason": "Clause imposes a hard requirement.",
+      "status": "included",
+      "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: B. Terms and conditions for issue of cards to customers",
+      "page_start": 27,
+      "page_end": 27,
+      "truncated": false
+    },
+    {
+      "clause_num": "B.11",
+      "text": "After the notice period of 30 days, the cardholder would be deemed to have accepted the terms if he / she had not withdrawn during the specified period.",
+      "risk_level": "high",
+      "reason": "Clause imposes a hard requirement.",
+      "status": "included",
+      "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: B. Terms and conditions for issue of cards to customers",
+      "page_start": 27,
+      "page_end": 27,
+      "truncated": false
+    },
+    {
+      "clause_num": "B.12",
+      "text": "The change in terms shall be notified to the cardholder through all the communication channels available.",
+      "risk_level": "high",
+      "reason": "Clause describes a process or procedure with a customer-facing obligation.",
+      "status": "included",
+      "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: B. Terms and conditions for issue of cards to customers",
+      "page_start": 27,
+      "page_end": 27,
+      "truncated": false
+    },
+    {
+      "clause_num": "B.13",
+      "text": "The terms shall put the cardholder under an obligation to take all appropriate steps to keep the card safe and not to record the PIN or code, in any form that would be intelligible or  otherwise  accessible  to  any  third  party  if  access  is  gained  to  such  a  record,  either honestly or dishonestly.",
+      "risk_level": "high",
+      "reason": "Clause imposes a hard requirement.",
+      "status": "included",
+      "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: B. Terms and conditions for issue of cards to customers",
+      "page_start": 27,
+      "page_end": 27,
+      "truncated": false
+    },
+    {
+      "clause_num": "B.14",
+      "text": "The  terms  shall  specify  that  the  card-issuer  shall  exercise  care  when  issuing  PINs  or codes and shall be under an obligation not to disclose the cardholder's PIN or code to anyone, except to the cardholder.",
+      "risk_level": "high",
+      "reason": "Clause imposes a hard requirement.",
+      "status": "included",
+      "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: B. Terms and conditions for issue of cards to customers",
+      "page_start": 27,
+      "page_end": 27,
       "truncated": false
     },
     {
       "clause_num": "C.1",
-      "text": "In case card-issuers, at their discretion, decide to block / deactivate / suspend a debit or credit card, it shall be ensured that a standard operating procedure is followed as approved by their Board.",
+      "text": "The issue of cards as a payment mechanism shall also be subject to relevant instructions on cash withdrawal, issue of international card, security issues and risk mitigation measures, card-to-card fund transfers, merchant discount rates structure, failed ATM transactions, etc, issued by the Department of Payment and Settlement Systems, Reserve Bank of India under the Payment and Settlement Systems Act, 2007, and the Foreign Exchange Department, Reserve Bank of India under Foreign Exchange Management Act, 1999, as amended from time to time.",
       "risk_level": "high",
-      "reason": "Clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
-      "status": "included",
-      "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: A. General Conditions",
-      "page_start": 25,
-      "page_end": 26,
-      "truncated": false
-    },
-    {
-      "clause_num": "D.1",
-      "text": "Card-issuers shall block a lost card immediately on being informed by the cardholder and formalities, if any, can follow within a reasonable period clearly defined in the Board-approved policy.",
-      "risk_level": "high",
-      "reason": "Clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
-      "status": "included",
-      "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: A. General Conditions",
-      "page_start": 25,
-      "page_end": 26,
-      "truncated": false
-    },
-    {
-      "clause_num": "E.1",
-      "text": "Card-issuers shall provide to the cardholder the detailed procedure to report the loss, theft or unauthorized use of card or PIN.",
-      "risk_level": "high",
-      "reason": "Clause describes a process or procedure with a customer-facing obligation",
-      "status": "included",
-      "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: A. General Conditions",
-      "page_start": 25,
-      "page_end": 26,
-      "truncated": false
-    },
-    {
-      "clause_num": "F.1",
-      "text": "Any discounts, cashbacks, reward points, loyalty points or any other benefits offered by the card-issuer shall be provided in a transparent manner including source of such benefits.",
-      "risk_level": "high",
-      "reason": "Clause describes a process or procedure with a customer-facing obligation",
-      "status": "included",
-      "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: A. General Conditions",
-      "page_start": 25,
-      "page_end": 26,
-      "truncated": false
-    },
-    {
-      "clause_num": "G.1",
-      "text": "The Reserve Bank has not prescribed any requirement for insurance cover on credit and debit cards.",
-      "risk_level": "low",
-      "reason": "Definitional clause with no direct compliance action required",
-      "status": "included",
-      "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: A. General Conditions",
-      "page_start": 25,
-      "page_end": 26,
-      "truncated": false
-    },
-    {
-      "clause_num": "1",
-      "text": "The relationship between the card-issuer and the cardholder shall be contractual.",
-      "risk_level": "high",
-      "reason": "clause imposes a hard requirement",
-      "status": "included",
-      "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: B. Terms and conditions for issue of cards to customers",
-      "page_start": 27,
-      "page_end": 27,
-      "truncated": false
-    },
-    {
-      "clause_num": "2",
-      "text": "Cardissuers shall make available to the cardholders in writing, a set of contractual terms and conditions governing the issue and use of such cards.",
-      "risk_level": "high",
-      "reason": "clause imposes a hard requirement",
-      "status": "included",
-      "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: B. Terms and conditions for issue of cards to customers",
-      "page_start": 27,
-      "page_end": 27,
-      "truncated": false
-    },
-    {
-      "clause_num": "3",
-      "text": "These terms shall be expressed clearly and also maintain a fair balance between the interests of the parties concerned.",
-      "risk_level": "high",
-      "reason": "clause describes a process or procedure with a customer-facing obligation",
-      "status": "included",
-      "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: B. Terms and conditions for issue of cards to customers",
-      "page_start": 27,
-      "page_end": 27,
-      "truncated": false
-    },
-    {
-      "clause_num": "4",
-      "text": "Card-issuers shall not levy any charge that was not explicitly indicated to the cardholders at the time of issue of the card and without getting their explicit consent.",
-      "risk_level": "high",
-      "reason": "clause imposes a hard requirement",
-      "status": "included",
-      "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: B. Terms and conditions for issue of cards to customers",
-      "page_start": 27,
-      "page_end": 27,
-      "truncated": false
-    },
-    {
-      "clause_num": "5",
-      "text": "However, this shall not be applicable to charges like service taxes which may subsequently be levied by the Government or any other statutory authority.",
-      "risk_level": "high",
-      "reason": "pure definition",
-      "status": "included",
-      "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: B. Terms and conditions for issue of cards to customers",
-      "page_start": 27,
-      "page_end": 27,
-      "truncated": false
-    },
-    {
-      "clause_num": "6",
-      "text": "The details of all the charges associated with cards shall be displayed on the card-issuer's website.",
-      "risk_level": "high",
-      "reason": "clause describes a process or procedure with a customer-facing obligation",
-      "status": "included",
-      "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: B. Terms and conditions for issue of cards to customers",
-      "page_start": 27,
-      "page_end": 27,
-      "truncated": false
-    },
-    {
-      "clause_num": "7",
-      "text": "The convenience fee, if any charged on specific transactions, shall be indicated to the cardholder in a transparent manner, prior to the transaction.",
-      "risk_level": "high",
-      "reason": "clause describes a process or procedure with a customer-facing obligation",
-      "status": "included",
-      "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: B. Terms and conditions for issue of cards to customers",
-      "page_start": 27,
-      "page_end": 27,
-      "truncated": false
-    },
-    {
-      "clause_num": "8",
-      "text": "The  terms  shall  clearly  specify  the  time-period  for  reversal  of  unsuccessful  /  failed transactions and the compensation payable for failure to meet the specified timeline.",
-      "risk_level": "high",
-      "reason": "clause imposes a hard requirement",
-      "status": "included",
-      "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: B. Terms and conditions for issue of cards to customers",
-      "page_start": 27,
-      "page_end": 27,
-      "truncated": false
-    },
-    {
-      "clause_num": "9",
-      "text": "The terms may be altered by the card-issuer, but 30 days' notice of the change shall be given to the cardholder to enable him / her to withdraw if he / she so chooses.",
-      "risk_level": "high",
-      "reason": "clause imposes a hard requirement",
-      "status": "included",
-      "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: B. Terms and conditions for issue of cards to customers",
-      "page_start": 27,
-      "page_end": 27,
-      "truncated": false
-    },
-    {
-      "clause_num": "10",
-      "text": "After the notice period of 30 days, the cardholder would be deemed to have accepted the terms if he / she had not withdrawn during the specified period.",
-      "risk_level": "low",
-      "reason": "pure definition",
-      "status": "included",
-      "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: B. Terms and conditions for issue of cards to customers",
-      "page_start": 27,
-      "page_end": 27,
-      "truncated": false
-    },
-    {
-      "clause_num": "11",
-      "text": "The change in terms shall be notified to the cardholder through all the communication channels available.",
-      "risk_level": "high",
-      "reason": "clause describes a process or procedure with a customer-facing obligation",
-      "status": "included",
-      "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: B. Terms and conditions for issue of cards to customers",
-      "page_start": 27,
-      "page_end": 27,
-      "truncated": false
-    },
-    {
-      "clause_num": "12",
-      "text": "The terms shall put the cardholder under an obligation to take all appropriate steps to keep the card safe and not to record the PIN or code, in any form that would be intelligible or  otherwise  accessible  to  any  third  party  if  access  is  gained  to  such  a  record,  either honestly or dishonestly.",
-      "risk_level": "high",
-      "reason": "clause imposes a hard requirement",
-      "status": "included",
-      "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: B. Terms and conditions for issue of cards to customers",
-      "page_start": 27,
-      "page_end": 27,
-      "truncated": false
-    },
-    {
-      "clause_num": "13",
-      "text": "The  terms  shall  specify  that  the  card-issuer  shall  exercise  care  when  issuing  PINs  or codes and shall be under an obligation not to disclose the cardholder's PIN or code to anyone, except to the cardholder.",
-      "risk_level": "high",
-      "reason": "clause imposes a hard requirement",
-      "status": "included",
-      "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: B. Terms and conditions for issue of cards to customers",
-      "page_start": 27,
-      "page_end": 27,
-      "truncated": false
-    },
-    {
-      "clause_num": "1",
-      "text": "The issue of cards as a payment mechanism shall also be subject to relevant instructions on 'cash withdrawal', 'issue of international card', 'security issues' and 'risk mitigation measures', 'card-to-card fund transfers', 'merchant discount rates structure', 'failed ATM transactions', etc, issued by the Department of Payment and Settlement Systems, Reserve Bank of India under the Payment and Settlement Systems Act, 2007, and the Foreign Exchange Department, Reserve Bank of India under Foreign Exchange Management Act, 1999, as amended from time to time.",
-      "risk_level": "high",
-      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: C. Compliance with Other instructions",
       "page_start": 28,
@@ -2205,10 +2379,10 @@
       "truncated": false
     },
     {
-      "clause_num": "D.1",
+      "clause_num": "D(1)",
       "text": "Card-issuers shall put in place a Grievance Redressal Mechanism within the card issuing entity and give wide publicity about it through electronic and print media.",
       "risk_level": "high",
-      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
+      "reason": "shall",
       "status": "included",
       "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: D. Redressal of grievances",
       "page_start": 29,
@@ -2216,10 +2390,10 @@
       "truncated": false
     },
     {
-      "clause_num": "D.2",
+      "clause_num": "D(2)",
       "text": "The name, direct contact number, email-id and postal address of the designated grievance redressal officer of the card-issuer shall be mentioned on the credit card bills and account statements.",
       "risk_level": "high",
-      "reason": "clause describes a process or procedure with a customer-facing obligation",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: D. Redressal of grievances",
       "page_start": 29,
@@ -2227,10 +2401,10 @@
       "truncated": false
     },
     {
-      "clause_num": "D.3",
+      "clause_num": "D(3)",
       "text": "The designated officer shall ensure that grievances of cardholders are redressed promptly without any delay.",
       "risk_level": "high",
-      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
+      "reason": "shall",
       "status": "included",
       "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: D. Redressal of grievances",
       "page_start": 29,
@@ -2238,10 +2412,10 @@
       "truncated": false
     },
     {
-      "clause_num": "D.4",
+      "clause_num": "D(4)",
       "text": "Specific timelines may be stipulated in the Board approved policy for issuance of cards, redressal of grievances and compensation framework.",
       "risk_level": "low",
-      "reason": "definitional clause with no direct compliance action required",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: D. Redressal of grievances",
       "page_start": 29,
@@ -2249,10 +2423,21 @@
       "truncated": false
     },
     {
-      "clause_num": "D.5",
+      "clause_num": "D(5)",
+      "text": "The grievance redressal procedure and the Board approved policy shall be displayed on the website of the card-issuer with a clearly visible link on the homepage.",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: D. Redressal of grievances",
+      "page_start": 29,
+      "page_end": 29,
+      "truncated": false
+    },
+    {
+      "clause_num": "D(6)",
       "text": "Card-issuers shall ensure that their call centre staff are trained adequately to competently handle and escalate, a complaint, if necessary.",
       "risk_level": "high",
-      "reason": "clause describes a process or procedure with a customer-facing obligation",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: D. Redressal of grievances",
       "page_start": 29,
@@ -2260,10 +2445,10 @@
       "truncated": false
     },
     {
-      "clause_num": "D.6",
+      "clause_num": "D(7)",
       "text": "There shall be a system of acknowledging customers' complaints  for  follow  up,  such  as  complaint  number  /  docket  number,  even  if  the complaints are received over phone.",
       "risk_level": "high",
-      "reason": "clause describes a process or procedure with a customer-facing obligation",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: D. Redressal of grievances",
       "page_start": 29,
@@ -2271,10 +2456,10 @@
       "truncated": false
     },
     {
-      "clause_num": "D.7",
+      "clause_num": "D(8)",
       "text": "Card-issuers shall be liable to compensate the complainant for the loss of his / her time, expenses, financial loss as well as for the harassment and mental anguish suffered by him/her for the fault of the card-issuer and where the grievance has not been redressed in  time.",
       "risk_level": "high",
-      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
+      "reason": "shall",
       "status": "included",
       "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: D. Redressal of grievances",
       "page_start": 29,
@@ -2282,10 +2467,10 @@
       "truncated": false
     },
     {
-      "clause_num": "D.8",
-      "text": "For  redressal  of  his  /  her  grievance,  the  customer  must  first  approach  the concerned card-issuer.",
+      "clause_num": "D(9)",
+      "text": "For  redressal  of  his  /  her  grievance,  the  customer  must  first  approach  the concerned card-issuer. If the card-issuer does not respond within a period of 30 days after filing  of  the  complaint or  rejects  the  complaint  wholly  /  partly  or  if  the  customer  is  not satisfied with the response / resolution given by the card-issuer, the customer can lodge his / her a complaint with the Ombudsman, Reserve Bank through any of the following methods:",
       "risk_level": "high",
-      "reason": "definitional clause with no direct compliance action required",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: D. Redressal of grievances",
       "page_start": 29,
@@ -2293,10 +2478,21 @@
       "truncated": false
     },
     {
-      "clause_num": "D.9",
-      "text": "If the card-issuer does not respond within a period of 30 days after filing  of  the  complaint or  rejects  the  complaint  wholly  /  partly  or  if  the  customer  is  not satisfied with the response / resolution given by the card-issuer, the customer can lodge his / her a complaint with the Ombudsman, Reserve Bank through any of the following methods:",
+      "clause_num": "D(10)",
+      "text": "Online at https://cms.rbi.org.in.",
       "risk_level": "medium",
-      "reason": "clause describes a process or procedure with a customer-facing obligation",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: D. Redressal of grievances",
+      "page_start": 29,
+      "page_end": 29,
+      "truncated": false
+    },
+    {
+      "clause_num": "D(11)",
+      "text": "Physical complaint (letter / post) in the form as specified in Annexure 'A' of the Reserve Bank - Integrated Ombudsman Scheme, 2021 to 'Centralised Receipt and Processing Centre,  4th  Floor,  Reserve  Bank  of  India,  Sector-17,  Central  Vista,  Chandigarh  160017'.",
+      "risk_level": "medium",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: D. Redressal of grievances",
       "page_start": 29,
@@ -2304,7 +2500,7 @@
       "truncated": false
     },
     {
-      "clause_num": "E.1",
+      "clause_num": "E(1)",
       "text": "Card-issuers shall not reveal any information relating to customers obtained at the time of opening  the  account  or  issuing  the  card  to  any  other  person  or  organization  without obtaining their explicit consent, with regard to the purpose/s for which the information will be used and the organizations with whom the information will be shared.",
       "risk_level": "high",
       "reason": "Clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
@@ -2315,10 +2511,10 @@
       "truncated": false
     },
     {
-      "clause_num": "E.2",
+      "clause_num": "E(2)",
       "text": "Card-issuers shall ensure strict compliance to the extant legal framework on data protection.",
       "risk_level": "high",
-      "reason": "Definitional clause with no direct compliance action required.",
+      "reason": "Clause describes a process or procedure with a customer-facing obligation but has no hard penalty or deadline attached.",
       "status": "included",
       "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: E. Confidentiality of customer information",
       "page_start": 29,
@@ -2326,7 +2522,7 @@
       "truncated": false
     },
     {
-      "clause_num": "E.3",
+      "clause_num": "E(3)",
       "text": "Further, in case where the customers give explicit consent for sharing the information provided by them with other agencies, card-issuers shall clearly state and explain to the customer the full meaning / implications of the disclosure clause.",
       "risk_level": "high",
       "reason": "Clause describes a process or procedure with a customer-facing obligation but has no hard penalty or deadline attached.",
@@ -2337,10 +2533,10 @@
       "truncated": false
     },
     {
-      "clause_num": "E.4",
-      "text": "The card-issuers shall be solely responsible for the correctness or otherwise of the data provided for the purpose.",
+      "clause_num": "E(4)",
+      "text": "The information sought from customers shall not be of such nature which will violate the provisions of law relating to maintenance of secrecy in the transactions.",
       "risk_level": "high",
-      "reason": "Clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
+      "reason": "Definitional, background, or explanatory clause with no direct compliance action required.",
       "status": "included",
       "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: E. Confidentiality of customer information",
       "page_start": 29,
@@ -2348,7 +2544,7 @@
       "truncated": false
     },
     {
-      "clause_num": "E.5",
+      "clause_num": "E(5)",
       "text": "Under a co-branding arrangement, the co-branding entity shall not be permitted to access any details of customer's accounts that may violate the card-issuer's secrecy obligations.",
       "risk_level": "high",
       "reason": "Clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
@@ -2359,7 +2555,7 @@
       "truncated": false
     },
     {
-      "clause_num": "E.6",
+      "clause_num": "E(6)",
       "text": "Card-issuers, which were granted specific approvals for issuance of co-branded cards in the past, are advised to ensure that the co-branding arrangement is in conformity with the instructions issued under Chapter V above.",
       "risk_level": "medium",
       "reason": "Clause describes a process or procedure with a customer-facing obligation but has no hard penalty or deadline attached.",
@@ -2370,21 +2566,10 @@
       "truncated": false
     },
     {
-      "clause_num": "E.7",
-      "text": "In case, the co-branding arrangement is between two banks, the card issuing bank shall ensure compliance with the relevant instructions.",
-      "risk_level": "high",
-      "reason": "Clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
-      "status": "included",
-      "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: E. Confidentiality of customer information",
-      "page_start": 29,
-      "page_end": 29,
-      "truncated": false
-    },
-    {
-      "clause_num": "F.1",
+      "clause_num": "F(1)",
       "text": "Card-issuers shall ensure adherence to the Reserve Bank of India (Commercial Banks Managing Risks in Outsourcing) Directions, 2025, as amended from time to time.",
       "risk_level": "high",
-      "reason": "Clause imposes a hard requirement",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: F. Outsourcing of various services",
       "page_start": 30,
@@ -2392,10 +2577,10 @@
       "truncated": false
     },
     {
-      "clause_num": "F.2",
+      "clause_num": "F(2)",
       "text": "Further, the card-issuers shall not share card data (including transaction data) of the cardholders with the outsourcing partners unless sharing of such data is essential to discharge the functions assigned to the latter.",
       "risk_level": "high",
-      "reason": "Clause describes a process or procedure with a customer-facing obligation",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: F. Outsourcing of various services",
       "page_start": 30,
@@ -2403,10 +2588,10 @@
       "truncated": false
     },
     {
-      "clause_num": "F.3",
+      "clause_num": "F(3)",
       "text": "In case of sharing of any data as stated above, explicit consent from the cardholder shall be obtained.",
       "risk_level": "high",
-      "reason": "Clause imposes a hard requirement",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: F. Outsourcing of various services",
       "page_start": 30,
@@ -2414,10 +2599,10 @@
       "truncated": false
     },
     {
-      "clause_num": "F.4",
+      "clause_num": "F(4)",
       "text": "It shall also be ensured that the storage and the ownership of card data remains with the card-issuer.",
       "risk_level": "high",
-      "reason": "Clause imposes a hard requirement",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: F. Outsourcing of various services",
       "page_start": 30,
@@ -2428,7 +2613,7 @@
       "clause_num": "G.1",
       "text": "The instructions / Directions on KYC / AML / CFT issued by RBI from time to time, shall be strictly adhered to in respect of all cards issued, including co-branded cards.",
       "risk_level": "high",
-      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter VI - General Guidelines for Credit and Debit Cards :: G. Compliance with Know Your Customer (KYC) Norms / Anti-Money Laundering (AML) Standards / Combating of Financing of Terrorism (CFT) / Obligation under the PMLA, 2002",
       "page_start": 31,
@@ -2436,10 +2621,10 @@
       "truncated": false
     },
     {
-      "clause_num": "A.1",
-      "text": "Card-issuers  shall  provide  to  the  cardholder  the  term-sheet  containing  the  MITC.",
+      "clause_num": "A(1)",
+      "text": "Card-issuers shall provide to the cardholder the term-sheet containing the MITC.",
       "risk_level": "high",
-      "reason": "clause imposes a hard requirement",
+      "reason": "mandatory disclosure obligation",
       "status": "included",
       "chapter_title": "Chapter VII - Miscellaneous :: A. Contents of the Most Important Terms and Conditions",
       "page_start": 31,
@@ -2447,10 +2632,21 @@
       "truncated": false
     },
     {
-      "clause_num": "Fees and Charges (i)",
+      "clause_num": "B.1",
+      "text": "Fees and Charges",
+      "risk_level": "medium",
+      "reason": "customer-facing process or procedure",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter VII - Miscellaneous :: A. Contents of the Most Important Terms and Conditions",
+      "page_start": 31,
+      "page_end": 31,
+      "truncated": false
+    },
+    {
+      "clause_num": "B.2(i)",
       "text": "Joining fees for primary cardholder and for add-on cardholder/s",
       "risk_level": "medium",
-      "reason": "customer-facing obligation",
+      "reason": "customer-facing process or procedure",
       "status": "included",
       "chapter_title": "Chapter VII - Miscellaneous :: A. Contents of the Most Important Terms and Conditions",
       "page_start": 31,
@@ -2458,10 +2654,10 @@
       "truncated": false
     },
     {
-      "clause_num": "Fees and Charges (ii)",
+      "clause_num": "B.2(ii)",
       "text": "Annual membership fees for primary and add-on cardholder/s",
       "risk_level": "medium",
-      "reason": "customer-facing obligation",
+      "reason": "customer-facing process or procedure",
       "status": "included",
       "chapter_title": "Chapter VII - Miscellaneous :: A. Contents of the Most Important Terms and Conditions",
       "page_start": 31,
@@ -2469,76 +2665,10 @@
       "truncated": false
     },
     {
-      "clause_num": "Fees and Charges (iii)",
-      "text": "Cash advance fee",
-      "risk_level": "medium",
-      "reason": "customer-facing obligation",
-      "status": "dropped_ungrounded",
-      "chapter_title": "Chapter VII - Miscellaneous :: A. Contents of the Most Important Terms and Conditions",
-      "page_start": 31,
-      "page_end": 31,
-      "truncated": false
-    },
-    {
-      "clause_num": "Fees and Charges (iv)",
-      "text": "Service charges levied for transactions",
-      "risk_level": "medium",
-      "reason": "customer-facing obligation",
-      "status": "included",
-      "chapter_title": "Chapter VII - Miscellaneous :: A. Contents of the Most Important Terms and Conditions",
-      "page_start": 31,
-      "page_end": 31,
-      "truncated": false
-    },
-    {
-      "clause_num": "Fees and Charges (v)",
-      "text": "Interest free (grace) period - illustrated with examples",
-      "risk_level": "medium",
-      "reason": "customer-facing obligation",
-      "status": "included",
-      "chapter_title": "Chapter VII - Miscellaneous :: A. Contents of the Most Important Terms and Conditions",
-      "page_start": 31,
-      "page_end": 31,
-      "truncated": false
-    },
-    {
-      "clause_num": "Fees and Charges (vi)",
-      "text": "Finance charges for both revolving credit and cash advances",
-      "risk_level": "medium",
-      "reason": "customer-facing obligation",
-      "status": "included",
-      "chapter_title": "Chapter VII - Miscellaneous :: A. Contents of the Most Important Terms and Conditions",
-      "page_start": 31,
-      "page_end": 31,
-      "truncated": false
-    },
-    {
-      "clause_num": "Fees and Charges (vii)",
-      "text": "Overdue interest charges - to be given on monthly & annualised basis",
-      "risk_level": "medium",
-      "reason": "customer-facing obligation",
-      "status": "included",
-      "chapter_title": "Chapter VII - Miscellaneous :: A. Contents of the Most Important Terms and Conditions",
-      "page_start": 31,
-      "page_end": 31,
-      "truncated": false
-    },
-    {
-      "clause_num": "Fees and Charges (viii)",
-      "text": "Charges in case of default",
-      "risk_level": "medium",
-      "reason": "customer-facing obligation",
-      "status": "included",
-      "chapter_title": "Chapter VII - Miscellaneous :: A. Contents of the Most Important Terms and Conditions",
-      "page_start": 31,
-      "page_end": 31,
-      "truncated": false
-    },
-    {
-      "clause_num": "Drawal Limits (i)",
+      "clause_num": "B.3(i)",
       "text": "Credit limit",
-      "risk_level": "medium",
-      "reason": "customer-facing obligation",
+      "risk_level": "low",
+      "reason": "definitional clause",
       "status": "dropped_ungrounded",
       "chapter_title": "Chapter VII - Miscellaneous :: A. Contents of the Most Important Terms and Conditions",
       "page_start": 31,
@@ -2546,10 +2676,10 @@
       "truncated": false
     },
     {
-      "clause_num": "Drawal Limits (ii)",
+      "clause_num": "B.3(ii)",
       "text": "Available credit limit",
-      "risk_level": "medium",
-      "reason": "customer-facing obligation",
+      "risk_level": "low",
+      "reason": "definitional clause",
       "status": "dropped_ungrounded",
       "chapter_title": "Chapter VII - Miscellaneous :: A. Contents of the Most Important Terms and Conditions",
       "page_start": 31,
@@ -2557,10 +2687,10 @@
       "truncated": false
     },
     {
-      "clause_num": "Drawal Limits (iii)",
+      "clause_num": "B.4(i)",
       "text": "Cash withdrawal limit",
-      "risk_level": "medium",
-      "reason": "customer-facing obligation",
+      "risk_level": "low",
+      "reason": "definitional clause",
       "status": "dropped_ungrounded",
       "chapter_title": "Chapter VII - Miscellaneous :: A. Contents of the Most Important Terms and Conditions",
       "page_start": 31,
@@ -2571,7 +2701,7 @@
       "clause_num": "(iii)#1",
       "text": "Method of payment",
       "risk_level": "medium",
-      "reason": "Customer-facing obligation",
+      "reason": "",
       "status": "dropped_ungrounded",
       "chapter_title": "Chapter VII - Miscellaneous :: (3) Billing",
       "page_start": 32,
@@ -2579,10 +2709,43 @@
       "truncated": false
     },
     {
-      "clause_num": "(i)",
+      "clause_num": "(iv)#1",
+      "text": "Billing disputes resolution",
+      "risk_level": "medium",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter VII - Miscellaneous :: (3) Billing",
+      "page_start": 32,
+      "page_end": 33,
+      "truncated": false
+    },
+    {
+      "clause_num": "(v)#1",
+      "text": "Complete postal address of card-issuer",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VII - Miscellaneous :: (3) Billing",
+      "page_start": 32,
+      "page_end": 33,
+      "truncated": false
+    },
+    {
+      "clause_num": "(vi)",
+      "text": "Toll free number, email-id and dedicated telephone number for SMS for customer care services, contact details of Grievance Redressal Official",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VII - Miscellaneous :: (3) Billing",
+      "page_start": 32,
+      "page_end": 33,
+      "truncated": false
+    },
+    {
+      "clause_num": "(i)#1",
       "text": "Procedure including notice period for reporting a cardholder as defaulter",
       "risk_level": "high",
-      "reason": "Hard deadline and compliance requirement",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter VII - Miscellaneous :: (3) Billing",
       "page_start": 32,
@@ -2593,40 +2756,7 @@
       "clause_num": "(ii)#1",
       "text": "Procedure for withdrawal of default report and the period within which the default report would be withdrawn after settlement of dues",
       "risk_level": "high",
-      "reason": "Hard deadline and compliance requirement",
-      "status": "included",
-      "chapter_title": "Chapter VII - Miscellaneous :: (3) Billing",
-      "page_start": 32,
-      "page_end": 33,
-      "truncated": false
-    },
-    {
-      "clause_num": "(iv)#1",
-      "text": "Recovery procedure in case of default",
-      "risk_level": "high",
-      "reason": "Compliance requirement",
-      "status": "included",
-      "chapter_title": "Chapter VII - Miscellaneous :: (3) Billing",
-      "page_start": 32,
-      "page_end": 33,
-      "truncated": false
-    },
-    {
-      "clause_num": "(v)#1",
-      "text": "Recovery of dues in case of death / permanent incapacity of cardholder",
-      "risk_level": "high",
-      "reason": "Compliance requirement",
-      "status": "included",
-      "chapter_title": "Chapter VII - Miscellaneous :: (3) Billing",
-      "page_start": 32,
-      "page_end": 33,
-      "truncated": false
-    },
-    {
-      "clause_num": "(vi)",
-      "text": "Available insurance cover, if any, for cardholder and date of activation of policy including nomination details",
-      "risk_level": "low",
-      "reason": "Definitional clause",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter VII - Miscellaneous :: (3) Billing",
       "page_start": 32,
@@ -2635,20 +2765,9 @@
     },
     {
       "clause_num": "(iii)#2",
-      "text": "Liability of cardholder in case of (i) above in terms of Reserve Bank of India (Commercial Banks - Responsible Business Conduct) Directions, 2025.",
-      "risk_level": "medium",
-      "reason": "Customer-facing obligation",
-      "status": "included",
-      "chapter_title": "Chapter VII - Miscellaneous :: (3) Billing",
-      "page_start": 32,
-      "page_end": 33,
-      "truncated": false
-    },
-    {
-      "clause_num": "(ii)#2",
-      "text": "Procedure for closure of card account if the card has not been used for more than one year",
+      "text": "Recovery procedure in case of default",
       "risk_level": "high",
-      "reason": "Hard deadline and compliance requirement",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter VII - Miscellaneous :: (3) Billing",
       "page_start": 32,
@@ -2657,20 +2776,9 @@
     },
     {
       "clause_num": "(iv)#2",
-      "text": "Grievance redressal and escalation process",
+      "text": "Recovery of dues in case of death / permanent incapacity of cardholder",
       "risk_level": "high",
-      "reason": "Compliance requirement",
-      "status": "included",
-      "chapter_title": "Chapter VII - Miscellaneous :: (3) Billing",
-      "page_start": 32,
-      "page_end": 33,
-      "truncated": false
-    },
-    {
-      "clause_num": "(iii)#3",
-      "text": "Compensation framework for unsuccessful / failed transactions, delay in redressal of grievance, delay in closing of account / blocking of lost or stolen cards, etc.",
-      "risk_level": "high",
-      "reason": "Compliance requirement",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter VII - Miscellaneous :: (3) Billing",
       "page_start": 32,
@@ -2679,9 +2787,9 @@
     },
     {
       "clause_num": "(v)#2",
-      "text": "Type of information relating to cardholder to be disclosed with and without approval of cardholder",
-      "risk_level": "low",
-      "reason": "Definitional clause",
+      "text": "Available insurance cover, if any, for cardholder and date of activation of policy including nomination details",
+      "risk_level": "medium",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter VII - Miscellaneous :: (3) Billing",
       "page_start": 32,
@@ -2689,29 +2797,194 @@
       "truncated": false
     },
     {
-      "clause_num": "1",
-      "text": "penalty of",
+      "clause_num": "(i)#2",
+      "text": "Procedure for surrender / closure of card by cardholder",
+      "risk_level": "medium",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VII - Miscellaneous :: (3) Billing",
+      "page_start": 32,
+      "page_end": 33,
+      "truncated": false
+    },
+    {
+      "clause_num": "(ii)#2",
+      "text": "Link provided exclusively for the above on the website",
+      "risk_level": "low",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VII - Miscellaneous :: (3) Billing",
+      "page_start": 32,
+      "page_end": 33,
+      "truncated": false
+    },
+    {
+      "clause_num": "(iii)#3",
+      "text": "Contact details for the cardholder to initiate closure - email-id, dedicated telephone number for SMS, IVRS",
+      "risk_level": "medium",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VII - Miscellaneous :: (3) Billing",
+      "page_start": 32,
+      "page_end": 33,
+      "truncated": false
+    },
+    {
+      "clause_num": "(iv)#3",
+      "text": "Procedure for closure of card account if the card has not been used for more than one year",
+      "risk_level": "medium",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VII - Miscellaneous :: (3) Billing",
+      "page_start": 32,
+      "page_end": 33,
+      "truncated": false
+    },
+    {
+      "clause_num": "(i)#3",
+      "text": "Procedure to be followed in case of loss/theft/misuse of card - mode of intimation to card-issuer",
       "risk_level": "high",
-      "reason": "imposes a hard deadline",
-      "status": "dropped_ungrounded",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VII - Miscellaneous :: (3) Billing",
+      "page_start": 32,
+      "page_end": 33,
+      "truncated": false
+    },
+    {
+      "clause_num": "(ii)#3",
+      "text": "Prominently visible web-site link, phone banking, SMS, e-mail, IVR, a dedicated tollfree helpline, reporting to home branch, etc. for reporting unauthorised transactions and initiating blocking of card",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VII - Miscellaneous :: (3) Billing",
+      "page_start": 32,
+      "page_end": 33,
+      "truncated": false
+    },
+    {
+      "clause_num": "(iii)#4",
+      "text": "Liability of cardholder in case of (i) above in terms of Reserve Bank of India (Commercial Banks - Responsible Business Conduct) Directions, 2025",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VII - Miscellaneous :: (3) Billing",
+      "page_start": 32,
+      "page_end": 33,
+      "truncated": false
+    },
+    {
+      "clause_num": "(i)#4",
+      "text": "Grievance redressal and escalation process",
+      "risk_level": "medium",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VII - Miscellaneous :: (3) Billing",
+      "page_start": 32,
+      "page_end": 33,
+      "truncated": false
+    },
+    {
+      "clause_num": "(ii)#4",
+      "text": "Timeline for redressal of grievances",
+      "risk_level": "medium",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VII - Miscellaneous :: (3) Billing",
+      "page_start": 32,
+      "page_end": 33,
+      "truncated": false
+    },
+    {
+      "clause_num": "(iii)#5",
+      "text": "Compensation framework for unsuccessful/failed transactions, delay in redressal of grievance, delay in closing of account/blocking of lost or stolen cards, etc.",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VII - Miscellaneous :: (3) Billing",
+      "page_start": 32,
+      "page_end": 33,
+      "truncated": false
+    },
+    {
+      "clause_num": "(iv)#4",
+      "text": "Contact particulars of card-issuer - 24-hour call centres, email-ids, helpline, other important telephone numbers",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VII - Miscellaneous :: (3) Billing",
+      "page_start": 32,
+      "page_end": 33,
+      "truncated": false
+    },
+    {
+      "clause_num": "B.1",
+      "text": "During marketing - Item no: 91 (1)",
+      "risk_level": "high",
+      "reason": "clause imposes a hard deadline",
+      "status": "included",
       "chapter_title": "Chapter VII - Miscellaneous :: B. Disclosure of the MITC",
       "page_start": 33,
       "page_end": 33,
       "truncated": false
     },
     {
-      "clause_num": "2",
-      "text": "shall",
-      "risk_level": "high",
-      "reason": "describes a process or procedure with a customer-facing obligation",
-      "status": "dropped_ungrounded",
+      "clause_num": "B.2",
+      "text": "At application - Key fact statement containing items from 91 (1) to (3) and any additional information that the customer may desire.",
+      "risk_level": "medium",
+      "reason": "clause describes a process or procedure with a customer-facing obligation",
+      "status": "included",
       "chapter_title": "Chapter VII - Miscellaneous :: B. Disclosure of the MITC",
       "page_start": 33,
       "page_end": 33,
       "truncated": false
     },
     {
-      "clause_num": "1",
+      "clause_num": "B.3",
+      "text": "Welcome kit - Item nos: all items from 91 (1) to (8)",
+      "risk_level": "medium",
+      "reason": "clause describes a process or procedure with a customer-facing obligation",
+      "status": "included",
+      "chapter_title": "Chapter VII - Miscellaneous :: B. Disclosure of the MITC",
+      "page_start": 33,
+      "page_end": 33,
+      "truncated": false
+    },
+    {
+      "clause_num": "B.4",
+      "text": "On billing - Item nos: 91 (1) to (3)",
+      "risk_level": "medium",
+      "reason": "clause describes a process or procedure with a customer-facing obligation",
+      "status": "included",
+      "chapter_title": "Chapter VII - Miscellaneous :: B. Disclosure of the MITC",
+      "page_start": 33,
+      "page_end": 33,
+      "truncated": false
+    },
+    {
+      "clause_num": "B.5",
+      "text": "any change of the terms and conditions",
+      "risk_level": "low",
+      "reason": "definitional, background, or explanatory clause with no direct compliance action required",
+      "status": "included",
+      "chapter_title": "Chapter VII - Miscellaneous :: B. Disclosure of the MITC",
+      "page_start": 33,
+      "page_end": 33,
+      "truncated": false
+    },
+    {
+      "clause_num": "(i)",
+      "text": "The font size of MITC shall be minimum Arial-12",
+      "risk_level": "high",
+      "reason": "definitional",
+      "status": "included",
+      "chapter_title": "Chapter VII - Miscellaneous :: (6) Note:",
+      "page_start": 34,
+      "page_end": 34,
+      "truncated": false
+    },
+    {
+      "clause_num": "(ii)",
       "text": "The normal terms and conditions communicated by the card-issuer to the cardholder at different stages shall continue as hitherto.",
       "risk_level": "high",
       "reason": "definitional",
@@ -2722,10 +2995,10 @@
       "truncated": false
     },
     {
-      "clause_num": "1",
+      "clause_num": "A(1)",
       "text": "With the issue of these Directions, the existing Directions, instructions, and guidelines relating to Credit Card and Debit Card: Issuance and Conduct as applicable for Commercial Banks stand repealed, as communicated vide circular DOR.RRC.REC.302/33-01-010/2025-26 dated November 28, 2025.",
       "risk_level": "high",
-      "reason": "clause imposes a hard deadline",
+      "reason": "Clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
       "status": "included",
       "chapter_title": "Chapter VIII - Repeal and Other Provisions :: A. Repeal and saving",
       "page_start": 34,
@@ -2733,10 +3006,10 @@
       "truncated": false
     },
     {
-      "clause_num": "2",
+      "clause_num": "B.1",
       "text": "The Directions, instructions and guidelines already repealed shall continue to remain repealed.",
       "risk_level": "high",
-      "reason": "definitional clause",
+      "reason": "Definitional clause",
       "status": "included",
       "chapter_title": "Chapter VIII - Repeal and Other Provisions :: A. Repeal and saving",
       "page_start": 34,
@@ -2744,10 +3017,10 @@
       "truncated": false
     },
     {
-      "clause_num": "3",
+      "clause_num": "B.2",
       "text": "Notwithstanding such repeal, any action taken or purported to have been taken, or initiated under the repealed Directions, instructions, or guidelines shall continue to be governed by the provisions thereof.",
       "risk_level": "high",
-      "reason": "process or procedure with customer-facing obligation",
+      "reason": "Process or procedure with customer-facing obligation",
       "status": "included",
       "chapter_title": "Chapter VIII - Repeal and Other Provisions :: A. Repeal and saving",
       "page_start": 34,
@@ -2755,10 +3028,10 @@
       "truncated": false
     },
     {
-      "clause_num": "4",
+      "clause_num": "B.3",
       "text": "All approvals or acknowledgments granted under these repealed lists shall be deemed as governed by these Directions.",
       "risk_level": "high",
-      "reason": "process or procedure with customer-facing obligation",
+      "reason": "Process or procedure with customer-facing obligation",
       "status": "included",
       "chapter_title": "Chapter VIII - Repeal and Other Provisions :: A. Repeal and saving",
       "page_start": 34,
@@ -2766,10 +3039,10 @@
       "truncated": false
     },
     {
-      "clause_num": "5",
+      "clause_num": "B.4",
       "text": "Further, the repeal of these directions, instructions, or guidelines shall not in any way prejudicially affect: ...",
       "risk_level": "high",
-      "reason": "clause imposes a hard penalty",
+      "reason": "Clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
       "status": "included",
       "chapter_title": "Chapter VIII - Repeal and Other Provisions :: A. Repeal and saving",
       "page_start": 34,
@@ -2777,54 +3050,10 @@
       "truncated": false
     },
     {
-      "clause_num": "6",
-      "text": "...any right, obligation or liability acquired, accrued, or incurred thereunder; ...",
-      "risk_level": "high",
-      "reason": "clause imposes a hard penalty",
-      "status": "included",
-      "chapter_title": "Chapter VIII - Repeal and Other Provisions :: A. Repeal and saving",
-      "page_start": 34,
-      "page_end": 34,
-      "truncated": false
-    },
-    {
-      "clause_num": "7",
-      "text": "...any penalty, forfeiture, or punishment incurred in respect of any contravention committed thereunder; ...",
-      "risk_level": "high",
-      "reason": "clause imposes a hard penalty",
-      "status": "included",
-      "chapter_title": "Chapter VIII - Repeal and Other Provisions :: A. Repeal and saving",
-      "page_start": 34,
-      "page_end": 34,
-      "truncated": false
-    },
-    {
-      "clause_num": "8",
-      "text": "...any investigation, legal proceeding, or remedy in respect of any such right, privilege, obligation, liability, penalty, forfeiture, or punishment as aforesaid; and ...",
-      "risk_level": "high",
-      "reason": "clause imposes a hard penalty",
-      "status": "included",
-      "chapter_title": "Chapter VIII - Repeal and Other Provisions :: A. Repeal and saving",
-      "page_start": 34,
-      "page_end": 34,
-      "truncated": false
-    },
-    {
-      "clause_num": "9",
-      "text": "...and any such investigation, legal proceedings or remedy may be instituted, continued, or enforced and any such penalty, forfeiture or punishment may be imposed as if those directions, instructions, or guidelines had not been repealed.",
-      "risk_level": "medium",
-      "reason": "process or procedure with customer-facing obligation",
-      "status": "included",
-      "chapter_title": "Chapter VIII - Repeal and Other Provisions :: A. Repeal and saving",
-      "page_start": 34,
-      "page_end": 34,
-      "truncated": false
-    },
-    {
-      "clause_num": "1",
+      "clause_num": "unnumbered_0",
       "text": "The provisions of these Directions shall be in addition to, and not in derogation of the provisions of any other laws, rules, regulations, or directions, for the time being in force.",
       "risk_level": "high",
-      "reason": "Definitional clause",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter VIII - Repeal and Other Provisions :: B. Application of other laws not barred",
       "page_start": 34,
@@ -2832,10 +3061,10 @@
       "truncated": false
     },
     {
-      "clause_num": "1",
-      "text": "The RBI may, if it considers necessary, issue necessary clarifications in respect of any matter covered herein.",
+      "clause_num": "C(1)",
+      "text": "For the purpose of giving effect to the provisions of these Directions",
       "risk_level": "low",
-      "reason": "Definitional clause",
+      "reason": "definitional clause",
       "status": "included",
       "chapter_title": "Chapter VIII - Repeal and Other Provisions :: C. Interpretations",
       "page_start": 35,
@@ -2843,15 +3072,85 @@
       "truncated": false
     },
     {
-      "clause_num": "1",
-      "text": "shall grant extension of time to comply with or exempt any bank, from any of the provisions of these Directions either generally or for any specified period, subject to such conditions as the RBI may impose.",
-      "risk_level": "high",
-      "reason": "definitional",
+      "clause_num": "C(2)",
+      "text": "or in order to remove any difficulties in the application or interpretation of the provisions of these Directions",
+      "risk_level": "low",
+      "reason": "definitional clause",
+      "status": "included",
+      "chapter_title": "Chapter VIII - Repeal and Other Provisions :: C. Interpretations",
+      "page_start": 35,
+      "page_end": 35,
+      "truncated": false
+    },
+    {
+      "clause_num": "C(3)",
+      "text": "the RBI may, if it considers necessary, issue necessary clarifications in respect of any matter covered herein",
+      "risk_level": "medium",
+      "reason": "process/procedure with customer-facing obligation",
+      "status": "included",
+      "chapter_title": "Chapter VIII - Repeal and Other Provisions :: C. Interpretations",
+      "page_start": 35,
+      "page_end": 35,
+      "truncated": false
+    },
+    {
+      "clause_num": "D.1",
+      "text": "The RBI may, if it considers necessary for avoiding any hardship or for any other just and sufficient reason, grant extension of time to comply with or exempt any bank, from any of the provisions of these Directions either generally or for any specified period, subject to such conditions as the RBI may impose.",
+      "risk_level": "low",
+      "reason": "exemption",
       "status": "included",
       "chapter_title": "Chapter VIII - Repeal and Other Provisions :: D. Exemptions",
       "page_start": 35,
       "page_end": 35,
       "truncated": false
+    },
+    {
+      "clause_num": "11(1)",
+      "text": "penalty of",
+      "risk_level": "high",
+      "reason": "imposes a hard deadline",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 2,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_1",
+      "text": "mandatory disclosure obligation",
+      "risk_level": "high",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 2,
+      "truncated": false
+    },
+    {
+      "clause_num": "5(12)",
+      "text": "shall",
+      "risk_level": "high",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 2,
+      "truncated": false
+    },
+    {
+      "clause_num": "(iv)",
+      "text": "is prohibited",
+      "risk_level": "medium",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 2,
+      "truncated": false
     }
+  ],
+  "last_reextracted_at": "2026-08-26T13:51:42.248196",
+  "last_reextracted_sections": [
+    "Chapter I - Preliminary :: Table of Contents"
   ]
 }

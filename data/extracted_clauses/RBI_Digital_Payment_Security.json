@@ -1,12 +1,12 @@
 {
   "doc_id": "RBI_Digital_Payment_Security",
-  "source_pdf": "data/RBI_regulations/RBI_Digital_Payment_Security.pdf",
-  "extracted_at": "2026-08-22T22:32:41.209010",
-  "model": "llama3.2:3b",
+  "source_pdf": "data/RBI_regulations\\RBI_Digital_Payment_Security.pdf",
+  "extracted_at": "2026-08-25T18:43:40.367282",
+  "model": "llama3.2:latest",
   "summary": {
-    "total_extracted": 166,
-    "included": 162,
-    "dropped_ungrounded": 4,
+    "total_extracted": 162,
+    "included": 151,
+    "dropped_ungrounded": 11,
     "dropped_illustrative": 0,
     "failed_sections": [
       "Chapter I - Preliminary :: Table of Contents (0 survived — needs retry)"
@@ -14,29 +14,7 @@
   },
   "clauses": [
     {
-      "clause_num": "1",
-      "text": "penalty of ₹ 10 lakhs on the bank concerned for non-compliance with the directions issued under section 35A of the Banking Regulation Act, 1949 (2 of 1949) or section 23(1) of the Payment and Settlement Systems Act, 2007 (36 of 2007), as amended by the Banking Service Commission (Amendment) Act, 2016 (34 of 2016)",
-      "risk_level": "high",
-      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
-      "status": "dropped_ungrounded",
-      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
-      "page_start": 2,
-      "page_end": 2,
-      "truncated": false
-    },
-    {
-      "clause_num": "2",
-      "text": "the bank shall ensure that all payment systems operated by it are compliant with the guidelines issued by RBI from time to time.",
-      "risk_level": "high",
-      "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
-      "status": "dropped_ungrounded",
-      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
-      "page_start": 2,
-      "page_end": 2,
-      "truncated": false
-    },
-    {
-      "clause_num": "1",
+      "clause_num": "A.1",
       "text": "These Directions shall be called the Reserve Bank of India (Commercial Banks -Digital Payment Security Controls) Directions, 2026.",
       "risk_level": "high",
       "reason": "",
@@ -47,7 +25,7 @@
       "truncated": false
     },
     {
-      "clause_num": "2",
+      "clause_num": "A.2",
       "text": "These Directions shall come into effect immediately upon issuance.",
       "risk_level": "high",
       "reason": "",
@@ -58,10 +36,10 @@
       "truncated": false
     },
     {
-      "clause_num": "1",
+      "clause_num": "B.1",
       "text": "These Directions shall be applicable to Commercial Banks (hereinafter collectively referred to as 'banks' and individually as 'bank').",
       "risk_level": "high",
-      "reason": "Definitional clause",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter I - Preliminary :: B. Applicability",
       "page_start": 3,
@@ -69,21 +47,10 @@
       "truncated": false
     },
     {
-      "clause_num": "2",
+      "clause_num": "B.2",
       "text": "For the purpose of these Directions, 'Commercial Banks' means banking companies (other than Small Finance Banks, Payments Banks and Local Area Banks), corresponding new banks, and the State Bank of India, as defined respectively under clauses (c), (da), and (nc) of Section 5 of the Banking Regulation Act, 1949.",
-      "risk_level": "low",
-      "reason": "Definitional clause",
-      "status": "included",
-      "chapter_title": "Chapter I - Preliminary :: B. Applicability",
-      "page_start": 3,
-      "page_end": 3,
-      "truncated": false
-    },
-    {
-      "clause_num": "3",
-      "text": "These Directions are applicable for digital payment products and services provided by the bank as detailed below:",
       "risk_level": "medium",
-      "reason": "Process or procedure with a customer-facing obligation",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter I - Preliminary :: B. Applicability",
       "page_start": 3,
@@ -91,10 +58,21 @@
       "truncated": false
     },
     {
-      "clause_num": "4",
+      "clause_num": "unnumbered_2",
+      "text": "These Directions are applicable for digital payment products and services provided by the bank as detailed below:",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter I - Preliminary :: B. Applicability",
+      "page_start": 3,
+      "page_end": 3,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_3",
       "text": "Any digital payment product or service offered by the bank to customers for carrying out financial transactions or non-financial transactions such as balance enquiry, set/change Personal Identification Number (PIN), mobile banking registration, generation of one-time password (OTP), ministatement, facility of checking transaction status, and option to the customer to raise dispute/grievance.",
-      "risk_level": "high",
-      "reason": "Actionable obligation or prohibition",
+      "risk_level": "medium",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter I - Preliminary :: B. Applicability",
       "page_start": 3,
@@ -102,32 +80,32 @@
       "truncated": false
     },
     {
-      "clause_num": "5",
-      "text": "(PSOs), and the associated IT assets (applications, systems, infrastructure) shall be considered for the scope of these Directions.",
+      "clause_num": "unnumbered_4",
+      "text": "Such digital payment products and services offered directly by the bank or through a system operated by RBI or a system operated by any of the RBI authorised Payment System Operators, and the associated IT assets (applications, systems, infrastructure) shall be considered for the scope of these Directions.",
       "risk_level": "high",
-      "reason": "Process or procedure with a customer-facing obligation",
-      "status": "included",
-      "chapter_title": "Chapter I - Preliminary :: B. Applicability",
-      "page_start": 3,
-      "page_end": 3,
-      "truncated": false
-    },
-    {
-      "clause_num": "1.1",
-      "text": "The organisation shall bear the meaning assigned to the terms herein below:",
-      "risk_level": "high",
-      "reason": "Definitional clause",
+      "reason": "",
       "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: B. Applicability",
+      "page_start": 3,
+      "page_end": 3,
+      "truncated": false
+    },
+    {
+      "clause_num": "C.1",
+      "text": "The following definitions are sourced from Financial Stability Board (FSB) Cyber Lexicon unless explicitly mentioned otherwise.",
+      "risk_level": "low",
+      "reason": "",
+      "status": "included",
       "chapter_title": "Chapter I - Preliminary :: C. Definitions",
       "page_start": 4,
       "page_end": 5,
       "truncated": false
     },
     {
-      "clause_num": "1.2",
+      "clause_num": "C.2",
       "text": "'Availability' - Property of being accessible and usable on demand by an authorised entity.",
-      "risk_level": "low",
-      "reason": "Definitional clause",
+      "risk_level": "high",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter I - Preliminary :: C. Definitions",
       "page_start": 4,
@@ -135,10 +113,10 @@
       "truncated": false
     },
     {
-      "clause_num": "1.3",
+      "clause_num": "C.3",
       "text": "'Confidentiality'  Property that  information  is  neither  made  available  nor disclosed to unauthorised individuals, entities, processes, or systems.",
-      "risk_level": "low",
-      "reason": "Definitional clause",
+      "risk_level": "high",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter I - Preliminary :: C. Definitions",
       "page_start": 4,
@@ -146,10 +124,10 @@
       "truncated": false
     },
     {
-      "clause_num": "1.4",
+      "clause_num": "C.4",
       "text": "'Cyber' Relating to, within, or through the medium of the interconnected information infrastructure of interactions among persons, processes, data, and information systems.",
-      "risk_level": "low",
-      "reason": "Definitional clause",
+      "risk_level": "medium",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter I - Preliminary :: C. Definitions",
       "page_start": 4,
@@ -157,10 +135,10 @@
       "truncated": false
     },
     {
-      "clause_num": "1.5",
-      "text": "'Cybersecurity' Preservation of confidentiality, integrity, and availability of information,  and  /  or  information  systems  through  the  cyber  medium.  In addition, other properties, such as authenticity, accountability,  nonrepudiation, and reliability can also be involved.",
-      "risk_level": "low",
-      "reason": "Definitional clause",
+      "clause_num": "C.5",
+      "text": "'Cybersecurity' Preservation of confidentiality, integrity, and availability of information,  and  /  or  information  systems  through  the  cyber  medium. In addition, other properties, such as authenticity, accountability, nonrepudiation, and reliability can also be involved.",
+      "risk_level": "high",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter I - Preliminary :: C. Definitions",
       "page_start": 4,
@@ -168,10 +146,10 @@
       "truncated": false
     },
     {
-      "clause_num": "1.6",
+      "clause_num": "C.6",
       "text": "'Cyber-attack' Malicious attempt(s) to exploit vulnerabilities through the cyber medium to damage, disrupt, or gain unauthorised access to assets.",
       "risk_level": "high",
-      "reason": "Explicit compliance requirement",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter I - Preliminary :: C. Definitions",
       "page_start": 4,
@@ -179,10 +157,10 @@
       "truncated": false
     },
     {
-      "clause_num": "1.7",
+      "clause_num": "C.7",
       "text": "'Distributed Denial of Service (DDoS)' A denial of service that is carried out using numerous sources simultaneously.",
       "risk_level": "medium",
-      "reason": "Process or procedure with a customer-facing obligation",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter I - Preliminary :: C. Definitions",
       "page_start": 4,
@@ -190,10 +168,10 @@
       "truncated": false
     },
     {
-      "clause_num": "1.8",
-      "text": "'Framework'  A  framework  is  a  structured  set  of  strategies,  policies, procedures,  methods,  and  best  practices  that guides  organisational activities, enables governance, and supports the achievement of defined objectives.",
+      "clause_num": "C.8",
+      "text": "( Source : adapted from ISACA glossary)",
       "risk_level": "low",
-      "reason": "Definitional clause",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter I - Preliminary :: C. Definitions",
       "page_start": 4,
@@ -201,10 +179,10 @@
       "truncated": false
     },
     {
-      "clause_num": "1.9",
-      "text": "'Information System' Set of applications, services, information technology assets,  or  other  information-handling  components, which  includes  the operating environment and networks.",
-      "risk_level": "low",
-      "reason": "Definitional clause",
+      "clause_num": "C.9",
+      "text": "'Framework'  A  framework  is  a  structured  set  of  strategies,  policies, procedures, methods, and best practices that guides organisational activities, enables governance, and supports the achievement of defined objectives.",
+      "risk_level": "medium",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter I - Preliminary :: C. Definitions",
       "page_start": 4,
@@ -212,10 +190,21 @@
       "truncated": false
     },
     {
-      "clause_num": "1.10",
+      "clause_num": "C.10",
+      "text": "'Information System' Set of applications, services, information technology assets, or other information-handling components, which includes the operating environment and networks.",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter I - Preliminary :: C. Definitions",
+      "page_start": 4,
+      "page_end": 5,
+      "truncated": false
+    },
+    {
+      "clause_num": "C.11",
       "text": "'Integrity' Property of accuracy and completeness.",
-      "risk_level": "low",
-      "reason": "Definitional clause",
+      "risk_level": "high",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter I - Preliminary :: C. Definitions",
       "page_start": 4,
@@ -223,10 +212,10 @@
       "truncated": false
     },
     {
-      "clause_num": "1.11",
+      "clause_num": "C.12",
       "text": "'Malware' Software designed with malicious intent containing features or capabilities that can potentially cause harm directly or indirectly to entities or their information systems.",
       "risk_level": "high",
-      "reason": "Explicit compliance requirement",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter I - Preliminary :: C. Definitions",
       "page_start": 4,
@@ -234,10 +223,10 @@
       "truncated": false
     },
     {
-      "clause_num": "1.12",
-      "text": "'Penetration  Testing'  A  test  methodology  in  which  assessors  typically working under specific constraints, attempt to circumvent or defeat the security features of an information system.",
+      "clause_num": "C.13",
+      "text": "'Penetration  Testing'  A  test  methodology  in  which assessors typically working under specific constraints, attempt to circumvent or defeat the security features of an information system.",
       "risk_level": "medium",
-      "reason": "Process or procedure with a customer-facing obligation",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter I - Preliminary :: C. Definitions",
       "page_start": 4,
@@ -245,10 +234,10 @@
       "truncated": false
     },
     {
-      "clause_num": "1.13",
-      "text": "'Phishing'  A  digital  form  of  social  engineering  that  attempts  to acquire private or confidential information by pretending to be a trustworthy entity in an electronic communication.",
-      "risk_level": "medium",
-      "reason": "Process or procedure with a customer-facing obligation",
+      "clause_num": "C.14",
+      "text": "'Phishing'  A  digital  form  of  social  engineering that attempts to acquire private or confidential information by pretending to be a trustworthy entity in an electronic communication.",
+      "risk_level": "high",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter I - Preliminary :: C. Definitions",
       "page_start": 4,
@@ -256,10 +245,10 @@
       "truncated": false
     },
     {
-      "clause_num": "1.14",
+      "clause_num": "C.15",
       "text": "'Vulnerability' A weakness, susceptibility, or flaw of an asset or control that can be exploited by one or more threats .",
-      "risk_level": "low",
-      "reason": "Definitional clause",
+      "risk_level": "high",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter I - Preliminary :: C. Definitions",
       "page_start": 4,
@@ -267,10 +256,10 @@
       "truncated": false
     },
     {
-      "clause_num": "1.15",
+      "clause_num": "C.16",
       "text": "'Vulnerability Assessment (VA)' Systematic examination of an information system or product to determine the adequacy of security measures, identify security deficiencies, provide data from which to predict the effectiveness of proposed security measures and confirm the adequacy of such measures after implementation.",
       "risk_level": "high",
-      "reason": "Explicit compliance requirement",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter I - Preliminary :: C. Definitions",
       "page_start": 4,
@@ -278,10 +267,10 @@
       "truncated": false
     },
     {
-      "clause_num": "1",
+      "clause_num": "A(1)",
       "text": "The Board of Directors shall approve the policies related to digital payment products and services.",
       "risk_level": "high",
-      "reason": "clause imposes a mandatory compliance requirement",
+      "reason": "mandatory disclosure obligation",
       "status": "included",
       "chapter_title": "Chapter II - Role of the Board :: A. Board Approved Policies",
       "page_start": 5,
@@ -289,7 +278,18 @@
       "truncated": false
     },
     {
-      "clause_num": "A.1",
+      "clause_num": "A(2)",
+      "text": "Such policies shall be reviewed at least annually by the Board.",
+      "risk_level": "high",
+      "reason": "mandatory compliance requirement",
+      "status": "included",
+      "chapter_title": "Chapter II - Role of the Board :: A. Board Approved Policies",
+      "page_start": 5,
+      "page_end": 6,
+      "truncated": false
+    },
+    {
+      "clause_num": "A(1)",
       "text": "The bank shall formulate a policy for digital payment products and services with the approval of its Board.",
       "risk_level": "high",
       "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
@@ -300,8 +300,19 @@
       "truncated": false
     },
     {
-      "clause_num": "A.2",
-      "text": "The policy shall require that every digital payment product/service offered addresses the mechanics, clear definition of starting point, critical intermittent stages/points and end point in the digital payment cycle, security aspects, validations till the digital payment is settled, clear pictorial representation of digital path, exception handling, signing off of the above requirements, mechanism for carrying out User Acceptance Tests (UAT) in multiple stages before roll-out, sign off from multiple stakeholders [post UAT], and data archival requirements.",
+      "clause_num": "A(2)",
+      "text": "The contours of the policy, while discussing the parameters of any 'new product' including its alignment with the overall business strategy and inherent risk of the product, risk management/mitigation measures, compliance with regulatory instructions, and customer experience, shall explicitly cover payment security requirements from Functionality, Security and Performance (FSP) angles such as necessary controls to protect the confidentiality of customer data, and integrity of data, and processes associated with the digital product/services offered;",
+      "risk_level": "high",
+      "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
+      "status": "included",
+      "chapter_title": "Chapter III - General Controls :: A. Governance and Management of Security Risks",
+      "page_start": 6,
+      "page_end": 10,
+      "truncated": false
+    },
+    {
+      "clause_num": "A(3)",
+      "text": "The policy shall require that every digital payment product/service offered addresses the mechanics, clear definition of starting point, critical intermittent stages/points and end point in the digital payment cycle, security aspects, validations till the digital payment is settled, clear pictorial representation of digital path, exception handling, signing off of the above requirements, mechanism for carrying out User Acceptance Tests (UAT) in multiple stages before roll-out, sign off from multiple stakeholders [post User Acceptance Tests (UAT)], and data archival requirements.",
       "risk_level": "high",
       "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
       "status": "included",
@@ -311,7 +322,51 @@
       "truncated": false
     },
     {
-      "clause_num": "A.3",
+      "clause_num": "B(1)",
+      "text": "The Board and Senior Management shall be responsible for implementation of this policy.",
+      "risk_level": "high",
+      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
+      "status": "included",
+      "chapter_title": "Chapter III - General Controls :: A. Governance and Management of Security Risks",
+      "page_start": 6,
+      "page_end": 10,
+      "truncated": false
+    },
+    {
+      "clause_num": "B(2)",
+      "text": "The policy shall be reviewed at least annually.",
+      "risk_level": "high",
+      "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
+      "status": "included",
+      "chapter_title": "Chapter III - General Controls :: A. Governance and Management of Security Risks",
+      "page_start": 6,
+      "page_end": 10,
+      "truncated": false
+    },
+    {
+      "clause_num": "C(1)",
+      "text": "The bank shall clearly articulate the need for an external assessment of the entire process including the logic, build, and security aspects of the application(s) supporting the digital product or service.",
+      "risk_level": "high",
+      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
+      "status": "included",
+      "chapter_title": "Chapter III - General Controls :: A. Governance and Management of Security Risks",
+      "page_start": 6,
+      "page_end": 10,
+      "truncated": false
+    },
+    {
+      "clause_num": "D(1)",
+      "text": "The bank shall incorporate appropriate processes into its governance and risk management programs for identifying, analysing, monitoring, and managing the specific risks, including compliance risk and fraud risk, associated with the portfolio of digital payment products and services on a continual basis and in a holistic manner.",
+      "risk_level": "high",
+      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
+      "status": "included",
+      "chapter_title": "Chapter III - General Controls :: A. Governance and Management of Security Risks",
+      "page_start": 6,
+      "page_end": 10,
+      "truncated": false
+    },
+    {
+      "clause_num": "E(1)",
       "text": "The Senior Management of the bank shall have appropriate performance monitoring systems/key performance indicators for assessing whether the product or service offered through digital payment channels meets operational and security norms.",
       "risk_level": "high",
       "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
@@ -322,8 +377,19 @@
       "truncated": false
     },
     {
-      "clause_num": "A.4",
-      "text": "The bank shall conduct risk assessments with regard to the safety and security of digital payment products/services and associated processes as well as suitability and appropriateness of the same vis-à-vis the target users, both prior to establishing the service(s) and regularly thereafter.",
+      "clause_num": "F(1)",
+      "text": "As part of this process, the bank shall define product-level limits on the level of acceptable security risk, document specific security objectives, and performance criteria including quantitative benchmarks for evaluating the success of the security built into the digital payment product or service;",
+      "risk_level": "high",
+      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
+      "status": "included",
+      "chapter_title": "Chapter III - General Controls :: A. Governance and Management of Security Risks",
+      "page_start": 6,
+      "page_end": 10,
+      "truncated": false
+    },
+    {
+      "clause_num": "G(1)",
+      "text": "The bank shall have trained resources with necessary expertise to manage the digital payment infrastructure.",
       "risk_level": "high",
       "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
       "status": "included",
@@ -333,7 +399,51 @@
       "truncated": false
     },
     {
-      "clause_num": "A.5",
+      "clause_num": "H(1)",
+      "text": "Wherever the bank is dependent on third-party service providers, adequate oversight and controls for monitoring the activities of the third-party personnel shall be put in place.",
+      "risk_level": "high",
+      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
+      "status": "included",
+      "chapter_title": "Chapter III - General Controls :: A. Governance and Management of Security Risks",
+      "page_start": 6,
+      "page_end": 10,
+      "truncated": false
+    },
+    {
+      "clause_num": "I(1)",
+      "text": "The bank shall conduct risk assessments with regard to the safety and security of digital payment products/services and associated processes as well as suitability and appropriateness of the same vis-à-vis the target users, both prior to establishing the service(s) and regularly thereafter.",
+      "risk_level": "high",
+      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
+      "status": "included",
+      "chapter_title": "Chapter III - General Controls :: A. Governance and Management of Security Risks",
+      "page_start": 6,
+      "page_end": 10,
+      "truncated": false
+    },
+    {
+      "clause_num": "J(1)",
+      "text": "The bank shall maintain database of all systems and applications storing customer data in the payment ecosystem and comply with applicable Payment Card Industry (PCI) standards in each of the systems (notwithstanding mandatory requirements of certification/standard accreditation).",
+      "risk_level": "high",
+      "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
+      "status": "included",
+      "chapter_title": "Chapter III - General Controls :: A. Governance and Management of Security Risks",
+      "page_start": 6,
+      "page_end": 10,
+      "truncated": false
+    },
+    {
+      "clause_num": "K(1)",
+      "text": "The bank shall evaluate the risks associated with the chosen technology platforms, application architecture, both on the server and client side.",
+      "risk_level": "high",
+      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
+      "status": "included",
+      "chapter_title": "Chapter III - General Controls :: A. Governance and Management of Security Risks",
+      "page_start": 6,
+      "page_end": 10,
+      "truncated": false
+    },
+    {
+      "clause_num": "L(1)",
       "text": "The bank shall develop sound internal control systems and take into account the operational risk before offering digital payment products and related services.",
       "risk_level": "high",
       "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
@@ -344,8 +454,8 @@
       "truncated": false
     },
     {
-      "clause_num": "A.6",
-      "text": "The bank shall ensure that its digital payment architecture is robust and scalable, commensurate with the transaction volumes and customer growth.",
+      "clause_num": "M(1)",
+      "text": "The bank shall ensure that its digital payment architecture is robust and scalable, commensurate with transaction volumes and customer growth.",
       "risk_level": "high",
       "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
       "status": "included",
@@ -355,10 +465,10 @@
       "truncated": false
     },
     {
-      "clause_num": "A.7",
-      "text": "The bank shall have necessary capacity, systems, and procedures in place to periodically test backed-up data and applications pertaining to digital products/services to ensure recovery without loss of transactions or audit-trails.",
+      "clause_num": "N(1)",
+      "text": "The Information Technology (IT) strategy of the bank shall ensure that a robust capacity management plan is in place to meet evolving demand.",
       "risk_level": "high",
-      "reason": "definitional, background, or explanatory clause with no direct compliance action required.",
+      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
       "status": "included",
       "chapter_title": "Chapter III - General Controls :: A. Governance and Management of Security Risks",
       "page_start": 6,
@@ -366,10 +476,21 @@
       "truncated": false
     },
     {
-      "clause_num": "1",
+      "clause_num": "O(1)",
+      "text": "The bank shall have necessary capacity, systems, and procedures in place to periodically test backed-up data and applications pertaining to digital products/services to ensure recovery without loss of transactions or audit-trails.",
+      "risk_level": "high",
+      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
+      "status": "included",
+      "chapter_title": "Chapter III - General Controls :: A. Governance and Management of Security Risks",
+      "page_start": 6,
+      "page_end": 10,
+      "truncated": false
+    },
+    {
+      "clause_num": "B.1",
       "text": "The communication protocol in the digital payment channels (especially over internet) shall adhere to a secure standard.",
       "risk_level": "high",
-      "reason": "clause imposes a hard deadline",
+      "reason": "clause imposes a hard requirement",
       "status": "included",
       "chapter_title": "Chapter III - General Controls :: B. Other Generic Security Controls",
       "page_start": 11,
@@ -377,10 +498,10 @@
       "truncated": false
     },
     {
-      "clause_num": "2",
+      "clause_num": "B.2",
       "text": "Web applications providing the digital payment products and services shall not store sensitive information in Hyper-Text Mark-up Language (HTML) hidden fields, cookies, or any other client-side storage to avoid any compromise in the integrity of the data.",
       "risk_level": "high",
-      "reason": "customer-facing obligation",
+      "reason": "process or procedure with customer-facing obligation",
       "status": "included",
       "chapter_title": "Chapter III - General Controls :: B. Other Generic Security Controls",
       "page_start": 11,
@@ -388,7 +509,7 @@
       "truncated": false
     },
     {
-      "clause_num": "3",
+      "clause_num": "B.3",
       "text": "The bank shall implement Web Application Firewall (WAF) solution and DDoS mitigation techniques to secure the digital payment products and services offered over internet.",
       "risk_level": "high",
       "reason": "clause imposes a hard requirement",
@@ -399,7 +520,7 @@
       "truncated": false
     },
     {
-      "clause_num": "4",
+      "clause_num": "B.4",
       "text": "The key length (for symmetric/asymmetric encryption, hashing), algorithms (for encryption, signing, exchange of keys, creation of message digest, random number generators), cipher suites, digital certificates, and applicable protocols used in transmission channels, processing of data, and for authentication purposes shall be strong.",
       "risk_level": "high",
       "reason": "clause imposes a hard requirement",
@@ -410,7 +531,7 @@
       "truncated": false
     },
     {
-      "clause_num": "5",
+      "clause_num": "B.5",
       "text": "The bank shall adopt internationally accepted and published standards that are not deprecated/demonstrated to be insecure/vulnerable and shall ensure that the configurations involved in implementing such controls are compliant with extant laws and regulatory instructions.",
       "risk_level": "high",
       "reason": "clause imposes a hard requirement",
@@ -421,10 +542,10 @@
       "truncated": false
     },
     {
-      "clause_num": "6",
+      "clause_num": "B.6",
       "text": "The bank shall renew its digital certificates used in the digital payment ecosystem well in time.",
       "risk_level": "high",
-      "reason": "customer-facing obligation",
+      "reason": "process or procedure with customer-facing obligation",
       "status": "included",
       "chapter_title": "Chapter III - General Controls :: B. Other Generic Security Controls",
       "page_start": 11,
@@ -432,7 +553,7 @@
       "truncated": false
     },
     {
-      "clause_num": "7",
+      "clause_num": "B.7",
       "text": "The mobile application (mobile banking/mobile payment applications of the bank) and internet banking application shall have effective logging and monitoring capabilities to track user activity, security changes, and identify anomalous behaviour and transactions.",
       "risk_level": "high",
       "reason": "clause imposes a hard requirement",
@@ -443,7 +564,7 @@
       "truncated": false
     },
     {
-      "clause_num": "1",
+      "clause_num": "C.1",
       "text": "The bank shall implement multi-tier application architecture, segregating application, database and presentation layer in the digital payment products and services.",
       "risk_level": "high",
       "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
@@ -454,30 +575,8 @@
       "truncated": false
     },
     {
-      "clause_num": "2",
+      "clause_num": "C.2",
       "text": "The bank shall follow a 'secure by design' approach in the development of digital payment products and services.",
-      "risk_level": "high",
-      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
-      "status": "included",
-      "chapter_title": "Chapter III - General Controls :: C. Application Security Life Cycle",
-      "page_start": 12,
-      "page_end": 14,
-      "truncated": false
-    },
-    {
-      "clause_num": "3",
-      "text": "The bank shall explicitly define security objectives (including protection of customer information/data) during requirements gathering; designing; development; testing including source code review; implementation, maintenance, and monitoring; and decommissioning phases of the digital payment applications.",
-      "risk_level": "high",
-      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
-      "status": "included",
-      "chapter_title": "Chapter III - General Controls :: C. Application Security Life Cycle",
-      "page_start": 12,
-      "page_end": 14,
-      "truncated": false
-    },
-    {
-      "clause_num": "4",
-      "text": "For digital payment applications licensed by a third-party vendor, the bank shall put in place a source code escrow arrangement or other arrangements for ensuring continuity of services in case the vendor defaults or is unable to provide services.",
       "risk_level": "high",
       "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
       "status": "included",
@@ -487,7 +586,29 @@
       "truncated": false
     },
     {
-      "clause_num": "5",
+      "clause_num": "C.3",
+      "text": "The bank shall explicitly define security objectives (including protection of customer information / data) during requirements gathering;",
+      "risk_level": "high",
+      "reason": "definitional, background, or explanatory clause with no direct compliance action required.",
+      "status": "included",
+      "chapter_title": "Chapter III - General Controls :: C. Application Security Life Cycle",
+      "page_start": 12,
+      "page_end": 14,
+      "truncated": false
+    },
+    {
+      "clause_num": "C.4",
+      "text": "For digital payment applications licensed by a third-party vendor, the bank shall put in place a source code escrow arrangement or other arrangements for ensuring continuity of services in case the vendor defaults or is unable to provide services.",
+      "risk_level": "high",
+      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
+      "status": "included",
+      "chapter_title": "Chapter III - General Controls :: C. Application Security Life Cycle",
+      "page_start": 12,
+      "page_end": 14,
+      "truncated": false
+    },
+    {
+      "clause_num": "C.5",
       "text": "The bank shall conduct security testing including review of source code, Vulnerability Assessment (VA) and Penetration Testing (PT) of its digital payment applications to assure that the application is secure for putting through transactions while preserving confidentiality and integrity of the data that is stored and transmitted.",
       "risk_level": "high",
       "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
@@ -498,19 +619,8 @@
       "truncated": false
     },
     {
-      "clause_num": "6",
-      "text": "The VA shall be conducted at least on a half-yearly basis; PT shall be conducted at least annually. In addition, VA/PT shall be conducted as and when any new IT infrastructure or digital payment application is introduced or when any major change is performed in the application or infrastructure.",
-      "risk_level": "high",
-      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
-      "status": "included",
-      "chapter_title": "Chapter III - General Controls :: C. Application Security Life Cycle",
-      "page_start": 12,
-      "page_end": 14,
-      "truncated": false
-    },
-    {
-      "clause_num": "7",
-      "text": "Testing related to review of source code/certification shall be conducted/obtained and shall be continued annually, if changes/updates have been made to the application during the year.",
+      "clause_num": "C.6",
+      "text": "The VA shall be conducted at least on a half-yearly basis; PT shall be conducted at least annually.",
       "risk_level": "high",
       "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
       "status": "included",
@@ -520,7 +630,18 @@
       "truncated": false
     },
     {
-      "clause_num": "8",
+      "clause_num": "C.7",
+      "text": "Testing related to review of source code / certification shall be conducted / obtained and shall be continued annually, if changes / upgrades have been made to the application during the year.",
+      "risk_level": "high",
+      "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
+      "status": "included",
+      "chapter_title": "Chapter III - General Controls :: C. Application Security Life Cycle",
+      "page_start": 12,
+      "page_end": 14,
+      "truncated": false
+    },
+    {
+      "clause_num": "C.8",
       "text": "Penal provisions are included in third-party contractual arrangements for any non-compliance by the application provider.",
       "risk_level": "high",
       "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
@@ -531,8 +652,8 @@
       "truncated": false
     },
     {
-      "clause_num": "9",
-      "text": "The bank may also run automated VA scanning tools on a continuous/more frequent basis to automatically scan all systems on the network that are critical, public facing or store customer sensitive data.",
+      "clause_num": "C.9",
+      "text": "The bank may also run automated VA scanning tools on a continuous / more frequent basis to automatically scan all systems on the network that are critical, public facing or store customer sensitive data.",
       "risk_level": "low",
       "reason": "definitional, background, or explanatory clause with no direct compliance action required.",
       "status": "included",
@@ -542,8 +663,19 @@
       "truncated": false
     },
     {
-      "clause_num": "10",
-      "text": "The bank shall compare the results from earlier vulnerability scans to verify/ascertain that vulnerabilities are addressed either by patching, implementing a compensating control, or documenting and accepting the residual risk with necessary approval and that there is no recurrence of the known vulnerabilities.",
+      "clause_num": "C.10",
+      "text": "The bank shall compare the results from earlier vulnerability scans to verify / ascertain that vulnerabilities are addressed either by patching, implementing a compensating control, or documenting and accepting the residual risk with necessary approval and that there is no recurrence of the known vulnerabilities.",
+      "risk_level": "high",
+      "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
+      "status": "included",
+      "chapter_title": "Chapter III - General Controls :: C. Application Security Life Cycle",
+      "page_start": 12,
+      "page_end": 14,
+      "truncated": false
+    },
+    {
+      "clause_num": "C.11",
+      "text": "The identified vulnerabilities shall be fixed in a time-bound manner.",
       "risk_level": "high",
       "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
       "status": "included",
@@ -553,10 +685,10 @@
       "truncated": false
     },
     {
-      "clause_num": "11",
+      "clause_num": "C.12",
       "text": "The bank shall ensure that vulnerability scanning is performed in authenticated mode either with agents running locally on the system to analyse the security configuration or with remote scanners that are given administrative rights on the system being tested.",
       "risk_level": "high",
-      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
+      "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
       "status": "included",
       "chapter_title": "Chapter III - General Controls :: C. Application Security Life Cycle",
       "page_start": 12,
@@ -564,8 +696,8 @@
       "truncated": false
     },
     {
-      "clause_num": "12",
-      "text": "The bank shall verify and thoroughly test the functionality (to validate whether the system meets the functional requirements/specifications) and security controls of payment products and services before their launch/moving to the production environment.",
+      "clause_num": "C.13",
+      "text": "The bank shall verify and thoroughly test the functionality (to validate whether the system meets the functional requirements / specifications) and security controls of payment products and services before their launch / moving to the production environment.",
       "risk_level": "high",
       "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
       "status": "included",
@@ -575,8 +707,8 @@
       "truncated": false
     },
     {
-      "clause_num": "13",
-      "text": "The server at the bank's end shall have adequate checks and balances to ensure that no transaction is carried out through non-genuine/unauthorised digital payment products/applications and the authentication process is robust, secure, and centralised.",
+      "clause_num": "C.14",
+      "text": "The server at the bank's end shall have adequate checks and balances to ensure that no transaction is carried out through non-genuine / unauthorised digital payment products / applications and the authentication process is robust, secure, and centralised.",
       "risk_level": "high",
       "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
       "status": "included",
@@ -586,8 +718,8 @@
       "truncated": false
     },
     {
-      "clause_num": "14",
-      "text": "The security controls for digital payment applications shall focus on how these applications handle, store, and protect payment data. The Application Programming Interfaces (APIs) for secure data storage and communication shall be implemented and used correctly in order to be effective.",
+      "clause_num": "C.15",
+      "text": "The security controls for digital payment applications shall focus on how these applications handle, store, and protect payment data.",
       "risk_level": "high",
       "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
       "status": "included",
@@ -597,8 +729,8 @@
       "truncated": false
     },
     {
-      "clause_num": "15",
-      "text": "The bank shall redact/mask customer information such as account numbers/card numbers/other sensitive information when transmitted via SMS/emails (including attachments).",
+      "clause_num": "C.16",
+      "text": "The Application Programming Interfaces (APIs) for secure data storage and communication shall be implemented and used correctly in order to be effective.",
       "risk_level": "high",
       "reason": "definitional, background, or explanatory clause with no direct compliance action required.",
       "status": "included",
@@ -608,10 +740,32 @@
       "truncated": false
     },
     {
-      "clause_num": "1",
+      "clause_num": "C.17",
+      "text": "The bank shall refer to standards such as OWASP-Mobile Application Security Verification Standard (OWASP-MASVS), OWASP-Application Security Verification Standard (OWASP-ASVS), and other relevant OWASP standards, security and data protection guidelines in ISO 12812, threat catalogues and guides developed by National Institute of Standards and Technology (NIST) (including for Bluetooth and Long-Term Evolution (LTE) security), for application security, and other protection measures.",
+      "risk_level": "high",
+      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
+      "status": "included",
+      "chapter_title": "Chapter III - General Controls :: C. Application Security Life Cycle",
+      "page_start": 12,
+      "page_end": 14,
+      "truncated": false
+    },
+    {
+      "clause_num": "C.18",
+      "text": "The bank shall redact / mask customer information such as account numbers / card numbers / other sensitive information when transmitted via SMS / emails (including attachments).",
+      "risk_level": "high",
+      "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
+      "status": "included",
+      "chapter_title": "Chapter III - General Controls :: C. Application Security Life Cycle",
+      "page_start": 12,
+      "page_end": 14,
+      "truncated": false
+    },
+    {
+      "clause_num": "D(1)",
       "text": "The bank shall implement, except where explicitly permitted/relaxed, multifactor authentication for payments through electronic modes and fund transfers, including cash withdrawals from ATMs/micro-ATMs/business correspondents, through digital payment applications.",
       "risk_level": "high",
-      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement",
+      "reason": "Clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
       "status": "included",
       "chapter_title": "Chapter III - General Controls :: D. Authentication Framework",
       "page_start": 15,
@@ -619,10 +773,21 @@
       "truncated": false
     },
     {
-      "clause_num": "2",
+      "clause_num": "D(2)",
+      "text": "At least one of the authentication methodologies shall be dynamic or non-replicable.",
+      "risk_level": "high",
+      "reason": "Clause describes a process or procedure with a customer-facing obligation but has no hard penalty or deadline attached.",
+      "status": "included",
+      "chapter_title": "Chapter III - General Controls :: D. Authentication Framework",
+      "page_start": 15,
+      "page_end": 16,
+      "truncated": false
+    },
+    {
+      "clause_num": "D(3)",
       "text": "The bank shall ensure to design and implement robust multi-factor authentication methods to act as a strong fraud deterrent; be more difficult to compromise; protect the confidentiality of payment data; and enhance confidence in digital payment by effectively addressing various cyber-attack mechanisms like phishing, keylogging, spyware/malware, and other internet-based frauds targeted at the bank and its customers.",
       "risk_level": "high",
-      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement",
+      "reason": "Clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
       "status": "included",
       "chapter_title": "Chapter III - General Controls :: D. Authentication Framework",
       "page_start": 15,
@@ -630,10 +795,10 @@
       "truncated": false
     },
     {
-      "clause_num": "3",
+      "clause_num": "D(4)",
       "text": "The implementation of appropriate authentication methods shall be based on an assessment of the risks posed by the bank's digital payment products and services. The risks shall be evaluated in light of the type of customer (e.g., retail/corporate/commercial), the customer transactional requirements/pattern (e.g., bill payment, fund transfer), the sensitivity of customer information and the volume, value of transactions involved.",
       "risk_level": "high",
-      "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached",
+      "reason": "Clause describes a process or procedure with a customer-facing obligation but has no hard penalty or deadline attached.",
       "status": "included",
       "chapter_title": "Chapter III - General Controls :: D. Authentication Framework",
       "page_start": 15,
@@ -641,10 +806,10 @@
       "truncated": false
     },
     {
-      "clause_num": "4",
+      "clause_num": "D(5)",
       "text": "The bank shall implement multi factor authentication and alerts (through channels such as SMS and email) for all payment transactions (including debits and credits), creation of new account linkages (addition/modification/deletion of beneficiaries), change in account details or revision to fund transfer limits.",
       "risk_level": "high",
-      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement",
+      "reason": "Clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
       "status": "included",
       "chapter_title": "Chapter III - General Controls :: D. Authentication Framework",
       "page_start": 15,
@@ -652,10 +817,32 @@
       "truncated": false
     },
     {
-      "clause_num": "5",
+      "clause_num": "D(6)",
+      "text": "As an integral part of the multi factor authentication architecture, the bank shall also implement appropriate measures to minimise exposure to middleman attack which is more commonly known as a man-in-the-middle attack (MITM), man-inthe browser (MITB) attack or man-in-the application attack.",
+      "risk_level": "high",
+      "reason": "Clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
+      "status": "included",
+      "chapter_title": "Chapter III - General Controls :: D. Authentication Framework",
+      "page_start": 15,
+      "page_end": 16,
+      "truncated": false
+    },
+    {
+      "clause_num": "D(7)",
+      "text": "The bank shall ensure that an authenticated session, together with its encryption protocol, shall remain intact throughout the interaction with the customer. In the event of interference or in case of closure of the application by the customer, the session shall be terminated, and the affected transactions shall be resolved or reversed out.",
+      "risk_level": "high",
+      "reason": "Clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
+      "status": "included",
+      "chapter_title": "Chapter III - General Controls :: D. Authentication Framework",
+      "page_start": 15,
+      "page_end": 16,
+      "truncated": false
+    },
+    {
+      "clause_num": "D(8)",
       "text": "The bank shall set down the maximum number of failed login or authentication attempts after which access to the digital payment product/service is blocked.",
       "risk_level": "high",
-      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement",
+      "reason": "Clause describes a process or procedure with a customer-facing obligation but has no hard penalty or deadline attached.",
       "status": "included",
       "chapter_title": "Chapter III - General Controls :: D. Authentication Framework",
       "page_start": 15,
@@ -663,10 +850,10 @@
       "truncated": false
     },
     {
-      "clause_num": "6",
+      "clause_num": "D(9)",
       "text": "The bank shall have a secure procedure in place to re-activate the access to blocked product/service. The bank shall notify the customer of failed login or authentication attempts.",
       "risk_level": "high",
-      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement",
+      "reason": "Clause describes a process or procedure with a customer-facing obligation but has no hard penalty or deadline attached.",
       "status": "included",
       "chapter_title": "Chapter III - General Controls :: D. Authentication Framework",
       "page_start": 15,
@@ -674,10 +861,10 @@
       "truncated": false
     },
     {
-      "clause_num": "E.1",
+      "clause_num": "E(1)",
       "text": "The bank shall document and implement the configuration requirements for identifying suspicious transactional behaviour, including rules, preventive and detective controls, mechanism to alert customers in case of failed authentication attempts, and the applicable time frames.",
       "risk_level": "high",
-      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter III - General Controls :: E. Fraud Risk Management",
       "page_start": 17,
@@ -685,10 +872,10 @@
       "truncated": false
     },
     {
-      "clause_num": "E.2",
+      "clause_num": "E(2)",
       "text": "The bank shall parameterise and monitor system alerts in terms of various applicable parameters.",
       "risk_level": "high",
-      "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter III - General Controls :: E. Fraud Risk Management",
       "page_start": 17,
@@ -696,10 +883,21 @@
       "truncated": false
     },
     {
-      "clause_num": "E.3",
+      "clause_num": "E(3)",
+      "text": "Such parameters, as applicable could include: Transaction velocity (e.g., fund transfers, cash withdrawals, payments through electronic modes, and addition of new beneficiaries) in a short period, more so in the accounts of customers who have never used mobile app / internet banking / card (depending upon the type of payment channel), high risk merchant category codes (MCC) parameters, counterfeit card parameters (e.g., String of Invalid Card Verification Value (CVV) / PINs indicates an account generation attack), new account parameters (excessive activity on a new account), time zones, geo-locations, IP address origin (in respect of unusual patterns, prohibited zones / rogue IPs), behavioural biometrics, transaction origination from point of compromise, transactions to mobile wallets / mobile numbers / Virtual Payment Address (VPAs) on whom vishing fraud or other types of fraud is / are registered / recorded, declined transactions, and transactions with no approval code.",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter III - General Controls :: E. Fraud Risk Management",
+      "page_start": 17,
+      "page_end": 18,
+      "truncated": false
+    },
+    {
+      "clause_num": "E(4)",
       "text": "The bank shall conduct fraud analysis to identify the reason for fraud occurrence and determine mechanism to prevent such frauds.",
       "risk_level": "high",
-      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter III - General Controls :: E. Fraud Risk Management",
       "page_start": 17,
@@ -707,10 +905,10 @@
       "truncated": false
     },
     {
-      "clause_num": "E.4",
-      "text": "The bank shall educate the staff, especially in the fraud control function, about frauds and train them in the following skills and areas of expertise:",
+      "clause_num": "E(5)",
+      "text": "The bank shall educate the staff, especially in the fraud control function, about frauds and train them in the following skills and areas of expertise: fraud control tools and their usage; investigative techniques and procedures; cardholder and merchant education techniques to prevent fraud; scheme / card operating regulations; data processing and analysis, liaising or communicating with law enforcement agencies; and the requisite skills required to (i) set and update appropriate rules, (ii) monitor the exceptions thrown based on the rules on a continuous basis and take necessary actions promptly, (iii) communicate / escalate wherever required to appropriate authorities, and (iv) differentiate false positives from the rest.",
       "risk_level": "high",
-      "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter III - General Controls :: E. Fraud Risk Management",
       "page_start": 17,
@@ -718,65 +916,10 @@
       "truncated": false
     },
     {
-      "clause_num": "E.5",
-      "text": "fraud control tools and their usage;",
-      "risk_level": "low",
-      "reason": "definitional, background, or explanatory clause with no direct compliance action required.",
-      "status": "included",
-      "chapter_title": "Chapter III - General Controls :: E. Fraud Risk Management",
-      "page_start": 17,
-      "page_end": 18,
-      "truncated": false
-    },
-    {
-      "clause_num": "E.6",
-      "text": "investigative techniques and procedures;",
-      "risk_level": "low",
-      "reason": "definitional, background, or explanatory clause with no direct compliance action required.",
-      "status": "included",
-      "chapter_title": "Chapter III - General Controls :: E. Fraud Risk Management",
-      "page_start": 17,
-      "page_end": 18,
-      "truncated": false
-    },
-    {
-      "clause_num": "E.7",
-      "text": "cardholder and merchant education techniques to prevent fraud;",
-      "risk_level": "medium",
-      "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
-      "status": "included",
-      "chapter_title": "Chapter III - General Controls :: E. Fraud Risk Management",
-      "page_start": 17,
-      "page_end": 18,
-      "truncated": false
-    },
-    {
-      "clause_num": "E.8",
-      "text": "scheme / card operating regulations;",
-      "risk_level": "low",
-      "reason": "definitional, background, or explanatory clause with no direct compliance action required.",
-      "status": "included",
-      "chapter_title": "Chapter III - General Controls :: E. Fraud Risk Management",
-      "page_start": 17,
-      "page_end": 18,
-      "truncated": false
-    },
-    {
-      "clause_num": "E.9",
-      "text": "data processing and analysis, liaising or communicating with law enforcement agencies;",
-      "risk_level": "medium",
-      "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
-      "status": "included",
-      "chapter_title": "Chapter III - General Controls :: E. Fraud Risk Management",
-      "page_start": 17,
-      "page_end": 18,
-      "truncated": false
-    },
-    {
-      "clause_num": "E.10",
-      "text": "the requisite skills required to (i) set and update appropriate rules, (ii) monitor the exceptions thrown based on the rules on a continuous basis and take necessary actions promptly, (iii) communicate / escalate wherever required to appropriate authorities, and (iv) differentiate false positives from the rest.",
+      "clause_num": "E(6)",
+      "text": "The bank shall maintain updated contact details of service providers, intermediaries, external agencies, and other stakeholders for coordination in incident response. The bank shall put in place a mechanism with the stakeholders to update and verify such contact details. The bank shall also formulate specific Standard Operating Procedures (SOPs) to handle incidents related to payment ecosystem to mitigate the loss either to the customer or the bank.",
       "risk_level": "high",
-      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
+      "reason": "",
       "status": "included",
       "chapter_title": "Chapter III - General Controls :: E. Fraud Risk Management",
       "page_start": 17,
@@ -784,41 +927,8 @@
       "truncated": false
     },
     {
-      "clause_num": "E.11",
-      "text": "The bank shall maintain updated contact details of service providers, intermediaries, external agencies, and other stakeholders for coordination in incident response.",
-      "risk_level": "high",
-      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
-      "status": "included",
-      "chapter_title": "Chapter III - General Controls :: E. Fraud Risk Management",
-      "page_start": 17,
-      "page_end": 18,
-      "truncated": false
-    },
-    {
-      "clause_num": "E.12",
-      "text": "The bank shall put in place a mechanism with the stakeholders to update and verify such contact details.",
-      "risk_level": "high",
-      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
-      "status": "included",
-      "chapter_title": "Chapter III - General Controls :: E. Fraud Risk Management",
-      "page_start": 17,
-      "page_end": 18,
-      "truncated": false
-    },
-    {
-      "clause_num": "E.13",
-      "text": "The bank shall also formulate specific Standard Operating Procedures (SOPs) to handle incidents related to payment ecosystem to mitigate the loss either to the customer or the bank.",
-      "risk_level": "high",
-      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
-      "status": "included",
-      "chapter_title": "Chapter III - General Controls :: E. Fraud Risk Management",
-      "page_start": 17,
-      "page_end": 18,
-      "truncated": false
-    },
-    {
-      "clause_num": "F.1",
-      "text": "A real-time / near-real-time [not later than 24 hours from the time of receipt of settlement  file(s)]  reconciliation  framework  for  all  digital  payment  transactions between the bank and all other stakeholders such as payment system operators, business correspondents, card networks, payment system processors, payment aggregators, payment gateways, third-party technology service providers, and other  participants  shall  be  put  in  place  for  better  detection  and  prevention  of suspicious transactions.",
+      "clause_num": "F(1)",
+      "text": "A real-time / near-real-time [not later than 24 hours from the time of receipt of settlement  file(s)]  reconciliation  framework  for  all  digital  payment  transactions between the bank and all other stakeholders",
       "risk_level": "high",
       "reason": "clause imposes a hard deadline",
       "status": "included",
@@ -828,8 +938,8 @@
       "truncated": false
     },
     {
-      "clause_num": "F.2",
-      "text": "The bank shall also have a mechanism to monitor the implementation and effectiveness of such framework.",
+      "clause_num": "F(2)",
+      "text": "The bank shall also have a mechanism to monitor the implementation and effectiveness of such framework",
       "risk_level": "high",
       "reason": "clause describes a process or procedure with a customer-facing obligation",
       "status": "included",
@@ -851,7 +961,7 @@
     },
     {
       "clause_num": "G.2",
-      "text": "The bank shall make it mandatory (i.e., not providing any option to circumvent / avoid the material) for the customer to go through secure usage guidelines (in the customer's preferred language) while obtaining and recording confirmation during the on-boarding procedure in the first instance and first use after each update of the digital payment application or after major updates to secure and safe usage guidelines.",
+      "text": "The bank shall make it mandatory for the customer to go through secure usage guidelines (in the customer's preferred language) while obtaining and recording confirmation during the on-boarding procedure in the first instance and first use after each update of the digital payment application or after major updates to secure and safe usage guidelines.",
       "risk_level": "high",
       "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
       "status": "included",
@@ -886,7 +996,7 @@
       "clause_num": "G.5",
       "text": "The bank shall educate customers about the need to maintain the physical and logical security of their devices accessing digital payment products and services.",
       "risk_level": "high",
-      "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
+      "reason": "definitional, background, or explanatory clause with no direct compliance action required.",
       "status": "included",
       "chapter_title": "Chapter III - General Controls :: G. Customer Protection, Awareness and Grievance Redressal Mechanism",
       "page_start": 19,
@@ -897,7 +1007,7 @@
       "clause_num": "G.6",
       "text": "This shall include but not be limited to recommending secure and regular installation of operating system and application updates, downloading applications only from authorised sources, and having anti-malware / anti-virus applications on devices.",
       "risk_level": "high",
-      "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
+      "reason": "definitional, background, or explanatory clause with no direct compliance action required.",
       "status": "included",
       "chapter_title": "Chapter III - General Controls :: G. Customer Protection, Awareness and Grievance Redressal Mechanism",
       "page_start": 19,
@@ -930,7 +1040,7 @@
       "clause_num": "G.9",
       "text": "The terms and conditions including customer privacy and security policy applying to digital payment products and services shall be readily available to customers within the product.",
       "risk_level": "high",
-      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
+      "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
       "status": "included",
       "chapter_title": "Chapter III - General Controls :: G. Customer Protection, Awareness and Grievance Redressal Mechanism",
       "page_start": 19,
@@ -952,7 +1062,7 @@
       "clause_num": "G.11",
       "text": "The bank shall provide clear and effective communication, along with sufficient instructions, to enable customers to properly utilise any new operating features or functions, particularly those relating to security, integrity, and authentication, introduced to online delivery channels.",
       "risk_level": "high",
-      "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
+      "reason": "definitional, background, or explanatory clause with no direct compliance action required.",
       "status": "included",
       "chapter_title": "Chapter III - General Controls :: G. Customer Protection, Awareness and Grievance Redressal Mechanism",
       "page_start": 19,
@@ -974,7 +1084,7 @@
       "clause_num": "G.13",
       "text": "The bank shall caution the customers against commonly observed threats including phishing, vishing, reverse phishing, remote access of mobile devices, and educate them to secure and safeguard their account details, credentials, PIN, card details, devices and other authentication information.",
       "risk_level": "high",
-      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
+      "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
       "status": "included",
       "chapter_title": "Chapter III - General Controls :: G. Customer Protection, Awareness and Grievance Redressal Mechanism",
       "page_start": 19,
@@ -985,7 +1095,7 @@
       "clause_num": "G.14",
       "text": "The bank shall provide digital payment products and services to a customer only at their option based on a specific written or authenticated electronic requisition along with a positive acknowledgement of the terms and conditions.",
       "risk_level": "high",
-      "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
+      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
       "status": "included",
       "chapter_title": "Chapter III - General Controls :: G. Customer Protection, Awareness and Grievance Redressal Mechanism",
       "page_start": 19,
@@ -1004,21 +1114,10 @@
       "truncated": false
     },
     {
-      "clause_num": "G.16",
-      "text": "The bank may also have a mechanism to receive such fraudulent transactions reported from other entities.",
-      "risk_level": "low",
-      "reason": "definitional, background, or explanatory clause with no direct compliance action required.",
-      "status": "included",
-      "chapter_title": "Chapter III - General Controls :: G. Customer Protection, Awareness and Grievance Redressal Mechanism",
-      "page_start": 19,
-      "page_end": 21,
-      "truncated": false
-    },
-    {
-      "clause_num": "1",
-      "text": "The bank, based on its risk/vulnerability assessment on authentication-related attacks such as brute force/Denial of Service (DoS) attacks, shall implement additional levels of authentication to internet banking websites such as adaptive authentication, strong CAPTCHA (with anti-bot features) with server-side validation, in order to plug the vulnerability and prevent its exploitation.",
+      "clause_num": "IV(1)",
+      "text": "shall implement additional levels of authentication to internet banking websites",
       "risk_level": "high",
-      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
+      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement",
       "status": "included",
       "chapter_title": "Chapter IV - Internet Banking Security Controls :: (full chapter)",
       "page_start": 21,
@@ -1026,10 +1125,10 @@
       "truncated": false
     },
     {
-      "clause_num": "2",
-      "text": "The bank shall take appropriate measures to prevent Domain Name System (DNS) cache poisoning attacks and for secure handling of cookies.",
-      "risk_level": "high",
-      "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
+      "clause_num": "IV(2)",
+      "text": "take appropriate measures to prevent Domain Name System (DNS) cache poisoning attacks",
+      "risk_level": "medium",
+      "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached",
       "status": "included",
       "chapter_title": "Chapter IV - Internet Banking Security Controls :: (full chapter)",
       "page_start": 21,
@@ -1037,10 +1136,21 @@
       "truncated": false
     },
     {
-      "clause_num": "3",
-      "text": "A virtual keyboard option shall be made available.",
-      "risk_level": "high",
-      "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
+      "clause_num": "IV(3)",
+      "text": "make available a virtual keyboard option",
+      "risk_level": "medium",
+      "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter IV - Internet Banking Security Controls :: (full chapter)",
+      "page_start": 21,
+      "page_end": 21,
+      "truncated": false
+    },
+    {
+      "clause_num": "IV(4)",
+      "text": "automatically terminate an online session after a fixed period of inactivity",
+      "risk_level": "medium",
+      "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached",
       "status": "included",
       "chapter_title": "Chapter IV - Internet Banking Security Controls :: (full chapter)",
       "page_start": 21,
@@ -1048,10 +1158,10 @@
       "truncated": false
     },
     {
-      "clause_num": "4",
-      "text": "An online session shall be automatically terminated after a fixed period of inactivity.",
+      "clause_num": "IV(5)",
+      "text": "ensure secure delivery of password for login purpose",
       "risk_level": "high",
-      "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached.",
+      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement",
       "status": "included",
       "chapter_title": "Chapter IV - Internet Banking Security Controls :: (full chapter)",
       "page_start": 21,
@@ -1059,43 +1169,32 @@
       "truncated": false
     },
     {
-      "clause_num": "5",
-      "text": "The bank shall ensure secure delivery of password for login purpose. The password generated and dispatched by the bank shall be valid for a limited period from the date of its creation. If the password is generated and dispatched by the bank, then the user shall be compulsorily required to change the password, on the first login.",
+      "clause_num": "IV(6)",
+      "text": "compulsorily require the user to change the password on the first login if the password is generated and dispatched by the bank",
       "risk_level": "high",
-      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
-      "status": "included",
+      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement",
+      "status": "dropped_ungrounded",
       "chapter_title": "Chapter IV - Internet Banking Security Controls :: (full chapter)",
       "page_start": 21,
       "page_end": 21,
       "truncated": false
     },
     {
-      "clause_num": "6",
-      "text": "When the internet banking application is accessed through external websites (e.g., in case of payment of taxes, e-commerce transactions), the procedure for authentication and the appearance/look/feel of the bank's internet banking site shall be made uniform as far as possible.",
-      "risk_level": "high",
-      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
-      "status": "included",
+      "clause_num": "IV(7)",
+      "text": "make uniform the procedure for authentication and the appearance/look/feel of the bank's internet banking site when accessed through external websites",
+      "risk_level": "medium",
+      "reason": "clause describes a process or procedure with a customer-facing obligation, but has no hard penalty or deadline attached",
+      "status": "dropped_ungrounded",
       "chapter_title": "Chapter IV - Internet Banking Security Controls :: (full chapter)",
       "page_start": 21,
       "page_end": 21,
       "truncated": false
     },
     {
-      "clause_num": "1",
-      "text": "On detection of any anomalies or exceptions for which the mobile application was not programmed, the customer shall be directed to remove the current copy / instance of the application and proceed with installation of a new copy / instance of the application.",
-      "risk_level": "high",
-      "reason": "clause imposes a hard deadline",
-      "status": "included",
-      "chapter_title": "Chapter V - Mobile Payments Application Security Controls :: (full chapter)",
-      "page_start": 22,
-      "page_end": 22,
-      "truncated": false
-    },
-    {
-      "clause_num": "2",
+      "clause_num": "5(12)",
       "text": "The bank shall ensure implementation of the following specific controls for mobile applications:",
       "risk_level": "high",
-      "reason": "clause describes a process or procedure with a customer-facing obligation",
+      "reason": "ensures compliance with security requirements",
       "status": "included",
       "chapter_title": "Chapter V - Mobile Payments Application Security Controls :: (full chapter)",
       "page_start": 22,
@@ -1103,10 +1202,10 @@
       "truncated": false
     },
     {
-      "clause_num": "3",
-      "text": "(i) device policy enforcement [allowing the installation / execution of applications only after baseline requirements defined based on the bank's risk assessment, are met. The baseline requirements shall include but not be limited to checks for vulnerable operating system, vulnerable or malicious applications, and insecure Wi-Fi configurations];",
+      "clause_num": "5(13)",
+      "text": "The bank shall host the checksum of current active version of its mobile application on public platform so that users can verify the same.",
       "risk_level": "high",
-      "reason": "clause imposes a hard requirement",
+      "reason": "provides mechanism for verifying authenticity of mobile application",
       "status": "included",
       "chapter_title": "Chapter V - Mobile Payments Application Security Controls :: (full chapter)",
       "page_start": 22,
@@ -1114,10 +1213,10 @@
       "truncated": false
     },
     {
-      "clause_num": "4",
-      "text": "(ii) application secure download / install;",
+      "clause_num": "5(14)",
+      "text": "The bank shall ensure device binding of the mobile application.",
       "risk_level": "high",
-      "reason": "clause imposes a hard requirement",
+      "reason": "prevents unauthorized access to customer data",
       "status": "included",
       "chapter_title": "Chapter V - Mobile Payments Application Security Controls :: (full chapter)",
       "page_start": 22,
@@ -1125,10 +1224,21 @@
       "truncated": false
     },
     {
-      "clause_num": "5",
-      "text": "(iii) deactivating older application versions in a phased but time-bound manner (not exceeding six months from the date of release of newer version) i.e., maintaining only one version (excluding the overlap period while phasing out older version) of the mobile application on a platform / operating system;",
+      "clause_num": "5(15)",
+      "text": "The bank may implement alternatives to SMS-based OTP authentication mechanisms.",
+      "risk_level": "low",
+      "reason": "provides flexibility in authentication methods",
+      "status": "included",
+      "chapter_title": "Chapter V - Mobile Payments Application Security Controls :: (full chapter)",
+      "page_start": 22,
+      "page_end": 22,
+      "truncated": false
+    },
+    {
+      "clause_num": "5(16)",
+      "text": "The mobile application shall require re-authentication whenever the device or application remains unused for a designated period and each time the user launches the application.",
       "risk_level": "high",
-      "reason": "clause imposes a hard deadline",
+      "reason": "enhances security against unauthorized access",
       "status": "included",
       "chapter_title": "Chapter V - Mobile Payments Application Security Controls :: (full chapter)",
       "page_start": 22,
@@ -1136,65 +1246,10 @@
       "truncated": false
     },
     {
-      "clause_num": "6",
-      "text": "(iv) ability to identify remote access applications (to the extent possible) and prohibit login access to the mobile application;",
-      "risk_level": "medium",
-      "reason": "clause describes a process or procedure with a customer-facing obligation",
-      "status": "included",
-      "chapter_title": "Chapter V - Mobile Payments Application Security Controls :: (full chapter)",
-      "page_start": 22,
-      "page_end": 22,
-      "truncated": false
-    },
-    {
-      "clause_num": "7",
-      "text": "(v) storage of customer data;",
-      "risk_level": "medium",
-      "reason": "clause describes a process or procedure with a customer-facing obligation",
-      "status": "included",
-      "chapter_title": "Chapter V - Mobile Payments Application Security Controls :: (full chapter)",
-      "page_start": 22,
-      "page_end": 22,
-      "truncated": false
-    },
-    {
-      "clause_num": "8",
-      "text": "(vi) device or application encryption (to prevent compromise of sensitive customer information stored on the device);",
+      "clause_num": "5(17)",
+      "text": "The bank shall ensure that mobile applications are able to identify new network connections or connections from unsecured networks, and shall implement appropriate authentication/ checks/measures to perform transactions under such circumstances.",
       "risk_level": "high",
-      "reason": "clause imposes a hard requirement",
-      "status": "included",
-      "chapter_title": "Chapter V - Mobile Payments Application Security Controls :: (full chapter)",
-      "page_start": 22,
-      "page_end": 22,
-      "truncated": false
-    },
-    {
-      "clause_num": "9",
-      "text": "(vii) ensuring minimal data collection / app permissions;",
-      "risk_level": "medium",
-      "reason": "clause describes a process or procedure with a customer-facing obligation",
-      "status": "included",
-      "chapter_title": "Chapter V - Mobile Payments Application Security Controls :: (full chapter)",
-      "page_start": 22,
-      "page_end": 22,
-      "truncated": false
-    },
-    {
-      "clause_num": "10",
-      "text": "(viii) application sandbox / containerisation;",
-      "risk_level": "high",
-      "reason": "clause imposes a hard requirement",
-      "status": "included",
-      "chapter_title": "Chapter V - Mobile Payments Application Security Controls :: (full chapter)",
-      "page_start": 22,
-      "page_end": 22,
-      "truncated": false
-    },
-    {
-      "clause_num": "11",
-      "text": "(ix) code obfuscation.",
-      "risk_level": "high",
-      "reason": "clause imposes a hard requirement",
+      "reason": "ensures secure transaction processing",
       "status": "dropped_ungrounded",
       "chapter_title": "Chapter V - Mobile Payments Application Security Controls :: (full chapter)",
       "page_start": 22,
@@ -1202,32 +1257,10 @@
       "truncated": false
     },
     {
-      "clause_num": "12",
-      "text": "The bank may perform validation on the security and compatibility condition of the device / operating system and the mobile application to ensure that activities relating to the account are put through the mobile application in a safe and secure manner.",
-      "risk_level": "low",
-      "reason": "clause is definitional",
-      "status": "included",
-      "chapter_title": "Chapter V - Mobile Payments Application Security Controls :: (full chapter)",
-      "page_start": 22,
-      "page_end": 22,
-      "truncated": false
-    },
-    {
-      "clause_num": "13",
-      "text": "The bank may explore the feasibility of implementing a code that checks if the device is rooted / jailbroken prior to the installation of the mobile application and disallow the mobile application to install / function if the phone is rooted / jailbroken.",
-      "risk_level": "low",
-      "reason": "clause is definitional",
-      "status": "included",
-      "chapter_title": "Chapter V - Mobile Payments Application Security Controls :: (full chapter)",
-      "page_start": 22,
-      "page_end": 22,
-      "truncated": false
-    },
-    {
-      "clause_num": "14",
-      "text": "The bank shall host the checksum of current active version of its mobile application on public platform so that users can verify the same. A checksum may be treated as a unique mechanism for identifying the bank's mobile application and for distinguishing it from unauthorised or rogue mobile applications.",
+      "clause_num": "5(18)",
+      "text": "The mobile application shall not store/retain sensitive personal/customer authentication information such as user IDs, passwords, keys, hashes, and hard coded references, on the device and the application shall securely wipe all sensitive customer information from memory when the customer/user exits the application.",
       "risk_level": "high",
-      "reason": "clause describes a process or procedure with a customer-facing obligation",
+      "reason": "protects sensitive customer data",
       "status": "included",
       "chapter_title": "Chapter V - Mobile Payments Application Security Controls :: (full chapter)",
       "page_start": 22,
@@ -1235,10 +1268,10 @@
       "truncated": false
     },
     {
-      "clause_num": "15",
-      "text": "The bank shall ensure device binding of the mobile application. Device binding shall be implemented through a combination of hardware, software, and service information.",
+      "clause_num": "5(19)",
+      "text": "The bank shall ensure that its mobile application limits writing of sensitive information into 'temp' files. The sensitive information written in such files shall be suitably encrypted/masked/hashed and stored securely.",
       "risk_level": "high",
-      "reason": "clause imposes a hard requirement",
+      "reason": "prevents unauthorized access to sensitive data",
       "status": "included",
       "chapter_title": "Chapter V - Mobile Payments Application Security Controls :: (full chapter)",
       "page_start": 22,
@@ -1246,76 +1279,10 @@
       "truncated": false
     },
     {
-      "clause_num": "16",
-      "text": "In case, the bank allows multiple devices to be registered, then (i) the user shall be notified of every new device registration on multiple channels such as registered mobile number, email, or phone call, and (ii) in relation to the mobile application, the bank shall maintain a record of all registered devices, providing the user a facility to disable a registered device.",
-      "risk_level": "high",
-      "reason": "clause describes a process or procedure with a customer-facing obligation",
-      "status": "included",
-      "chapter_title": "Chapter V - Mobile Payments Application Security Controls :: (full chapter)",
-      "page_start": 22,
-      "page_end": 22,
-      "truncated": false
-    },
-    {
-      "clause_num": "17",
-      "text": "The bank may implement alternatives to SMS-based OTP authentication mechanisms.",
-      "risk_level": "low",
-      "reason": "clause is definitional",
-      "status": "included",
-      "chapter_title": "Chapter V - Mobile Payments Application Security Controls :: (full chapter)",
-      "page_start": 22,
-      "page_end": 22,
-      "truncated": false
-    },
-    {
-      "clause_num": "18",
-      "text": "The mobile application shall require re-authentication whenever the device or application remains unused for a designated period and each time the user launches the application.",
-      "risk_level": "high",
-      "reason": "clause imposes a hard deadline",
-      "status": "included",
-      "chapter_title": "Chapter V - Mobile Payments Application Security Controls :: (full chapter)",
-      "page_start": 22,
-      "page_end": 22,
-      "truncated": false
-    },
-    {
-      "clause_num": "19",
-      "text": "The bank shall ensure that mobile applications are able to identify new network connections or connections from unsecured networks, such as unsecured Wi-Fi connections, and shall implement appropriate authentication / checks / measures to perform transactions under such circumstances.",
-      "risk_level": "high",
-      "reason": "clause imposes a hard requirement",
-      "status": "included",
-      "chapter_title": "Chapter V - Mobile Payments Application Security Controls :: (full chapter)",
-      "page_start": 22,
-      "page_end": 22,
-      "truncated": false
-    },
-    {
-      "clause_num": "20",
-      "text": "The mobile application shall not store / retain sensitive personal / customer authentication information such as user IDs, passwords, keys, hashes, and hard coded references, on the device and the application shall securely wipe all sensitive customer information from memory when the customer / user exits the application.",
-      "risk_level": "high",
-      "reason": "clause imposes a hard requirement",
-      "status": "included",
-      "chapter_title": "Chapter V - Mobile Payments Application Security Controls :: (full chapter)",
-      "page_start": 22,
-      "page_end": 22,
-      "truncated": false
-    },
-    {
-      "clause_num": "21",
-      "text": "The bank shall ensure that its mobile application limits writing of sensitive information into 'temp' files. The sensitive information written in such files shall be suitably encrypted / masked / hashed and stored securely.",
-      "risk_level": "high",
-      "reason": "clause describes a process or procedure with a customer-facing obligation",
-      "status": "included",
-      "chapter_title": "Chapter V - Mobile Payments Application Security Controls :: (full chapter)",
-      "page_start": 22,
-      "page_end": 22,
-      "truncated": false
-    },
-    {
-      "clause_num": "22",
+      "clause_num": "5(20)",
       "text": "The bank may consider designing anti-malware capabilities into its mobile application.",
       "risk_level": "low",
-      "reason": "clause is definitional",
+      "reason": "provides additional security measures",
       "status": "included",
       "chapter_title": "Chapter V - Mobile Payments Application Security Controls :: (full chapter)",
       "page_start": 22,
@@ -1323,429 +1290,21 @@
       "truncated": false
     },
     {
-      "clause_num": "23",
-      "text": "The bank shall ensure to (i) avoid usage of raw (visible) Structured Query Language (SQL) queries in mobile applications to fetch or update data from databases;",
+      "clause_num": "A(1)",
+      "text": "With the issue of these Directions, the existing directions, instructions, and guidelines relating to Digital Payment Security Controls as applicable to Commercial Banks stand repealed, as communicated vide circular no. DoS.CO.PPG.66/11.01.005/2026-27 dated July 31, 2026.",
       "risk_level": "high",
-      "reason": "clause imposes a hard requirement",
-      "status": "included",
-      "chapter_title": "Chapter V - Mobile Payments Application Security Controls :: (full chapter)",
-      "page_start": 22,
-      "page_end": 22,
-      "truncated": false
-    },
-    {
-      "clause_num": "24",
-      "text": "(ii) secure mobile applications from SQL injection type of vulnerabilities;",
-      "risk_level": "high",
-      "reason": "clause imposes a hard requirement",
-      "status": "included",
-      "chapter_title": "Chapter V - Mobile Payments Application Security Controls :: (full chapter)",
-      "page_start": 22,
-      "page_end": 22,
-      "truncated": false
-    },
-    {
-      "clause_num": "25",
-      "text": "(iii) write sensitive information to the database in an encrypted form (database here refers to the database in the mobile application at client's end. The bank shall encrypt the sensitive data stored in the database used by the mobile application.);",
-      "risk_level": "high",
-      "reason": "clause imposes a hard requirement",
-      "status": "included",
-      "chapter_title": "Chapter V - Mobile Payments Application Security Controls :: (full chapter)",
-      "page_start": 22,
-      "page_end": 22,
-      "truncated": false
-    },
-    {
-      "clause_num": "26",
-      "text": "(iv) prevent loading web content, as part of the mobile application's layout if errors are detected during Secure Sockets Layer (SSL) / Transport Layer Security (TLS) negotiation;",
-      "risk_level": "medium",
-      "reason": "clause describes a process or procedure with a customer-facing obligation",
-      "status": "included",
-      "chapter_title": "Chapter V - Mobile Payments Application Security Controls :: (full chapter)",
-      "page_start": 22,
-      "page_end": 22,
-      "truncated": false
-    },
-    {
-      "clause_num": "27",
-      "text": "(v) display certificate errors on account of the certificate not being signed by a recognised certificate authority or due to expiry / revocation of the certificate, to the user.",
-      "risk_level": "medium",
-      "reason": "clause describes a process or procedure with a customer-facing obligation",
-      "status": "included",
-      "chapter_title": "Chapter V - Mobile Payments Application Security Controls :: (full chapter)",
-      "page_start": 22,
-      "page_end": 22,
-      "truncated": false
-    },
-    {
-      "clause_num": "1",
-      "text": "The bank shall follow various payment card standards [over and above Payment Card Industry-Data Security Standard (PCI-DSS) and Payment Card Industry-Software Security Framework (PCI-SSF)] as per Payment Card Industry (PCI) prescriptions for comprehensive payment card security as per applicability / readiness of updated versions of the standards such as:",
-      "risk_level": "high",
-      "reason": "",
-      "status": "included",
-      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
-      "page_start": 26,
-      "page_end": 26,
-      "truncated": false
-    },
-    {
-      "clause_num": "2",
-      "text": "With reference to paragraph 69(1), though formal certification may not be mandatory, the bank shall follow these standards holistically, as per applicability.",
-      "risk_level": "high",
-      "reason": "",
-      "status": "included",
-      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
-      "page_start": 26,
-      "page_end": 26,
-      "truncated": false
-    },
-    {
-      "clause_num": "3",
-      "text": "The bank shall put up a status report on compliance with these standards to its IT Strategy Committee, as prescribed under Reserve Bank of India (Commercial Banks - Cybersecurity, Technology: Risk, Resilience and Assurance Framework) Directions, 2026, for deliberation and appropriate action.",
-      "risk_level": "high",
-      "reason": "",
-      "status": "included",
-      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
-      "page_start": 26,
-      "page_end": 26,
-      "truncated": false
-    },
-    {
-      "clause_num": "4",
-      "text": "The bank shall ensure that terminals installed at the merchants for capturing card details for payments or otherwise are validated against the PCI-P2PE program to use PCI-approved P2PE solutions and",
-      "risk_level": "high",
-      "reason": "",
-      "status": "included",
-      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
-      "page_start": 26,
-      "page_end": 26,
-      "truncated": false
-    },
-    {
-      "clause_num": "5",
-      "text": "PoS terminals with PIN entry installed at the merchants for capturing card payments (including the double swipe terminals) are approved by the PCI-PTS program. While deploying any new PoS terminals, the bank shall ensure that such terminals are certified in accordance with PCI-PTS requirements.",
-      "risk_level": "high",
-      "reason": "",
-      "status": "included",
-      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
-      "page_start": 26,
-      "page_end": 26,
-      "truncated": false
-    },
-    {
-      "clause_num": "6",
-      "text": "The bank as an Acquirer shall secure its card payment infrastructure [Unique Key Per Terminal (UKPT) or Derived Unique Key Per Transaction (DUKPT) / Terminal Line Encryption (TLE)].",
-      "risk_level": "high",
-      "reason": "",
-      "status": "included",
-      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
-      "page_start": 26,
-      "page_end": 26,
-      "truncated": false
-    },
-    {
-      "clause_num": "7",
-      "text": "The bank shall implement the following controls at the HSMs: The HSMs shall have logging enabled and the logs must themselves be tamper proof.",
-      "risk_level": "high",
-      "reason": "",
-      "status": "included",
-      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
-      "page_start": 26,
-      "page_end": 26,
-      "truncated": false
-    },
-    {
-      "clause_num": "8",
-      "text": "The bank shall mitigate the risk of single point of failure at HSM by implementing 'clustering' for high availability and ensuring secure backups.",
-      "risk_level": "high",
-      "reason": "",
-      "status": "included",
-      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
-      "page_start": 26,
-      "page_end": 26,
-      "truncated": false
-    },
-    {
-      "clause_num": "9",
-      "text": "The bank shall ensure access to the HSM through Access Control Lists (ACLs).",
-      "risk_level": "high",
-      "reason": "",
-      "status": "included",
-      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
-      "page_start": 26,
-      "page_end": 26,
-      "truncated": false
-    },
-    {
-      "clause_num": "10",
-      "text": "The bank shall maintain separate ACLs for each individual application to ensure application-level isolation.",
-      "risk_level": "high",
-      "reason": "",
-      "status": "included",
-      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
-      "page_start": 26,
-      "page_end": 26,
-      "truncated": false
-    },
-    {
-      "clause_num": "11",
-      "text": "The bank shall manage and monitor access to HSM using a robust Privileged Identity and Access Management solution.",
-      "risk_level": "high",
-      "reason": "",
-      "status": "included",
-      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
-      "page_start": 26,
-      "page_end": 26,
-      "truncated": false
-    },
-    {
-      "clause_num": "12",
-      "text": "The bank shall ensure decryption and validation of keys, PIN at HSM.",
-      "risk_level": "high",
-      "reason": "",
-      "status": "included",
-      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
-      "page_start": 26,
-      "page_end": 26,
-      "truncated": false
-    },
-    {
-      "clause_num": "13",
-      "text": "The bank shall ensure card PIN generation and printing directly at system connected to HSM.",
-      "risk_level": "high",
-      "reason": "",
-      "status": "included",
-      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
-      "page_start": 26,
-      "page_end": 26,
-      "truncated": false
-    },
-    {
-      "clause_num": "14",
-      "text": "The bank shall ensure generation and validation of CVV at HSM.",
-      "risk_level": "high",
-      "reason": "",
-      "status": "included",
-      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
-      "page_start": 26,
-      "page_end": 26,
-      "truncated": false
-    },
-    {
-      "clause_num": "15",
-      "text": "The bank shall ensure that HSM is implemented with secure PIN block format with controls to disable outputting PIN block in weaker format.",
-      "risk_level": "high",
-      "reason": "",
-      "status": "included",
-      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
-      "page_start": 26,
-      "page_end": 26,
-      "truncated": false
-    },
-    {
-      "clause_num": "16",
-      "text": "The bank shall ensure secure key management for HSMs, including Local Master Keys (LMKs).",
-      "risk_level": "high",
-      "reason": "",
-      "status": "included",
-      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
-      "page_start": 26,
-      "page_end": 26,
-      "truncated": false
-    },
-    {
-      "clause_num": "17",
-      "text": "The bank shall ensure proper security for the maintenance of physical keys of the HSM.",
-      "risk_level": "high",
-      "reason": "",
-      "status": "included",
-      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
-      "page_start": 26,
-      "page_end": 26,
-      "truncated": false
-    },
-    {
-      "clause_num": "18",
-      "text": "The bank shall ensure the following for improving the security posture of the ATM: implement security measures such as Basic Input / Output System (BIOS) password, disabling Universal Serial Bus (USB) ports, disabling auto-run facility, applying the latest patches of operating system, and other software, terminal security solution, time-based admin access;",
-      "risk_level": "high",
-      "reason": "",
-      "status": "included",
-      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
-      "page_start": 26,
-      "page_end": 26,
-      "truncated": false
-    },
-    {
-      "clause_num": "19",
-      "text": "The bank shall implement anti-skimming and whitelisting solution; and",
-      "risk_level": "high",
-      "reason": "",
-      "status": "included",
-      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
-      "page_start": 26,
-      "page_end": 26,
-      "truncated": false
-    },
-    {
-      "clause_num": "20",
-      "text": "The bank shall upgrade all ATMs with supported versions of operating system.",
-      "risk_level": "high",
-      "reason": "",
-      "status": "included",
-      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
-      "page_start": 26,
-      "page_end": 26,
-      "truncated": false
-    },
-    {
-      "clause_num": "21",
-      "text": "With regard to card transactions, the bank shall: ensure robust surveillance / monitoring of card transactions (especially overseas cash withdrawals) and setting up of rules and limits commensurate with its risk appetite;",
-      "risk_level": "high",
-      "reason": "",
-      "status": "included",
-      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
-      "page_start": 26,
-      "page_end": 26,
-      "truncated": false
-    },
-    {
-      "clause_num": "22",
-      "text": "The bank shall take up with the card network and/or ATM network, to put in place transaction limits at card, Bank Identification Number (BIN) as well as at the bank level. Such limits shall be mandatorily set at the card network switch itself. Limits may be mandated for domestic as well as international transactions separately;",
-      "risk_level": "high",
-      "reason": "",
-      "status": "included",
-      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
-      "page_start": 26,
-      "page_end": 26,
-      "truncated": false
-    },
-    {
-      "clause_num": "23",
-      "text": "The bank shall put in place transaction control mechanisms with necessary caps (restrictions on transactions), if any of the limits set as per the above requirement is breached. A periodic review mechanism of such limits set as per the risk appetite of the bank shall be put in place as per the Board-approved policy;",
-      "risk_level": "high",
-      "reason": "",
-      "status": "included",
-      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
-      "page_start": 26,
-      "page_end": 26,
-      "truncated": false
-    },
-    {
-      "clause_num": "24",
-      "text": "The bank shall institute a mechanism to monitor breaches, if any, on a 24x7 basis, including weekends, and holidays and put in place a robust incident response mechanism to mitigate the fraud loss, on account of suspicious transactions, if any;",
-      "risk_level": "high",
-      "reason": "",
-      "status": "included",
-      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
-      "page_start": 26,
-      "page_end": 26,
-      "truncated": false
-    },
-    {
-      "clause_num": "25",
-      "text": "The bank shall ensure that card details of the customers are not stored in plain text at the bank and its vendor(s) locations, systems, and applications;",
-      "risk_level": "high",
-      "reason": "",
-      "status": "included",
-      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
-      "page_start": 26,
-      "page_end": 26,
-      "truncated": false
-    },
-    {
-      "clause_num": "26",
-      "text": "The bank shall ensure that the processing of card details in readable format is performed in a secure manner to strictly avoid data leakage of sensitive customer information.",
-      "risk_level": "high",
-      "reason": "",
-      "status": "included",
-      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
-      "page_start": 26,
-      "page_end": 26,
-      "truncated": false
-    },
-    {
-      "clause_num": "27",
-      "text": "The bank using card data scanning tools to identify unencrypted (clear text) payments card data in its ecosystem especially during audits, shall adhere to the following safety measures: any tool (procured by / from a third-party) for the purpose of scanning of unencrypted card data shall first be tested in a test environment to understand the scope and impact of the tool's capabilities;",
-      "risk_level": "high",
-      "reason": "",
-      "status": "included",
-      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
-      "page_start": 26,
-      "page_end": 26,
-      "truncated": false
-    },
-    {
-      "clause_num": "28",
-      "text": "The scanning tool shall be installed only in the bank's premises on its devices;",
-      "risk_level": "high",
-      "reason": "",
-      "status": "included",
-      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
-      "page_start": 26,
-      "page_end": 26,
-      "truncated": false
-    },
-    {
-      "clause_num": "29",
-      "text": "Card data scanning shall not be done remotely;",
-      "risk_level": "high",
-      "reason": "",
-      "status": "included",
-      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
-      "page_start": 26,
-      "page_end": 26,
-      "truncated": false
-    },
-    {
-      "clause_num": "30",
-      "text": "Discovered data, if any, shall reside in the scanning tool;",
-      "risk_level": "high",
-      "reason": "",
-      "status": "included",
-      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
-      "page_start": 26,
-      "page_end": 26,
-      "truncated": false
-    },
-    {
-      "clause_num": "31",
-      "text": "Exportable card data shall be appropriately masked (no data, even masked, shall be taken out of the bank's premises / infrastructure);",
-      "risk_level": "high",
-      "reason": "",
-      "status": "included",
-      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
-      "page_start": 26,
-      "page_end": 26,
-      "truncated": false
-    },
-    {
-      "clause_num": "32",
-      "text": "Service providers shall be provided limited access to conduct the scan or analyse the data, and such access shall be provided only on the bank's devices.",
-      "risk_level": "high",
-      "reason": "",
-      "status": "included",
-      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
-      "page_start": 26,
-      "page_end": 26,
-      "truncated": false
-    },
-    {
-      "clause_num": "1",
-      "text": "With  the  issue  of  these  Directions,  the  existing  directions,  instructions,  and guidelines relating to Digital Payment Security Controls as applicable to Commercial Banks stand repealed, as communicated vide circular no. DoS.CO.PPG.66/11.01.005/2026-27 dated July 31, 2026.",
-      "risk_level": "high",
-      "reason": "clause imposes a hard deadline",
+      "reason": "Clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
       "status": "included",
       "chapter_title": "Chapter VII - Repeal and Other Provisions :: A. Repeal and Saving",
       "page_start": 31,
       "page_end": 31,
-      "truncated": false,
-      "status_note": "flipped dropped_ungrounded->included via length-weighted grounding fix (analyse_drops.py verified)"
+      "truncated": false
     },
     {
-      "clause_num": "2",
+      "clause_num": "A(2)",
       "text": "The directions, instructions, and guidelines repealed prior to the issuance of these Directions shall continue to remain repealed.",
       "risk_level": "high",
-      "reason": "definitional clause",
+      "reason": "Definitional clause",
       "status": "included",
       "chapter_title": "Chapter VII - Repeal and Other Provisions :: A. Repeal and Saving",
       "page_start": 31,
@@ -1753,10 +1312,10 @@
       "truncated": false
     },
     {
-      "clause_num": "3",
+      "clause_num": "B(1)",
       "text": "Notwithstanding such repeal, any action taken or purported to have been taken, or initiated under the repealed directions, instructions, or guidelines shall continue to be governed by the provisions thereof.",
       "risk_level": "high",
-      "reason": "process or procedure with customer-facing obligation",
+      "reason": "Process or procedure with a customer-facing obligation",
       "status": "included",
       "chapter_title": "Chapter VII - Repeal and Other Provisions :: A. Repeal and Saving",
       "page_start": 31,
@@ -1764,10 +1323,10 @@
       "truncated": false
     },
     {
-      "clause_num": "4",
+      "clause_num": "B(2)",
       "text": "All approvals or acknowledgments granted under these repealed lists shall be deemed as governed by these Directions.",
       "risk_level": "high",
-      "reason": "process or procedure with customer-facing obligation",
+      "reason": "Process or procedure with a customer-facing obligation",
       "status": "included",
       "chapter_title": "Chapter VII - Repeal and Other Provisions :: A. Repeal and Saving",
       "page_start": 31,
@@ -1775,10 +1334,10 @@
       "truncated": false
     },
     {
-      "clause_num": "5",
+      "clause_num": "C(1)",
       "text": "Further, the repeal of these directions, instructions, or guidelines shall not in any way prejudicially affect: any right, obligation or liability acquired, accrued, or incurred thereunder;",
       "risk_level": "high",
-      "reason": "clause imposes a hard deadline",
+      "reason": "Clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
       "status": "included",
       "chapter_title": "Chapter VII - Repeal and Other Provisions :: A. Repeal and Saving",
       "page_start": 31,
@@ -1786,10 +1345,10 @@
       "truncated": false
     },
     {
-      "clause_num": "6",
+      "clause_num": "C(2)",
       "text": "any penalty, forfeiture, or punishment incurred in respect of any contravention committed thereunder;",
       "risk_level": "high",
-      "reason": "clause imposes a hard deadline",
+      "reason": "Clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
       "status": "included",
       "chapter_title": "Chapter VII - Repeal and Other Provisions :: A. Repeal and Saving",
       "page_start": 31,
@@ -1797,10 +1356,10 @@
       "truncated": false
     },
     {
-      "clause_num": "7",
+      "clause_num": "C(3)",
       "text": "any investigation, legal proceeding, or remedy in respect of any such right, privilege, obligation, liability, penalty, forfeiture, or punishment as aforesaid;",
       "risk_level": "high",
-      "reason": "clause imposes a hard deadline",
+      "reason": "Clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
       "status": "included",
       "chapter_title": "Chapter VII - Repeal and Other Provisions :: A. Repeal and Saving",
       "page_start": 31,
@@ -1808,10 +1367,10 @@
       "truncated": false
     },
     {
-      "clause_num": "8",
+      "clause_num": "C(4)",
       "text": "and any such investigation, legal proceedings or remedy may be instituted, continued, or enforced and any such penalty, forfeiture or punishment may be imposed as if those directions, instructions, or guidelines had not been repealed.",
       "risk_level": "medium",
-      "reason": "process or procedure with customer-facing obligation",
+      "reason": "Process or procedure with a customer-facing obligation",
       "status": "included",
       "chapter_title": "Chapter VII - Repeal and Other Provisions :: A. Repeal and Saving",
       "page_start": 31,
@@ -1819,7 +1378,7 @@
       "truncated": false
     },
     {
-      "clause_num": "1",
+      "clause_num": "B.1",
       "text": "The provisions of these Directions shall be in addition to, and not in derogation of the provisions of any other laws, rules, regulations, or directions, for the time being in force.",
       "risk_level": "high",
       "reason": "Definitional clause",
@@ -1830,7 +1389,7 @@
       "truncated": false
     },
     {
-      "clause_num": "1",
+      "clause_num": "unnumbered_0",
       "text": "The interpretation of any provision of these Directions by RBI shall be final and binding on all concerned entities.",
       "risk_level": "high",
       "reason": "definitional",
@@ -1839,6 +1398,406 @@
       "page_start": 32,
       "page_end": 32,
       "truncated": false
+    },
+    {
+      "clause_num": "6(1)",
+      "text": "The bank shall follow various payment card standards [over and above Payment Card Industry-Data Security Standard (PCI-DSS) and Payment Card Industry-Software Security Framework (PCI-SSF)] as per Payment Card Industry (PCI) prescriptions for comprehensive payment card security as per applicability / readiness of updated versions of the standards such as:",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
+      "page_start": 26,
+      "page_end": 26,
+      "truncated": false
+    },
+    {
+      "clause_num": "69(1)",
+      "text": "With reference to paragraph 69(1), though formal certification may not be mandatory, the bank shall follow these standards holistically, as per applicability.",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
+      "page_start": 26,
+      "page_end": 26,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_2",
+      "text": "The bank shall ensure that terminals installed at the merchants for capturing card details for payments or otherwise are validated against the PCI-P2PE program to use PCI-approved P2PE solutions and",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
+      "page_start": 26,
+      "page_end": 26,
+      "truncated": false
+    },
+    {
+      "clause_num": "5(12)",
+      "text": "PoS terminals with PIN entry installed at the merchants for capturing card payments (including the double swipe terminals) are approved by the PCI-PTS program.",
+      "risk_level": "medium",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
+      "page_start": 26,
+      "page_end": 26,
+      "truncated": false
+    },
+    {
+      "clause_num": "6(3)",
+      "text": "The bank shall implement the following controls at the HSMs: The HSMs shall have logging enabled and the logs must themselves be tamper proof.",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
+      "page_start": 26,
+      "page_end": 26,
+      "truncated": false
+    },
+    {
+      "clause_num": "6(4)",
+      "text": "The bank shall mitigate the risk of single point of failure at HSM by implementing 'clustering' for high availability and ensuring secure backups.",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
+      "page_start": 26,
+      "page_end": 26,
+      "truncated": false
+    },
+    {
+      "clause_num": "6(5)",
+      "text": "The bank shall ensure access to the HSM through Access Control Lists (ACLs).",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
+      "page_start": 26,
+      "page_end": 26,
+      "truncated": false
+    },
+    {
+      "clause_num": "6(6)",
+      "text": "The bank shall maintain separate ACLs for each individual application to ensure application-level isolation.",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
+      "page_start": 26,
+      "page_end": 26,
+      "truncated": false
+    },
+    {
+      "clause_num": "6(7)",
+      "text": "The bank shall manage and monitor access to HSM using a robust Privileged Identity and Access Management solution.",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
+      "page_start": 26,
+      "page_end": 26,
+      "truncated": false
+    },
+    {
+      "clause_num": "6(8)",
+      "text": "The bank shall ensure decryption and validation of keys, PIN at HSM.",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
+      "page_start": 26,
+      "page_end": 26,
+      "truncated": false
+    },
+    {
+      "clause_num": "6(9)",
+      "text": "The bank shall ensure card PIN generation and printing directly at system connected to HSM.",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
+      "page_start": 26,
+      "page_end": 26,
+      "truncated": false
+    },
+    {
+      "clause_num": "6(10)",
+      "text": "The bank shall ensure generation and validation of CVV at HSM.",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
+      "page_start": 26,
+      "page_end": 26,
+      "truncated": false
+    },
+    {
+      "clause_num": "6(11)",
+      "text": "The bank shall ensure that HSM is implemented with secure PIN block format with controls to disable outputting PIN block in weaker format.",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
+      "page_start": 26,
+      "page_end": 26,
+      "truncated": false
+    },
+    {
+      "clause_num": "6(12)",
+      "text": "The bank shall ensure secure key management for HSMs, including Local Master Keys (LMKs).",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
+      "page_start": 26,
+      "page_end": 26,
+      "truncated": false
+    },
+    {
+      "clause_num": "6(13)",
+      "text": "The bank shall ensure proper security for the maintenance of physical keys of the HSM.",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
+      "page_start": 26,
+      "page_end": 26,
+      "truncated": false
+    },
+    {
+      "clause_num": "7(1)",
+      "text": "The bank shall ensure the following for improving the security posture of the ATM: implement security measures such as Basic Input / Output System (BIOS) password, disabling Universal Serial Bus (USB) ports, disabling auto-run facility, applying the latest patches of operating system, and other software, terminal security solution, time-based admin access;",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
+      "page_start": 26,
+      "page_end": 26,
+      "truncated": false
+    },
+    {
+      "clause_num": "7(2)",
+      "text": "The bank shall implement anti-skimming and whitelisting solution;",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
+      "page_start": 26,
+      "page_end": 26,
+      "truncated": false
+    },
+    {
+      "clause_num": "7(3)",
+      "text": "The bank shall upgrade all ATMs with supported versions of operating system.",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
+      "page_start": 26,
+      "page_end": 26,
+      "truncated": false
+    },
+    {
+      "clause_num": "8(1)",
+      "text": "The bank shall ensure robust surveillance / monitoring of card transactions (especially overseas cash withdrawals) and setting up of rules and limits commensurate with its risk appetite;",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
+      "page_start": 26,
+      "page_end": 26,
+      "truncated": false
+    },
+    {
+      "clause_num": "8(2)",
+      "text": "The bank shall take up with the card network and/or ATM network, to put in place transaction limits at card, Bank Identification Number (BIN) as well as at the bank level. Such limits shall be mandatorily set at the card network switch itself. Limits may be mandated for domestic as well as international transactions separately;",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
+      "page_start": 26,
+      "page_end": 26,
+      "truncated": false
+    },
+    {
+      "clause_num": "8(3)",
+      "text": "The bank shall put in place transaction control mechanisms with necessary caps (restrictions on transactions), if any of the limits set as per the above requirement is breached. A periodic review mechanism of such limits set as per the risk appetite of the bank shall be put in place as per the Board-approved policy;",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
+      "page_start": 26,
+      "page_end": 26,
+      "truncated": false
+    },
+    {
+      "clause_num": "8(4)",
+      "text": "The bank shall institute a mechanism to monitor breaches, if any, on a 24x7 basis, including weekends, and holidays and put in place a robust incident response mechanism to mitigate the fraud loss, on account of suspicious transactions, if any;",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
+      "page_start": 26,
+      "page_end": 26,
+      "truncated": false
+    },
+    {
+      "clause_num": "8(5)",
+      "text": "The bank shall ensure that card details of the customers are not stored in plain text at the bank and its vendor(s) locations, systems, and applications;",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
+      "page_start": 26,
+      "page_end": 26,
+      "truncated": false
+    },
+    {
+      "clause_num": "8(6)",
+      "text": "The bank shall ensure that the processing of card details in readable format is performed in a secure manner to strictly avoid data leakage of sensitive customer information.",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
+      "page_start": 26,
+      "page_end": 26,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_24",
+      "text": "The bank using card data scanning tools to identify unencrypted (clear text) payments card data in its ecosystem especially during audits, shall adhere to the following safety measures: any tool (procured by / from a third-party) for the purpose of scanning of unencrypted card data shall first be tested in a test environment to understand the scope and impact of the tool's capabilities;",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
+      "page_start": 26,
+      "page_end": 26,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_25",
+      "text": "The bank using card data scanning tools to identify unencrypted (clear text) payments card data in its ecosystem especially during audits, shall adhere to the following safety measures: the scanning tool shall be installed only in the bank's premises on its devices;",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
+      "page_start": 26,
+      "page_end": 26,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_26",
+      "text": "The bank using card data scanning tools to identify unencrypted (clear text) payments card data in its ecosystem especially during audits, shall adhere to the following safety measures: card data scanning shall not be done remotely;",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
+      "page_start": 26,
+      "page_end": 26,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_27",
+      "text": "The bank using card data scanning tools to identify unencrypted (clear text) payments card data in its ecosystem especially during audits, shall adhere to the following safety measures: discovered data, if any, shall reside in the scanning tool;",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
+      "page_start": 26,
+      "page_end": 26,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_28",
+      "text": "The bank using card data scanning tools to identify unencrypted (clear text) payments card data in its ecosystem especially during audits, shall adhere to the following safety measures: exportable card data shall be appropriately masked (no data, even masked, shall be taken out of the bank's premises / infrastructure);",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
+      "page_start": 26,
+      "page_end": 26,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_29",
+      "text": "The bank using card data scanning tools to identify unencrypted (clear text) payments card data in its ecosystem especially during audits, shall adhere to the following safety measures: service providers shall be provided limited access to conduct the scan or analyse the data, and such access shall be provided only on the bank's devices.",
+      "risk_level": "high",
+      "reason": "",
+      "status": "included",
+      "chapter_title": "Chapter VI - Card Payment Security Controls :: (full chapter)",
+      "page_start": 26,
+      "page_end": 26,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_0",
+      "text": "BE EXHAUSTIVE",
+      "risk_level": "low",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 2,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_1",
+      "text": "Extract EVERY distinct actionable obligation, prohibition, or restriction",
+      "risk_level": "low",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 2,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_2",
+      "text": "Extract each distinct requirement as its OWN separate clause entry",
+      "risk_level": "low",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 2,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_3",
+      "text": "Extract defined statutory terms and their specific operational meanings from Definitions sections",
+      "risk_level": "low",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 2,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_4",
+      "text": "Do not stop early: a section with 5+ consecutive obligation sentences should produce 5+ clause entries, not a summarized subset",
+      "risk_level": "low",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 2,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_5",
+      "text": "Skip non-regulatory front matter, document titles, and table of contents entries",
+      "risk_level": "low",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 2,
+      "truncated": false
     }
+  ],
+  "last_reextracted_at": "2026-08-26T13:56:45.008348",
+  "last_reextracted_sections": [
+    "Chapter I - Preliminary :: Table of Contents"
   ]
 }

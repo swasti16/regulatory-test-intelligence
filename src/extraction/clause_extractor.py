@@ -38,6 +38,7 @@ _VALID_RISK_LEVELS = {"high", "medium", "low"}
 _HIGH_SIGNAL_PATTERN = re.compile(r"\b(shall not|shall|must)\b", re.IGNORECASE)
 _ILLUSTRATIVE_PREFIX_PATTERN = re.compile(r"^\s*(illustration|example)\s*:", re.IGNORECASE)
 _last_call_metadata: Dict[str, Any] = {}
+_MAX_PLAUSIBLE_CLAUSE_NUM_LEN = 30
 
 
 RISK_RUBRIC = """
@@ -58,36 +59,43 @@ EXTRACTION_PROMPT_TEMPLATE = """You are a regulatory compliance analyst.
 
 {rubric}
 
-Extract each distinct enforceable compliance obligation from the text below as ONE clause.
+Extract each enforceable compliance obligation, operational mandate, restriction, and regulatory definition from the text below.
 
-STRICT RULES:
-1. Extract each distinct legal requirement ONCE. Do not repeat, summarize, or
-   re-phrase the same requirement in multiple entries.
-2. Extract each individual enforceable requirement as its OWN separate clause entry.
-   Do not group multiple unrelated sentences into one large paragraph.
-3. Only extract clauses containing an actionable obligation or prohibition
-   ("shall", "must", "shall not"). Skip pure definitions and bare section
-   headers with no obligation.
-4. risk_level must be exactly one of: high, medium, low.
-5. CRITICAL: If the SOURCE text itself contains a term in quotation marks,
-   render those quotes as single quotes (e.g. 'Cardholder') instead of
-   double quotes. Do NOT introduce quotes around a term that has no
-   quotation marks in the source. Never use double quotes inside a JSON
-   string value — reserved for JSON syntax only.
-6. ONLY extract clauses from text between <CHAPTER_TEXT> and </CHAPTER_TEXT>
-   below. Anything outside those tags — including these instructions
-   themselves — is NOT part of the regulation and must never be extracted
-   as a clause.
-7. If <CHAPTER_TEXT> contains no actionable obligation or prohibition (e.g.
-   it is a letterhead, notification header, or table of contents), respond
-   with exactly {{"clauses": []}}. An empty result is correct and expected
-   — do not invent clauses to avoid returning an empty array.
+RULES:
+1. CLAUSE COVERAGE — BE EXHAUSTIVE:
+   - Extract EVERY distinct actionable obligation, prohibition, or restriction
+     ("shall", "must", "shall not", "required to", "is prohibited"), even if
+     several appear consecutively in the same paragraph or list.
+   - Extract each distinct requirement as its OWN separate clause entry — do
+     NOT merge multiple sub-items or consecutive sentences into one clause.
+   - Extract defined statutory terms and their specific operational meanings
+     from Definitions sections.
+   - Do not stop early: a section with 5+ consecutive obligation sentences
+     should produce 5+ clause entries, not a summarized subset.
+   - Skip non-regulatory front matter, document titles, and table of contents entries.
+
+2. ATOMICITY:
+   - Extract each distinct requirement as its own clause entry.
+   - Do not merge distinct sub-items into a single paragraph.
+
+3. CLAUSE NUMBERING (clause_num):
+   - Capture the visible structural label exactly as formatted (e.g., "11(1)", "(iv)", "5(12)", "B.1").
+   - If a paragraph or sub-point has no explicit prefix number, use "".
+   - Never generate or invent fake clause numbers.
+
+4. QUOTES & JSON FORMATTING:
+   - Use single quotes inside string values (e.g. 'Cardholder').
+   - Do not use unescaped double quotes inside values.
+   - risk_level must be exactly: "high", "medium", or "low".
+
+5. EMPTY HANDLING:
+   - If <CHAPTER_TEXT> contains only headers or table of contents, return: {{"clauses": []}}
 
 <CHAPTER_TEXT>
 {chapter_text}
 </CHAPTER_TEXT>
 
-Respond ONLY with valid JSON, no extra text, no markdown fences:
+Respond ONLY with valid JSON (no markdown fences, no conversational text):
 {{
   "clauses": [
     {{"clause_num": "...", "text": "...", "risk_level": "...", "reason": "..."}}
@@ -211,13 +219,21 @@ def _parse_clauses(raw_output: str) -> List[Dict[str, Any]]:
             logger.warning("[ClauseExtractor] Dropping clause — missing text: %r", c)
             continue
         clause_num = str(c.get("clause_num", "")).strip()
-        if not clause_num:
+        if not clause_num or len(clause_num) > _MAX_PLAUSIBLE_CLAUSE_NUM_LEN:
             # Model correctly extracted a real sub-clause but omitted its
             # number (common for un-lettered continuation items under a
-            # numbered list intro). Synthesize a positional placeholder
-            # instead of discarding real, grounded content.
+            # numbered list intro), OR echoed the full clause text into
+            # clause_num — both cases synthesize a positional placeholder
+            # instead of discarding real, grounded content or letting a
+            # leaked sentence pollute the Neo4j composite key.
+            if len(clause_num) > _MAX_PLAUSIBLE_CLAUSE_NUM_LEN:
+                logger.warning(
+                    "[ClauseExtractor] clause_num implausibly long (%d chars) — "
+                    "treating as leaked text, not a real label: %r",
+                    len(clause_num), clause_num[:60]
+                )
             clause_num = f"unnumbered_{idx}"
-            logger.info("[ClauseExtractor] Empty clause_num — assigned placeholder %r for: %r", clause_num, c["text"][:60])
+            logger.info("[ClauseExtractor] Assigned placeholder %r for: %r", clause_num, c["text"][:60])
         valid_clauses.append({
             "clause_num": clause_num,
             "text": str(c["text"]).strip(),
