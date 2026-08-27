@@ -65,7 +65,12 @@ Clause-to-test-case linking in this MVP is human-authored seed data — a
 compliance/QA lead still decides which test case satisfies which clause.
 The system's job is to make gaps *visible and current*, not to remove the
 human decision of "is this test actually sufficient." A review queue for
-human sign-off on high-risk clause links is a Post-MVP roadmap item (see below).
+human sign-off on high-risk clause links, and LLM-assisted link *suggestion*
+(never auto-linking), are Post-MVP roadmap items (see below) — deliberately
+scoped out of the MVP because an ungoverned LLM linker would contradict this
+project's own core principle (LLM proposes, deterministic/human logic decides),
+and a wrong auto-link is strictly worse than a visible gap per the failure-mode
+table above.
 
 ## Architecture
 
@@ -83,6 +88,11 @@ data/extracted_clauses/{doc_id}.json — human review checkpoint
       ↓
 Neo4j — traceability graph (upload only status=="included" clauses)
       ↓
+data/sample_testcases.json — human-curated test-case-to-clause links
+(schema shaped to mirror a future Jira/TestRail import adapter)
+      ↓
+scripts/upload_test_cases.py — writes only status=="confirmed" links
+      ↓
 Deterministic Cypher rules — coverage gap detection
 ```
 
@@ -92,24 +102,31 @@ Deterministic Cypher rules — coverage gap detection
 (Regulation) -[:HAS_CLAUSE]-> (Clause {risk_level}) -[:COVERED_BY]-> (TestCase)
 ```
 
-### Human Review Checkpoint
+### Human Review Checkpoints
 
-Extraction and graph-write are deliberately split into two scripts, not
-one pipeline:
+Two deliberate checkpoints separate slow/non-deterministic steps from fast/
+deterministic ones, and keep humans in the loop on trust-critical decisions:
 
-- **`scripts/extract_to_json.py`** — runs LLM extraction + all
-  deterministic post-processing, writes results to
+- **Extraction → Graph**: **`scripts/extract_to_json.py`** runs LLM extraction
+  + all deterministic post-processing, writes results to
   `data/extracted_clauses/{doc_id}.json`. No Neo4j writes. Every clause
   (including dropped ones) is retained in the JSON with a `status` field:
   `included`, `dropped_ungrounded`, or `dropped_illustrative`.
-- **`scripts/upload_to_neo4j.py`** — reads the reviewed JSON, uploads
+  **`scripts/upload_to_neo4j.py`** reads the reviewed JSON, uploads
   only `status == "included"` clauses.
+- **Test-case linking**: **`data/sample_testcases.json`** holds test-case-to-
+  clause links, each with its own `status` field (`confirmed` today; a future
+  LLM-assisted matcher would add `suggested` entries for human review).
+  **`scripts/upload_test_cases.py`** writes only `status == "confirmed"`
+  links to Neo4j, and verifies each referenced clause actually exists before
+  linking — a typo'd `chapter_title`/`clause_num` fails loud, not silent.
 
-This means a human can inspect exactly what was extracted and what was
-filtered out — and why — before anything touches the graph. It also
-decouples the slow/non-deterministic step (LLM inference, ~15-80 min per
-chapter on CPU) from the fast/deterministic step (Neo4j write), so a
-graph-write failure never forces re-running extraction.
+This means a human can inspect exactly what was extracted, what was
+filtered out and why, and which test-case links are trusted — before
+anything touches the graph. It also decouples the slow/non-deterministic
+steps (LLM inference, ~15-80 min per chapter on CPU) from the fast/
+deterministic ones (Neo4j write), so a graph-write failure never forces
+re-running extraction.
 
 ### Why deterministic rules, not LLM-guessed gaps
 
@@ -127,7 +144,11 @@ Two more deterministic layers sit between LLM extraction and the graph:
   containing a hard signal word ("shall", "shall not", "must") is
   force-labeled `high`, regardless of what the LLM assigned. Measured
   ~43% LLM self-application failure rate on the rubric's own few-shot
-  instruction before this override was added.
+  instruction before this override was added. Known tradeoff: this also
+  flags purely procedural "shall"-containing boilerplate (e.g. short-title/
+  commencement clauses) as high-risk alongside substantively risky clauses
+  — a precision/recall tradeoff favoring recall (never silently miss a real
+  hard-obligation clause) at the cost of some low-value high-risk noise.
 - **Illustrative-example filter** (`_filter_illustrative()`) — drops
   "Illustration:"/"Example:" clauses, which often contain signal words
   describing a scenario (not a rule) and would otherwise be
@@ -163,10 +184,13 @@ regulatory-test-intelligence/
 │   └── orchestration/            # LangGraph pipeline wiring (not started)
 ├── scripts/
 │   ├── extract_to_json.py        # PDF -> data/extracted_clauses/{doc_id}.json
+│   ├── post_process_extraction.py # Re-extract failures, dedupe, validate readiness
 │   ├── upload_to_neo4j.py        # Reviewed JSON -> Neo4j (status=="included" only)
+│   ├── upload_test_cases.py      # sample_testcases.json -> Neo4j (status=="confirmed" only)
 │   ├── clear_neo4j.py            # Wipes all nodes/relationships (dev reset)
-│   ├── benchmark_model.py        # Speed + rubric-adherence model comparison
-│   └── analyse_benchmark.py      # Post-hoc scoring over benchmark_results.json
+│   ├── reextract_sections.py     # Re-run extraction on specific failed sections
+│   ├── analyse_drops.py          # Diagnoses dropped_ungrounded clauses
+│   └── run_coverage_rules.py     # Manual verification of coverage rules against live data
 ├── tests/
 │   ├── graph/
 │   ├── ingestion/
@@ -175,7 +199,8 @@ regulatory-test-intelligence/
 ├── data/
 │   ├── sample_regulations/       # Sample PDFs for dev/testing
 │   ├── RBI_regulations/          # Real RBI PDFs (gitignored)
-│   └── extracted_clauses/        # Extraction output — human review checkpoint (gitignored)
+│   ├── extracted_clauses/        # Extraction output — human review checkpoint (gitignored)
+│   └── sample_testcases.json     # Human-curated test-case-to-clause seed links
 └── docs/
 ```
 
@@ -209,20 +234,23 @@ cp .env.example .env
 - [x] Illustrative-example filter (`_filter_illustrative()`) — drops "Illustration:"/"Example:" clauses from enforceable output
 - [x] Extraction/upload pipeline split — `extract_to_json.py` (LLM + filters, no DB writes) and `upload_to_neo4j.py` (reviewed JSON -> graph), enabling a human review checkpoint between the two
 - [x] Graph write pipeline (`graph_writer.py` — idempotent MERGE for Regulation/Clause/TestCase nodes and relationships)
-- [x] Model benchmarking harness (`benchmark_model.py`, `analyse_benchmark.py`) — speed + rubric-adherence comparison across candidate models; `llama3.2:3b` confirmed as production model
+- [x] Model benchmarking harness — speed + rubric-adherence comparison across candidate models; `llama3.2:3b` confirmed as production model
 - [x] Full pipeline run across all 5 RBI regulation PDFs — extracted, uploaded to Neo4j Aura
 - [x] Grounding normalization fix (`_normalize_text_clean`) — PDF source renders "his / her" as 3 tokens vs LLM output "his/her" as 1 token, breaking the sliding-window fuzzy match on otherwise-correctly-extracted clauses; fixed by collapsing slash-spacing symmetrically in both fragment and source normalization
-- [x] Deterministic rule engine (`src/rules/coverage_rules.py`) — 3 MVP Cypher rules verified against real uploaded Neo4j data (previously only mocked in tests/)
+- [x] Deterministic rule engine (`src/rules/coverage_rules.py`) — 3 MVP Cypher rules verified against real uploaded Neo4j data
+- [x] Post-processing pipeline (`scripts/post_process_extraction.py`) — re-extracts failed sections, fixes leaked clause_nums, dedupes collisions, validates Neo4j-upload readiness (FAIL/WARN checklist)
+- [x] TestCase seed data (`data/sample_testcases.json`) — 12 hand-curated test cases across all 5 RBI PDFs, linking to 11 distinct clauses. Schema deliberately shaped to mirror a future Jira/TestRail import adapter's output (`source`, `covers[]` with per-link `status`), not a one-off fixture. Demonstrates both one-to-many (one test covering 2 clauses) and many-to-one (2 tests covering the same clause) mappings.
+- [x] TestCase upload script (`scripts/upload_test_cases.py`) — resolves `(doc_id, chapter_title, clause_num)` → composite `clause_id` via the existing single-source-of-truth `clause_id()` function; only writes links with `status: "confirmed"`; verifies clause existence before linking (fails loud on typos, not silent)
+- [x] End-to-end coverage verification against real Neo4j Aura data: 12 links written, 0 missing-clause errors, coverage % now non-zero across all 5 regulations (0.4%–1.5%), 988 high-risk gaps still correctly surfaced by `find_high_risk_gaps()` — proves the full pipeline (extraction → graph → coverage detection) works end-to-end on real data, not just mocks
 
 **In progress:**
 - [ ] Duplicate clause fix (Section J duplication bug — same requirement extracted twice with overlapping text spans)
-
-**Not started:**
-- [ ] TestCase seed data (`data/sample_testcases.json`) — blocked until extraction output is stable across a full document
 - [ ] LangGraph orchestration (`src/orchestration/`) — replace linear script with explicit state graph, conditional retry/branching
 - [ ] LangSmith tracing — per-node observability
+
+**Not started:**
 - [ ] Human-in-the-loop review queue for clause-to-test-case linking, prioritized by `risk_level`
-- [ ] Auto-suggested test case generation from extracted clauses (Post-MVP — a recommendation surface only; QA lead always approves before anything enters the real test suite)
+- [ ] LLM-assisted test-case-to-clause link suggestion (Post-MVP, explicitly deferred) — an ungoverned LLM linker would contradict the project's core "LLM proposes, deterministic/human decides" principle, since wrong links are strictly worse than visible gaps (see failure-mode table above). Schema is forward-compatible: a future matcher would append entries with `status: "suggested"`; only human-promoted `"confirmed"` links are ever written to the graph. Deferred in favor of finishing LangGraph/LangSmith given a 3-day hackathon timeline.
 - [ ] Real-time compliance coverage dashboard for QA leads
 - [ ] MCP server over Neo4j (Phase 2)
 
