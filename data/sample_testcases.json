@@ -1,0 +1,155 @@
+{
+  "source": "manual_seed",
+  "note": "Simulates the output of a future Jira/TestRail import adapter. A real adapter would set source='jira' or 'testrail', populate external_url, and status would start as 'suggested' if LLM-assisted matching (Post-MVP roadmap) proposed the link. Only status='confirmed' links are written to Neo4j by upload_test_cases.py.",
+  "test_cases": [
+    {
+      "test_case_id": "TC-CC-001",
+      "title": "Credit card closure request honored within 7 working days",
+      "source": "manual_seed",
+      "covers": [
+        {
+          "doc_id": "RBI_Credit_Debit_Card",
+          "chapter_title": "Chapter II - Conduct of Credit Card Business :: E. Closure of Credit Card",
+          "clause_num": "E(1)",
+          "status": "confirmed"
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-CC-002",
+      "title": "\u20b9500/day penalty accrues correctly for closure delay beyond 7 working days",
+      "source": "manual_seed",
+      "covers": [
+        {
+          "doc_id": "RBI_Credit_Debit_Card",
+          "chapter_title": "Chapter II - Conduct of Credit Card Business :: E. Closure of Credit Card",
+          "clause_num": "E(5)",
+          "status": "confirmed"
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-CC-003",
+      "title": "Closure SLA timer excludes days cardholder takes to clear outstanding dues",
+      "source": "manual_seed",
+      "covers": [
+        {
+          "doc_id": "RBI_Credit_Debit_Card",
+          "chapter_title": "Chapter II - Conduct of Credit Card Business :: E. Closure of Credit Card",
+          "clause_num": "E(1)",
+          "status": "confirmed"
+        },
+        {
+          "doc_id": "RBI_Credit_Debit_Card",
+          "chapter_title": "Chapter II - Conduct of Credit Card Business :: E. Closure of Credit Card",
+          "clause_num": "E(7)",
+          "status": "confirmed"
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-KYC-001",
+      "title": "Account opening rejected for anonymous or fictitious/benami name",
+      "source": "manual_seed",
+      "covers": [
+        {
+          "doc_id": "RBI_KYC",
+          "chapter_title": "Chapter III - Customer Acceptance Policy :: (full chapter)",
+          "clause_num": "16(2)",
+          "status": "confirmed"
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-KYC-002",
+      "title": "Periodic KYC updation triggers on correct risk-based cadence (2/8/10 years)",
+      "source": "manual_seed",
+      "covers": [
+        {
+          "doc_id": "RBI_KYC",
+          "chapter_title": "Chapter VI - Customer Due Diligence (CDD) Procedure :: 42. Updation / Periodic Updation of KYC",
+          "clause_num": "42(2)",
+          "status": "confirmed"
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-DPS-001",
+      "title": "Multi-factor authentication enforced for fund transfers and cash withdrawals",
+      "source": "manual_seed",
+      "covers": [
+        {
+          "doc_id": "RBI_Digital_Payment_Security",
+          "chapter_title": "Chapter III - General Controls :: D. Authentication Framework",
+          "clause_num": "D(1)",
+          "status": "confirmed"
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-DPS-002",
+      "title": "Digital payment product enrollment requires explicit customer opt-in before activation",
+      "source": "manual_seed",
+      "covers": [
+        {
+          "doc_id": "RBI_Digital_Payment_Security",
+          "chapter_title": "Chapter III - General Controls :: G. Customer Protection, Awareness and Grievance Redressal Mechanism",
+          "clause_num": "G.14",
+          "status": "confirmed"
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-FRM-001",
+      "title": "Red-flagged account (\u20b93cr+ exposure) reported to CRILC within 7 days of flagging",
+      "source": "manual_seed",
+      "covers": [
+        {
+          "doc_id": "RBI_Fraud_Risk_Management",
+          "chapter_title": "Chapter III - Early Detection of Frauds - Framework for Early Warning Signals and Red Flagging of Accounts :: B. EWS / RFA Framework for Credit Facilities / Loan Accounts",
+          "clause_num": "B.4",
+          "status": "confirmed"
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-FRM-002",
+      "title": "Show Cause Notice recipient gets minimum 21 days to respond before fraud classification",
+      "source": "manual_seed",
+      "covers": [
+        {
+          "doc_id": "RBI_Fraud_Risk_Management",
+          "chapter_title": "Chapter II - Governance and Oversight :: A. Governance Structure for Fraud Risk Management",
+          "clause_num": "A(8)",
+          "status": "confirmed"
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-MR-001",
+      "title": "Service provider security breach triggers immediate RBI notification",
+      "source": "manual_seed",
+      "covers": [
+        {
+          "doc_id": "RBI_Managing_Risks",
+          "chapter_title": "Chapter III - Outsourcing of Financial Services :: E.2 Confidentiality and Security of Information",
+          "clause_num": "E.2(5)",
+          "status": "confirmed"
+        }
+      ]
+    },
+    {
+      "test_case_id": "TC-MR-002",
+      "title": "Core decision-making functions (KYC compliance, loan sanction) blocked from outsourcing",
+      "source": "manual_seed",
+      "covers": [
+        {
+          "doc_id": "RBI_Managing_Risks",
+          "chapter_title": "Chapter III - Outsourcing of Financial Services :: B. Activities that shall not be outsourced",
+          "clause_num": "B.1",
+          "status": "confirmed"
+        }
+      ]
+    }
+  ]
+}
