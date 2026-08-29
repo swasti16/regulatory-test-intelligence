@@ -33,7 +33,7 @@ class PipelineState(TypedDict):
     # Section chapter_titles where even the retry produced 0 survived clauses
     failed_sections: List[str]
 
-        # Transient: how many clauses had status=="included" after the most
+    # Transient: how many clauses had status=="included" after the most
     # recent extract_node/split_retry_node call — read by the router to
     # decide whether to retry, and reset each time a section starts.
     current_section_included_count: int
@@ -47,3 +47,10 @@ class PipelineState(TypedDict):
 
     # Transient: chapters from load_node, consumed by split_node.
     _chapters: List[Dict[str, Any]]
+
+    # Populated by validate_node — FAIL/WARN strings from upload-readiness
+    # checks, mirroring post_process_extraction.py._validate_for_upload().
+    # Logged and included in the output JSON for visibility, does not
+    # block write_node (same as the standalone script — issues are
+    # surfaced for human review, not auto-blocking).
+    validation_issues: List[str]

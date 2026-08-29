@@ -74,26 +74,17 @@ table above.
 
 ## Architecture
 
-```
-PDF (regulation doc)
-      ↓
-Docling — text/structure extraction, per-section split
-      ↓
-LLM (Ollama, local) — clause identification + risk classification
-      ↓
-Deterministic post-processing — grounding check, illustrative-example
-filter, risk-rubric override (see "Why deterministic rules" below)
-      ↓
-data/extracted_clauses/{doc_id}.json — human review checkpoint
-      ↓
-Neo4j — traceability graph (upload only status=="included" clauses)
-      ↓
-data/sample_testcases.json — human-curated test-case-to-clause links
-(schema shaped to mirror a future Jira/TestRail import adapter)
-      ↓
-scripts/upload_test_cases.py — writes only status=="confirmed" links
-      ↓
-Deterministic Cypher rules — coverage gap detection
+```mermaid
+flowchart TD
+    A[PDF Regulation Doc] --> B[Docling text/structure extraction]
+    B --> C[LLM Ollama - clause ID and risk classification]
+    C --> D[Deterministic Post-Processing]
+    D --> E[extracted_clauses JSON - HUMAN REVIEW CHECKPOINT]
+    E --> F[(Neo4j Graph)]
+    G[sample_testcases.json] --> H[upload_test_cases.py]
+    H --> F
+    F --> I[Deterministic Cypher Rules]
+    I --> J[Coverage Gap Report]
 ```
 
 ### Graph Schema
@@ -159,6 +150,61 @@ Two more deterministic layers sit between LLM extraction and the graph:
 2. **Low Coverage Threshold** — regulations below 80% clause coverage
 3. **High-Risk Prioritization** — missing-coverage clauses filtered by `risk_level: high`
 
+
+## LangGraph Orchestration
+
+`src/orchestration/` wraps the extraction pipeline (load PDF → split into
+sections → LLM extract → write JSON) as an explicit **state graph** instead
+of a linear script, giving conditional retry logic a real cycle to run in.
+
+**Why LangGraph over a plain LangChain chain:** grounding-failure retry
+needs a *loop* — extract a section, check if anything survived, and if not,
+split the section and try again. LangChain's chains are linear (no cycles);
+LangGraph models this as a graph with conditional edges, so the retry loop
+is explicit and inspectable rather than hand-rolled control flow.
+
+**Flow:**
+```mermaid
+stateDiagram-v2
+    [*] --> load
+    load --> split
+    split --> extract
+    extract --> advance
+    extract --> split_retry
+    split_retry --> advance
+    split_retry --> mark_failed
+    mark_failed --> advance
+    advance --> extract
+    advance --> write
+    write --> [*]
+```
+
+**Retry strategy — split-half, not temperature bump:** on zero-clauses-
+survived, the section is split at a *sentence* boundary (never mid-clause)
+with a 2-sentence overlap between halves, and each half is re-extracted
+independently. This targets the actual failure mode already documented in
+`docling_loader.py` — long sections cause "lost in the middle" attention
+degradation — rather than hoping a different sampling temperature helps.
+Overlap-caused duplicate `clause_num`s are deduped with the same `#1`/`#2`
+suffix pattern used in `post_process_extraction.py`.
+
+**Resilience:** a per-section extraction failure (e.g. Ollama timeout) is
+caught and treated as "0 survived," routing to retry/mark-failed rather
+than crashing the whole PDF — mirrors `extract_to_json.py`'s per-section
+try/except so a single bad section can't lose an entire document's output.
+
+**Scope (deliberate):** single-PDF, in-process, no subprocess isolation —
+unlike `extract_to_json.py`'s per-PDF subprocess isolation for OOM safety
+on batch runs. `scripts/run_langgraph_pipeline.py` supports both a single
+PDF path or, with no argument, loops every PDF in `Settings.RBI_PDF_DIR`
+sequentially in one process. Multi-PDF subprocess isolation, Neo4j writes,
+and LangSmith-traced production hardening are deferred post-hackathon-demo.
+
+**Observability:** LangSmith tracing (env-var activated, no code changes
+to `graph.py` needed) gives a visual trace tree per run — every node
+execution, every LLM call's prompt/response, and router decisions,
+viewable at smith.langchain.com.
+
 ## Tech Stack
 
 | Component | Technology |
@@ -221,6 +267,52 @@ cp .env.example .env
 # Add your Neo4j Aura credentials and teammate's Ollama endpoint
 ```
 
+## Known Limitations
+
+- **Paraphrase vs. verbatim list-item extraction**: the grounding check
+  (`_is_grounded_in_source()`) uses fuzzy fragment matching (≥0.6 weighted
+  ratio), not exact substring matching — so a clause the LLM lightly
+  rephrases (e.g. reordering a list item's wording) can still pass
+  grounding even though it isn't a verbatim quote. This is intentional
+  (exact-substring would reject valid paraphrases and over-drop real
+  clauses), but it does mean "grounded" is not a guarantee of "verbatim."
+- **Inferred page boundaries**: `page_start`/`page_end` on a clause are
+  derived from the nearest `[p.N]` marker in the reconstructed text
+  stream, not from the clause's own precise bounding box — a clause that
+  spans a page break may report a slightly imprecise page range.
+- **Shared-stem list-item grounding limitation**: when several list items
+  in the source share a long common prefix (e.g. repeated "The bank
+  shall..." across sub-bullets), the fuzzy grounding check can occasionally
+  match a clause against the wrong sibling item rather than its true
+  source fragment, since both score similarly high.
+  - **`clause_id` is not guaranteed stable across re-extraction runs** — `clause_num`
+  is currently LLM-assigned free text (e.g. `"11(1)"`, `"B.2"`). Even at
+  `temperature: 0.0`, Ollama sampling isn't bit-for-bit deterministic across
+  runs, so the LLM's numbering/segmentation can drift between runs of the
+  same PDF. Since `clause_id = {doc_id}_{chapter_title}_{clause_num}` is the
+  Neo4j MERGE key, drift causes: (1) re-extraction creates orphaned duplicate
+  nodes instead of updating existing ones, breaking idempotency; (2)
+  hardcoded clause references in `data/sample_testcases.json` (11 links)
+  can silently point to a clause that no longer exists under that ID.
+
+  **Planned fix (deferred to post-evaluation, Round 3+):** anchor `clause_id`
+  to the clause's matched source-text position rather than the LLM's own
+  label — the grounding check (`_is_grounded_in_source()` /
+  `_fragment_grounded()`) already computes a fuzzy-matched window against
+  fixed source tokens; capturing that window's start-index and using it to
+  assign a positional ID (e.g. `pos_0001`, `pos_0002`, ordered by source
+  position) would make IDs deterministic since they're anchored to
+  immutable source text, not LLM phrasing. Original LLM label would be kept
+  as a separate `clause_label` field for human readability.
+
+  Estimated effort: ~2.5-3.5 hours, most of which is remapping
+  `sample_testcases.json`'s 11 hardcoded clause references and re-verifying
+  Neo4j/test-case links end-to-end, not the core anchor-ID logic itself.
+  Deferred to avoid destabilizing working TestCase links immediately before
+  the hackathon demo; will prioritize after the 3rd evaluation round once
+  real-world drift frequency is better understood from actual eval runs.
+
+
 ## Roadmap
 
 **Built & tested:**
@@ -251,6 +343,10 @@ cp .env.example .env
 **Not started:**
 - [ ] Human-in-the-loop review queue for clause-to-test-case linking, prioritized by `risk_level`
 - [ ] LLM-assisted test-case-to-clause link suggestion (Post-MVP, explicitly deferred) — an ungoverned LLM linker would contradict the project's core "LLM proposes, deterministic/human decides" principle, since wrong links are strictly worse than visible gaps (see failure-mode table above). Schema is forward-compatible: a future matcher would append entries with `status: "suggested"`; only human-promoted `"confirmed"` links are ever written to the graph. Deferred in favor of finishing LangGraph/LangSmith given a 3-day hackathon timeline.
+- [ ] **Deterministic `clause_id` scheme** — anchor `clause_id` to source-text
+  match position (from the existing grounding check) instead of LLM-assigned
+  `clause_num`, to guarantee idempotent Neo4j MERGE and stable
+  `sample_testcases.json` links across re-extraction runs.
 - [ ] Real-time compliance coverage dashboard for QA leads
 - [ ] MCP server over Neo4j (Phase 2)
 

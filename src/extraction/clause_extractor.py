@@ -211,21 +211,16 @@ def _parse_clauses(raw_output: str) -> List[Dict[str, Any]]:
     for idx, c in enumerate(parsed.get("clauses", [])):
         if not isinstance(c, dict):
             continue
-        risk = str(c.get("risk_level", "")).strip().lower()
-        if risk not in _VALID_RISK_LEVELS:
-            logger.warning("[ClauseExtractor] Dropping clause — invalid risk_level: %r", c)
-            continue
-        if not c.get("text"):
+        text = str(c.get("text", "")).strip()
+        if not text:
             logger.warning("[ClauseExtractor] Dropping clause — missing text: %r", c)
-            continue
+            continue  # nothing to display or ground — genuinely unrecoverable
+
+        risk_raw = str(c.get("risk_level", "")).strip().lower()
+        is_valid_risk = risk_raw in _VALID_RISK_LEVELS
+
         clause_num = str(c.get("clause_num", "")).strip()
         if not clause_num or len(clause_num) > _MAX_PLAUSIBLE_CLAUSE_NUM_LEN:
-            # Model correctly extracted a real sub-clause but omitted its
-            # number (common for un-lettered continuation items under a
-            # numbered list intro), OR echoed the full clause text into
-            # clause_num — both cases synthesize a positional placeholder
-            # instead of discarding real, grounded content or letting a
-            # leaked sentence pollute the Neo4j composite key.
             if len(clause_num) > _MAX_PLAUSIBLE_CLAUSE_NUM_LEN:
                 logger.warning(
                     "[ClauseExtractor] clause_num implausibly long (%d chars) — "
@@ -233,13 +228,21 @@ def _parse_clauses(raw_output: str) -> List[Dict[str, Any]]:
                     len(clause_num), clause_num[:60]
                 )
             clause_num = f"unnumbered_{idx}"
-            logger.info("[ClauseExtractor] Assigned placeholder %r for: %r", clause_num, c["text"][:60])
-        valid_clauses.append({
+            logger.info("[ClauseExtractor] Assigned placeholder %r for: %r", clause_num, text[:60])
+
+        entry = {
             "clause_num": clause_num,
-            "text": str(c["text"]).strip(),
-            "risk_level": risk,
+            "text": text,
+            "risk_level": risk_raw if is_valid_risk else "invalid",
             "reason": str(c.get("reason", "")).strip(),
-        })
+        }
+        if not is_valid_risk:
+            logger.warning(
+                "[ClauseExtractor] Invalid risk_level %r — kept in output as "
+                "dropped_invalid_risk: %r", risk_raw, c
+            )
+            entry["_invalid_risk"] = True
+        valid_clauses.append(entry)
     return valid_clauses
 
 
@@ -328,12 +331,15 @@ def _is_grounded_in_source(clause_text: str, source_text: str, min_fragment_rati
 def _enforce_risk_rubric(clauses: list) -> list:
     """
     Deterministic override: any clause containing a hard signal word is
-    forced to 'high', regardless of what the LLM assigned. Matches the
-    project's stated rubric exactly — removes reliance on the LLM
-    reliably self-applying its own few-shot instruction, which measured
-    at ~43% failure rate on real output.
+    forced to 'high', regardless of what the LLM assigned. Only applies to
+    clauses still eligible for inclusion — dropped_invalid_risk clauses
+    are dropped precisely because we couldn't trust their risk_level in
+    the first place, so overriding it here would mask that they were
+    ever invalid when inspecting the JSON.
     """
     for c in clauses:
+        if c["status"] != "included":
+            continue
         if _HIGH_SIGNAL_PATTERN.search(c["text"]) and c["risk_level"] != "high":
             logger.info("[RiskRubric] Overriding %s: %s -> high", c["clause_num"], c["risk_level"])
             c["risk_level"] = "high"
@@ -409,6 +415,9 @@ def extract_clauses(chapter_text: str, model: str | None = None) -> List[Dict[st
     logger.info(f"[ClauseExtractor] RAW OUTPUT: {raw_output}")
     clauses = _parse_clauses(raw_output)
     for c in clauses:
+        if c.pop("_invalid_risk", False):
+            c["status"] = "dropped_invalid_risk"
+            continue
         if _is_grounded_in_source(c["text"], chapter_text):
             c["status"] = "included"
         else:

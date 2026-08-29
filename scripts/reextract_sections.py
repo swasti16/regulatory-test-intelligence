@@ -136,6 +136,7 @@ def reextract(doc_id: str, target_titles: list) -> None:
         "included": _count("included"),
         "dropped_ungrounded": _count("dropped_ungrounded"),
         "dropped_illustrative": _count("dropped_illustrative"),
+        "dropped_invalid_risk": _count("dropped_invalid_risk"),
         "failed_sections": new_failed_sections,
     }
     existing["last_reextracted_at"] = datetime.now().isoformat()

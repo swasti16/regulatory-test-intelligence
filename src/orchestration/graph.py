@@ -23,6 +23,9 @@ from src.orchestration.nodes import (
     split_retry_node,
     mark_failed_node,
     advance_node,
+    fix_leaked_clause_nums_node,
+    dedupe_clause_nums_node,
+    validate_node,
     write_node,
 )
 
@@ -52,7 +55,7 @@ def _route_after_advance(state: PipelineState) -> str:
     """More sections left to process, or done -> write output."""
     if state["current_section_idx"] < len(state["sections"]):
         return "extract"
-    return "write"
+    return "fix_leaked"
 
 
 def build_graph():
@@ -64,8 +67,10 @@ def build_graph():
     graph.add_node("split_retry", split_retry_node)
     graph.add_node("mark_failed", mark_failed_node)
     graph.add_node("advance", advance_node)
+    graph.add_node("fix_leaked", fix_leaked_clause_nums_node)
+    graph.add_node("dedupe", dedupe_clause_nums_node)
+    graph.add_node("validate", validate_node)
     graph.add_node("write", write_node)
-
     graph.set_entry_point("load")
     graph.add_edge("load", "split")
     graph.add_edge("split", "extract")
@@ -85,8 +90,11 @@ def build_graph():
     graph.add_conditional_edges(
         "advance",
         _route_after_advance,
-        {"extract": "extract", "write": "write"},
+        {"extract": "extract", "fix_leaked": "fix_leaked"},
     )
+    graph.add_edge("fix_leaked", "dedupe")
+    graph.add_edge("dedupe", "validate")
+    graph.add_edge("validate", "write")
     graph.add_edge("write", END)
 
     return graph.compile()

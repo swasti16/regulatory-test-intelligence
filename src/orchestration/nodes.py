@@ -20,9 +20,15 @@ from src.ingestion.docling_loader import (
 from src.extraction.clause_extractor import extract_clauses, attach_section_metadata
 from src.orchestration.state import PipelineState
 from config.settings import Settings
+from collections import Counter
+
 
 logger = logging.getLogger(__name__)
 _SENTENCE_SPLIT_RE = re.compile(r'(?<=[.!?])\s+')
+
+_LEAKED_CLAUSE_NUM_MAX_LEN = 30
+_VALID_RISK_LEVELS = {"high", "medium", "low"}
+_NOISE_TEXT_LITERALS = {"penalty of", "within x days", "shall", "must"}
 
 
 def load_node(state: PipelineState) -> Dict[str, Any]:
@@ -122,12 +128,22 @@ def extract_node(state: PipelineState) -> Dict[str, Any]:
     # router doesn't misclassify empty headings as extraction failures.
     was_attempted = len(section["section_text"].strip()) >= 150
 
-    clauses = extract_clauses(section["section_text"])
-    clauses = attach_section_metadata(
-        clauses, section["chapter_title"], section["page_start"], section["page_end"]
-    )
-    included_count = sum(1 for c in clauses if c["status"] == "included")
-
+    try:
+        clauses = extract_clauses(section["section_text"])
+        clauses = attach_section_metadata(
+            clauses, section["chapter_title"], section["page_start"], section["page_end"]
+        )
+        included_count = sum(1 for c in clauses if c["status"] == "included")
+    except Exception as e:
+        # Mirrors extract_to_json.py's per-section try/except — a timeout
+        # or other Ollama failure on ONE section must not lose every
+        # clause already extracted for this PDF. Treat as "attempted but
+        # 0 survived" so the router sends it straight to mark_failed
+        # (skips a pointless retry — a stalled Ollama call won't succeed
+        # faster on retry within the same run).
+        logger.error(f"[extract_node] '{section['chapter_title']}' extraction failed: {e}")
+        clauses = []
+        included_count = 0
     return {
         "all_clauses": state["all_clauses"] + clauses,
         "current_section_included_count": included_count,
@@ -219,8 +235,10 @@ def write_node(state: PipelineState) -> Dict[str, Any]:
             "included": _count("included"),
             "dropped_ungrounded": _count("dropped_ungrounded"),
             "dropped_illustrative": _count("dropped_illustrative"),
+            "dropped_invalid_risk": _count("dropped_invalid_risk"),
             "failed_sections": state["failed_sections"],
         },
+        "validation_issues": state["validation_issues"],
         "clauses": clauses,
     }
 
@@ -232,3 +250,96 @@ def write_node(state: PipelineState) -> Dict[str, Any]:
 
     logger.info(f"[write_node] Wrote {len(clauses)} clause(s) -> {out_path}")
     return {}
+
+
+def fix_leaked_clause_nums_node(state: PipelineState) -> Dict[str, Any]:
+    """
+    Mirrors post_process_extraction.py._fix_leaked_clause_nums() — a
+    clause_num longer than the plausible-label threshold means the LLM
+    echoed clause TEXT into the numbering field. Reassigns a placeholder
+    unique by list index (monotonic, file-wide unique by construction).
+    Kept local rather than importing the standalone script, matching the
+    existing pattern in split_retry_node's dedupe logic.
+    """
+    clauses = state["all_clauses"]
+    fixed = 0
+    for idx, c in enumerate(clauses):
+        if len(c["clause_num"]) > _LEAKED_CLAUSE_NUM_MAX_LEN:
+            c["clause_num"] = f"leaked_fixed_{idx}"
+            fixed += 1
+    if fixed:
+        logger.info(f"[fix_leaked_clause_nums_node] Fixed {fixed} leaked clause_num(s)")
+    return {"all_clauses": clauses}
+
+
+def dedupe_clause_nums_node(state: PipelineState) -> Dict[str, Any]:
+    """
+    Document-wide dedupe — mirrors post_process_extraction.py._dedupe_clause_nums().
+    split_retry_node only dedupes WITHIN its own overlap output; this
+    catches collisions across the WHOLE document (e.g. two unrelated
+    sections producing the same (chapter_title, clause_num) by chance),
+    which split_retry_node's local dedupe cannot see.
+    """
+    clauses = state["all_clauses"]
+    key_counts = Counter((c["chapter_title"], c["clause_num"]) for c in clauses)
+    seen = Counter()
+    changed = 0
+    for c in clauses:
+        key = (c["chapter_title"], c["clause_num"])
+        if key_counts[key] > 1:
+            seen[key] += 1
+            new_num = f"{c['clause_num']}#{seen[key]}"
+            if new_num != c["clause_num"]:
+                changed += 1
+            c["clause_num"] = new_num
+    if changed:
+        logger.info(f"[dedupe_clause_nums_node] Deduped {changed} clause_num collision(s)")
+    return {"all_clauses": clauses}
+
+
+def validate_node(state: PipelineState) -> Dict[str, Any]:
+    """
+    Mirrors post_process_extraction.py._validate_for_upload() — read-only
+    FAIL/WARN checks before Neo4j upload. Does NOT block write_node;
+    issues are logged + written into the output JSON's validation_issues
+    field for human review, same as the standalone script's printed
+    checklist (this project's "human review checkpoint" principle).
+    """
+    issues = []
+    clauses = state["all_clauses"]
+    doc_id = state["doc_id"]
+
+    included = [c for c in clauses if c.get("status") == "included"]
+    seen_ids = set()
+    for c in included:
+        cid = (doc_id, c.get("chapter_title"), c.get("clause_num"))
+        if cid in seen_ids:
+            issues.append(f"FAIL: duplicate clause_id for Neo4j MERGE key: {cid}")
+        seen_ids.add(cid)
+
+        if not c.get("text", "").strip():
+            issues.append(f"FAIL: included clause with empty text — clause_num={c.get('clause_num')}")
+        if c.get("risk_level") not in _VALID_RISK_LEVELS:
+            issues.append(f"FAIL: invalid risk_level {c.get('risk_level')!r} — clause_num={c.get('clause_num')}")
+        if len(c.get("clause_num", "")) > _LEAKED_CLAUSE_NUM_MAX_LEN:
+            issues.append(f"FAIL: clause_num still leaked (>{_LEAKED_CLAUSE_NUM_MAX_LEN} chars) — {c['clause_num'][:50]}...")
+        norm_text = c.get("text", "").strip().lower()
+        if norm_text in _NOISE_TEXT_LITERALS or len(norm_text) < 15:
+            issues.append(f"WARN: suspiciously short/noise-like included clause text: {c.get('text')!r}")
+
+    null_pages = sum(1 for c in included if c.get("page_start") is None)
+    if null_pages:
+        issues.append(f"WARN: {null_pages}/{len(included)} included clause(s) have page_start=None")
+
+    if len(clauses) < 20:
+        issues.append(f"WARN: only {len(clauses)} total clauses extracted — unusually low, check for a botched/partial run")
+
+    if not issues:
+        logger.info("[validate_node] READY — no issues found.")
+    else:
+        fail_count = sum(1 for i in issues if i.startswith("FAIL:"))
+        logger.warning(f"[validate_node] {len(issues)} issue(s) found ({fail_count} FAIL, {len(issues)-fail_count} WARN)")
+        for issue in issues:
+            logger.warning(f"[validate_node]   {issue}")
+
+    return {"validation_issues": issues}

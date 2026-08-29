@@ -169,6 +169,7 @@ def _run_worker(pdf_path: str) -> int:
                     "included": _count("included"),
                     "dropped_ungrounded": _count("dropped_ungrounded"),
                     "dropped_illustrative": _count("dropped_illustrative"),
+                    "dropped_invalid_risk": _count("dropped_invalid_risk"),
                     "failed_sections": failed_sections,
                 },
                 "clauses": all_clauses,
@@ -184,6 +185,7 @@ def _run_worker(pdf_path: str) -> int:
             logger.info(f"{doc_id}: {result['summary']['included']} included, "
                   f"{result['summary']['dropped_ungrounded']} dropped(ungrounded), "
                   f"{result['summary']['dropped_illustrative']} dropped(illustrative) "
+                  f"{result['summary']['dropped_invalid_risk']} dropped(invalid_risk) "
                   f"| peak RSS {mem.peak_gb:.3f} GB -> {out_path}")
             return 0
 

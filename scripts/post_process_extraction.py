@@ -107,6 +107,7 @@ def _recompute_summary(data: dict) -> None:
     data["summary"]["included"] = _count("included")
     data["summary"]["dropped_ungrounded"] = _count("dropped_ungrounded")
     data["summary"]["dropped_illustrative"] = _count("dropped_illustrative")
+    data["summary"]["dropped_invalid_risk"] = _count("dropped_invalid_risk")
 
 
 def _reextract_failed_sections(doc_id: str, data: dict) -> bool:

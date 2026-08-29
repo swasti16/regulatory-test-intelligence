@@ -15,6 +15,7 @@ from src.extraction.clause_extractor import (
     extract_clauses,
     _parse_clauses,
     _call_ollama,
+    _enforce_risk_rubric,
 )
 
 
@@ -143,3 +144,28 @@ class TestRealOllamaExtraction:
             assert clause["risk_level"] in {"high", "medium", "low"}
             assert clause["clause_num"]
             assert clause["text"]
+
+    def test_invalid_risk_level_drops_that_clause_only(self):
+        raw = (
+            '{"clauses": ['
+            '{"clause_num": "1", "text": "x", "risk_level": "critical"},'
+            '{"clause_num": "2", "text": "y", "risk_level": "medium"}'
+            "]}"
+        )
+        result = _parse_clauses(raw)
+        # No longer silently discarded — kept for audit, flagged via _invalid_risk.
+        assert len(result) == 2
+        assert result[0]["risk_level"] == "invalid"
+        assert result[0]["_invalid_risk"] is True
+        assert result[1]["clause_num"] == "2"
+        assert "_invalid_risk" not in result[1]
+
+
+class TestEnforceRiskRubricSkipsDroppedInvalid:
+    def test_dropped_invalid_risk_not_overridden(self):
+        clauses = [{
+            "clause_num": "1", "text": "The bank shall comply.",
+            "risk_level": "invalid", "reason": "", "status": "dropped_invalid_risk",
+        }]
+        result = _enforce_risk_rubric(clauses)
+        assert result[0]["risk_level"] == "invalid"
