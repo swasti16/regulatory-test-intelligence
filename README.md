@@ -102,7 +102,10 @@ deterministic ones, and keep humans in the loop on trust-critical decisions:
   + all deterministic post-processing, writes results to
   `data/extracted_clauses/{doc_id}.json`. No Neo4j writes. Every clause
   (including dropped ones) is retained in the JSON with a `status` field:
-  `included`, `dropped_ungrounded`, or `dropped_illustrative`.
+  `included`, `dropped_ungrounded`, `dropped_illustrative`, or
+  `dropped_invalid_risk` (LLM returned a risk_level outside
+  high/medium/low — kept for human review, not auto-recovered; see
+  Known Limitations).
   **`scripts/upload_to_neo4j.py`** reads the reviewed JSON, uploads
   only `status == "included"` clauses.
 - **Test-case linking**: **`data/sample_testcases.json`** holds test-case-to-
@@ -175,9 +178,18 @@ stateDiagram-v2
     split_retry --> mark_failed
     mark_failed --> advance
     advance --> extract
-    advance --> write
+    advance --> fix_leaked
+    fix_leaked --> dedupe
+    dedupe --> validate
+    validate --> write
     write --> [*]
 ```
+**Post-processing parity:** `fix_leaked`, `dedupe`, and `validate` mirror
+`post_process_extraction.py`'s leaked-clause_num fix, cross-document
+clause_num dedupe, and Neo4j-upload-readiness FAIL/WARN checks — wired
+directly into the graph so a LangGraph-produced JSON is upload-ready
+without a separate manual post-processing pass. `validation_issues` are
+written into the output JSON for human review.
 
 **Retry strategy — split-half, not temperature bump:** on zero-clauses-
 survived, the section is split at a *sentence* boundary (never mid-clause)
@@ -193,17 +205,24 @@ caught and treated as "0 survived," routing to retry/mark-failed rather
 than crashing the whole PDF — mirrors `extract_to_json.py`'s per-section
 try/except so a single bad section can't lose an entire document's output.
 
-**Scope (deliberate):** single-PDF, in-process, no subprocess isolation —
-unlike `extract_to_json.py`'s per-PDF subprocess isolation for OOM safety
-on batch runs. `scripts/run_langgraph_pipeline.py` supports both a single
-PDF path or, with no argument, loops every PDF in `Settings.RBI_PDF_DIR`
-sequentially in one process. Multi-PDF subprocess isolation, Neo4j writes,
-and LangSmith-traced production hardening are deferred post-hackathon-demo.
+**Scope:** the LangGraph state graph itself (`src/orchestration/graph.py`)
+processes a single PDF per invocation, in-process. `scripts/run_langgraph_pipeline.py`
+now mirrors `extract_to_json.py`'s per-PDF subprocess isolation: the
+orchestrator spawns one fresh `python` subprocess per PDF so Docling/torch
+model memory is guaranteed released back to the OS between PDFs, rather
+than relying on `gc.collect()` inside a long-lived interpreter. This
+wasn't just symmetry with the existing script — `RBI_Managing_Risks.pdf`
+stalled/OOM'd when run in-process after prior PDFs in the same batch
+before this fix. Neo4j writes are still NOT part of the LangGraph graph —
+`upload_to_neo4j.py` remains a separate, script-driven step after human
+review of the JSON output.
 
 **Observability:** LangSmith tracing (env-var activated, no code changes
 to `graph.py` needed) gives a visual trace tree per run — every node
 execution, every LLM call's prompt/response, and router decisions,
-viewable at smith.langchain.com.
+viewable at smith.langchain.com. Verified: node-level spans for the full
+`load → ... → write` sequence, and dual LLM calls inside `split_retry`
+for the overlap-halves retry, are visible on real pipeline runs.
 
 ## Tech Stack
 
@@ -227,7 +246,7 @@ regulatory-test-intelligence/
 │   ├── extraction/                # LLM clause extraction + deterministic filters
 │   ├── graph/                    # Neo4j driver + graph writes
 │   ├── rules/                    # Deterministic Cypher coverage rules
-│   └── orchestration/            # LangGraph pipeline wiring (not started)
+│   └── orchestration/            # LangGraph pipeline wiring — state.py, nodes.py, graph.py
 ├── scripts/
 │   ├── extract_to_json.py        # PDF -> data/extracted_clauses/{doc_id}.json
 │   ├── post_process_extraction.py # Re-extract failures, dedupe, validate readiness
@@ -236,6 +255,7 @@ regulatory-test-intelligence/
 │   ├── clear_neo4j.py            # Wipes all nodes/relationships (dev reset)
 │   ├── reextract_sections.py     # Re-run extraction on specific failed sections
 │   ├── analyse_drops.py          # Diagnoses dropped_ungrounded clauses
+│   ├── run_langgraph_pipeline.py # LangGraph-orchestrated runner, subprocess-isolated (mirrors extract_to_json.py)
 │   └── run_coverage_rules.py     # Manual verification of coverage rules against live data
 ├── tests/
 │   ├── graph/
@@ -312,6 +332,19 @@ cp .env.example .env
   the hackathon demo; will prioritize after the 3rd evaluation round once
   real-world drift frequency is better understood from actual eval runs.
 
+  - **`dropped_invalid_risk` clauses are not auto-recovered** — when the LLM
+  returns a risk_level outside {high, medium, low}, the clause is kept in
+  the output JSON with `status: "dropped_invalid_risk"` and
+  `risk_level: "invalid"` (not silently discarded, not force-included).
+  This is a deliberate human-review checkpoint, consistent with the
+  project's "LLM proposes, deterministic/human logic decides" principle —
+  auto-promoting these to `included` based on grounding+signal-word
+  matching (Option B) was considered but deferred alongside the
+  `clause_id` determinism fix (see Roadmap), to avoid adding unreviewed
+  inference right before the demo. Frequency should be near-zero given
+  the rubric constrains the LLM to exactly 3 valid values, but this
+  guards against any edge-case drift.
+
 
 ## Roadmap
 
@@ -331,14 +364,16 @@ cp .env.example .env
 - [x] Grounding normalization fix (`_normalize_text_clean`) — PDF source renders "his / her" as 3 tokens vs LLM output "his/her" as 1 token, breaking the sliding-window fuzzy match on otherwise-correctly-extracted clauses; fixed by collapsing slash-spacing symmetrically in both fragment and source normalization
 - [x] Deterministic rule engine (`src/rules/coverage_rules.py`) — 3 MVP Cypher rules verified against real uploaded Neo4j data
 - [x] Post-processing pipeline (`scripts/post_process_extraction.py`) — re-extracts failed sections, fixes leaked clause_nums, dedupes collisions, validates Neo4j-upload readiness (FAIL/WARN checklist)
-- [x] TestCase seed data (`data/sample_testcases.json`) — 12 hand-curated test cases across all 5 RBI PDFs, linking to 11 distinct clauses. Schema deliberately shaped to mirror a future Jira/TestRail import adapter's output (`source`, `covers[]` with per-link `status`), not a one-off fixture. Demonstrates both one-to-many (one test covering 2 clauses) and many-to-one (2 tests covering the same clause) mappings.
+- [x] TestCase seed data (`data/sample_testcases.json`) — 11 hand-curated test cases across all 5 RBI PDFs, producing 12 clause links (one test covers 2 clauses) to 11 distinct clauses. Schema deliberately shaped to mirror a future Jira/TestRail import adapter's output (`source`, `covers[]` with per-link `status`), not a one-off fixture. Demonstrates both one-to-many (one test covering 2 clauses) and many-to-one (2 tests covering the same clause) mappings.
 - [x] TestCase upload script (`scripts/upload_test_cases.py`) — resolves `(doc_id, chapter_title, clause_num)` → composite `clause_id` via the existing single-source-of-truth `clause_id()` function; only writes links with `status: "confirmed"`; verifies clause existence before linking (fails loud on typos, not silent)
 - [x] End-to-end coverage verification against real Neo4j Aura data: 12 links written, 0 missing-clause errors, coverage % now non-zero across all 5 regulations (0.4%–1.5%), 988 high-risk gaps still correctly surfaced by `find_high_risk_gaps()` — proves the full pipeline (extraction → graph → coverage detection) works end-to-end on real data, not just mocks
+- [x] LangGraph orchestration (`src/orchestration/`) — explicit state graph replacing the linear script, with conditional retry/branching (grounding-failure split-retry) and full post-processing parity (`fix_leaked` → `dedupe` → `validate` → `write`) wired directly into the graph
+- [x] Subprocess-isolated LangGraph batch runner (`scripts/run_langgraph_pipeline.py`) — mirrors `extract_to_json.py`'s per-PDF isolation; fixes a real OOM/stall on `RBI_Managing_Risks.pdf` when run in-process after prior PDFs
+- [x] LangSmith tracing — per-node observability, verified live on smith.langchain.com (node-level spans, dual LLM calls visible inside retry)
+- [x] `dropped_invalid_risk` status tracking — clauses with an LLM-returned risk_level outside {high, medium, low} are kept in output (not silently discarded) with `status: "dropped_invalid_risk"`; `_enforce_risk_rubric()` correctly skips non-`included` clauses so it can't mask an invalid status by force-setting `risk_level: "high"`
 
 **In progress:**
 - [ ] Duplicate clause fix (Section J duplication bug — same requirement extracted twice with overlapping text spans)
-- [ ] LangGraph orchestration (`src/orchestration/`) — replace linear script with explicit state graph, conditional retry/branching
-- [ ] LangSmith tracing — per-node observability
 
 **Not started:**
 - [ ] Human-in-the-loop review queue for clause-to-test-case linking, prioritized by `risk_level`
@@ -347,6 +382,10 @@ cp .env.example .env
   match position (from the existing grounding check) instead of LLM-assigned
   `clause_num`, to guarantee idempotent Neo4j MERGE and stable
   `sample_testcases.json` links across re-extraction runs.
+  - [ ] **Auto-recovery for `dropped_invalid_risk` clauses** — extend
+  `_enforce_risk_rubric()` to promote grounded clauses with a clear
+  signal-word match from `dropped_invalid_risk` to `included`. Deferred
+  post-3rd-evaluation-round, same bucket as the `clause_id` determinism fix.
 - [ ] Real-time compliance coverage dashboard for QA leads
 - [ ] MCP server over Neo4j (Phase 2)
 

@@ -57,12 +57,15 @@ class TestParseClausesInvalidInput:
             "]}"
         )
         result = _parse_clauses(raw)
-        assert len(result) == 1
-        assert result[0]["clause_num"] == "2"
+        assert len(result) == 2
+        assert result[0]["risk_level"] == "invalid"
+        assert result[1]["clause_num"] == "2"
 
-    def test_missing_clause_num_drops_that_clause(self):
+    def test_missing_clause_num_assigns_placeholder(self):
         raw = '{"clauses": [{"text": "x", "risk_level": "low"}]}'
-        assert _parse_clauses(raw) == []
+        result = _parse_clauses(raw)
+        assert len(result) == 1
+        assert result[0]["clause_num"] == "unnumbered_0"
 
     def test_empty_clauses_list_returns_empty(self):
         assert _parse_clauses('{"clauses": []}') == []
@@ -103,7 +106,13 @@ class TestExtractClausesEndToEndMocked:
             '{"clauses": [{"clause_num": "1", "text": "Sample clause", '
             '"risk_level": "medium", "reason": "process obligation"}]}'
         )
-        result = extract_clauses("Chapter I - Sample\nSample clause text.")
+        chapter_text = (
+            "Chapter I - Sample\n"
+            "This is a sample chapter used purely to exceed the 150 character "
+            "minimum threshold so that extract_clauses() actually invokes the "
+            "mocked Ollama call instead of short-circuiting on section length."
+        )
+        result = extract_clauses(chapter_text)
         assert len(result) == 1
         assert result[0]["risk_level"] == "medium"
         mock_call.assert_called_once()
