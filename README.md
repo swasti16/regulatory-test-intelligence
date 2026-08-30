@@ -13,6 +13,17 @@ scale as regulations change. This project automates clause extraction and
 coverage traceability, while keeping the actual gap-detection logic
 deterministic and auditable — critical for a regulated domain like banking.
 
+### How this differs from existing tooling
+
+| | GRC tools (ServiceNow, MetricStream) | QA suites (Jira, Xray) | Generic LLM/RAG chat | This project |
+|---|---|---|---|---|
+| Traceability model | Static relational tables | Flat issue links | Vector similarity (approximate) | Neo4j graph — Regulation → Clause → TestCase |
+| Gap detection | Manual entry by risk officers | None (manual authoring) | Hallucination-prone free text | Deterministic Cypher rules |
+
+
+Not a replacement for Jira/Xray — designed to feed verified, graph-traced
+coverage signals into those existing workflows.
+
 ## Why This Matters — The Cost of the Gap
 
 Banks face continuous regulatory change. Each RBI amendment triggers regression
@@ -33,22 +44,29 @@ clause and the test evidence that proves it's enforced.
 **What that costs, concretely** — drawn directly from the sample regulation this
 project processes (RBI Commercial Banks Credit/Debit Card Directions, 2025):
 
-- **Direct financial penalty**: failure to close a card account within 7 working
-  days of a valid request carries a **₹500/day penalty**, payable to the customer,
-  for every day of delay (Ch. II-E). An untested code path here compounds daily.
-- **Punitive multiplier**: an unsolicited card issued and billed without consent
-  requires the bank to reverse the charge **and** pay a penalty of **twice the
-  reversed amount**, on top of Ombudsman-determined compensation for the
-  customer's time, harassment, and mental anguish (Ch. II-C).
-- **Regulatory escalation**: every unresolved failure category has an explicit
-  RBI Ombudsman path (Ch. VI-D) — meaning gaps don't just risk a fine, they risk
-  a formal regulatory finding against the bank, with reputational and (in
-  repeat/severe cases) licensing consequences.
-- **Time cost**: this single 35-page directions document has ~8 chapters and
-  100+ individually testable obligations. Manually diffing that against a test
-  suite, per amendment, is a multi-day task for a compliance/QA analyst — RBI
-  issues Master Directions and amendments multiple times a year (this document
-  itself explicitly repeals and replaces a prior 2025 circular).
+#### 1. Direct Monetary Penalties
+`Credit/Debit Cards MD 2025: Ch. II Para 11(4), 19 | Ch. VI Para 85`
+* **Uncapped SLA Penalty:** Direct fine of ₹500 per calendar day payable to customer for delayed card closures.
+* **2× Reversal Fine:** Automatic penalty equal to twice the fee value for unsolicited card activation.
+* **Ombudsman Awards:** Direct compensation for customer harassment and mental anguish.
+
+#### 2. Legal & Supervisory Sanctions
+`Fraud MD 2026: Ch. IV Para 39 | KYC MD 2025: Ch. VIII Para 54`
+* **5-Year Credit Debarment:** Entities/borrowers classified as fraud face mandatory 5-year debarment from institutional credit.
+* **Criminal Asset Freezing:** Immediate asset freezes under Sec 51A UAPA / Sec 12A WMD Act & LEA/CBI escalation.
+* **Daily FIU Penalties:** Each day of delay in reporting suspicious transactions constitutes an independent violation.
+
+#### 3. Operational & System Bans
+`Outsourcing MD 2025: Ch. III Para 15 | KYC MD: Ch. VI Para 25`
+* **6-Hour Cyber Breach SLA:** Mandatory reporting of IT service provider security incidents to RBI within 6 hours.
+* **Outsourcing Ban:** Total prohibition against outsourcing credit decisions, KYC approvals, or internal audit.
+* **Automated Account Lockouts:** Hard system caps (₹1L balance / ₹2L credit) on non-face-to-face OTP accounts.
+
+#### 4. Reputational & Consumer Risk
+`Credit Cards MD: Ch. II Para 23 (2), 39 | Outsourcing MD: Para 44`
+* **Recovery Conduct Prohibition:** Complete statutory ban on debt collection harassment, public humiliation, or family contact.
+* **No Negative Amortization:** Barred from capitalizing interest/fees on unpaid taxes, preventing compounding traps.
+* **Public Systemic Caution:** Mandatory publication of terminated vendor names and reporting to IBA caution list.
 
 **How this project addresses each failure mode:**
 
@@ -72,7 +90,19 @@ project's own core principle (LLM proposes, deterministic/human logic decides),
 and a wrong auto-link is strictly worse than a visible gap per the failure-mode
 table above.
 
+## System Under Test
+The actual system under test is the **bank's production software** — core banking systems,
+payment gateways, mobile/internet banking APIs — whose behavior must satisfy the extracted
+regulatory clauses (e.g., "credit card closure honored within 7 working days" is a
+requirement on the bank's account-closure API, not on this pipeline).
+This project surfaces *which* clauses currently lack a linked test case against that
+production system — it does not execute tests against it.
+It is tooling that produces the traceability graph. 
+
 ## Architecture
+**Model choice:** `llama3.2:3b`, self-hosted on a CPU-only laptop (no GPU access — see
+[Design Decisions & Trade-offs](#design-decisions--trade-offs) for the benchmark that
+drove this choice over `llama3.2:1b` and `qwen2.5:1.5b`).
 
 ```mermaid
 flowchart TD
@@ -147,6 +177,26 @@ Two more deterministic layers sit between LLM extraction and the graph:
   "Illustration:"/"Example:" clauses, which often contain signal words
   describing a scenario (not a rule) and would otherwise be
   false-positively force-labeled high.
+
+**Note on output format:** `run_coverage_rules.py` currently prints results to console —
+this is intentionally scoped for the hackathon MVP to validate the *rule logic*, not the
+presentation layer. A structured report (HTML/Excel export, or the dashboard UI already
+listed under Post-MVP) is the natural next step once the underlying Cypher rules are
+proven correct against real data.
+
+## Design Decisions & Trade-offs
+
+| Decision | Alternative considered | Why this choice |
+|---|---|---|
+| **LangGraph over a plain LangChain chain** | Linear chain with manual retry logic in Python | Grounding-failure retry needs a *cycle* (extract → check → split → re-extract). Chains are strictly linear; LangGraph models the retry as an explicit state graph with conditional edges — inspectable and traceable via LangSmith, not buried in nested try/except. |
+| **Deterministic Cypher rules over LLM-guessed gaps** | Ask the LLM "which clauses lack coverage?" | Gap detection is the trust-critical decision in a regulated domain. An LLM guess introduces hallucination risk where false negatives have real compliance consequences. Cypher rules are plain, versioned, auditable — the LLM only extracts and classifies; it never decides what counts as a gap. |
+| **`llama3.2:3b` over `llama3.2:1b` / `qwen2.5:1.5b`** | Smaller/faster models for quicker CPU inference | Benchmarked all three on identical chapter text (`benchmark_results.json`). `1b` was fastest but produced duplicate/prompt-leaked clauses (e.g. literal instruction text extracted as "clauses") and required 938s on one run due to repetition. `qwen2.5:1.5b` was fast (77-229s) but also leaked prompt-injection test lines into output as real clauses. `3b` took longer (165-243s per chapter) but produced zero prompt-leak artifacts in the same test — reliability over speed, since a human reviews the JSON checkpoint anyway. |
+| **Self-hosted Ollama over hosted APIs (Groq, GitHub Models)** | Hosted frontier models — faster, stronger instruction-following, no local compute needed | Data governance, not cost, was the deciding factor: in a real BFSI deployment this pipeline would eventually process bank-internal test mappings and coverage data alongside public regulation text — that can't leave the perimeter regardless of budget. Local-first avoids re-architecture later, removes network dependency from live demos, and avoids a hosted endpoint silently changing model versions mid-benchmark. |
+| **Docling (local, layout-aware parsing) over raw text extraction (pypdf/pdfplumber) or cloud OCR (Textract, LlamaParse)** | pypdf/pdfplumber extract text in raw stream order — no layout signal, would break on RBI PDFs' multi-column sections and tables; Textract/LlamaParse are comparably or more capable but cloud-hosted | Docling runs a local layout model, giving page/position provenance (`bbox`, `prov[].page_no`) that the `[p.N]` citation design and the bbox-sort reading-order fix (see `test_reading_order_regression_chapter_ii`) depend on directly — zero external dependency, same governance reasoning as the Ollama choice above. |
+| **Neo4j graph DB over relational (PostgreSQL) or in-memory graph (NetworkX)** | PostgreSQL: works, but every coverage query needs multi-table JOINs and every new relationship type needs a schema migration; NetworkX: genuinely a graph model, but in-memory only — no persistence, no declarative query language | Regulation → Clause → TestCase is a 3-hop graph by nature; Cypher traversals (`MATCH (c)-[:HAS_CLAUSE]... WHERE NOT (c)-[:COVERED_BY]->...`) map directly onto the coverage rules. Neo4j Browser also enabled manually validating rules against real graph state before trusting them in code (see Roadmap: "Neo4j schema design + manual rule validation"). Aura's free tier matched hackathon budget/time constraints vs. Neptune (AWS-only, paid) or ArangoDB (less standardized query language). |
+| **Fuzzy fragment-matching grounding check over exact substring match** | Reject any clause not verbatim in source text | Exact-match would reject valid LLM paraphrases (reordered list items, minor rewording) as false positives, silently dropping real clauses. Fuzzy weighted-fragment matching (`_is_grounded_in_source()`) tolerates minor rewording while still rejecting fabricated content — documented trade-off: "grounded" is not a guarantee of "verbatim" (see Known Limitations). |
+| **Subprocess isolation over in-process batch runs** | Single long-lived Python process looping over all 5 PDFs | Confirmed real OOM/stall on `RBI_Managing_Risks.pdf` when run in-process after prior PDFs in the same session — `gc.collect()` alone did not release Docling/torch model memory. One fresh subprocess per PDF guarantees OS-level memory release between documents. |
+| **Local CPU-only inference over cloud/GPU LLM API** | Cloud-hosted larger model | Constraint, not a preference — no GPU access, and no budget/approval for a cloud LLM API within the hackathon window. Mitigated via: (1) model-size benchmarking above, (2) subprocess isolation enabling parallelizable per-PDF runs, (3) human-review JSON checkpoint catching what a larger/faster model might self-correct. |
 
 **MVP Rules (Phase 1):**
 1. **Missing Coverage** — clauses with zero linked test cases
@@ -229,7 +279,7 @@ for the overlap-halves retry, are visible on real pipeline runs.
 | Component | Technology |
 |---|---|
 | PDF Ingestion | Docling |
-| LLM | Ollama (local, teammate-hosted) |
+| LLM | Ollama (local, self-hosted — `llama3.2:3b`) |
 | Graph DB | Neo4j (Aura Free) |
 | Orchestration | LangGraph |
 | Observability | LangSmith |
@@ -264,7 +314,8 @@ regulatory-test-intelligence/
 │   └── integration/
 ├── data/
 │   ├── sample_regulations/       # Sample PDFs for dev/testing
-│   ├── RBI_regulations/          # Real RBI PDFs (gitignored)
+│   ├── RBI_regulations/          # Real RBI Master Direction PDFs — publicly
+│   │                             # available from rbi.org.in, not proprietary
 │   ├── extracted_clauses/        # Extraction output — human review checkpoint (gitignored)
 │   └── sample_testcases.json     # Human-curated test-case-to-clause seed links
 └── docs/
@@ -284,7 +335,7 @@ pip install -e .
 
 # 3. Configure
 cp .env.example .env
-# Add your Neo4j Aura credentials and teammate's Ollama endpoint
+# Add your Neo4j Aura credentials and Ollama endpoint
 ```
 
 ## Known Limitations
@@ -375,19 +426,34 @@ cp .env.example .env
 **In progress:**
 - [ ] Duplicate clause fix (Section J duplication bug — same requirement extracted twice with overlapping text spans)
 
-**Not started:**
-- [ ] Human-in-the-loop review queue for clause-to-test-case linking, prioritized by `risk_level`
-- [ ] LLM-assisted test-case-to-clause link suggestion (Post-MVP, explicitly deferred) — an ungoverned LLM linker would contradict the project's core "LLM proposes, deterministic/human decides" principle, since wrong links are strictly worse than visible gaps (see failure-mode table above). Schema is forward-compatible: a future matcher would append entries with `status: "suggested"`; only human-promoted `"confirmed"` links are ever written to the graph. Deferred in favor of finishing LangGraph/LangSmith given a 3-day hackathon timeline.
+**Not started (MVP — targeted post-Round-3, time permitting):**
 - [ ] **Deterministic `clause_id` scheme** — anchor `clause_id` to source-text
   match position (from the existing grounding check) instead of LLM-assigned
   `clause_num`, to guarantee idempotent Neo4j MERGE and stable
-  `sample_testcases.json` links across re-extraction runs.
-  - [ ] **Auto-recovery for `dropped_invalid_risk` clauses** — extend
+  `sample_testcases.json` links across re-extraction runs. Est. 2.5-3.5 hrs.
+- [ ] **Auto-recovery for `dropped_invalid_risk` clauses** — extend
   `_enforce_risk_rubric()` to promote grounded clauses with a clear
-  signal-word match from `dropped_invalid_risk` to `included`. Deferred
-  post-3rd-evaluation-round, same bucket as the `clause_id` determinism fix.
-- [ ] Real-time compliance coverage dashboard for QA leads
-- [ ] MCP server over Neo4j (Phase 2)
+  signal-word match from `dropped_invalid_risk` to `included`.
+- [ ] Neo4j write step folded into the LangGraph state graph (currently a
+  separate script, `upload_to_neo4j.py`, after the human-review checkpoint).
+
+## Post-MVP (Explicitly Out of Scope for This Hackathon)
+
+These are deliberate scope boundaries, not oversights — each contradicts or
+sits outside the project's core "LLM proposes, deterministic/human decides"
+principle if built without proper governance, or requires infrastructure
+beyond a 3-day hackathon:
+
+- **Human-in-the-loop review queue UI** for clause-to-test-case linking,
+  prioritized by `risk_level` — today this is a manual JSON review step.
+- **LLM-assisted test-case-to-clause link suggestion** — an ungoverned LLM
+  linker would contradict the core principle, since a wrong auto-link is
+  strictly worse than a visible gap (see failure-mode table above). Schema
+  is forward-compatible: a future matcher would append entries with
+  `status: "suggested"`; only human-promoted `"confirmed"` links are ever
+  written to the graph.
+- **Real-time compliance coverage dashboard** for QA leads (current MVP output is console-only, by design — validates rule logic before investing in presentation).
+- **MCP server over Neo4j** for external tool/agent access.
 
 ## Author
 
