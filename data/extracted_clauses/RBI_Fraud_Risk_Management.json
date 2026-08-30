@@ -1,19 +1,341 @@
 {
   "doc_id": "RBI_Fraud_Risk_Management",
   "source_pdf": "data/RBI_regulations\\RBI_Fraud_Risk_Management.pdf",
-  "extracted_at": "2026-08-25T19:15:19.450989",
+  "extracted_at": "2026-08-30T00:54:31.354750",
   "model": "llama3.2:latest",
+  "pipeline": "langgraph",
   "summary": {
-    "total_extracted": 149,
+    "total_extracted": 167,
     "included": 137,
-    "dropped_ungrounded": 12,
+    "dropped_ungrounded": 29,
     "dropped_illustrative": 0,
+    "dropped_invalid_risk": 1,
     "failed_sections": [
-      "Chapter I - Preliminary :: Table of Contents (0 survived — needs retry)",
-      "Chapter I - Preliminary :: Introduction (0 survived — needs retry)"
+      "Chapter I - Preliminary :: Table of Contents",
+      "Chapter I - Preliminary :: Introduction"
     ]
   },
+  "validation_issues": [],
   "clauses": [
+    {
+      "clause_num": "40#1",
+      "text": "Clause Coverage — Be Exhaustive:",
+      "risk_level": "low",
+      "reason": "Definitional clause",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 3,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_1#1",
+      "text": "Extract EVERY distinct actionable obligation, prohibition, or restriction",
+      "risk_level": "medium",
+      "reason": "Operational mandate",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 3,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_2#1",
+      "text": "Extract each distinct requirement as its OWN separate clause entry",
+      "risk_level": "medium",
+      "reason": "Operational mandate",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 3,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_3#1",
+      "text": "Extract defined statutory terms and their specific operational meanings from Definitions sections",
+      "risk_level": "medium",
+      "reason": "Operational mandate",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 3,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_4#1",
+      "text": "Do not stop early: a section with 5+ consecutive obligation sentences should produce 5+ clause entries, not a summarized subset",
+      "risk_level": "low",
+      "reason": "Operational mandate",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 3,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_5",
+      "text": "Skip non-regulatory front matter, document titles, and table of contents entries",
+      "risk_level": "low",
+      "reason": "Operational mandate",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 3,
+      "truncated": false
+    },
+    {
+      "clause_num": "40#2",
+      "text": "CLAUSE COVERAGE — BE EXHAUSTIVE:",
+      "risk_level": "low",
+      "reason": "definitional clause",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 3,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_1#2",
+      "text": "Extract EVERY distinct actionable obligation, prohibition, or restriction",
+      "risk_level": "medium",
+      "reason": "operational mandate",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 3,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_2#2",
+      "text": "Extract each distinct requirement as its OWN separate clause entry",
+      "risk_level": "medium",
+      "reason": "operational mandate",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 3,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_3#2",
+      "text": "Extract defined statutory terms and their specific operational meanings from Definitions sections",
+      "risk_level": "medium",
+      "reason": "regulatory definition",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 3,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_4#2",
+      "text": "Do not stop early: a section with 5+ consecutive obligation sentences should produce 5+ clause entries, not a summarized subset",
+      "risk_level": "low",
+      "reason": "background information",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 3,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_0",
+      "text": "BE EXHAUSTIVE",
+      "risk_level": "low",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Introduction",
+      "page_start": 4,
+      "page_end": 4,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_1",
+      "text": "Extract EVERY distinct actionable obligation, prohibition, or restriction",
+      "risk_level": "low",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Introduction",
+      "page_start": 4,
+      "page_end": 4,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_2",
+      "text": "Extract each distinct requirement as its OWN separate clause entry",
+      "risk_level": "low",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Introduction",
+      "page_start": 4,
+      "page_end": 4,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_3",
+      "text": "Extract defined statutory terms and their specific operational meanings from Definitions sections",
+      "risk_level": "low",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Introduction",
+      "page_start": 4,
+      "page_end": 4,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_4",
+      "text": "Do not stop early: a section with 5+ consecutive obligation sentences should produce 5+ clause entries, not a summarized subset",
+      "risk_level": "low",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Introduction",
+      "page_start": 4,
+      "page_end": 4,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_5",
+      "text": "Skip non-regulatory front matter, document titles, and table of contents entries",
+      "risk_level": "low",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Introduction",
+      "page_start": 4,
+      "page_end": 4,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_0#1",
+      "text": "BE EXHAUSTIVE",
+      "risk_level": "low",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Introduction",
+      "page_start": 4,
+      "page_end": 4,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_1#1",
+      "text": "Extract EVERY distinct actionable obligation, prohibition, or restriction",
+      "risk_level": "low",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Introduction",
+      "page_start": 4,
+      "page_end": 4,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_2#1",
+      "text": "Extract each distinct requirement as its OWN separate clause entry",
+      "risk_level": "low",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Introduction",
+      "page_start": 4,
+      "page_end": 4,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_3#1",
+      "text": "Extract defined statutory terms and their specific operational meanings from Definitions sections",
+      "risk_level": "low",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Introduction",
+      "page_start": 4,
+      "page_end": 4,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_4#1",
+      "text": "Do not stop early: a section with 5+ consecutive obligation sentences should produce 5+ clause entries, not a summarized subset",
+      "risk_level": "low",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Introduction",
+      "page_start": 4,
+      "page_end": 4,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_5#1",
+      "text": "Skip non-regulatory front matter, document titles, and table of contents entries",
+      "risk_level": "low",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Introduction",
+      "page_start": 4,
+      "page_end": 4,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_0#2",
+      "text": "BE EXHAUSTIVE",
+      "risk_level": "low",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Introduction",
+      "page_start": 4,
+      "page_end": 4,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_1#2",
+      "text": "Extract EVERY distinct actionable obligation, prohibition, or restriction",
+      "risk_level": "low",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Introduction",
+      "page_start": 4,
+      "page_end": 4,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_2#2",
+      "text": "Extract each distinct requirement as its OWN separate clause entry",
+      "risk_level": "low",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Introduction",
+      "page_start": 4,
+      "page_end": 4,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_3#2",
+      "text": "Extract defined statutory terms and their specific operational meanings from Definitions sections",
+      "risk_level": "low",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Introduction",
+      "page_start": 4,
+      "page_end": 4,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_4#2",
+      "text": "Do not stop early: a section with 5+ consecutive obligation sentences should produce 5+ clause entries, not a summarized subset",
+      "risk_level": "low",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Introduction",
+      "page_start": 4,
+      "page_end": 4,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_5#2",
+      "text": "Skip non-regulatory front matter, document titles, and table of contents entries",
+      "risk_level": "low",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Introduction",
+      "page_start": 4,
+      "page_end": 4,
+      "truncated": false
+    },
     {
       "clause_num": "A.1",
       "text": "These Directions shall be called the Reserve Bank of India (Commercial Banks Fraud Risk Management) Directions, 2026.",
@@ -1357,6 +1679,17 @@
       "truncated": false
     },
     {
+      "clause_num": "7(2)",
+      "text": "However, in the case of presentment of an instrument which is genuine but payment has been made to a person who is not the true owner; or where the amount has been credited before realisation and subsequently the instrument is found to be fake/forged and returned by the paying bank, the presenting bank which is defrauded or is put to loss by paying the amount before realisation of the instrument shall file the fraud report with RBI and inform the LEAs for investigation and further action under law.",
+      "risk_level": "invalid",
+      "reason": "",
+      "status": "dropped_invalid_risk",
+      "chapter_title": "Chapter VII - Cheque Related Frauds - Reporting to Law Enforcement Agencies and Reserve Bank of India :: (full chapter)",
+      "page_start": 22,
+      "page_end": 22,
+      "truncated": false
+    },
+    {
       "clause_num": "A(1)",
       "text": "The bank shall subject the title deeds and other related title documents in respect of all credit facilities of ₹5 crore and above to periodic legal audit and re-verification, till the loan is fully repaid.",
       "risk_level": "high",
@@ -1520,143 +1853,6 @@
       "page_start": 26,
       "page_end": 26,
       "truncated": false
-    },
-    {
-      "clause_num": "40",
-      "text": "Clause Coverage — Be Exhaustive:",
-      "risk_level": "low",
-      "reason": "Definitional clause",
-      "status": "dropped_ungrounded",
-      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
-      "page_start": 2,
-      "page_end": 3,
-      "truncated": false
-    },
-    {
-      "clause_num": "unnumbered_1",
-      "text": "Extract EVERY distinct actionable obligation, prohibition, or restriction",
-      "risk_level": "medium",
-      "reason": "Operational mandate",
-      "status": "dropped_ungrounded",
-      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
-      "page_start": 2,
-      "page_end": 3,
-      "truncated": false
-    },
-    {
-      "clause_num": "unnumbered_2",
-      "text": "Extract each distinct requirement as its OWN separate clause entry",
-      "risk_level": "medium",
-      "reason": "Operational mandate",
-      "status": "dropped_ungrounded",
-      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
-      "page_start": 2,
-      "page_end": 3,
-      "truncated": false
-    },
-    {
-      "clause_num": "unnumbered_3",
-      "text": "Extract defined statutory terms and their specific operational meanings from Definitions sections",
-      "risk_level": "medium",
-      "reason": "Operational mandate",
-      "status": "dropped_ungrounded",
-      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
-      "page_start": 2,
-      "page_end": 3,
-      "truncated": false
-    },
-    {
-      "clause_num": "unnumbered_4",
-      "text": "Do not stop early: a section with 5+ consecutive obligation sentences should produce 5+ clause entries, not a summarized subset",
-      "risk_level": "low",
-      "reason": "Operational mandate",
-      "status": "dropped_ungrounded",
-      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
-      "page_start": 2,
-      "page_end": 3,
-      "truncated": false
-    },
-    {
-      "clause_num": "unnumbered_5",
-      "text": "Skip non-regulatory front matter, document titles, and table of contents entries",
-      "risk_level": "low",
-      "reason": "Operational mandate",
-      "status": "dropped_ungrounded",
-      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
-      "page_start": 2,
-      "page_end": 3,
-      "truncated": false
-    },
-    {
-      "clause_num": "unnumbered_0",
-      "text": "BE EXHAUSTIVE",
-      "risk_level": "low",
-      "reason": "",
-      "status": "dropped_ungrounded",
-      "chapter_title": "Chapter I - Preliminary :: Introduction",
-      "page_start": 4,
-      "page_end": 4,
-      "truncated": false
-    },
-    {
-      "clause_num": "unnumbered_1",
-      "text": "Extract EVERY distinct actionable obligation, prohibition, or restriction",
-      "risk_level": "low",
-      "reason": "",
-      "status": "dropped_ungrounded",
-      "chapter_title": "Chapter I - Preliminary :: Introduction",
-      "page_start": 4,
-      "page_end": 4,
-      "truncated": false
-    },
-    {
-      "clause_num": "unnumbered_2",
-      "text": "Extract each distinct requirement as its OWN separate clause entry",
-      "risk_level": "low",
-      "reason": "",
-      "status": "dropped_ungrounded",
-      "chapter_title": "Chapter I - Preliminary :: Introduction",
-      "page_start": 4,
-      "page_end": 4,
-      "truncated": false
-    },
-    {
-      "clause_num": "unnumbered_3",
-      "text": "Extract defined statutory terms and their specific operational meanings from Definitions sections",
-      "risk_level": "low",
-      "reason": "",
-      "status": "dropped_ungrounded",
-      "chapter_title": "Chapter I - Preliminary :: Introduction",
-      "page_start": 4,
-      "page_end": 4,
-      "truncated": false
-    },
-    {
-      "clause_num": "unnumbered_4",
-      "text": "Do not stop early: a section with 5+ consecutive obligation sentences should produce 5+ clause entries, not a summarized subset",
-      "risk_level": "low",
-      "reason": "",
-      "status": "dropped_ungrounded",
-      "chapter_title": "Chapter I - Preliminary :: Introduction",
-      "page_start": 4,
-      "page_end": 4,
-      "truncated": false
-    },
-    {
-      "clause_num": "unnumbered_5",
-      "text": "Skip non-regulatory front matter, document titles, and table of contents entries",
-      "risk_level": "low",
-      "reason": "",
-      "status": "dropped_ungrounded",
-      "chapter_title": "Chapter I - Preliminary :: Introduction",
-      "page_start": 4,
-      "page_end": 4,
-      "truncated": false
     }
-  ],
-  "last_reextracted_at": "2026-08-26T14:03:23.399023",
-  "last_reextracted_sections": [
-    "Chapter I - Preliminary :: Table of Contents",
-    "Chapter I - Preliminary :: Introduction"
   ]
 }

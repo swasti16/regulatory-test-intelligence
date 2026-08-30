@@ -1,18 +1,197 @@
 {
   "doc_id": "RBI_Credit_Debit_Card",
   "source_pdf": "data/RBI_regulations\\RBI_Credit_Debit_Card.pdf",
-  "extracted_at": "2026-08-25T17:50:02.954068",
+  "extracted_at": "2026-08-29T23:23:48.366000",
   "model": "llama3.2:latest",
+  "pipeline": "langgraph",
   "summary": {
-    "total_extracted": 285,
+    "total_extracted": 297,
     "included": 271,
-    "dropped_ungrounded": 12,
+    "dropped_ungrounded": 24,
     "dropped_illustrative": 2,
+    "dropped_invalid_risk": 0,
     "failed_sections": [
-      "Chapter I - Preliminary :: Table of Contents (0 survived — needs retry)"
+      "Chapter I - Preliminary :: Table of Contents"
     ]
   },
+  "validation_issues": [],
   "clauses": [
+    {
+      "clause_num": "11(1)",
+      "text": "penalty of",
+      "risk_level": "high",
+      "reason": "imposes a hard deadline",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 2,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_1",
+      "text": "mandatory disclosure obligation",
+      "risk_level": "high",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 2,
+      "truncated": false
+    },
+    {
+      "clause_num": "5(12)",
+      "text": "shall",
+      "risk_level": "high",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 2,
+      "truncated": false
+    },
+    {
+      "clause_num": "(iv)",
+      "text": "is prohibited",
+      "risk_level": "medium",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 2,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_0#1",
+      "text": "BE EXHAUSTIVE",
+      "risk_level": "low",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 2,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_1#1",
+      "text": "Extract EVERY distinct actionable obligation, prohibition, or restriction",
+      "risk_level": "low",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 2,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_2#1",
+      "text": "Extract each distinct requirement as its OWN separate clause entry",
+      "risk_level": "low",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 2,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_3#1",
+      "text": "Extract defined statutory terms and their specific operational meanings from Definitions sections",
+      "risk_level": "low",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 2,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_4#1",
+      "text": "Do not stop early: a section with 5+ consecutive obligation sentences should produce 5+ clause entries, not a summarized subset",
+      "risk_level": "low",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 2,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_5#1",
+      "text": "Skip non-regulatory front matter, document titles, and table of contents entries",
+      "risk_level": "low",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 2,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_0#2",
+      "text": "BE EXHAUSTIVE",
+      "risk_level": "low",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 2,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_1#2",
+      "text": "Extract EVERY distinct actionable obligation, prohibition, or restriction",
+      "risk_level": "low",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 2,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_2#2",
+      "text": "Extract each distinct requirement as its OWN separate clause entry",
+      "risk_level": "low",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 2,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_3#2",
+      "text": "Extract defined statutory terms and their specific operational meanings from Definitions sections",
+      "risk_level": "low",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 2,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_4#2",
+      "text": "Do not stop early: a section with 5+ consecutive obligation sentences should produce 5+ clause entries, not a summarized subset",
+      "risk_level": "low",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 2,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_5#2",
+      "text": "Skip non-regulatory front matter, document titles, and table of contents entries",
+      "risk_level": "low",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 2,
+      "truncated": false
+    },
     {
       "clause_num": "A.1",
       "text": "These Directions shall be called the Reserve Bank of India (Commercial Banks - Credit Cards and Debit Cards: Issuance and Conduct) Directions, 2025.",
@@ -698,7 +877,7 @@
     {
       "clause_num": "D.3",
       "text": "Example: A customer availing an overdraft facility from a bank can be issued a type of credit card to access the funds available under the facility. The terms of usage of this credit card (interest charged, repayment schedule, penalty, cash withdrawal limit etc.,) shall correspond to the terms and conditions applicable to the overdraft facility.",
-      "risk_level": "high",
+      "risk_level": "medium",
       "reason": "",
       "status": "dropped_illustrative",
       "chapter_title": "Chapter II - Conduct of Credit Card Business :: D. Types of credit cards",
@@ -3103,54 +3282,6 @@
       "page_start": 35,
       "page_end": 35,
       "truncated": false
-    },
-    {
-      "clause_num": "11(1)",
-      "text": "penalty of",
-      "risk_level": "high",
-      "reason": "imposes a hard deadline",
-      "status": "dropped_ungrounded",
-      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
-      "page_start": 2,
-      "page_end": 2,
-      "truncated": false
-    },
-    {
-      "clause_num": "unnumbered_1",
-      "text": "mandatory disclosure obligation",
-      "risk_level": "high",
-      "reason": "",
-      "status": "dropped_ungrounded",
-      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
-      "page_start": 2,
-      "page_end": 2,
-      "truncated": false
-    },
-    {
-      "clause_num": "5(12)",
-      "text": "shall",
-      "risk_level": "high",
-      "reason": "",
-      "status": "dropped_ungrounded",
-      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
-      "page_start": 2,
-      "page_end": 2,
-      "truncated": false
-    },
-    {
-      "clause_num": "(iv)",
-      "text": "is prohibited",
-      "risk_level": "medium",
-      "reason": "",
-      "status": "dropped_ungrounded",
-      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
-      "page_start": 2,
-      "page_end": 2,
-      "truncated": false
     }
-  ],
-  "last_reextracted_at": "2026-08-26T13:51:42.248196",
-  "last_reextracted_sections": [
-    "Chapter I - Preliminary :: Table of Contents"
   ]
 }

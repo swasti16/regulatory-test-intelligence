@@ -1,18 +1,219 @@
 {
   "doc_id": "RBI_Managing_Risks",
   "source_pdf": "data/RBI_regulations\\RBI_Managing_Risks.pdf",
-  "extracted_at": "2026-08-26T00:03:13.458572",
+  "extracted_at": "2026-08-30T05:09:01.571124",
   "model": "llama3.2:latest",
+  "pipeline": "langgraph",
   "summary": {
-    "total_extracted": 322,
+    "total_extracted": 336,
     "included": 313,
-    "dropped_ungrounded": 9,
+    "dropped_ungrounded": 21,
     "dropped_illustrative": 0,
+    "dropped_invalid_risk": 2,
     "failed_sections": [
-      "Chapter I - Preliminary :: Table of Contents (0 survived — needs retry)"
+      "Chapter I - Preliminary :: Table of Contents"
     ]
   },
+  "validation_issues": [],
   "clauses": [
+    {
+      "clause_num": "11(1)",
+      "text": "BE EXHAUSTIVE",
+      "risk_level": "high",
+      "reason": "clause imposes a hard deadline, monetary penalty, mandatory disclosure obligation, or explicit compliance requirement.",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 4,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_1",
+      "text": "Extract EVERY distinct actionable obligation, prohibition, or restriction",
+      "risk_level": "low",
+      "reason": "definitional clause",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 4,
+      "truncated": false
+    },
+    {
+      "clause_num": "11(2)",
+      "text": "Extract each distinct requirement as its OWN separate clause entry",
+      "risk_level": "medium",
+      "reason": "process or procedure with a customer-facing obligation",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 4,
+      "truncated": false
+    },
+    {
+      "clause_num": "11(3)",
+      "text": "Extract defined statutory terms and their specific operational meanings from Definitions sections",
+      "risk_level": "low",
+      "reason": "definitional clause",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 4,
+      "truncated": false
+    },
+    {
+      "clause_num": "11(4)",
+      "text": "Do not stop early: a section with 5+ consecutive obligation sentences should produce 5+ clause entries, not a summarized subset",
+      "risk_level": "low",
+      "reason": "operational mandate",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 4,
+      "truncated": false
+    },
+    {
+      "clause_num": "11(5)",
+      "text": "Skip non-regulatory front matter, document titles, and table of contents entries",
+      "risk_level": "low",
+      "reason": "operational mandate",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 4,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_0#1",
+      "text": "BE EXHAUSTIVE",
+      "risk_level": "low",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 4,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_1#1",
+      "text": "Extract EVERY distinct actionable obligation, prohibition, or restriction",
+      "risk_level": "low",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 4,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_2#1",
+      "text": "Extract each distinct requirement as its OWN separate clause entry",
+      "risk_level": "low",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 4,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_3#1",
+      "text": "Extract defined statutory terms and their specific operational meanings from Definitions sections",
+      "risk_level": "low",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 4,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_4#1",
+      "text": "Do not stop early: a section with 5+ consecutive obligation sentences should produce 5+ clause entries, not a summarized subset",
+      "risk_level": "low",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 4,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_5#1",
+      "text": "Skip non-regulatory front matter, document titles, and table of contents entries",
+      "risk_level": "low",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 4,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_0#2",
+      "text": "BE EXHAUSTIVE",
+      "risk_level": "low",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 4,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_1#2",
+      "text": "Extract EVERY distinct actionable obligation, prohibition, or restriction",
+      "risk_level": "low",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 4,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_2#2",
+      "text": "Extract each distinct requirement as its OWN separate clause entry",
+      "risk_level": "low",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 4,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_3#2",
+      "text": "Extract defined statutory terms and their specific operational meanings from Definitions sections",
+      "risk_level": "low",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 4,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_4#2",
+      "text": "Do not stop early: a section with 5+ consecutive obligation sentences should produce 5+ clause entries, not a summarized subset",
+      "risk_level": "low",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 4,
+      "truncated": false
+    },
+    {
+      "clause_num": "unnumbered_5#2",
+      "text": "Skip non-regulatory front matter, document titles, and table of contents entries",
+      "risk_level": "low",
+      "reason": "",
+      "status": "dropped_ungrounded",
+      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
+      "page_start": 2,
+      "page_end": 4,
+      "truncated": false
+    },
     {
       "clause_num": "A(1)",
       "text": "These Directions shall be called the Reserve Bank of India (Commercial Banks Managing Risks in Outsourcing) Directions, 2025.",
@@ -2995,6 +3196,17 @@
       "truncated": false
     },
     {
+      "clause_num": "E.5(2)",
+      "text": "The Business Continuity Plan (BCP) and Disaster Recovery Plan (DRP) for outsourced IT services shall be commensurate with the nature and scope of the outsourced service as per extant instructions issued by RBI from time to time on BCP/DR requirements.",
+      "risk_level": "invalid",
+      "reason": "",
+      "status": "dropped_invalid_risk",
+      "chapter_title": "Chapter IV - Outsourcing of Information Technology (IT) Services :: E.5 Business Continuity and Management of Disaster Recovery Plan",
+      "page_start": 34,
+      "page_end": 34,
+      "truncated": false
+    },
+    {
       "clause_num": "E.6(1)",
       "text": "The IT outsourcing policy shall contain a clear exit strategy for ensuring business continuity during and after exit.",
       "risk_level": "high",
@@ -3424,6 +3636,17 @@
       "truncated": false
     },
     {
+      "clause_num": "G.2",
+      "text": "Outsourcing arrangements entered into by a bank shall not affect the rights of its customers against the bank, including the ability of the customers to obtain redressal as applicable under relevant laws.",
+      "risk_level": "invalid",
+      "reason": "",
+      "status": "dropped_invalid_risk",
+      "chapter_title": "Chapter IV - Outsourcing of Information Technology (IT) Services :: G. Redressal of Grievances related to Outsourced Services",
+      "page_start": 43,
+      "page_end": 43,
+      "truncated": false
+    },
+    {
       "clause_num": "A(1)",
       "text": "With the issue of these Directions, the existing Directions, instructions, and guidelines relating to outsourcing of financial services and IT services as applicable to Commercial Banks stand repealed, as communicated vide circular DOR.RRC.REC.302/33-01-010/2025-26 dated November 28, 2025.",
       "risk_level": "high",
@@ -3488,76 +3711,6 @@
       "page_start": 44,
       "page_end": 44,
       "truncated": false
-    },
-    {
-      "clause_num": "unnumbered_0",
-      "text": "BE EXHAUSTIVE",
-      "risk_level": "low",
-      "reason": "",
-      "status": "dropped_ungrounded",
-      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
-      "page_start": 2,
-      "page_end": 4,
-      "truncated": false
-    },
-    {
-      "clause_num": "unnumbered_1",
-      "text": "Extract EVERY distinct actionable obligation, prohibition, or restriction",
-      "risk_level": "medium",
-      "reason": "",
-      "status": "dropped_ungrounded",
-      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
-      "page_start": 2,
-      "page_end": 4,
-      "truncated": false
-    },
-    {
-      "clause_num": "unnumbered_2",
-      "text": "Extract each distinct requirement as its OWN separate clause entry",
-      "risk_level": "medium",
-      "reason": "",
-      "status": "dropped_ungrounded",
-      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
-      "page_start": 2,
-      "page_end": 4,
-      "truncated": false
-    },
-    {
-      "clause_num": "unnumbered_3",
-      "text": "Extract defined statutory terms and their specific operational meanings from Definitions sections",
-      "risk_level": "medium",
-      "reason": "",
-      "status": "dropped_ungrounded",
-      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
-      "page_start": 2,
-      "page_end": 4,
-      "truncated": false
-    },
-    {
-      "clause_num": "unnumbered_4",
-      "text": "Do not stop early: a section with 5+ consecutive obligation sentences should produce 5+ clause entries, not a summarized subset",
-      "risk_level": "low",
-      "reason": "",
-      "status": "dropped_ungrounded",
-      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
-      "page_start": 2,
-      "page_end": 4,
-      "truncated": false
-    },
-    {
-      "clause_num": "unnumbered_5",
-      "text": "Skip non-regulatory front matter, document titles, and table of contents entries",
-      "risk_level": "low",
-      "reason": "",
-      "status": "dropped_ungrounded",
-      "chapter_title": "Chapter I - Preliminary :: Table of Contents",
-      "page_start": 2,
-      "page_end": 4,
-      "truncated": false
     }
-  ],
-  "last_reextracted_at": "2026-08-26T14:20:52.362129",
-  "last_reextracted_sections": [
-    "Chapter I - Preliminary :: Table of Contents"
   ]
 }
