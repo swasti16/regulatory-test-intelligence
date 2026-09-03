@@ -20,6 +20,10 @@ steps — reasoning:
      flips (that was patch_grounding_fix.py's job, and it's now stale/
      hardcoded to old clause_nums from a prior prompt version — do not
      reuse it going forward, see cleanup notes).
+  5. Validate LAST, and persist validation_issues into the JSON itself —
+     this is what upload_to_neo4j.py's gate checks. A single _save() call
+     after this step captures both post-processing fixes and the
+     validation verdict in one write.
 
 Run:
     python scripts/post_process_extraction.py                # all files
@@ -190,7 +194,6 @@ def process_one(doc_id: str) -> None:
     n_leaked_fixed = _fix_leaked_clause_nums(clauses)
     n_deduped = _dedupe_clause_nums(clauses)
     _recompute_summary(data)
-    _save(doc_id, data)
 
     print(f"  Leaked clause_nums fixed: {n_leaked_fixed}")
     print(f"  Clause_num collisions deduped: {n_deduped}")
@@ -204,6 +207,13 @@ def process_one(doc_id: str) -> None:
 
     print("  --- Neo4j-upload readiness ---")
     issues = _validate_for_upload(doc_id, data)
+    # Persisted into the JSON itself (not just printed) — this is the field
+    # upload_to_neo4j.py's _blocking_failures() reads to gate the upload.
+    # Without this write, the validation gate has nothing to check for a
+    # script-pipeline (non-LangGraph) run and silently no-ops.
+    data["validation_issues"] = issues
+    _save(doc_id, data)
+
     if not issues:
         print("  READY — no issues found.")
     else:
