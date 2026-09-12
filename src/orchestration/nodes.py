@@ -326,6 +326,11 @@ def validate_node(state: PipelineState) -> Dict[str, Any]:
         norm_text = c.get("text", "").strip().lower()
         if norm_text in _NOISE_TEXT_LITERALS or len(norm_text) < 15:
             issues.append(f"WARN: suspiciously short/noise-like included clause text: {c.get('text')!r}")
+        if c.get("truncated"):
+            issues.append(
+                f"WARN: truncated clause (Ollama output cut off, may be incomplete) — "
+                f"clause_num={c.get('clause_num')}"
+            )
 
     null_pages = sum(1 for c in included if c.get("page_start") is None)
     if null_pages:
