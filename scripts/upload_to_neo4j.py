@@ -89,6 +89,11 @@ def main():
 
     blocked = []
     with Neo4jClient() as client:
+        try:
+            client.verify_connectivity()
+        except Exception as e:
+            print(f"FATAL: Neo4j unreachable — {e}")
+            sys.exit(1)
         for json_path in json_paths:
             try:
                 if not upload_file(client, json_path):

@@ -165,6 +165,22 @@ def _call_ollama(prompt: str, model: str | None = None, timeout: int = 600, max_
     raise last_exc
 
 
+def check_ollama_reachable(timeout: int = 5) -> None:
+    """
+    Fails fast with a clear error if Ollama is unreachable, instead of
+    letting the first extract_clauses() call inside a long section loop
+    raise a ConnectionError after Docling's model-load cost is already
+    sunk. Callers (extract_to_json.py, run_langgraph_pipeline.py workers)
+    call this once at worker startup, before load_pdf().
+    """
+    try:
+        requests.get(f"{settings.OLLAMA_BASE_URL}/api/tags", timeout=timeout)
+    except requests.RequestException as e:
+        raise RuntimeError(
+            f"Ollama unreachable at {settings.OLLAMA_BASE_URL} — {e}"
+        ) from e
+
+
 def _salvage_truncated_json(cleaned: str) -> dict | None:
     """
     Recovers complete clause objects from a truncated 'clauses' array by

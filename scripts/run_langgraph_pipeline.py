@@ -36,8 +36,15 @@ def _run_worker(pdf_path: str) -> int:
     # own footprint free of torch/docling/langgraph; only the worker (which
     # exits and releases everything) ever loads them.
     from src.orchestration.graph import build_graph
+    from src.extraction.clause_extractor import check_ollama_reachable
     import logging
     logger = logging.getLogger(__name__)
+
+    try:
+        check_ollama_reachable()
+    except RuntimeError as e:
+        logger.error(f"[Worker] {e}")
+        return 1
 
     app = build_graph()
     try:

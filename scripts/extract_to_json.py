@@ -97,10 +97,16 @@ def _run_worker(pdf_path: str) -> int:
     # own footprint free of torch/docling; only the worker (which exits and
     # releases everything on completion) ever loads them.
     from src.ingestion.docling_loader import load_pdf, split_chapter_into_sections, split_definitions_section
-    from src.extraction.clause_extractor import extract_clauses, _last_call_metadata, attach_section_metadata
+    from src.extraction.clause_extractor import extract_clauses, _last_call_metadata, attach_section_metadata,check_ollama_reachable
     from config.settings import Settings
 
     logger.info(f"[Worker] Starting isolated extraction for {pdf_path}")
+
+    try:
+        check_ollama_reachable()
+    except RuntimeError as e:
+        logger.error(f"[Worker] {e}")
+        return 1
 
     with _PeakMemoryMonitor() as mem:
         try:

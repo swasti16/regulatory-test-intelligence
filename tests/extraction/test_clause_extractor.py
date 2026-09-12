@@ -178,3 +178,18 @@ class TestEnforceRiskRubricSkipsDroppedInvalid:
         }]
         result = _enforce_risk_rubric(clauses)
         assert result[0]["risk_level"] == "invalid"
+
+class TestCheckOllamaReachable:
+    @patch("src.extraction.clause_extractor.requests.get")
+    def test_reachable_does_not_raise(self, mock_get):
+        mock_get.return_value = MagicMock(status_code=200)
+        from src.extraction.clause_extractor import check_ollama_reachable
+        check_ollama_reachable()  # should not raise
+
+    @patch("src.extraction.clause_extractor.requests.get")
+    def test_unreachable_raises_runtime_error(self, mock_get):
+        mock_get.side_effect = requests.ConnectionError("refused")
+        from src.extraction.clause_extractor import check_ollama_reachable
+        import pytest
+        with pytest.raises(RuntimeError, match="Ollama unreachable"):
+            check_ollama_reachable()
